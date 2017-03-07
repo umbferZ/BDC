@@ -34,7 +34,15 @@
 		<mapping class="org.bdc.model.e.E1" />
 		<mapping class="org.bdc.model.e.E2" />
 		<mapping class="org.bdc.model.e.E3" />
-		
+		<mapping class="org.bdc.model.entity.Banda" />
+		<mapping class="org.bdc.model.entity.Clump" />
+		<mapping class="org.bdc.model.entity.Ellisse" />
+		<mapping class="org.bdc.model.entity.Flusso" />
+		<mapping class="org.bdc.model.entity.MappaStellare" />
+		<mapping class="org.bdc.model.entity.Posizione" />
+		<mapping class="org.bdc.model.entity.Satellite" />
+		<mapping class="org.bdc.model.entity.Sorgente" />
+		<mapping class="org.bdc.model.entity.Strumento" />
 	</session-factory>
 </hibernate-configuration>
 
