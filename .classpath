@@ -14,8 +14,8 @@
 	<classpathentry kind="lib" path="lib/hibernate/javassist-3.9.0.GA.jar"/>
 	<classpathentry kind="lib" path="lib/hibernate/jta-1.1.jar"/>
 	<classpathentry kind="lib" path="lib/hibernate/log4j.jar"/>
-	<classpathentry kind="lib" path="lib/hibernate/mysql-connector-java-5.1.39.jar"/>
 	<classpathentry kind="lib" path="lib/hibernate/slf4j-api-1.5.8.jar"/>
 	<classpathentry kind="lib" path="lib/hibernate/slf4j-log4j12.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate/postgresql-42.0.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
