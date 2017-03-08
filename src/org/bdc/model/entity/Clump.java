@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: org.bdc.model.entity
  * Type: Clump
- * Last update: 7-mar-2017 16.13.49
+ * Last update: 8-mar-2017 9.36.51
  * 
  */
 package org.bdc.model.entity;
@@ -30,12 +30,12 @@ public class Clump {
     @OneToOne(mappedBy = "clump")
     private Ellisse ellisse;
 
-    @ManyToMany
-    private List<MappaStellare> mappeStellari;
-
     @Id
     @GeneratedValue
     private int id;
+
+    @ManyToMany
+    private List<MappaStellare> mappeStellari;
 
     @OneToOne
     private Posizione posizione;

@@ -31,9 +31,9 @@
 		<property name="hibernate.hbm2ddl.auto">create</property>
 
 		<!-- Mapping Media -->
-		<mapping class="org.bdc.model.e.E1" />
-		<mapping class="org.bdc.model.e.E2" />
-		<mapping class="org.bdc.model.e.E3" />
+<!-- 		<mapping class="org.bdc.model.e.E1" /> -->
+<!-- 		<mapping class="org.bdc.model.e.E2" /> -->
+<!-- 		<mapping class="org.bdc.model.e.E3" /> -->
 		<mapping class="org.bdc.model.entity.Banda" />
 		<mapping class="org.bdc.model.entity.Clump" />
 		<mapping class="org.bdc.model.entity.Ellisse" />

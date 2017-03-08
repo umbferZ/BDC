@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: org.bdc.model.entity
  * Type: Ellisse
- * Last update: 7-mar-2017 16.13.49
+ * Last update: 8-mar-2017 9.36.51
  * 
  */
 package org.bdc.model.entity;
@@ -19,14 +19,14 @@ import javax.persistence.OneToOne;
  */
 @Entity
 public class Ellisse {
-    @Id
-    private int id;
-    
+    @OneToOne
+    private Banda banda;
+
     @OneToOne
     private Clump clump;
 
-    @OneToOne
-    private Banda banda;
+    @Id
+    private int id;
 
     private double rotazione;
 

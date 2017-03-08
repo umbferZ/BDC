@@ -6,7 +6,7 @@
  * Project: BdC
  * Package: org.bdc.model.entity
  * Type: Agenzia
- * Last update: 7-mar-2017 16.13.49
+ * Last update: 8-mar-2017 9.36.51
  * 
  */
 package org.bdc.model.entity;
@@ -15,5 +15,16 @@ package org.bdc.model.entity;
  * The Enum Agenzia.
  */
 public enum Agenzia {
-    ESA, NASA
+    ESA("ESA"), NASA("NASA");
+
+    private String agenzia;
+
+    Agenzia(String agenzia) {
+        this.agenzia = agenzia;
+    };
+
+    @Override
+    public String toString() {
+        return agenzia;
+    }
 }

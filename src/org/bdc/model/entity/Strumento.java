@@ -5,13 +5,14 @@
  * Project: BdC
  * Package: org.bdc.model.entity
  * Type: Strumento
- * Last update: 7-mar-2017 16.13.49
+ * Last update: 8-mar-2017 9.36.51
  * 
  */
 package org.bdc.model.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -23,21 +24,27 @@ import javax.persistence.OneToMany;
 @Entity
 public class Strumento {
 
-    @Id
-    private String nome;
-
-    @ManyToOne
-    private Satellite satellite;
-
     @OneToMany(mappedBy = "strumento")
     private List<Banda> bandeOperative;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private MappaStellare mappaStellare;
+
+    @Id
+    private String nome;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Satellite satellite;
 
     /**
      * Instantiates a new strumento.
      */
     public Strumento() {}
+
+    public Strumento(String nome, Satellite satellite) {
+        super();
+        this.nome = nome;
+        this.satellite = satellite;
+    }
 
 }

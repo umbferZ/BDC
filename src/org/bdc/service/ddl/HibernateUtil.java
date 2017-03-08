@@ -2,10 +2,10 @@
  * 
  * Created by Umberto Ferracci from urania's PC
  * email: umberto.ferracci@gmail.com
- * Project: fleaPark
- * Package: org.umbZfer.services.persistence.dao.hibernate
+ * Project: BdC
+ * Package: org.bdc.service.ddl
  * Type: HibernateUtil
- * Last update: 25-feb-2017 18.25.43
+ * Last update: 8-mar-2017 9.36.51
  * 
  */
 package org.bdc.service.ddl;

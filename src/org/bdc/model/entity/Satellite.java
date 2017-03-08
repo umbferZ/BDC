@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: org.bdc.model.entity
  * Type: Satellite
- * Last update: 7-mar-2017 16.13.49
+ * Last update: 8-mar-2017 9.36.51
  * 
  */
 package org.bdc.model.entity;
@@ -13,7 +13,9 @@ package org.bdc.model.entity;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -23,22 +25,30 @@ import javax.persistence.OneToMany;
  */
 @Entity
 public class Satellite {
-    @Id
-    private String nome;
-
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private Agenzia agenzie;
 
     private Calendar fine;
 
     private Calendar inizio;
 
-    @OneToMany(mappedBy = "satellite")
+    @Id
+    private String nome;
+
+    @OneToMany(mappedBy = "satellite", cascade = CascadeType.ALL)
     private List<Strumento> strumenti;
 
     /**
      * Instantiates a new satellite.
      */
     public Satellite() {}
+
+    public Satellite(String nome, Agenzia agenzie, Calendar inizio, Calendar fine) {
+        super();
+        this.nome = nome;
+        this.agenzie = agenzie;
+        this.inizio = inizio;
+        this.fine = fine;
+    }
 
 }
