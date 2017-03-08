@@ -4,7 +4,7 @@
  * email: umberto.ferracci@gmail.com
  * Project: BdC
  * Package: org.bdc.model.entity.pk
- * Type: Strumento_PK
+ * Type: Satellite_PK
  * Last update: 8-mar-2017 14.11.14
  * 
  */
@@ -12,23 +12,19 @@ package org.bdc.model.entity.pk;
 
 import java.io.Serializable;
 
-public class Strumento_PK implements Serializable {
+public class Satellite_PK implements Serializable {
+
     /**
      *
      */
     private static final long serialVersionUID = 1L;
-
-    /**
-     *
-     */
-
     protected String nome;
 
-    protected String satellite;
+    public Satellite_PK() {}
 
     // @Override
     // public int hashCode() {
-    // return satellite.hashCode() * 31;
+    // return nome.hashCode();
     // }
     //
     // @Override
@@ -39,20 +35,14 @@ public class Strumento_PK implements Serializable {
     // return false;
     // if (getClass() != obj.getClass())
     // return false;
-    // Strumento_PK other = (Strumento_PK) obj;
-    // if (nome == null & satellite == null) {
-    // if (other.nome != null && other.satellite != null) {
+    // Satellite_PK other = (Satellite_PK) obj;
+    // if (nome == null) {
+    // if (other.nome != null) {
     // this.nome = other.nome;
-    // this.satellite = other.satellite;
     // return true;
     // }
     // }
     // return false;
-    //
     // }
-
-    public Strumento_PK() {
-        // satellite = new Satellite().getNome();
-    }
 
 }

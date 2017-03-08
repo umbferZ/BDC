@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: org.bdc.model.entity
  * Type: Satellite
- * Last update: 8-mar-2017 9.36.51
+ * Last update: 8-mar-2017 14.11.14
  * 
  */
 package org.bdc.model.entity;
@@ -18,13 +18,19 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+
+import org.bdc.model.entity.pk.Satellite_PK;
 
 /**
  * The Class Satellite.
  */
 @Entity
+// @IdClass(Satellite_PK.class)
 public class Satellite {
+
     @Enumerated(EnumType.STRING)
     private Agenzia agenzie;
 
@@ -35,7 +41,7 @@ public class Satellite {
     @Id
     private String nome;
 
-    @OneToMany(mappedBy = "satellite", cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<Strumento> strumenti;
 
     /**
@@ -49,6 +55,46 @@ public class Satellite {
         this.agenzie = agenzie;
         this.inizio = inizio;
         this.fine = fine;
+    }
+
+    public Agenzia getAgenzie() {
+        return agenzie;
+    }
+
+    public Calendar getFine() {
+        return fine;
+    }
+
+    public Calendar getInizio() {
+        return inizio;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public List<Strumento> getStrumenti() {
+        return strumenti;
+    }
+
+    public void setAgenzie(Agenzia agenzie) {
+        this.agenzie = agenzie;
+    }
+
+    public void setFine(Calendar fine) {
+        this.fine = fine;
+    }
+
+    public void setInizio(Calendar inizio) {
+        this.inizio = inizio;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setStrumenti(List<Strumento> strumenti) {
+        this.strumenti = strumenti;
     }
 
 }

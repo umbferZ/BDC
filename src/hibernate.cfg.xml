@@ -9,7 +9,7 @@
 		<property name="connection.driver_class">org.postgresql.Driver</property>
 		<property name="connection.url">jdbc:postgresql://localhost:5432/BDC</property>
 		<property name="connection.username">postgres</property>
-		<property name="connection.password">postgres</property>
+		<property name="connection.password">io</property>
 
 		<!-- JDBC connection pool (use the built-in) -->
 		<property name="connection.pool_size">1</property>
@@ -25,15 +25,12 @@
 
 		<!-- Echo all executed SQL to stdout -->
 		<property name="hibernate.show_sql">true</property>
-		<property name="hibernate.format_sql">false</property>
+		<property name="hibernate.format_sql">true</property>
 
 		<!-- Drop and re-create the database schema on startup -->
 		<property name="hibernate.hbm2ddl.auto">create</property>
 
 		<!-- Mapping Media -->
-<!-- 		<mapping class="org.bdc.model.e.E1" /> -->
-<!-- 		<mapping class="org.bdc.model.e.E2" /> -->
-<!-- 		<mapping class="org.bdc.model.e.E3" /> -->
 		<mapping class="org.bdc.model.entity.Banda" />
 		<mapping class="org.bdc.model.entity.Clump" />
 		<mapping class="org.bdc.model.entity.Ellisse" />

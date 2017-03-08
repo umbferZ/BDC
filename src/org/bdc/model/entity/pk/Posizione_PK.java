@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: org.bdc.model.entity.pk
  * Type: Posizione_PK
- * Last update: 8-mar-2017 9.36.51
+ * Last update: 8-mar-2017 14.11.14
  * 
  */
 package org.bdc.model.entity.pk;
@@ -21,5 +21,17 @@ public class Posizione_PK implements Serializable {
     protected double lon;
 
     public Posizione_PK() {}
+
+    @Override
+    public boolean equals(Object obj) {
+        // TODO Auto-generated method stub
+        return super.equals(obj);
+    }
+
+    @Override
+    public int hashCode() {
+        // TODO Auto-generated method stub
+        return super.hashCode();
+    }
 
 }

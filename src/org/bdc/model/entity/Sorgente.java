@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: org.bdc.model.entity
  * Type: Sorgente
- * Last update: 8-mar-2017 9.36.51
+ * Last update: 8-mar-2017 14.11.14
  * 
  */
 package org.bdc.model.entity;

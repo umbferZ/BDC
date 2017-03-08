@@ -3,12 +3,12 @@
  * Created by Umberto Ferracci from urania's PC
  * email: umberto.ferracci@gmail.com
  * Project: BdC
- * Package: org.bdc.model.e
+ * Package: org.bdc.model
  * Type: DaoFactory
- * Last update: 8-mar-2017 9.36.51
+ * Last update: 8-mar-2017 14.11.14
  * 
  */
-package org.bdc.model.e;
+package org.bdc.model;
 
 import org.bdc.model.entity.dao.ClumpDao;
 import org.bdc.model.entity.dao.SatelliteDao;
