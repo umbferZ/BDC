@@ -5,15 +5,15 @@
  * Project: BdC
  * Package: org.bdc.service.ddl
  * Type: HibernateUtil
- * Last update: 8-mar-2017 14.11.14
+ * Last update: 9-mar-2017 15.17.16
  * 
  */
 package org.bdc.service.ddl;
 
 import org.hibernate.HibernateException;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.AnnotationConfiguration;
-import org.hibernate.classic.Session;
+import org.hibernate.cfg.Configuration;
 
 /**
  * The Class HibernateUtil.
@@ -23,8 +23,9 @@ public class HibernateUtil {
 
     static {
         try {
-
-            concreteSessionFactory = new AnnotationConfiguration().configure("hibernate.cfg.xml").buildSessionFactory();
+            concreteSessionFactory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+            // concreteSessionFactory = new
+            // AnnotationConfiguration().configure("hibernate.cfg.xml").buildSessionFactory();
         } catch (Throwable ex) {
             throw new ExceptionInInitializerError(ex);
         }
@@ -44,7 +45,7 @@ public class HibernateUtil {
      * @throws HibernateException the hibernate exception
      */
     public static Session getSession() throws HibernateException {
-        return concreteSessionFactory.openSession();
+        return concreteSessionFactory.getCurrentSession();
     }
 
 }

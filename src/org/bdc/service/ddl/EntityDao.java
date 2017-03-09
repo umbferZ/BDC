@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: org.bdc.service.ddl
  * Type: EntityDao
- * Last update: 8-mar-2017 14.11.14
+ * Last update: 9-mar-2017 15.17.16
  * 
  */
 package org.bdc.service.ddl;
@@ -42,6 +42,7 @@ public interface EntityDao<T, ID extends Serializable> extends ChangeDB {
      * @param excludeProperty the exclude property
      * @return the by example
      */
+    @Deprecated
     public List<T> getByExample(T exampleInstance, String[] excludeProperty);
 
     /**
@@ -51,6 +52,7 @@ public interface EntityDao<T, ID extends Serializable> extends ChangeDB {
      * @param lock the lock
      * @return the by id
      */
+    @Deprecated
     public T getById(ID id, boolean lock);
 
     /**

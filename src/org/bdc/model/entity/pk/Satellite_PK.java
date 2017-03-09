@@ -5,13 +5,16 @@
  * Project: BdC
  * Package: org.bdc.model.entity.pk
  * Type: Satellite_PK
- * Last update: 8-mar-2017 14.11.14
+ * Last update: 9-mar-2017 15.17.16
  * 
  */
 package org.bdc.model.entity.pk;
 
 import java.io.Serializable;
 
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class Satellite_PK implements Serializable {
 
     /**
@@ -22,27 +25,12 @@ public class Satellite_PK implements Serializable {
 
     public Satellite_PK() {}
 
-    // @Override
-    // public int hashCode() {
-    // return nome.hashCode();
-    // }
-    //
-    // @Override
-    // public boolean equals(Object obj) {
-    // if (this == obj)
-    // return true;
-    // if (obj == null)
-    // return false;
-    // if (getClass() != obj.getClass())
-    // return false;
-    // Satellite_PK other = (Satellite_PK) obj;
-    // if (nome == null) {
-    // if (other.nome != null) {
-    // this.nome = other.nome;
-    // return true;
-    // }
-    // }
-    // return false;
-    // }
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
 }

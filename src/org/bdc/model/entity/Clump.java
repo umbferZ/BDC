@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: org.bdc.model.entity
  * Type: Clump
- * Last update: 8-mar-2017 14.11.14
+ * Last update: 9-mar-2017 15.17.16
  * 
  */
 package org.bdc.model.entity;
@@ -13,11 +13,14 @@ package org.bdc.model.entity;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
+
+import org.bdc.model.entity.satelliti.MappaStellare;
 
 /**
  * The Class Clump.
@@ -44,7 +47,7 @@ public class Clump {
 
     private double temperatura;
 
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private ClumpTipo tipoClump;
 
     /**

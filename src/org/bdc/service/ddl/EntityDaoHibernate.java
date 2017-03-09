@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: org.bdc.service.ddl
  * Type: EntityDaoHibernate
- * Last update: 8-mar-2017 14.11.14
+ * Last update: 9-mar-2017 15.17.16
  * 
  */
 package org.bdc.service.ddl;
@@ -13,6 +13,9 @@ package org.bdc.service.ddl;
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
 
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
@@ -83,7 +86,10 @@ public abstract class EntityDaoHibernate<T, ID extends Serializable> implements 
      */
     @Override
     public List<T> getAll() {
-        return findByCriteria();
+        Session s = openSession();
+        CriteriaBuilder builder = s.getCriteriaBuilder();
+        CriteriaQuery<T> cq = builder.createQuery(persistentClass);
+        return s.createQuery(cq).getResultList();
 
     }
 
@@ -93,6 +99,7 @@ public abstract class EntityDaoHibernate<T, ID extends Serializable> implements 
      * org.umbZfer.services.persistence.dao.EntityDao#getByExample(java.lang.
      * Object, java.lang.String[])
      */
+
     @Override
     @SuppressWarnings("unchecked")
     public List<T> getByExample(T exampleInstance, String[] excludeProperty) {
@@ -111,17 +118,16 @@ public abstract class EntityDaoHibernate<T, ID extends Serializable> implements 
      * @see org.umbZfer.services.persistence.dao.EntityDao#getById(java.io.
      * Serializable, boolean)
      */
+    @Deprecated
     @Override
     @SuppressWarnings("unchecked")
     public T getById(ID id, boolean lock) {
         T entity;
         Session s = openSession();
         if (lock)
-            // entity = (T) s.load(getPersistentClass(), id, LockMode.UPGRADE);
-            entity = (T) s.get(getPersistentClass(), id);
+            entity = s.get(getPersistentClass(), id);
         else
-            // entity = (T) s.load(getPersistentClass(), id);
-            entity = (T) s.get(getPersistentClass(), id);
+            entity = s.get(getPersistentClass(), id);
         closeSession();
         return entity;
     }
@@ -194,13 +200,18 @@ public abstract class EntityDaoHibernate<T, ID extends Serializable> implements 
      * @param criterion the criterion
      * @return the list
      */
+
+    @Deprecated
     @SuppressWarnings("unchecked")
     protected List<T> findByCriteria(Criterion... criterion) {
-        Criteria crit = openSession().createCriteria(getPersistentClass());
+        Session s = openSession();
+        Criteria crit = s.createCriteria(getPersistentClass());
         for (Criterion c : criterion)
             crit.add(c);
         List<T> l = crit.list();
+
         closeSession();
+
         return l;
     }
 

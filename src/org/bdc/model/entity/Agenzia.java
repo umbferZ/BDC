@@ -6,7 +6,7 @@
  * Project: BdC
  * Package: org.bdc.model.entity
  * Type: Agenzia
- * Last update: 8-mar-2017 14.11.14
+ * Last update: 9-mar-2017 15.17.16
  * 
  */
 package org.bdc.model.entity;

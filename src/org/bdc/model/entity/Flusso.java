@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: org.bdc.model.entity
  * Type: Flusso
- * Last update: 8-mar-2017 14.11.14
+ * Last update: 9-mar-2017 15.17.16
  * 
  */
 package org.bdc.model.entity;
@@ -13,6 +13,9 @@ package org.bdc.model.entity;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+
+import org.bdc.model.entity.satelliti.Banda;
+import org.bdc.model.entity.satelliti.Strumento;
 
 /**
  * The Class Flusso.

@@ -3,19 +3,22 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="lib/opencsv/opencsv-3.9.jar"/>
-	<classpathentry kind="lib" path="lib/hibernate/antlr-2.7.6.jar"/>
-	<classpathentry kind="lib" path="lib/hibernate/cglib-2.2.jar"/>
-	<classpathentry kind="lib" path="lib/hibernate/commons-collections-3.1.jar"/>
-	<classpathentry kind="lib" path="lib/hibernate/dom4j-1.6.1.jar"/>
-	<classpathentry kind="lib" path="lib/hibernate/ejb3-persistence.jar"/>
-	<classpathentry kind="lib" path="lib/hibernate/hibernate-annotations.jar"/>
-	<classpathentry kind="lib" path="lib/hibernate/hibernate-commons-annotations.jar"/>
-	<classpathentry kind="lib" path="lib/hibernate/hibernate3.jar"/>
-	<classpathentry kind="lib" path="lib/hibernate/javassist-3.9.0.GA.jar"/>
-	<classpathentry kind="lib" path="lib/hibernate/jta-1.1.jar"/>
-	<classpathentry kind="lib" path="lib/hibernate/log4j.jar"/>
-	<classpathentry kind="lib" path="lib/hibernate/slf4j-api-1.5.8.jar"/>
-	<classpathentry kind="lib" path="lib/hibernate/slf4j-log4j12.jar"/>
 	<classpathentry kind="lib" path="lib/hibernate/postgresql-42.0.0.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate-5.2.8.Final/required/antlr-2.7.7.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate-5.2.8.Final/required/classmate-1.3.0.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate-5.2.8.Final/required/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate-5.2.8.Final/required/hibernate-commons-annotations-5.0.1.Final.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate-5.2.8.Final/required/hibernate-core-5.2.8.Final.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate-5.2.8.Final/required/hibernate-jpa-2.1-api-1.0.0.Final.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate-5.2.8.Final/required/jandex-2.0.3.Final.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate-5.2.8.Final/required/javassist-3.20.0-GA.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate-5.2.8.Final/required/jboss-logging-3.3.0.Final.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate-5.2.8.Final/required/jboss-transaction-api_1.2_spec-1.0.1.Final.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate-5.2.8.Final/optional/ehcache/slf4j-api-1.7.7.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate-5.2.8.Final/optional/c3p0/c3p0-0.9.5.2.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate-5.2.8.Final/optional/c3p0/hibernate-c3p0-5.2.8.Final.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate-5.2.8.Final/optional/c3p0/mchange-commons-java-0.2.11.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate-5.2.8.Final/spatial/slf4j-simple-1.7.7.jar"/>
+	<classpathentry kind="lib" path="lib/jDataPicker/jdatepicker-1.3.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

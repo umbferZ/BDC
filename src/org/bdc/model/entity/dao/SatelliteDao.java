@@ -5,12 +5,12 @@
  * Project: BdC
  * Package: org.bdc.model.entity.dao
  * Type: SatelliteDao
- * Last update: 8-mar-2017 14.11.14
+ * Last update: 9-mar-2017 15.17.16
  * 
  */
 package org.bdc.model.entity.dao;
 
-import org.bdc.model.entity.Satellite;
+import org.bdc.model.entity.satelliti.Satellite;
 import org.bdc.service.ddl.EntityDaoHibernate;
 
 public class SatelliteDao extends EntityDaoHibernate<Satellite, Integer> {
