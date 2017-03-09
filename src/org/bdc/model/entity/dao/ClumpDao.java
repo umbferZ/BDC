@@ -15,4 +15,9 @@ import org.bdc.service.ddl.EntityDaoHibernate;
 
 public class ClumpDao extends EntityDaoHibernate<Clump, Integer> {
 
+    public double getAvgMassa() {
+        // FIXME create criteria for determine avg value;
+        return 0;
+    }
+
 }

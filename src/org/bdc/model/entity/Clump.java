@@ -5,22 +5,18 @@
  * Project: BdC
  * Package: org.bdc.model.entity
  * Type: Clump
- * Last update: 9-mar-2017 15.17.16
+ * Last update: 9-mar-2017 18.30.06
  * 
  */
 package org.bdc.model.entity;
-
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
-
-import org.bdc.model.entity.satelliti.MappaStellare;
+import javax.persistence.Transient;
 
 /**
  * The Class Clump.
@@ -37,13 +33,16 @@ public class Clump {
     @GeneratedValue
     private int id;
 
-    @ManyToMany
-    private List<MappaStellare> mappeStellari;
+    // @ManyToMany
+    // private List<MappaStellare> mappeStellari;
+
+    @Transient
+    private double massa;
 
     @OneToOne
     private Posizione posizione;
 
-    private double tem_mas;
+    private double ratioMassaTemperatura;
 
     private double temperatura;
 
@@ -82,6 +81,13 @@ public class Clump {
         return id;
     }
 
+    public double getMassa() {
+        int D = 10;
+        int S350 = 350;
+        massa = 0.053 * (S350) * (D ^ 2) * (Math.exp(41.14 / temperatura) - 1);
+        return massa;
+    }
+
     /**
      * Gets the posizione.
      *
@@ -91,13 +97,8 @@ public class Clump {
         return posizione;
     }
 
-    /**
-     * Gets the tem mas.
-     *
-     * @return the tem mas
-     */
-    public double getTem_mas() {
-        return tem_mas;
+    public double getRatioMassaTemperatura() {
+        return ratioMassaTemperatura;
     }
 
     /**
@@ -145,6 +146,10 @@ public class Clump {
         this.id = id;
     }
 
+    public void setMassa(double massa) {
+        this.massa = massa;
+    }
+
     /**
      * Sets the posizione.
      *
@@ -154,13 +159,8 @@ public class Clump {
         this.posizione = posizione;
     }
 
-    /**
-     * Sets the tem mas.
-     *
-     * @param tem_mas the new tem mas
-     */
-    public void setTem_mas(double tem_mas) {
-        this.tem_mas = tem_mas;
+    public void setRatioMassaTemperatura(double ratioMassaTemperatura) {
+        this.ratioMassaTemperatura = ratioMassaTemperatura;
     }
 
     /**
