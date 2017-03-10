@@ -5,9 +5,10 @@
  * Project: BdC
  * Package: org.bdc.service.ddl
  * Type: EntityDaoHibernate
- * Last update: 9-mar-2017 15.17.16
+ * Last update: 10-mar-2017 15.47.04
  * 
  */
+
 package org.bdc.service.ddl;
 
 import java.io.Serializable;
@@ -33,6 +34,7 @@ import org.hibernate.criterion.Example;
 public abstract class EntityDaoHibernate<T, ID extends Serializable> implements EntityDao<T, ID> {
 
     private Class<T> persistentClass;
+
     private Session session;
 
     /**
@@ -49,11 +51,13 @@ public abstract class EntityDaoHibernate<T, ID extends Serializable> implements 
      * Clear.
      */
     public void clear() {
+
         openSession().clear();
         closeSession();
     }
 
     public void createQuery(String sql) {
+
         Session s = openSession();
         Transaction tx = s.beginTransaction();
         s.createQuery(sql).executeUpdate();
@@ -68,6 +72,7 @@ public abstract class EntityDaoHibernate<T, ID extends Serializable> implements 
      */
     @Override
     public void delete(T entity) {
+
         openSession().delete(entity);
         closeSession();
     }
@@ -76,6 +81,7 @@ public abstract class EntityDaoHibernate<T, ID extends Serializable> implements 
      * Flush.
      */
     public void flush() {
+
         openSession().flush();
         closeSession();
     }
@@ -86,6 +92,7 @@ public abstract class EntityDaoHibernate<T, ID extends Serializable> implements 
      */
     @Override
     public List<T> getAll() {
+
         Session s = openSession();
         CriteriaBuilder builder = s.getCriteriaBuilder();
         CriteriaQuery<T> cq = builder.createQuery(persistentClass);
@@ -103,6 +110,7 @@ public abstract class EntityDaoHibernate<T, ID extends Serializable> implements 
     @Override
     @SuppressWarnings("unchecked")
     public List<T> getByExample(T exampleInstance, String[] excludeProperty) {
+
         Criteria crit = openSession().createCriteria(getPersistentClass());
         Example example = Example.create(exampleInstance);
         if (excludeProperty != null)
@@ -122,6 +130,7 @@ public abstract class EntityDaoHibernate<T, ID extends Serializable> implements 
     @Override
     @SuppressWarnings("unchecked")
     public T getById(ID id, boolean lock) {
+
         T entity;
         Session s = openSession();
         if (lock)
@@ -138,6 +147,7 @@ public abstract class EntityDaoHibernate<T, ID extends Serializable> implements 
      * @return the persistent class
      */
     public Class<T> getPersistentClass() {
+
         return persistentClass;
     }
 
@@ -147,6 +157,7 @@ public abstract class EntityDaoHibernate<T, ID extends Serializable> implements 
      * @return the session
      */
     public Session getSession() {
+
         return session;
     }
 
@@ -162,6 +173,7 @@ public abstract class EntityDaoHibernate<T, ID extends Serializable> implements 
      */
     @Override
     public T insert(T entity) {
+
         Session s = openSession();
         Transaction transaction = null;
         try {
@@ -184,6 +196,7 @@ public abstract class EntityDaoHibernate<T, ID extends Serializable> implements 
      * @param persistentClass the new persistent class
      */
     public void setPersistentClass(Class<T> persistentClass) {
+
         this.persistentClass = persistentClass;
     }
 
@@ -191,6 +204,7 @@ public abstract class EntityDaoHibernate<T, ID extends Serializable> implements 
      * Close session.
      */
     protected void closeSession() {
+
         HibernateUtil.closeSession();
     }
 
@@ -204,6 +218,7 @@ public abstract class EntityDaoHibernate<T, ID extends Serializable> implements 
     @Deprecated
     @SuppressWarnings("unchecked")
     protected List<T> findByCriteria(Criterion... criterion) {
+
         Session s = openSession();
         Criteria crit = s.createCriteria(getPersistentClass());
         for (Criterion c : criterion)
@@ -221,6 +236,7 @@ public abstract class EntityDaoHibernate<T, ID extends Serializable> implements 
      * @return the session
      */
     protected Session openSession() {
+
         return HibernateUtil.getSession();
 
     }

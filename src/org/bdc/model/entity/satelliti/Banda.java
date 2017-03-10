@@ -5,17 +5,25 @@
  * Project: BdC
  * Package: org.bdc.model.entity.satelliti
  * Type: Banda
- * Last update: 9-mar-2017 15.17.16
+ * Last update: 10-mar-2017 15.47.30
  * 
  */
+
 package org.bdc.model.entity.satelliti;
 
+import java.util.Calendar;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 
-import org.bdc.model.entity.pk.Banda_PK;
+import org.bdc.model.DaoFactory;
+import org.bdc.model.entity.satelliti.pk.Banda_PK;
 
 /**
  * The Class Banda.
@@ -26,11 +34,15 @@ public class Banda {
 
     @Id
     private double lunghezzaOnda;
+
     @Id
     private double risoluzione;
 
-    @ManyToOne
+    @Id
+    @JoinColumns({ @JoinColumn(name = "strumento_nome", referencedColumnName = "nome"), @JoinColumn(name = "satellite_nome", referencedColumnName = "satellite_nome") })
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Strumento strumento;
+
 
     /**
      * Instantiates a new banda.
@@ -38,11 +50,23 @@ public class Banda {
     public Banda() {}
 
     /**
+     * Instantiates a new banda.
+     *
+     * @param risoluzione the risoluzione
+     * @param lunghezzaOnda the lunghezza onda
+     */
+    public Banda(double risoluzione, double lunghezzaOnda) {
+        this.risoluzione = risoluzione;
+        this.lunghezzaOnda = lunghezzaOnda;
+    }
+
+    /**
      * Gets the lunghezza onda.
      *
      * @return the lunghezza onda
      */
     public double getLunghezzaOnda() {
+
         return lunghezzaOnda;
     }
 
@@ -52,7 +76,18 @@ public class Banda {
      * @return the risoluzione
      */
     public double getRisoluzione() {
+
         return risoluzione;
+    }
+
+    /**
+     * Gets the strumento.
+     *
+     * @return the strumento
+     */
+    public Strumento getStrumento() {
+
+        return strumento;
     }
 
     /**
@@ -61,6 +96,7 @@ public class Banda {
      * @param lunghezzaOnda the new lunghezza onda
      */
     public void setLunghezzaOnda(double lunghezzaOnda) {
+
         this.lunghezzaOnda = lunghezzaOnda;
     }
 
@@ -70,7 +106,18 @@ public class Banda {
      * @param risoluzione the new risoluzione
      */
     public void setRisoluzione(double risoluzione) {
+
         this.risoluzione = risoluzione;
+    }
+
+    /**
+     * Sets the strumento.
+     *
+     * @param strumento the new strumento
+     */
+    public void setStrumento(Strumento strumento) {
+
+        this.strumento = strumento;
     }
 
 }

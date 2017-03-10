@@ -5,53 +5,54 @@
  * Project: BdC
  * Package: test
  * Type: DemoLauncher
- * Last update: 9-mar-2017 15.17.16
+ * Last update: 10-mar-2017 15.47.04
  * 
  */
+
 package test;
 
-import org.bdc.controls.gestisciSatellite.BeanInserisciSatellite;
-import org.bdc.controls.gestisciSatellite.C_UC_GestisciSatellite;
+import java.util.Calendar;
+
+import org.bdc.model.DaoFactory;
+import org.bdc.model.entity.satelliti.Banda;
+import org.bdc.model.entity.satelliti.Satellite;
+import org.bdc.model.entity.satelliti.Strumento;
 
 public class DemoLauncher {
+
     public static void main(String[] args) {
 
-        BeanInserisciSatellite bi = new BeanInserisciSatellite();
-        bi.setAgenziaSatellite("ESA");
-        bi.setNomeSatellite("Hersel");
-        bi.setStartYear(2009);
-        bi.setStartMonth(07);
-        bi.setStartDay(10);
-        bi.setEndYear(2013);
-        bi.setEndMonth(06);
-        bi.setEndDay(17);
-
-        C_UC_GestisciSatellite controller = new C_UC_GestisciSatellite();
-        controller.inserisciSatellite(bi);
-
-        // DaoFactory dao = DaoFactory.getInstance();
-        // Satellite hershel = new Satellite("Hershel", Agenzia.ESA,
-        // Calendar.getInstance(), Calendar.getInstance());
-        // Satellite spitzer = new Satellite("Spitzer", Agenzia.NASA,
-        // Calendar.getInstance(), Calendar.getInstance());
-
-        // dao.getSatelliteDao().insert(hershel);
-        // dao.getSatelliteDao().insert(spitzer);
-
-        // List<Satellite> satelliti = dao.getSatelliteDao().getAll();
-        // for (Satellite s : satelliti) {
-        // if (s.getNome() == "Hershel")
-        // hershel = s;
-        // else if (s.getNome() == "Spitzer")
-        // spitzer = s;
+        // BeanInserisciSatellite bi = new BeanInserisciSatellite();
+        // bi.setAgenziaSatellite("ESA");
+        // bi.setNomeSatellite("Hersel");
+        // bi.setStartYear(2009);
+        // bi.setStartMonth(07);
+        // bi.setStartDay(10);
+        // bi.setEndYear(2013);
+        // bi.setEndMonth(06);
+        // bi.setEndDay(17);
         //
-        // }
+        // C_UC_GestisciSatellite controller = new C_UC_GestisciSatellite();
+        // controller.inserisciSatellite(bi);
 
-        // dao.getStrumentoDao().insert(new Strumento("PACS", hershel));
-        // dao.getStrumentoDao().insert(new Strumento("SPIRE", hershel));
-        // dao.getStrumentoDao().insert(new Strumento("IRAC", spitzer));
-        // dao.getStrumentoDao().insert(new Strumento("MIPS", spitzer));
-        // dao.getStrumentoDao().insert(new Strumento("PACS", spitzer));
+        Satellite satellite = new Satellite("ESA", "Hersel", Calendar.getInstance(), Calendar.getInstance());
+        
+        Strumento strumento = new Strumento("PACS", satellite);
+        
+        Banda b1 = new Banda(0.58, 52.0);
+        Banda b2 = new Banda(0.47, 52.);
+        
+        strumento.addBandaOperativa(b1);
+        strumento.addBandaOperativa(b2);
+        
+        b1.setStrumento(strumento);
+        b2.setStrumento(strumento);
+        
+        satellite.addStrumento(strumento);
+        
+        DaoFactory.getInstance().getSatelliteDao().insert(satellite);
+
+
     }
 
 }

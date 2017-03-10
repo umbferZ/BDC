@@ -5,9 +5,10 @@
  * Project: BdC
  * Package: org.bdc.model.entity
  * Type: Flusso
- * Last update: 9-mar-2017 15.17.16
+ * Last update: 10-mar-2017 15.47.04
  * 
  */
+
 package org.bdc.model.entity;
 
 import javax.persistence.Entity;
@@ -45,6 +46,7 @@ public class Flusso {
      * @return the banda
      */
     public Banda getBanda() {
+
         return banda;
     }
 
@@ -54,6 +56,7 @@ public class Flusso {
      * @return the errore
      */
     public double getErrore() {
+
         return errore;
     }
 
@@ -63,6 +66,7 @@ public class Flusso {
      * @return the strumento
      */
     public Strumento getStrumento() {
+
         return strumento;
     }
 
@@ -72,6 +76,7 @@ public class Flusso {
      * @return the valore
      */
     public double getValore() {
+
         return valore;
     }
 
@@ -81,6 +86,7 @@ public class Flusso {
      * @param banda the new banda
      */
     public void setBanda(Banda banda) {
+
         this.banda = banda;
     }
 
@@ -90,6 +96,7 @@ public class Flusso {
      * @param errore the new errore
      */
     public void setErrore(double errore) {
+
         this.errore = errore;
     }
 
@@ -99,6 +106,7 @@ public class Flusso {
      * @param strumento the new strumento
      */
     public void setStrumento(Strumento strumento) {
+
         this.strumento = strumento;
     }
 
@@ -108,6 +116,7 @@ public class Flusso {
      * @param valore the new valore
      */
     public void setValore(double valore) {
+
         this.valore = valore;
     }
 

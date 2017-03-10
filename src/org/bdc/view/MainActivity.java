@@ -5,9 +5,10 @@
  * Project: BdC
  * Package: org.bdc.view
  * Type: MainActivity
- * Last update: 9-mar-2017 15.17.16
+ * Last update: 10-mar-2017 15.47.04
  * 
  */
+
 package org.bdc.view;
 
 import java.awt.BorderLayout;
@@ -30,9 +31,12 @@ public class MainActivity {
      * Launch the application.
      */
     public static void main(String[] args) {
+
         EventQueue.invokeLater(new Runnable() {
+
             @Override
             public void run() {
+
                 try {
                     MainActivity window = new MainActivity();
                     window.frame.setVisible(true);
@@ -54,6 +58,7 @@ public class MainActivity {
      * Initialize the contents of the frame.
      */
     private void initialize() {
+
         frame = new JFrame();
         frame.setBounds(100, 100, 450, 300);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -66,6 +71,7 @@ public class MainActivity {
 
         JMenuItem mntmNewMenuItem = new JMenuItem("New menu item");
         mntmNewMenuItem.addActionListener(new ActionListener() {
+
             @Override
             public void actionPerformed(ActionEvent e) {
 

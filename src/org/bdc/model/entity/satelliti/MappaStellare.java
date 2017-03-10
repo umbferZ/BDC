@@ -5,9 +5,10 @@
  * Project: BdC
  * Package: org.bdc.model.entity.satelliti
  * Type: MappaStellare
- * Last update: 9-mar-2017 15.17.16
+ * Last update: 10-mar-2017 15.47.30
  * 
  */
+
 package org.bdc.model.entity.satelliti;
 
 import java.util.List;
@@ -45,6 +46,7 @@ public class MappaStellare {
      * @return the clumps
      */
     public List<Clump> getClumps() {
+
         return clumps;
     }
 
@@ -54,6 +56,7 @@ public class MappaStellare {
      * @return the nome
      */
     public String getNome() {
+
         return nome;
     }
 
@@ -63,6 +66,7 @@ public class MappaStellare {
      * @return the strumenti
      */
     public List<Strumento> getStrumenti() {
+
         return strumenti;
     }
 
@@ -72,6 +76,7 @@ public class MappaStellare {
      * @param clumps the new clumps
      */
     public void setClumps(List<Clump> clumps) {
+
         this.clumps = clumps;
     }
 
@@ -81,6 +86,7 @@ public class MappaStellare {
      * @param nome the new nome
      */
     public void setNome(String nome) {
+
         this.nome = nome;
     }
 
@@ -90,6 +96,7 @@ public class MappaStellare {
      * @param strumenti the new strumenti
      */
     public void setStrumenti(List<Strumento> strumenti) {
+
         this.strumenti = strumenti;
     }
 

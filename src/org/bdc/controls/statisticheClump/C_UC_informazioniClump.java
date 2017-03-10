@@ -5,9 +5,10 @@
  * Project: BdC
  * Package: org.bdc.controls.statisticheClump
  * Type: C_UC_informazioniClump
- * Last update: 9-mar-2017 18.32.20
+ * Last update: 10-mar-2017 15.47.04
  * 
  */
+
 package org.bdc.controls.statisticheClump;
 
 import java.util.ArrayList;
@@ -18,7 +19,9 @@ import org.bdc.model.DaoFactory;
 import org.bdc.model.entity.Clump;
 
 public class C_UC_informazioniClump {
+
     public List<BeanResponseMassaClump> getMasseClump() {
+
         List<Clump> clumps = DaoFactory.getInstance().getClumpDao().getAll();
         List<BeanResponseMassaClump> list = new ArrayList<>();
         for (Clump c : clumps) {
@@ -32,6 +35,7 @@ public class C_UC_informazioniClump {
     }
 
     public BeanResponseStatistiche getStatistiche() {
+
         List<Clump> clumps = DaoFactory.getInstance().getClumpDao().getAll();
         BeanResponseStatistiche bean = new BeanResponseStatistiche();
         double massSum = 0;

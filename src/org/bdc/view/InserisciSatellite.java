@@ -5,9 +5,10 @@
  * Project: BdC
  * Package: org.bdc.view
  * Type: InserisciSatellite
- * Last update: 9-mar-2017 15.17.16
+ * Last update: 10-mar-2017 15.47.04
  * 
  */
+
 package org.bdc.view;
 
 import java.awt.FlowLayout;
@@ -19,14 +20,20 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class InserisciSatellite extends JPanel {
+
     /**
      *
      */
     private static final long serialVersionUID = 1L;
+
     private JTextField textStartMonth;
+
     private JTextField txtAgenzia;
+
     private JTextField txtNome;
+
     private JTextField txtStartDay;
+
     private JTextField txtStartYear;
 
     /**

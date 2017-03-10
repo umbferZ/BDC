@@ -3,16 +3,20 @@
  * Created by Umberto Ferracci from urania's PC
  * email: umberto.ferracci@gmail.com
  * Project: BdC
- * Package: org.bdc.model.entity.dao
+ * Package: org.bdc.model.entity.satelliti.dao
  * Type: SatelliteDao
- * Last update: 9-mar-2017 15.17.16
+ * Last update: 10-mar-2017 15.47.55
  * 
  */
-package org.bdc.model.entity.dao;
+
+package org.bdc.model.entity.satelliti.dao;
 
 import org.bdc.model.entity.satelliti.Satellite;
 import org.bdc.service.ddl.EntityDaoHibernate;
 
+/**
+ * The Class SatelliteDao.
+ */
 public class SatelliteDao extends EntityDaoHibernate<Satellite, Integer> {
 
 }

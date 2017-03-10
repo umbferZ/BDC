@@ -1,40 +1,63 @@
+/*
+ * 
+ * Created by Umberto Ferracci from urania's PC
+ * email: umberto.ferracci@gmail.com
+ * Project: BdC
+ * Package: org.bdc.controls.statisticheClump
+ * Type: BeanResponseStatistiche
+ * Last update: 10-mar-2017 15.47.04
+ * 
+ */
+
 package org.bdc.controls.statisticheClump;
 
 public class BeanResponseStatistiche {
-    private double media;
-    private double mediana;
+
     private double deviazioneMediaAssoluta;
+
     private double deviazioneStandard;
 
-    public double getMedia() {
-        return media;
-    }
+    private double media;
 
-    public void setMedia(double media) {
-        this.media = media;
-    }
-
-    public double getMediana() {
-        return mediana;
-    }
-
-    public void setMediana(double mediana) {
-        this.mediana = mediana;
-    }
+    private double mediana;
 
     public double getDeviazioneMediaAssoluta() {
+
         return deviazioneMediaAssoluta;
     }
 
-    public void setDeviazioneMediaAssoluta(double deviazioneMediaAssoluta) {
-        this.deviazioneMediaAssoluta = deviazioneMediaAssoluta;
-    }
-
     public double getDeviazioneStandard() {
+
         return deviazioneStandard;
     }
 
+    public double getMedia() {
+
+        return media;
+    }
+
+    public double getMediana() {
+
+        return mediana;
+    }
+
+    public void setDeviazioneMediaAssoluta(double deviazioneMediaAssoluta) {
+
+        this.deviazioneMediaAssoluta = deviazioneMediaAssoluta;
+    }
+
     public void setDeviazioneStandard(double deviazioneStandard) {
+
         this.deviazioneStandard = deviazioneStandard;
+    }
+
+    public void setMedia(double media) {
+
+        this.media = media;
+    }
+
+    public void setMediana(double mediana) {
+
+        this.mediana = mediana;
     }
 }

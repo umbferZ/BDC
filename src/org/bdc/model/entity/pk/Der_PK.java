@@ -5,9 +5,10 @@
  * Project: BdC
  * Package: org.bdc.model.entity.pk
  * Type: Der_PK
- * Last update: 9-mar-2017 15.17.16
+ * Last update: 10-mar-2017 15.47.04
  * 
  */
+
 package org.bdc.model.entity.pk;
 
 import java.io.Serializable;
@@ -17,10 +18,12 @@ import javax.persistence.Id;
 
 @Embeddable
 public class Der_PK implements Serializable {
+
     /**
      *
      */
     private static final long serialVersionUID = 1L;
+
     @Id
     protected String satellite_nome;
 

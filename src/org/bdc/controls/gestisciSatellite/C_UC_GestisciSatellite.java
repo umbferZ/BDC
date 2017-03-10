@@ -5,15 +5,19 @@
  * Project: BdC
  * Package: org.bdc.controls.gestisciSatellite
  * Type: C_UC_GestisciSatellite
- * Last update: 9-mar-2017 15.17.15
+ * Last update: 10-mar-2017 15.47.04
  * 
  */
+
 package org.bdc.controls.gestisciSatellite;
 
 import java.util.Calendar;
+import java.util.List;
 
 import org.bdc.model.DaoFactory;
+import org.bdc.model.entity.satelliti.Banda;
 import org.bdc.model.entity.satelliti.Satellite;
+import org.bdc.model.entity.satelliti.Strumento;
 
 public class C_UC_GestisciSatellite {
 
@@ -26,6 +30,7 @@ public class C_UC_GestisciSatellite {
     }
 
     public void inserisciSatellite(BeanInserisciSatellite bean) {
+
         Calendar startDate = Calendar.getInstance();
         startDate.set(bean.getStartYear(), bean.getStartMonth() - 1, bean.getStartDay());
         Calendar endDate = null;
@@ -42,7 +47,12 @@ public class C_UC_GestisciSatellite {
         // TODO throw new Exception();
     }
 
-    public void inserisciStrumento(BeanInserisciStrumento bean) {
+    public void inserisciStrumento(BeanInserisciStrumento bs, List<BeanInserisciBanda> bb) {
+
+        Strumento strumento = new Strumento(bs.getNomeStrumento());
+        for (BeanInserisciBanda b : bb)
+            strumento.addBandaOperativa(new Banda(b.getRisoluzione(), b.getLunghezzaOnda()));
+        DaoFactory.getInstance().getStrumentoDao().insert(strumento);
 
     }
 }

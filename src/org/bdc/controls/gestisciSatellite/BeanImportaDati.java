@@ -5,9 +5,10 @@
  * Project: BdC
  * Package: org.bdc.controls.gestisciSatellite
  * Type: BeanImportaDati
- * Last update: 9-mar-2017 15.17.15
+ * Last update: 10-mar-2017 15.47.04
  * 
  */
+
 package org.bdc.controls.gestisciSatellite;
 
 public class BeanImportaDati {
