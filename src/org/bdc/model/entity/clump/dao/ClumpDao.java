@@ -12,7 +12,7 @@
 package org.bdc.model.entity.clump.dao;
 
 import org.bdc.model.entity.Clump;
-import org.bdc.service.ddl.EntityDaoHibernate;
+import org.bdc.service.dal.EntityDaoHibernate;
 
 public class ClumpDao extends EntityDaoHibernate<Clump, Integer> {
 

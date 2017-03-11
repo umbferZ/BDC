@@ -12,7 +12,7 @@
 package org.bdc.model.entity.satelliti.dao;
 
 import org.bdc.model.entity.satelliti.Satellite;
-import org.bdc.service.ddl.EntityDaoHibernate;
+import org.bdc.service.dal.EntityDaoHibernate;
 
 /**
  * The Class SatelliteDao.

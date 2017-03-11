@@ -11,8 +11,6 @@
 
 package org.bdc.model.entity.satelliti;
 
-import java.util.Calendar;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -22,7 +20,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 
-import org.bdc.model.DaoFactory;
 import org.bdc.model.entity.satelliti.pk.Banda_PK;
 
 /**

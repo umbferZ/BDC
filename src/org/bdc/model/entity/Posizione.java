@@ -33,7 +33,16 @@ public class Posizione {
     /**
      * Instantiates a new posizione.
      */
-    public Posizione() {}
+    public Posizione() {
+        System.out.println("Sono stato instanziato");
+    }
+
+    public Posizione(double lat, double lon) {
+        super();
+        this.lat = lat;
+        this.lon = lon;
+        System.out.println("latitudine:\t" + lat + "\nlongitudine:\t" + lat);
+    }
 
     /**
      * Gets the lat.

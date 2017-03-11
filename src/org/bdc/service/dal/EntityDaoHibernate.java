@@ -3,13 +3,13 @@
  * Created by Umberto Ferracci from urania's PC
  * email: umberto.ferracci@gmail.com
  * Project: BdC
- * Package: org.bdc.service.ddl
+ * Package: org.bdc.service.dal
  * Type: EntityDaoHibernate
- * Last update: 10-mar-2017 15.47.04
+ * Last update: 11-mar-2017 0.58.34
  * 
  */
 
-package org.bdc.service.ddl;
+package org.bdc.service.dal;
 
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
@@ -159,11 +159,6 @@ public abstract class EntityDaoHibernate<T, ID extends Serializable> implements 
     public Session getSession() {
 
         return session;
-    }
-
-    @Override
-    public void importDump() {
-
     }
 
     /*
