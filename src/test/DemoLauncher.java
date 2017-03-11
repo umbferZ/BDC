@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: test
  * Type: DemoLauncher
- * Last update: 10-mar-2017 15.47.04
+ * Last update: 11-mar-2017 19.20.51
  * 
  */
 
@@ -13,44 +13,67 @@ package test;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Calendar;
+
+import org.bdc.controls.gestisciSatellite.BeanInserisciSatellite;
+import org.bdc.controls.gestisciSatellite.C_UC_GestisciSatellite;
+import org.bdc.model.DaoFactory;
+import org.bdc.model.entity.satelliti.Banda;
+import org.bdc.model.entity.satelliti.Satellite;
+import org.bdc.model.entity.satelliti.Strumento;
+import org.bdc.service.parser.CSVFactory;
 
 public class DemoLauncher {
 
     public static void main(String[] args) {
+        DemoLauncher launcher = new DemoLauncher();
+        // launcher.provaController();
+        // launcher.provaIstanze();
+        // launcher.provaDao();
+        try {
+            launcher.provaQueueProducerConsumer(3);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-        // BeanInserisciSatellite bi = new BeanInserisciSatellite();
-        // bi.setAgenziaSatellite("ESA");
-        // bi.setNomeSatellite("Hersel");
-        // bi.setStartYear(2009);
-        // bi.setStartMonth(07);
-        // bi.setStartDay(10);
-        // bi.setEndYear(2013);
-        // bi.setEndMonth(06);
-        // bi.setEndDay(17);
-        //
-        // C_UC_GestisciSatellite controller = new C_UC_GestisciSatellite();
-        // controller.inserisciSatellite(bi);
+    }
 
-        // Satellite satellite = new Satellite("ESA", "Hersel",
-        // Calendar.getInstance(), Calendar.getInstance());
-        //
-        // Strumento strumento = new Strumento("PACS", satellite);
-        //
-        // Banda b1 = new Banda(0.58, 52.0);
-        // Banda b2 = new Banda(0.47, 52.);
-        //
-        // strumento.addBandaOperativa(b1);
-        // strumento.addBandaOperativa(b2);
-        //
-        // b1.setStrumento(strumento);
-        // b2.setStrumento(strumento);
-        //
-        // satellite.addStrumento(strumento);
-        //
-        // DaoFactory.getInstance().getSatelliteDao().insert(satellite);
+    public void provaController() {
+        BeanInserisciSatellite bi = new BeanInserisciSatellite();
+        bi.setAgenziaSatellite("ESA");
+        bi.setNomeSatellite("Hersel");
+        bi.setStartYear(2009);
+        bi.setStartMonth(07);
+        bi.setStartDay(10);
+        bi.setEndYear(2013);
+        bi.setEndMonth(06);
+        bi.setEndDay(17);
 
-        // FIXME get className
+        C_UC_GestisciSatellite controller = new C_UC_GestisciSatellite();
+        controller.inserisciSatellite(bi);
+    }
 
+    public void provaDao() {
+
+        Satellite satellite = new Satellite("ESA", "Hersel", Calendar.getInstance(), Calendar.getInstance());
+
+        Strumento strumento = new Strumento("PACS", satellite);
+
+        Banda b1 = new Banda(0.58, 52.0);
+        Banda b2 = new Banda(0.47, 52.);
+
+        strumento.addBandaOperativa(b1);
+        strumento.addBandaOperativa(b2);
+
+        b1.setStrumento(strumento);
+        b2.setStrumento(strumento);
+
+        satellite.addStrumento(strumento);
+
+        DaoFactory.getInstance().getSatelliteDao().insert(satellite);
+    }
+
+    public void provaIstanze() {
         try {
             Class<?> classe = Class.forName("org.bdc.model.entity.Posizione");
 
@@ -60,31 +83,42 @@ public class DemoLauncher {
 
             Constructor<?> constructor = classe.getConstructor(parameterTypes);
 
-            Object date = constructor.newInstance(parametersValue);
+            constructor.newInstance(parametersValue);
 
         } catch (ClassNotFoundException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (NoSuchMethodException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (SecurityException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (InstantiationException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (IllegalAccessException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (IllegalArgumentException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (InvocationTargetException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
+    }
 
+    public void provaQueueProducerConsumer(int file) throws Exception {
+        switch (file) {
+            case 1:
+                CSVFactory.translateFile1("/home/urania/Scrivania/csv/higal.csv");
+                break;
+            case 2:
+                CSVFactory.translateFile2("/home/urania/Scrivania/csv/higal_additionalinfo.csv");
+                break;
+            case 3:
+                CSVFactory.translateFile3("/home/urania/Scrivania/csv/r08.csv");
+                break;
+            case 4:
+                CSVFactory.translateFile4("/home/urania/Scrivania/csv/mips.csv");
+                break;
+            default:
+                throw new Exception();
+        }
     }
 
 }

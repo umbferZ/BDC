@@ -4,8 +4,8 @@
  * email: umberto.ferracci@gmail.com
  * Project: BdC
  * Package: org.bdc.service.parser.monitor
- * Type: QueueProductorConsumer
- * Last update: 11-mar-2017 0.58.34
+ * Type: QueueProducerConsumer
+ * Last update: 11-mar-2017 19.20.51
  * 
  */
 
@@ -13,23 +13,15 @@ package org.bdc.service.parser.monitor;
 
 import java.util.concurrent.ArrayBlockingQueue;
 
-public class QueueProductorConsumer<SB extends SimpleBean> extends ArrayBlockingQueue<SB> {
+import org.bdc.service.parser.monitor.beans.SimpleBean;
 
-    private static int capacity = 11;
+public class QueueProducerConsumer<SB extends SimpleBean> extends ArrayBlockingQueue<SB> {
 
-    private static final long serialVersionUID = 1L;
+    private static int capacity = 20;
 
     private boolean finished;
 
-    public static int getCapacity() {
-        return capacity;
-    }
-
-    public static void setCapacity(int capacity) {
-        QueueProductorConsumer.capacity = capacity;
-    }
-
-    public QueueProductorConsumer() {
+    public QueueProducerConsumer() {
         super(capacity);
         this.finished = false;
     }
@@ -41,4 +33,5 @@ public class QueueProductorConsumer<SB extends SimpleBean> extends ArrayBlocking
     public void setFinished(boolean finished) {
         this.finished = finished;
     }
+
 }

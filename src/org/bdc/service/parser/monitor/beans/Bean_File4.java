@@ -3,17 +3,15 @@
  * Created by Umberto Ferracci from urania's PC
  * email: umberto.ferracci@gmail.com
  * Project: BdC
- * Package: org.bdc.service.parser
- * Type: BeanFile4
- * Last update: 11-mar-2017 0.58.34
+ * Package: org.bdc.service.parser.monitor.beans
+ * Type: Bean_File4
+ * Last update: 11-mar-2017 19.20.50
  * 
  */
 
-package org.bdc.service.parser;
+package org.bdc.service.parser.monitor.beans;
 
-import org.bdc.service.parser.monitor.SimpleBean;
-
-public class BeanFile4 extends SimpleBean {
+public class Bean_File4 extends SimpleBean {
 
     private double error_24d0;
 
@@ -27,7 +25,7 @@ public class BeanFile4 extends SimpleBean {
 
     private String sorgentId_MIPSGAL;
 
-    public BeanFile4(String sorgentId_MIPSGAL, double longitude, double latitude, double flow_24d0, double error_24d0, String sorgentId_GLIMPSE) {
+    public Bean_File4(String sorgentId_MIPSGAL, double longitude, double latitude, double flow_24d0, double error_24d0, String sorgentId_GLIMPSE) {
         super();
         this.sorgentId_MIPSGAL = sorgentId_MIPSGAL;
         this.longitude = longitude;

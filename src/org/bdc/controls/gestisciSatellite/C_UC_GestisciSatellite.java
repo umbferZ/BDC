@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: org.bdc.controls.gestisciSatellite
  * Type: C_UC_GestisciSatellite
- * Last update: 10-mar-2017 15.47.04
+ * Last update: 11-mar-2017 19.20.51
  * 
  */
 
@@ -34,7 +34,7 @@ public class C_UC_GestisciSatellite {
         Calendar startDate = Calendar.getInstance();
         startDate.set(bean.getStartYear(), bean.getStartMonth() - 1, bean.getStartDay());
         Calendar endDate = null;
-        if ((bean.getEndDay() > 0) && ((bean.getEndMonth() + 1) > 0) && (bean.getEndYear() > 0)) {
+        if (bean.getEndDay() > 0 && bean.getEndMonth() + 1 > 0 && bean.getEndYear() > 0) {
             endDate = Calendar.getInstance();
             endDate.set(bean.getEndYear(), bean.getEndMonth() - 1, bean.getEndDay());
         }

@@ -3,17 +3,15 @@
  * Created by Umberto Ferracci from urania's PC
  * email: umberto.ferracci@gmail.com
  * Project: BdC
- * Package: org.bdc.service.parser
- * Type: BeanFile2
- * Last update: 11-mar-2017 0.58.34
+ * Package: org.bdc.service.parser.monitor.beans
+ * Type: Bean_File2
+ * Last update: 11-mar-2017 19.20.50
  * 
  */
 
-package org.bdc.service.parser;
+package org.bdc.service.parser.monitor.beans;
 
-import org.bdc.service.parser.monitor.SimpleBean;
-
-public class BeanFile2 extends SimpleBean {
+public class Bean_File2 extends SimpleBean {
 
     private double alpha_160;
 
@@ -57,7 +55,7 @@ public class BeanFile2 extends SimpleBean {
 
     private double hMinAx_70;
 
-    public BeanFile2(int clumpId, double flow_70, double flow_160, double flow_250, double flow_350, double flow_500, double hMaxAx_70, double hMinAx_70, double hMaxAx_160, double hMinAx_160, double hMaxAx_250, double hMinAx_250, double hMaxAx_350,
+    public Bean_File2(int clumpId, double flow_70, double flow_160, double flow_250, double flow_350, double flow_500, double hMaxAx_70, double hMinAx_70, double hMaxAx_160, double hMinAx_160, double hMaxAx_250, double hMinAx_250, double hMaxAx_350,
             double hMinAx_350, double hMaxAx_500, double hMinAx_500, double alpha_70, double alpha_160, double alpha_250, double alpha_350, double alpha_500) {
         super();
         this.clumpId = clumpId;

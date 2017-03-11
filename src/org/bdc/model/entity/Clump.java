@@ -5,15 +5,14 @@
  * Project: BdC
  * Package: org.bdc.model.entity
  * Type: Clump
- * Last update: 10-mar-2017 15.47.04
+ * Last update: 11-mar-2017 19.20.50
  * 
  */
 
 package org.bdc.model.entity;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
@@ -40,15 +39,15 @@ public class Clump {
     @Transient
     private double massa;
 
-    @OneToOne
+    @Embedded
     private Posizione posizione;
 
-    private double ratioMassaTemperatura;
+    private double rapportoMassaTemperatura;
 
     private double temperatura;
 
-    @Enumerated(EnumType.STRING)
-    private ClumpTipo tipoClump;
+    // @Enumerated(EnumType.STRING)
+    private String tipoClump;
 
     /**
      * Instantiates a new clump.
@@ -89,7 +88,7 @@ public class Clump {
 
         int D = 10;
         int S350 = 350;
-        massa = 0.053 * (S350) * (D ^ 2) * (Math.exp(41.14 / temperatura) - 1);
+        massa = 0.053 * S350 * (D ^ 2) * (Math.exp(41.14 / temperatura) - 1);
         return massa;
     }
 
@@ -103,9 +102,9 @@ public class Clump {
         return posizione;
     }
 
-    public double getRatioMassaTemperatura() {
+    public double getRapportoMassaTemperatura() {
 
-        return ratioMassaTemperatura;
+        return rapportoMassaTemperatura;
     }
 
     /**
@@ -123,7 +122,7 @@ public class Clump {
      *
      * @return the tipo clump
      */
-    public ClumpTipo getTipoClump() {
+    public String getTipoClump() {
 
         return tipoClump;
     }
@@ -173,9 +172,9 @@ public class Clump {
         this.posizione = posizione;
     }
 
-    public void setRatioMassaTemperatura(double ratioMassaTemperatura) {
+    public void setRapportoMassaTemperatura(double rapportoMassaTemperatura) {
 
-        this.ratioMassaTemperatura = ratioMassaTemperatura;
+        this.rapportoMassaTemperatura = rapportoMassaTemperatura;
     }
 
     /**
@@ -193,7 +192,7 @@ public class Clump {
      *
      * @param tipoClump the new tipo clump
      */
-    public void setTipoClump(ClumpTipo tipoClump) {
+    public void setTipoClump(String tipoClump) {
 
         this.tipoClump = tipoClump;
     }

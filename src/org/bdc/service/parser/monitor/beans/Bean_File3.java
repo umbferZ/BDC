@@ -3,17 +3,15 @@
  * Created by Umberto Ferracci from urania's PC
  * email: umberto.ferracci@gmail.com
  * Project: BdC
- * Package: org.bdc.service.parser
- * Type: BeanFile3
- * Last update: 11-mar-2017 0.58.34
+ * Package: org.bdc.service.parser.monitor.beans
+ * Type: Bean_File3
+ * Last update: 11-mar-2017 19.20.51
  * 
  */
 
-package org.bdc.service.parser;
+package org.bdc.service.parser.monitor.beans;
 
-import org.bdc.service.parser.monitor.SimpleBean;
-
-public class BeanFile3 extends SimpleBean {
+public class Bean_File3 extends SimpleBean {
 
     private double flow_3d6;
 
@@ -29,7 +27,7 @@ public class BeanFile3 extends SimpleBean {
 
     private String sotgentId;
 
-    public BeanFile3(String sotgentId, double longitude, double latitude, double flow_3d6, double flow_4d5, double flow_5d8, double flow_8d0) {
+    public Bean_File3(String sotgentId, double longitude, double latitude, double flow_3d6, double flow_4d5, double flow_5d8, double flow_8d0) {
         super();
         this.sotgentId = sotgentId;
         this.longitude = longitude;

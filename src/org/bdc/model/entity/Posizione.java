@@ -5,43 +5,33 @@
  * Project: BdC
  * Package: org.bdc.model.entity
  * Type: Posizione
- * Last update: 10-mar-2017 15.47.04
+ * Last update: 11-mar-2017 19.20.51
  * 
  */
 
 package org.bdc.model.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
-
-import org.bdc.model.entity.pk.Posizione_PK;
+import javax.persistence.Embeddable;
 
 /**
  * The Class Posizione.
  */
-@Entity
-@IdClass(Posizione_PK.class)
+@Embeddable
 public class Posizione {
 
-    @Id
     private double lat;
 
-    @Id
     private double lon;
 
     /**
      * Instantiates a new posizione.
      */
-    public Posizione() {
-        System.out.println("Sono stato instanziato");
-    }
+    public Posizione() {}
 
     public Posizione(double lat, double lon) {
         super();
         this.lat = lat;
         this.lon = lon;
-        System.out.println("latitudine:\t" + lat + "\nlongitudine:\t" + lat);
     }
 
     /**

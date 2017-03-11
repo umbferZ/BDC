@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: org.bdc.model.entity.satelliti
  * Type: Satellite_PK
- * Last update: 10-mar-2017 15.47.30
+ * Last update: 11-mar-2017 19.20.51
  * 
  */
 

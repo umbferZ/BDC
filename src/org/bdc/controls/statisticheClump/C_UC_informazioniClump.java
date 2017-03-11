@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: org.bdc.controls.statisticheClump
  * Type: C_UC_informazioniClump
- * Last update: 10-mar-2017 15.47.04
+ * Last update: 11-mar-2017 19.20.50
  * 
  */
 
@@ -53,20 +53,20 @@ public class C_UC_informazioniClump {
         }
         Arrays.sort(massSort);
         media = massSum / clumps.size();
-        mediana = (massSort.length % 2) == 0 ? (massSort[massSort.length / 2] + massSort[(massSort.length / 2) - 1]) / 2 : (double) massSort[massSort.length / 2];
+        mediana = massSort.length % 2 == 0 ? (massSort[massSort.length / 2] + massSort[massSort.length / 2 - 1]) / 2 : (double) massSort[massSort.length / 2];
         double devAss = 0;
         i = 0;
         for (Clump c : clumps) {
             massDev[i] = c.getMassa() - mediana;
-            devAss += Math.pow((c.getMassa() - media), 2);
+            devAss += Math.pow(c.getMassa() - media, 2);
             massSum += c.getMassa();
             i++;
         }
 
-        deviazioneMediaAssoluta = (massDev.length % 2) == 0 ? (massDev[massDev.length / 2] + massDev[(massDev.length / 2) - 1]) / 2 : (double) massDev[massDev.length / 2];
+        deviazioneMediaAssoluta = massDev.length % 2 == 0 ? (massDev[massDev.length / 2] + massDev[massDev.length / 2 - 1]) / 2 : (double) massDev[massDev.length / 2];
         bean.setMedia(media);
         bean.setDeviazioneMediaAssoluta(deviazioneMediaAssoluta);
-        bean.setDeviazioneStandard(Math.sqrt((devAss / clumps.size())));
+        bean.setDeviazioneStandard(Math.sqrt(devAss / clumps.size()));
         bean.setMediana(mediana);
         return bean;
     }

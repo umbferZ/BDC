@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: org.bdc.controls.statisticheClump
  * Type: BeanResponseMassaClump
- * Last update: 10-mar-2017 15.47.04
+ * Last update: 11-mar-2017 19.20.50
  * 
  */
 

@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: org.bdc.service.parser.old
  * Type: OLD_Consumer
- * Last update: 11-mar-2017 0.58.34
+ * Last update: 11-mar-2017 19.20.51
  * 
  */
 
@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.concurrent.BlockingQueue;
 
 import org.bdc.service.dal.EntityDao;
-import org.bdc.service.parser.ParserValues;
+import org.bdc.service.parser.ParserValue;
 import org.bdc.service.parser.exception.BadParseValueException;
 
 public abstract class OLD_Consumer<T, ID extends Serializable> extends Thread {
@@ -45,7 +45,7 @@ public abstract class OLD_Consumer<T, ID extends Serializable> extends Thread {
                     Object[] parametersValue = null;
 
                     for (int i = 0; i < parametersValue.length; i++)
-                        parametersValue[i] = ParserValues.parse(parameterTypes[i], r[0]);
+                        parametersValue[i] = ParserValue.parse(parameterTypes[i], r[0]);
 
                     Constructor<?> constructor = classe.getConstructor(parameterTypes);
                     constructor.newInstance();

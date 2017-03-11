@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: org.bdc.model.entity.satelliti
  * Type: Banda
- * Last update: 10-mar-2017 15.47.30
+ * Last update: 11-mar-2017 19.20.50
  * 
  */
 
@@ -39,7 +39,6 @@ public class Banda {
     @JoinColumns({ @JoinColumn(name = "strumento_nome", referencedColumnName = "nome"), @JoinColumn(name = "satellite_nome", referencedColumnName = "satellite_nome") })
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Strumento strumento;
-
 
     /**
      * Instantiates a new banda.

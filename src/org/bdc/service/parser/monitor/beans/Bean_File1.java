@@ -3,17 +3,15 @@
  * Created by Umberto Ferracci from urania's PC
  * email: umberto.ferracci@gmail.com
  * Project: BdC
- * Package: org.bdc.service.parser
- * Type: BeanFile1
- * Last update: 11-mar-2017 0.58.34
+ * Package: org.bdc.service.parser.monitor.beans
+ * Type: Bean_File1
+ * Last update: 11-mar-2017 19.20.51
  * 
  */
 
-package org.bdc.service.parser;
+package org.bdc.service.parser.monitor.beans;
 
-import org.bdc.service.parser.monitor.SimpleBean;
-
-public class BeanFile1 extends SimpleBean {
+public class Bean_File1 extends SimpleBean {
 
     private int clumpId;
 
@@ -29,7 +27,7 @@ public class BeanFile1 extends SimpleBean {
 
     private double temp;
 
-    public BeanFile1(int clumpId, double longitude, double latitude, double temp, double ratioTempMass, double density, String clumpType) {
+    public Bean_File1(int clumpId, double longitude, double latitude, double temp, double ratioTempMass, double density, String clumpType) {
         super();
         this.clumpId = clumpId;
         this.longitude = longitude;
