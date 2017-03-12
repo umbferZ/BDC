@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: org.bdc.service.parser.monitor.consumers
  * Type: Consumer_File1
- * Last update: 11-mar-2017 19.20.51
+ * Last update: 12-mar-2017 16.25.12
  * 
  */
 
@@ -16,12 +16,23 @@ import org.bdc.model.entity.Posizione;
 import org.bdc.service.parser.monitor.QueueProducerConsumer;
 import org.bdc.service.parser.monitor.beans.Bean_File1;
 
+/**
+ * The Class Consumer_File1.
+ */
 public class Consumer_File1 extends Consumer<Bean_File1> {
 
+    /**
+     * Instantiates a new consumer file 1.
+     *
+     * @param queue the queue
+     */
     public Consumer_File1(QueueProducerConsumer<Bean_File1> queue) {
         super(queue);
     }
 
+    /* (non-Javadoc)
+     * @see org.bdc.service.parser.monitor.consumers.Consumer#inserts(org.bdc.service.parser.monitor.beans.SimpleBean)
+     */
     @Override
     protected void inserts(Bean_File1 bean) {
         Clump clump = new Clump();

@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: test
  * Type: DemoLauncher
- * Last update: 11-mar-2017 19.20.51
+ * Last update: 12-mar-2017 16.27.34
  * 
  */
 
@@ -14,6 +14,9 @@ package test;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Calendar;
+import java.util.Scanner;
+
+import javax.security.auth.login.LoginException;
 
 import org.bdc.controls.gestisciSatellite.BeanInserisciSatellite;
 import org.bdc.controls.gestisciSatellite.C_UC_GestisciSatellite;
@@ -21,23 +24,62 @@ import org.bdc.model.DaoFactory;
 import org.bdc.model.entity.satelliti.Banda;
 import org.bdc.model.entity.satelliti.Satellite;
 import org.bdc.model.entity.satelliti.Strumento;
+import org.bdc.model.people.TipoUtente;
+import org.bdc.model.people.Utente;
 import org.bdc.service.parser.CSVFactory;
 
+/**
+ * The Class DemoLauncher.
+ */
 public class DemoLauncher {
 
+    /**
+     * The main method.
+     *
+     * @param args the arguments
+     */
     public static void main(String[] args) {
         DemoLauncher launcher = new DemoLauncher();
         // launcher.provaController();
         // launcher.provaIstanze();
         // launcher.provaDao();
-        try {
-            launcher.provaQueueProducerConsumer(3);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
+        // for (int i = 1; i <= 4; i++)
+        // try {
+        // launcher.provaQueueProducerConsumer(i);
+        // } catch (Exception e) {
+        // e.printStackTrace();
+        // }
+        launcher.createAdmin();
     }
 
+    /**
+     * Creates the admin.
+     */
+    public void createAdmin() {
+        Utente admin = new Utente();
+        admin.setNome("admin");
+        admin.setCognome("admin");
+        admin.setEmail("admin@email");
+        admin.setUsername("admin");
+        admin.setPassword("admin");
+        admin.setTipoUtente(TipoUtente.ADMIN);
+        DaoFactory.getInstance().getUtenteDao().insert(admin);
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("username:");
+        String username = scanner.nextLine();
+        System.out.println("username:");
+        String password = scanner.nextLine();
+        try {
+            DaoFactory.getInstance().getUtenteDao().login(username, password);
+        } catch (LoginException e) {
+            System.out.println("Login Exceptio");
+        }
+    }
+
+    /**
+     * Prova controller.
+     */
     public void provaController() {
         BeanInserisciSatellite bi = new BeanInserisciSatellite();
         bi.setAgenziaSatellite("ESA");
@@ -53,6 +95,9 @@ public class DemoLauncher {
         controller.inserisciSatellite(bi);
     }
 
+    /**
+     * Prova dao.
+     */
     public void provaDao() {
 
         Satellite satellite = new Satellite("ESA", "Hersel", Calendar.getInstance(), Calendar.getInstance());
@@ -73,6 +118,9 @@ public class DemoLauncher {
         DaoFactory.getInstance().getSatelliteDao().insert(satellite);
     }
 
+    /**
+     * Prova istanze.
+     */
     public void provaIstanze() {
         try {
             Class<?> classe = Class.forName("org.bdc.model.entity.Posizione");
@@ -102,6 +150,12 @@ public class DemoLauncher {
         }
     }
 
+    /**
+     * Prova queue producer consumer.
+     *
+     * @param file the file
+     * @throws Exception the exception
+     */
     public void provaQueueProducerConsumer(int file) throws Exception {
         switch (file) {
             case 1:

@@ -1,12 +1,12 @@
 /*
- * 
+ *
  * Created by Umberto Ferracci from urania's PC
  * email: umberto.ferracci@gmail.com
  * Project: BdC
  * Package: org.bdc.model.entity.satelliti
  * Type: Banda
- * Last update: 11-mar-2017 19.20.50
- * 
+ * Last update: 12-mar-2017 16.11.09
+ *
  */
 
 package org.bdc.model.entity.satelliti;
@@ -22,9 +22,7 @@ import javax.persistence.ManyToOne;
 
 import org.bdc.model.entity.satelliti.pk.Banda_PK;
 
-/**
- * The Class Banda.
- */
+/** * The Class Banda. */
 @Entity
 @IdClass(Banda_PK.class)
 public class Banda {
@@ -40,80 +38,48 @@ public class Banda {
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Strumento strumento;
 
-    /**
-     * Instantiates a new banda.
-     */
+    /** * Instantiates a new banda. */
     public Banda() {}
 
     /**
-     * Instantiates a new banda.
-     *
-     * @param risoluzione the risoluzione
-     * @param lunghezzaOnda the lunghezza onda
+     * * Instantiates a new banda. * * @param risoluzione the risoluzione
+     * * @param lunghezzaOnda the lunghezza onda
      */
     public Banda(double risoluzione, double lunghezzaOnda) {
         this.risoluzione = risoluzione;
         this.lunghezzaOnda = lunghezzaOnda;
     }
 
-    /**
-     * Gets the lunghezza onda.
-     *
-     * @return the lunghezza onda
-     */
+    /** * Gets the lunghezza onda. * * @return the lunghezza onda */
     public double getLunghezzaOnda() {
-
         return lunghezzaOnda;
     }
 
-    /**
-     * Gets the risoluzione.
-     *
-     * @return the risoluzione
-     */
+    /** * Gets the risoluzione. * * @return the risoluzione */
     public double getRisoluzione() {
-
         return risoluzione;
     }
 
-    /**
-     * Gets the strumento.
-     *
-     * @return the strumento
-     */
+    /** * Gets the strumento. * * @return the strumento */
     public Strumento getStrumento() {
-
         return strumento;
     }
 
     /**
-     * Sets the lunghezza onda.
-     *
-     * @param lunghezzaOnda the new lunghezza onda
+     * * Sets the lunghezza onda. * * @param lunghezzaOnda the new lunghezza
+     * onda
      */
     public void setLunghezzaOnda(double lunghezzaOnda) {
-
         this.lunghezzaOnda = lunghezzaOnda;
     }
 
-    /**
-     * Sets the risoluzione.
-     *
-     * @param risoluzione the new risoluzione
-     */
+    /** * Sets the risoluzione. * * @param risoluzione the new risoluzione */
     public void setRisoluzione(double risoluzione) {
-
         this.risoluzione = risoluzione;
     }
 
-    /**
-     * Sets the strumento.
-     *
-     * @param strumento the new strumento
-     */
+    /** * Sets the strumento. * * @param strumento the new strumento */
     public void setStrumento(Strumento strumento) {
-
         this.strumento = strumento;
     }
-
 }

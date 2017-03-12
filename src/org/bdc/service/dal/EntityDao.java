@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: org.bdc.service.dal
  * Type: EntityDao
- * Last update: 11-mar-2017 19.20.50
+ * Last update: 12-mar-2017 16.24.10
  * 
  */
 

@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: org.bdc.model.entity.satelliti.pk
  * Type: Banda_PK
- * Last update: 11-mar-2017 19.20.51
+ * Last update: 12-mar-2017 16.10.44
  * 
  */
 
@@ -17,11 +17,6 @@ import java.io.Serializable;
  * The Class Banda_PK.
  */
 public class Banda_PK implements Serializable {
-
-    /**
-     *
-     */
-    private static final long serialVersionUID = 1L;
 
     protected double lunghezzaOnda;
 
@@ -40,7 +35,6 @@ public class Banda_PK implements Serializable {
      * @return the lunghezza onda
      */
     public double getLunghezzaOnda() {
-
         return lunghezzaOnda;
     }
 
@@ -50,7 +44,6 @@ public class Banda_PK implements Serializable {
      * @return the risoluzione
      */
     public double getRisoluzione() {
-
         return risoluzione;
     }
 
@@ -60,7 +53,6 @@ public class Banda_PK implements Serializable {
      * @return the strumento
      */
     public Strumento_PK getStrumento() {
-
         return strumento;
     }
 
@@ -70,7 +62,6 @@ public class Banda_PK implements Serializable {
      * @param lunghezzaOnda the new lunghezza onda
      */
     public void setLunghezzaOnda(double lunghezzaOnda) {
-
         this.lunghezzaOnda = lunghezzaOnda;
     }
 
@@ -80,7 +71,6 @@ public class Banda_PK implements Serializable {
      * @param risoluzione the new risoluzione
      */
     public void setRisoluzione(double risoluzione) {
-
         this.risoluzione = risoluzione;
     }
 
@@ -90,8 +80,6 @@ public class Banda_PK implements Serializable {
      * @param strumento the new strumento
      */
     public void setStrumento(Strumento_PK strumento) {
-
         this.strumento = strumento;
     }
-
 }

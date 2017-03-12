@@ -5,13 +5,19 @@
  * Project: BdC
  * Package: org.bdc.service.dal
  * Type: ChangeDB
- * Last update: 11-mar-2017 19.20.51
+ * Last update: 12-mar-2017 16.24.10
  * 
  */
 
 package org.bdc.service.dal;
 
+/**
+ * The Interface ChangeDB.
+ */
 public interface ChangeDB {
 
+    /**
+     * Import dump.
+     */
     public void importDump();
 }

@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: org.bdc.model.entity.pk
  * Type: Posizione_PK
- * Last update: 11-mar-2017 19.20.50
+ * Last update: 12-mar-2017 15.56.02
  * 
  */
 
@@ -15,11 +15,6 @@ import java.io.Serializable;
 
 public class Posizione_PK implements Serializable {
 
-    /**
-     *
-     */
-    private static final long serialVersionUID = 1L;
-
     protected double lat;
 
     protected double lon;
@@ -28,16 +23,11 @@ public class Posizione_PK implements Serializable {
 
     @Override
     public boolean equals(Object obj) {
-
-        // TODO Auto-generated method stub
         return super.equals(obj);
     }
 
     @Override
     public int hashCode() {
-
-        // TODO Auto-generated method stub
         return super.hashCode();
     }
-
 }

@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: org.bdc.model.entity.clump.dao
  * Type: ClumpDao
- * Last update: 11-mar-2017 19.20.51
+ * Last update: 12-mar-2017 15.54.43
  * 
  */
 
@@ -17,9 +17,6 @@ import org.bdc.service.dal.EntityDaoHibernate;
 public class ClumpDao extends EntityDaoHibernate<Clump, Integer> {
 
     public double getAvgMassa() {
-
-        // FIXME create criteria for determine avg value;
         return 0;
     }
-
 }

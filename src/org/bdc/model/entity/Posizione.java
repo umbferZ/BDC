@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: org.bdc.model.entity
  * Type: Posizione
- * Last update: 11-mar-2017 19.20.51
+ * Last update: 12-mar-2017 16.21.10
  * 
  */
 
@@ -40,7 +40,6 @@ public class Posizione {
      * @return the lat
      */
     public double getLat() {
-
         return lat;
     }
 
@@ -50,7 +49,6 @@ public class Posizione {
      * @return the lon
      */
     public double getLon() {
-
         return lon;
     }
 
@@ -60,7 +58,6 @@ public class Posizione {
      * @param lat the new lat
      */
     public void setLat(double lat) {
-
         this.lat = lat;
     }
 
@@ -70,8 +67,6 @@ public class Posizione {
      * @param lon the new lon
      */
     public void setLon(double lon) {
-
         this.lon = lon;
     }
-
 }

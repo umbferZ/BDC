@@ -1,12 +1,12 @@
 /*
- * 
+ *
  * Created by Umberto Ferracci from urania's PC
  * email: umberto.ferracci@gmail.com
  * Project: BdC
  * Package: org.bdc.model.entity.satelliti
  * Type: MappaStellare
- * Last update: 11-mar-2017 19.20.51
- * 
+ * Last update: 12-mar-2017 16.18.34
+ *
  */
 
 package org.bdc.model.entity.satelliti;
@@ -46,7 +46,6 @@ public class MappaStellare {
      * @return the clumps
      */
     public List<Clump> getClumps() {
-
         return clumps;
     }
 
@@ -56,7 +55,6 @@ public class MappaStellare {
      * @return the nome
      */
     public String getNome() {
-
         return nome;
     }
 
@@ -66,7 +64,6 @@ public class MappaStellare {
      * @return the strumenti
      */
     public List<Strumento> getStrumenti() {
-
         return strumenti;
     }
 
@@ -76,7 +73,6 @@ public class MappaStellare {
      * @param clumps the new clumps
      */
     public void setClumps(List<Clump> clumps) {
-
         this.clumps = clumps;
     }
 
@@ -86,7 +82,6 @@ public class MappaStellare {
      * @param nome the new nome
      */
     public void setNome(String nome) {
-
         this.nome = nome;
     }
 
@@ -96,8 +91,6 @@ public class MappaStellare {
      * @param strumenti the new strumenti
      */
     public void setStrumenti(List<Strumento> strumenti) {
-
         this.strumenti = strumenti;
     }
-
 }

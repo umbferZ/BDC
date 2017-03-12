@@ -6,7 +6,7 @@
  * Project: BdC
  * Package: org.bdc.model.entity
  * Type: ClumpTipo
- * Last update: 11-mar-2017 19.20.50
+ * Last update: 12-mar-2017 16.21.02
  * 
  */
 

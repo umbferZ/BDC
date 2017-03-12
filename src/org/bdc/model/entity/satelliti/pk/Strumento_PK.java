@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: org.bdc.model.entity.satelliti.pk
  * Type: Strumento_PK
- * Last update: 11-mar-2017 19.20.51
+ * Last update: 12-mar-2017 16.10.33
  * 
  */
 
@@ -19,11 +19,6 @@ import javax.persistence.JoinColumn;
  * The Class Strumento_PK.
  */
 public class Strumento_PK implements Serializable {
-
-    /**
-     *
-     */
-    private static final long serialVersionUID = 1L;
 
     protected String nome;
 
@@ -41,7 +36,6 @@ public class Strumento_PK implements Serializable {
      * @return the nome
      */
     public String getNome() {
-
         return nome;
     }
 
@@ -51,7 +45,6 @@ public class Strumento_PK implements Serializable {
      * @return the satellite
      */
     public String getSatellite() {
-
         return satellite;
     }
 
@@ -61,7 +54,6 @@ public class Strumento_PK implements Serializable {
      * @param nome the new nome
      */
     public void setNome(String nome) {
-
         this.nome = nome;
     }
 
@@ -71,8 +63,6 @@ public class Strumento_PK implements Serializable {
      * @param satellite the new satellite
      */
     public void setSatellite(String satellite) {
-
         this.satellite = satellite;
     }
-
 }

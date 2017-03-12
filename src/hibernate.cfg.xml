@@ -12,8 +12,8 @@
 		<property name="connection.password">io</property>
 
 		<!-- JDBC connection pool (use the built-in) -->
-<!-- 		<property name="connection.pool_size">1</property> -->
-<!-- 		<property name="connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property> -->
+		<!-- <property name="connection.pool_size">1</property> -->
+		<!-- <property name="connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property> -->
 		<property name="hibernate.c3p0.acquire_increment">1</property>
 		<property name="hibernate.c3p0.idle_test_period">60</property>
 		<property name="hibernate.c3p0.min_size">1</property>
@@ -22,14 +22,6 @@
 		<property name="hibernate.c3p0.timeout">0</property>
 		<property name="hibernate.c3p0.acquireRetryAttempts">1</property>
 		<property name="hibernate.c3p0.acquireRetryDelay">250</property>
-
-
-
-
-
-
-
-
 
 		<!-- SQL dialect -->
 		<property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
@@ -41,27 +33,28 @@
 		<property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
 
 		<!-- Echo all executed SQL to stdout -->
-		<property name="hibernate.show_sql">true</property>
-		<property name="hibernate.format_sql">true</property>
-		<property name="hibernate.use_sql_comments">true</property>
+		<property name="hibernate.show_sql">false</property>
+		<property name="hibernate.format_sql">false</property>
+		<property name="hibernate.use_sql_comments">false</property>
 
 		<!-- Drop and re-create the database schema on startup -->
 		<property name="hibernate.hbm2ddl.auto">update</property>
 
 		<!-- Mapping Media -->
+		<mapping class="org.bdc.model.people.Utente" />
 		<mapping class="org.bdc.model.entity.satelliti.Banda" />
 		<mapping class="org.bdc.model.entity.satelliti.Strumento" />
 		<mapping class="org.bdc.model.entity.satelliti.Satellite" />
-		
-		
+
+
 		<!-- <mapping class="org.bdc.model.entity.Clump" /> -->
 		<!-- <mapping class="org.bdc.model.entity.Ellisse" /> -->
 		<!-- <mapping class="org.bdc.model.entity.Flusso" /> -->
 		<!-- <mapping class="org.bdc.model.entity.satelliti.MappaStellare" /> -->
 		<!-- <mapping class="org.bdc.model.entity.Posizione" /> -->
-		
+
 		<!-- <mapping class="org.bdc.model.entity.Sorgente" /> -->
-		
+
 	</session-factory>
 </hibernate-configuration>
 

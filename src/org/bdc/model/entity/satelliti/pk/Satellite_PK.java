@@ -5,11 +5,11 @@
  * Project: BdC
  * Package: org.bdc.model.entity.satelliti
  * Type: Satellite_PK
- * Last update: 11-mar-2017 19.20.51
+ * Last update: 12-mar-2017 16.17.40
  * 
  */
 
-package org.bdc.model.entity.satelliti;
+package org.bdc.model.entity.satelliti.pk;
 
 import java.io.Serializable;
 
@@ -20,11 +20,6 @@ import javax.persistence.Embeddable;
  */
 @Embeddable
 public class Satellite_PK implements Serializable {
-
-    /**
-     *
-     */
-    private static final long serialVersionUID = 1L;
 
     protected String nome;
 

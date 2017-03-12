@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: org.bdc.service.parser
  * Type: ParserValue
- * Last update: 11-mar-2017 19.20.51
+ * Last update: 12-mar-2017 16.25.13
  * 
  */
 
@@ -14,23 +14,32 @@ package org.bdc.service.parser;
 import org.bdc.model.entity.ClumpTipo;
 import org.bdc.service.parser.exception.BadParseValueException;
 
+/**
+ * The Class ParserValue.
+ */
 public class ParserValue {
 
+    /**
+     * Parses the.
+     *
+     * @param type the type
+     * @param s the s
+     * @return the object
+     * @throws BadParseValueException the bad parse value exception
+     */
     public static Object parse(Class type, String s) throws BadParseValueException {
-        // FIXME individuare il valore nullo
         s = s.trim();
-        String nullore = "00";
         switch (type.getSimpleName()) {
             case "int":
-                return Integer.parseInt(!s.isEmpty() ? s : nullore);
+                return !s.isEmpty() ? Integer.parseInt(s) : (int) Float.NaN;
             case "double":
-                return Double.parseDouble(!s.isEmpty() ? s : nullore);
+                return !s.isEmpty() ? Double.parseDouble(s) : Double.NaN;
             case "float":
-                return Double.parseDouble(!s.isEmpty() ? s : nullore);
+                return !s.isEmpty() ? Double.parseDouble(s) : Float.NaN;
             case "ClumpTipo":
-                return ClumpTipo.valueOf(!s.isEmpty() ? s : nullore);
+                return ClumpTipo.valueOf(s);
             case "String":
-                return String.valueOf(s);
+                return s;
             default:
                 throw new BadParseValueException();
         }

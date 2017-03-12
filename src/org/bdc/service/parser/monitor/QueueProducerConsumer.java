@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: org.bdc.service.parser.monitor
  * Type: QueueProducerConsumer
- * Last update: 11-mar-2017 19.20.51
+ * Last update: 12-mar-2017 16.25.12
  * 
  */
 
@@ -15,21 +15,39 @@ import java.util.concurrent.ArrayBlockingQueue;
 
 import org.bdc.service.parser.monitor.beans.SimpleBean;
 
+/**
+ * The Class QueueProducerConsumer.
+ *
+ * @param <SB> the generic type
+ */
 public class QueueProducerConsumer<SB extends SimpleBean> extends ArrayBlockingQueue<SB> {
 
-    private static int capacity = 20;
+    private static int capacity = 25;
 
     private boolean finished;
 
+    /**
+     * Instantiates a new queue producer consumer.
+     */
     public QueueProducerConsumer() {
         super(capacity);
         this.finished = false;
     }
 
+    /**
+     * Checks if is finished.
+     *
+     * @return true, if is finished
+     */
     public boolean isFinished() {
         return finished;
     }
 
+    /**
+     * Sets the finished.
+     *
+     * @param finished the new finished
+     */
     public void setFinished(boolean finished) {
         this.finished = finished;
     }

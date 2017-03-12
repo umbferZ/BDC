@@ -1,12 +1,12 @@
 /*
- * 
+ *
  * Created by Umberto Ferracci from urania's PC
  * email: umberto.ferracci@gmail.com
  * Project: BdC
  * Package: org.bdc.model.entity.satelliti
  * Type: Satellite
- * Last update: 11-mar-2017 19.20.51
- * 
+ * Last update: 12-mar-2017 16.18.44
+ *
  */
 
 package org.bdc.model.entity.satelliti;
@@ -70,7 +70,6 @@ public class Satellite {
      * @param strumento the strumento
      */
     public void addStrumento(Strumento strumento) {
-
         strumenti.add(strumento);
     }
 
@@ -80,7 +79,6 @@ public class Satellite {
      * @return the agenzie
      */
     public String getAgenzie() {
-
         return agenzia;
     }
 
@@ -90,7 +88,6 @@ public class Satellite {
      * @return the fine
      */
     public Calendar getFine() {
-
         return fine;
     }
 
@@ -100,7 +97,6 @@ public class Satellite {
      * @return the inizio
      */
     public Calendar getInizio() {
-
         return inizio;
     }
 
@@ -110,7 +106,6 @@ public class Satellite {
      * @return the nome
      */
     public String getNome() {
-
         return nome;
     }
 
@@ -120,7 +115,6 @@ public class Satellite {
      * @param agenzie the new agenzie
      */
     public void setAgenzie(String agenzie) {
-
         agenzia = agenzie;
     }
 
@@ -130,7 +124,6 @@ public class Satellite {
      * @param fine the new fine
      */
     public void setFine(Calendar fine) {
-
         this.fine = fine;
     }
 
@@ -140,7 +133,6 @@ public class Satellite {
      * @param inizio the new inizio
      */
     public void setInizio(Calendar inizio) {
-
         this.inizio = inizio;
     }
 
@@ -150,8 +142,6 @@ public class Satellite {
      * @param nome the new nome
      */
     public void setNome(String nome) {
-
         this.nome = nome;
     }
-
 }

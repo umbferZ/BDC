@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: org.bdc.model.entity
  * Type: Sorgente
- * Last update: 11-mar-2017 19.20.51
+ * Last update: 12-mar-2017 16.20.16
  * 
  */
 
@@ -44,7 +44,6 @@ public class Sorgente {
      * @return the flusso
      */
     public List<Flusso> getFlussi() {
-
         return flussi;
     }
 
@@ -54,7 +53,6 @@ public class Sorgente {
      * @return the id
      */
     public String getId() {
-
         return id;
     }
 
@@ -64,7 +62,6 @@ public class Sorgente {
      * @return the luminosità
      */
     public double getLuminosità() {
-
         return luminosità;
     }
 
@@ -74,7 +71,6 @@ public class Sorgente {
      * @param flusso the new flusso
      */
     public void setFlusso(List<Flusso> flussi) {
-
         this.flussi = flussi;
     }
 
@@ -84,7 +80,6 @@ public class Sorgente {
      * @param id the new id
      */
     public void setId(String id) {
-
         this.id = id;
     }
 
@@ -94,8 +89,6 @@ public class Sorgente {
      * @param luminosità the new luminosità
      */
     public void setLuminosità(double luminosità) {
-
         this.luminosità = luminosità;
     }
-
 }

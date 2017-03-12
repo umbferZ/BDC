@@ -1,12 +1,12 @@
 /*
- * 
+ *
  * Created by Umberto Ferracci from urania's PC
  * email: umberto.ferracci@gmail.com
  * Project: BdC
  * Package: org.bdc.model.entity.satelliti
  * Type: Strumento
- * Last update: 11-mar-2017 19.20.51
- * 
+ * Last update: 12-mar-2017 16.19.22
+ *
  */
 
 package org.bdc.model.entity.satelliti;
@@ -36,7 +36,6 @@ public class Strumento {
 
     // @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     // private MappaStellare mappaStellare;
-
     private String data1;
 
     private String data2;
@@ -62,7 +61,6 @@ public class Strumento {
      */
     public Strumento(String nome) {
         this(nome, null);
-
     }
 
     /**
@@ -84,7 +82,6 @@ public class Strumento {
      * @param banda the banda
      */
     public void addBandaOperativa(Banda banda) {
-
         bandeOperative.add(banda);
     }
 
@@ -94,7 +91,6 @@ public class Strumento {
      * @return the nome
      */
     public String getNome() {
-
         return nome;
     }
 
@@ -104,7 +100,6 @@ public class Strumento {
      * @return the satellite
      */
     public Satellite getSatellite() {
-
         return satellite;
     }
 
@@ -114,7 +109,6 @@ public class Strumento {
      * @param nome the new nome
      */
     public void setNome(String nome) {
-
         this.nome = nome;
     }
 
@@ -124,8 +118,6 @@ public class Strumento {
      * @param satellite the new satellite
      */
     public void setSatellite(Satellite satellite) {
-
         this.satellite = satellite;
     }
-
 }

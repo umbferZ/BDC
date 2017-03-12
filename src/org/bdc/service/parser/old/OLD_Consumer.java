@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: org.bdc.service.parser.old
  * Type: OLD_Consumer
- * Last update: 11-mar-2017 19.20.51
+ * Last update: 12-mar-2017 16.25.13
  * 
  */
 
@@ -21,6 +21,12 @@ import org.bdc.service.dal.EntityDao;
 import org.bdc.service.parser.ParserValue;
 import org.bdc.service.parser.exception.BadParseValueException;
 
+/**
+ * The Class OLD_Consumer.
+ *
+ * @param <T> the generic type
+ * @param <ID> the generic type
+ */
 public abstract class OLD_Consumer<T, ID extends Serializable> extends Thread {
 
     List<EntityDao<T, ID>> entities;
@@ -29,6 +35,9 @@ public abstract class OLD_Consumer<T, ID extends Serializable> extends Thread {
 
     String[] r;
 
+    /* (non-Javadoc)
+     * @see java.lang.Thread#run()
+     */
     @Override
     public void run() {
 
@@ -74,9 +83,24 @@ public abstract class OLD_Consumer<T, ID extends Serializable> extends Thread {
         }
     }
 
+    /**
+     * Mappatura stringa oggetti.
+     *
+     * @param oggetti the oggetti
+     */
     protected abstract void mappaturaStringaOggetti(Object... oggetti);
 
+    /**
+     * Maps parameter types.
+     *
+     * @return the list
+     */
     protected abstract List<Class[]> mapsParameterTypes();
 
+    /**
+     * Maps parameter values.
+     *
+     * @return the list
+     */
     protected abstract List<int[]> mapsParameterValues();
 }

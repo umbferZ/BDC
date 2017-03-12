@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: org.bdc.view
  * Type: InserisciSatellite
- * Last update: 11-mar-2017 19.20.51
+ * Last update: 12-mar-2017 16.26.28
  * 
  */
 
@@ -37,7 +37,7 @@ public class InserisciSatellite extends JPanel {
     private JTextField txtStartYear;
 
     /**
-     * Create the panel.
+     * Instantiates a new inserisci satellite.
      */
     public InserisciSatellite() {
         setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));

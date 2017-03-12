@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: org.bdc.service.parser.monitor.consumers
  * Type: Consumer
- * Last update: 11-mar-2017 19.20.51
+ * Last update: 12-mar-2017 16.25.12
  * 
  */
 
@@ -14,35 +14,48 @@ package org.bdc.service.parser.monitor.consumers;
 import org.bdc.service.parser.monitor.QueueProducerConsumer;
 import org.bdc.service.parser.monitor.beans.SimpleBean;
 
+/**
+ * The Class Consumer.
+ *
+ * @param <SB> the generic type
+ */
 public abstract class Consumer<SB extends SimpleBean> implements Runnable {
 
     private QueueProducerConsumer<SB> queue;
 
+    /**
+     * Instantiates a new consumer.
+     *
+     * @param queue the queue
+     */
     public Consumer(QueueProducerConsumer<SB> queue) {
         this.queue = queue;
     }
 
+    /**
+     * Gets the queue.
+     *
+     * @return the queue
+     */
     public QueueProducerConsumer<SB> getQueue() {
         return queue;
     }
 
+    /* (non-Javadoc)
+     * @see java.lang.Runnable#run()
+     */
     @Override
     public void run() {
         SB bean = null;
         int a = 0;
         try {
-            int i = 0;
             while (true) {
-
                 if (queue.isFinished())
                     if (queue.isEmpty())
                         return;
                 if (!queue.isEmpty()) {
-                    for (int j = 0; j < 10000; j++)
-                        a = (a + 45) * j;
                     bean = queue.take();
                     inserts(bean);
-                    System.out.println(String.format("inserimento bean %d", i++));
                 }
 
             }
@@ -54,9 +67,19 @@ public abstract class Consumer<SB extends SimpleBean> implements Runnable {
         }
     }
 
+    /**
+     * Sets the queue.
+     *
+     * @param queue the new queue
+     */
     public void setQueue(QueueProducerConsumer<SB> queue) {
         this.queue = queue;
     }
 
+    /**
+     * Inserts.
+     *
+     * @param bean the bean
+     */
     protected abstract void inserts(SB bean);
 }

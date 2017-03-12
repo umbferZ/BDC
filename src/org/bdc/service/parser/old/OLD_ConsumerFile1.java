@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: org.bdc.service.parser.old
  * Type: OLD_ConsumerFile1
- * Last update: 11-mar-2017 19.20.51
+ * Last update: 12-mar-2017 16.25.12
  * 
  */
 
@@ -16,8 +16,16 @@ import java.util.List;
 
 import org.bdc.model.entity.ClumpTipo;
 
+/**
+ * The Class OLD_ConsumerFile1.
+ *
+ * @param <T> the generic type
+ */
 public class OLD_ConsumerFile1<T> extends OLD_Consumer<T, Integer> {
 
+    /* (non-Javadoc)
+     * @see org.bdc.service.parser.old.OLD_Consumer#mappaturaStringaOggetti(java.lang.Object[])
+     */
     @Override
     protected void mappaturaStringaOggetti(Object... oggetti) {
 
@@ -25,6 +33,9 @@ public class OLD_ConsumerFile1<T> extends OLD_Consumer<T, Integer> {
 
     }
 
+    /* (non-Javadoc)
+     * @see org.bdc.service.parser.old.OLD_Consumer#mapsParameterTypes()
+     */
     @Override
     protected List<Class[]> mapsParameterTypes() {
 
@@ -36,6 +47,9 @@ public class OLD_ConsumerFile1<T> extends OLD_Consumer<T, Integer> {
         return list;
     }
 
+    /* (non-Javadoc)
+     * @see org.bdc.service.parser.old.OLD_Consumer#mapsParameterValues()
+     */
     @Override
     protected List<int[]> mapsParameterValues() {
 

@@ -1,12 +1,12 @@
 /*
- * 
+ *
  * Created by Umberto Ferracci from urania's PC
  * email: umberto.ferracci@gmail.com
  * Project: BdC
  * Package: org.bdc.model.entity
  * Type: Ellisse
- * Last update: 11-mar-2017 19.20.50
- * 
+ * Last update: 12-mar-2017 16.21.05
+ *
  */
 
 package org.bdc.model.entity;
@@ -49,7 +49,6 @@ public class Ellisse {
      * @return the banda
      */
     public Banda getBanda() {
-
         return banda;
     }
 
@@ -59,7 +58,6 @@ public class Ellisse {
      * @return the rotazione
      */
     public double getRotazione() {
-
         return rotazione;
     }
 
@@ -69,7 +67,6 @@ public class Ellisse {
      * @return the x ass
      */
     public double getxAss() {
-
         return xAss;
     }
 
@@ -79,7 +76,6 @@ public class Ellisse {
      * @return the y ass
      */
     public double getyAss() {
-
         return yAss;
     }
 
@@ -89,7 +85,6 @@ public class Ellisse {
      * @param banda the new banda
      */
     public void setBanda(Banda banda) {
-
         this.banda = banda;
     }
 
@@ -99,7 +94,6 @@ public class Ellisse {
      * @param rotazione the new rotazione
      */
     public void setRotazione(double rotazione) {
-
         this.rotazione = rotazione;
     }
 
@@ -109,7 +103,6 @@ public class Ellisse {
      * @param xAss the new x ass
      */
     public void setxAss(double xAss) {
-
         this.xAss = xAss;
     }
 
@@ -119,8 +112,6 @@ public class Ellisse {
      * @param yAss the new y ass
      */
     public void setyAss(double yAss) {
-
         this.yAss = yAss;
     }
-
 }

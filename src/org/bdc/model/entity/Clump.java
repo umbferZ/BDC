@@ -1,12 +1,12 @@
 /*
- * 
+ *
  * Created by Umberto Ferracci from urania's PC
  * email: umberto.ferracci@gmail.com
  * Project: BdC
  * Package: org.bdc.model.entity
  * Type: Clump
- * Last update: 11-mar-2017 19.20.50
- * 
+ * Last update: 12-mar-2017 16.20.59
+ *
  */
 
 package org.bdc.model.entity;
@@ -35,7 +35,6 @@ public class Clump {
 
     // @ManyToMany
     // private List<MappaStellare> mappeStellari;
-
     @Transient
     private double massa;
 
@@ -60,7 +59,6 @@ public class Clump {
      * @return the densita
      */
     public double getDensita() {
-
         return densita;
     }
 
@@ -70,7 +68,6 @@ public class Clump {
      * @return the ellisse
      */
     public Ellisse getEllisse() {
-
         return ellisse;
     }
 
@@ -80,12 +77,10 @@ public class Clump {
      * @return the id
      */
     public int getId() {
-
         return id;
     }
 
     public double getMassa() {
-
         int D = 10;
         int S350 = 350;
         massa = 0.053 * S350 * (D ^ 2) * (Math.exp(41.14 / temperatura) - 1);
@@ -98,12 +93,10 @@ public class Clump {
      * @return the posizione
      */
     public Posizione getPosizione() {
-
         return posizione;
     }
 
     public double getRapportoMassaTemperatura() {
-
         return rapportoMassaTemperatura;
     }
 
@@ -113,7 +106,6 @@ public class Clump {
      * @return the temperatura
      */
     public double getTemperatura() {
-
         return temperatura;
     }
 
@@ -123,7 +115,6 @@ public class Clump {
      * @return the tipo clump
      */
     public String getTipoClump() {
-
         return tipoClump;
     }
 
@@ -133,7 +124,6 @@ public class Clump {
      * @param densita the new densita
      */
     public void setDensita(double densita) {
-
         this.densita = densita;
     }
 
@@ -143,7 +133,6 @@ public class Clump {
      * @param ellisse the new ellisse
      */
     public void setEllisse(Ellisse ellisse) {
-
         this.ellisse = ellisse;
     }
 
@@ -153,12 +142,10 @@ public class Clump {
      * @param id the new id
      */
     public void setId(int id) {
-
         this.id = id;
     }
 
     public void setMassa(double massa) {
-
         this.massa = massa;
     }
 
@@ -168,12 +155,10 @@ public class Clump {
      * @param posizione the new posizione
      */
     public void setPosizione(Posizione posizione) {
-
         this.posizione = posizione;
     }
 
     public void setRapportoMassaTemperatura(double rapportoMassaTemperatura) {
-
         this.rapportoMassaTemperatura = rapportoMassaTemperatura;
     }
 
@@ -183,7 +168,6 @@ public class Clump {
      * @param temperatura the new temperatura
      */
     public void setTemperatura(double temperatura) {
-
         this.temperatura = temperatura;
     }
 
@@ -193,8 +177,6 @@ public class Clump {
      * @param tipoClump the new tipo clump
      */
     public void setTipoClump(String tipoClump) {
-
         this.tipoClump = tipoClump;
     }
-
 }

@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: org.bdc.service.dal
  * Type: HibernateUtil
- * Last update: 11-mar-2017 19.20.51
+ * Last update: 12-mar-2017 16.24.09
  * 
  */
 
@@ -22,12 +22,9 @@ import org.hibernate.cfg.Configuration;
 public class HibernateUtil {
 
     private static final SessionFactory concreteSessionFactory;
-
     static {
         try {
             concreteSessionFactory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
-            // concreteSessionFactory = new
-            // AnnotationConfiguration().configure("hibernate.cfg.xml").buildSessionFactory();
         } catch (Throwable ex) {
             throw new ExceptionInInitializerError(ex);
         }
@@ -37,7 +34,6 @@ public class HibernateUtil {
      * Close session.
      */
     public static void closeSession() {
-
         concreteSessionFactory.getCurrentSession().close();
     }
 
@@ -48,8 +44,6 @@ public class HibernateUtil {
      * @throws HibernateException the hibernate exception
      */
     public static Session getSession() throws HibernateException {
-
-        return concreteSessionFactory.getCurrentSession();
+        return concreteSessionFactory.openSession();
     }
-
 }

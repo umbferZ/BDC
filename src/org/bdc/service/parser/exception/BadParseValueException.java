@@ -5,12 +5,15 @@
  * Project: BdC
  * Package: org.bdc.service.parser.exception
  * Type: BadParseValueException
- * Last update: 11-mar-2017 19.20.51
+ * Last update: 12-mar-2017 16.25.13
  * 
  */
 
 package org.bdc.service.parser.exception;
 
+/**
+ * The Class BadParseValueException.
+ */
 public class BadParseValueException extends Exception {
 
 }

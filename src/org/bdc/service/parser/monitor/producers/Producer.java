@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: org.bdc.service.parser.monitor.producers
  * Type: Producer
- * Last update: 11-mar-2017 19.20.51
+ * Last update: 12-mar-2017 16.25.12
  * 
  */
 
@@ -25,6 +25,11 @@ import org.bdc.service.parser.monitor.beans.SimpleBean;
 
 import com.opencsv.CSVReader;
 
+/**
+ * The Class Producer.
+ *
+ * @param <SB> the generic type
+ */
 public abstract class Producer<SB extends SimpleBean> implements Runnable {
 
     private String fileName;
@@ -33,6 +38,12 @@ public abstract class Producer<SB extends SimpleBean> implements Runnable {
 
     private Class<SB> typeBeanClass;
 
+    /**
+     * Instantiates a new producer.
+     *
+     * @param fileName the file name
+     * @param queue the queue
+     */
     @SuppressWarnings("unchecked")
     public Producer(String fileName, QueueProducerConsumer<SB> queue) {
         typeBeanClass = (Class<SB>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
@@ -41,14 +52,27 @@ public abstract class Producer<SB extends SimpleBean> implements Runnable {
         columnMappingType();
     }
 
+    /**
+     * Gets the file name.
+     *
+     * @return the file name
+     */
     public String getFileName() {
         return fileName;
     }
 
+    /**
+     * Gets the queue.
+     *
+     * @return the queue
+     */
     public QueueProducerConsumer<SB> getQueue() {
         return queue;
     }
 
+    /* (non-Javadoc)
+     * @see java.lang.Runnable#run()
+     */
     @Override
     public void run() {
         FileReader fileReader = null;
@@ -64,11 +88,8 @@ public abstract class Producer<SB extends SimpleBean> implements Runnable {
                     counter++;
             csvReader = new CSVReader(bufferReader, ',');
             csvReader.readNext();
-            int i = 0;
             while ((nextLine = csvReader.readNext()) != null) {
-                System.out.println(String.format("creazione %d", i++));
                 queue.put(createBean(nextLine));
-
             }
         } catch (InterruptedException | IOException e) {
             e.printStackTrace();
@@ -101,22 +122,54 @@ public abstract class Producer<SB extends SimpleBean> implements Runnable {
         }
     }
 
+    /**
+     * Sets the file name.
+     *
+     * @param fileName the new file name
+     */
     public void setFileName(String fileName) {
         this.fileName = fileName;
     }
 
+    /**
+     * Sets the queue.
+     *
+     * @param queue the new queue
+     */
     public void setQueue(QueueProducerConsumer<SB> queue) {
         this.queue = queue;
     }
 
+    /**
+     * Column mapping type.
+     *
+     * @return the class[]
+     */
     @SuppressWarnings("rawtypes")
     protected abstract Class[] columnMappingType();
 
+    /**
+     * Creates the bean.
+     *
+     * @param values the values
+     * @return the sb
+     * @throws BadParseValueException the bad parse value exception
+     * @throws NoSuchMethodException the no such method exception
+     * @throws SecurityException the security exception
+     * @throws InstantiationException the instantiation exception
+     * @throws IllegalAccessException the illegal access exception
+     * @throws IllegalArgumentException the illegal argument exception
+     * @throws InvocationTargetException the invocation target exception
+     * @throws ClassNotFoundException the class not found exception
+     */
     @SuppressWarnings("unchecked")
     private SB createBean(String... values) throws BadParseValueException, NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, ClassNotFoundException {
         Object[] parametersValue = new Object[columnMappingType().length];
-        for (int i = 0; i < columnMappingType().length; i++)
+        for (int i = 0; i < columnMappingType().length; i++) {
+
             parametersValue[i] = ParserValue.parse(columnMappingType()[i], values[i]);
+
+        }
         Constructor<SB> constructor = typeBeanClass.getConstructor(columnMappingType());
         return constructor.newInstance(parametersValue);
     }

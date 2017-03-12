@@ -1,13 +1,13 @@
 
 /*
- * 
+ *
  * Created by Umberto Ferracci from urania's PC
  * email: umberto.ferracci@gmail.com
  * Project: BdC
  * Package: org.bdc.model.entity
  * Type: Agenzia
- * Last update: 11-mar-2017 19.20.51
- * 
+ * Last update: 12-mar-2017 16.19.42
+ *
  */
 
 package org.bdc.model.entity;
@@ -24,9 +24,12 @@ public enum Agenzia {
         this.agenzia = agenzia;
     };
 
+    /*
+     * (non-Javadoc)
+     * @see java.lang.Enum#toString()
+     */
     @Override
     public String toString() {
-
         return agenzia;
     }
 }
