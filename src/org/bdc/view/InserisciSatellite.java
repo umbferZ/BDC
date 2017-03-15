@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: org.bdc.view
  * Type: InserisciSatellite
- * Last update: 12-mar-2017 16.26.28
+ * Last update: 15-mar-2017 13.41.16
  * 
  */
 
@@ -26,15 +26,15 @@ public class InserisciSatellite extends JPanel {
      */
     private static final long serialVersionUID = 1L;
 
-    private JTextField textStartMonth;
+    private JTextField        textStartMonth;
 
-    private JTextField txtAgenzia;
+    private JTextField        txtAgenzia;
 
-    private JTextField txtNome;
+    private JTextField        txtNome;
 
-    private JTextField txtStartDay;
+    private JTextField        txtStartDay;
 
-    private JTextField txtStartYear;
+    private JTextField        txtStartYear;
 
     /**
      * Instantiates a new inserisci satellite.

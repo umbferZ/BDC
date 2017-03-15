@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: org.bdc.view
  * Type: MainActivity
- * Last update: 12-mar-2017 16.26.54
+ * Last update: 15-mar-2017 13.41.16
  * 
  */
 
@@ -14,6 +14,8 @@ package org.bdc.view;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -30,13 +32,17 @@ public class MainActivity {
      */
     public static void main(String[] args) {
 
-        EventQueue.invokeLater(() -> {
+        EventQueue.invokeLater(new Runnable() {
 
-            try {
-                MainActivity window = new MainActivity();
-                window.frame.setVisible(true);
-            } catch (Exception e) {
-                e.printStackTrace();
+            @Override
+            public void run() {
+
+                try {
+                    MainActivity window = new MainActivity();
+                    window.frame.setVisible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
@@ -64,8 +70,12 @@ public class MainActivity {
         menuBar.add(mnNewMenu);
 
         JMenuItem mntmNewMenuItem = new JMenuItem("New menu item");
-        mntmNewMenuItem.addActionListener(e -> {
+        mntmNewMenuItem.addActionListener(new ActionListener() {
 
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
         });
         mnNewMenu.add(mntmNewMenuItem);
 

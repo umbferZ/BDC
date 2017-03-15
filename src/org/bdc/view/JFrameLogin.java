@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: org.bdc.view
  * Type: JFrameLogin
- * Last update: 12-mar-2017 16.27.05
+ * Last update: 15-mar-2017 13.48.38
  * 
  */
 
@@ -20,6 +20,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JProgressBar;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
@@ -37,13 +38,13 @@ import com.jgoodies.forms.layout.RowSpec;
  */
 public class JFrameLogin extends JFrame {
 
-    private JButton btnLogin;
+    private JButton        btnLogin;
 
-    private JPanel contentPane;
+    private JPanel         contentPane;
 
     private JPasswordField pwdPassword;
 
-    private JTextField txtUsername;
+    private JTextField     txtUsername;
 
     /**
      * The main method.
@@ -75,16 +76,18 @@ public class JFrameLogin extends JFrame {
 
         JPanel panel = new JPanel();
         panel.setBorder(new TitledBorder(null, "Login System", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-        panel.setBounds(39, 73, 369, 129);
+        panel.setBounds(74, 84, 299, 106);
         contentPane.add(panel);
-        panel.setLayout(new FormLayout(new ColumnSpec[] { FormSpecs.RELATED_GAP_COLSPEC, FormSpecs.DEFAULT_COLSPEC, FormSpecs.RELATED_GAP_COLSPEC, ColumnSpec.decode("default:grow"), },
-                new RowSpec[] { FormSpecs.RELATED_GAP_ROWSPEC, FormSpecs.DEFAULT_ROWSPEC, FormSpecs.RELATED_GAP_ROWSPEC, FormSpecs.DEFAULT_ROWSPEC, FormSpecs.RELATED_GAP_ROWSPEC, FormSpecs.DEFAULT_ROWSPEC, }));
+        panel.setLayout(new FormLayout(new ColumnSpec[] {
+                FormSpecs.RELATED_GAP_COLSPEC, FormSpecs.DEFAULT_COLSPEC, FormSpecs.RELATED_GAP_COLSPEC, ColumnSpec.decode("default:grow"),
+        }, new RowSpec[] {
+                FormSpecs.RELATED_GAP_ROWSPEC, FormSpecs.DEFAULT_ROWSPEC, FormSpecs.RELATED_GAP_ROWSPEC, FormSpecs.DEFAULT_ROWSPEC, FormSpecs.RELATED_GAP_ROWSPEC, FormSpecs.DEFAULT_ROWSPEC,
+        }));
 
-        JLabel lblUsername = new JLabel("Username");
+        JLabel lblUsername = new JLabel("User-Id");
         panel.add(lblUsername, "2, 2, right, default");
 
         txtUsername = new JTextField();
-        txtUsername.setText("username");
         panel.add(txtUsername, "4, 2, fill, default");
         txtUsername.setColumns(10);
 
@@ -92,7 +95,6 @@ public class JFrameLogin extends JFrame {
         panel.add(lblPassword, "2, 4, right, default");
 
         pwdPassword = new JPasswordField();
-        pwdPassword.setText("password");
         panel.add(pwdPassword, "4, 4, fill, default");
 
         btnLogin = new JButton("Login");
@@ -110,5 +112,10 @@ public class JFrameLogin extends JFrame {
             }
         });
         panel.add(btnLogin, "4, 6");
+
+        JProgressBar progressBar = new JProgressBar();
+        progressBar.setBounds(12, 249, 424, 14);
+        progressBar.setVisible(false);
+        contentPane.add(progressBar);
     }
 }

@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: test
  * Type: DemoLauncher
- * Last update: 12-mar-2017 16.27.34
+ * Last update: 13-mar-2017 18.54.39
  * 
  */
 
@@ -44,13 +44,13 @@ public class DemoLauncher {
         // launcher.provaIstanze();
         // launcher.provaDao();
 
-        // for (int i = 1; i <= 4; i++)
-        // try {
-        // launcher.provaQueueProducerConsumer(i);
-        // } catch (Exception e) {
-        // e.printStackTrace();
-        // }
-        launcher.createAdmin();
+        for (int i = 1; i <= 4; i++)
+            try {
+                launcher.provaQueueProducerConsumer(i);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        // launcher.createAdmin();
     }
 
     /**
