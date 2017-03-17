@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: org.bdc.view
  * Type: InserisciSatellite
- * Last update: 15-mar-2017 13.41.16
+ * Last update: 17-mar-2017 7.53.09
  * 
  */
 

@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: org.bdc.service.parser.monitor.producers
  * Type: Producer
- * Last update: 12-mar-2017 16.25.12
+ * Last update: 16-mar-2017 18.31.42
  * 
  */
 
@@ -32,11 +32,11 @@ import com.opencsv.CSVReader;
  */
 public abstract class Producer<SB extends SimpleBean> implements Runnable {
 
-    private String fileName;
+    private String                    fileName;
 
     private QueueProducerConsumer<SB> queue;
 
-    private Class<SB> typeBeanClass;
+    private Class<SB>                 typeBeanClass;
 
     /**
      * Instantiates a new producer.
@@ -70,7 +70,8 @@ public abstract class Producer<SB extends SimpleBean> implements Runnable {
         return queue;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.lang.Runnable#run()
      */
     @Override
@@ -88,9 +89,8 @@ public abstract class Producer<SB extends SimpleBean> implements Runnable {
                     counter++;
             csvReader = new CSVReader(bufferReader, ',');
             csvReader.readNext();
-            while ((nextLine = csvReader.readNext()) != null) {
+            while ((nextLine = csvReader.readNext()) != null)
                 queue.put(createBean(nextLine));
-            }
         } catch (InterruptedException | IOException e) {
             e.printStackTrace();
         } catch (NoSuchMethodException e) {
@@ -165,11 +165,8 @@ public abstract class Producer<SB extends SimpleBean> implements Runnable {
     @SuppressWarnings("unchecked")
     private SB createBean(String... values) throws BadParseValueException, NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, ClassNotFoundException {
         Object[] parametersValue = new Object[columnMappingType().length];
-        for (int i = 0; i < columnMappingType().length; i++) {
-
+        for (int i = 0; i < columnMappingType().length; i++)
             parametersValue[i] = ParserValue.parse(columnMappingType()[i], values[i]);
-
-        }
         Constructor<SB> constructor = typeBeanClass.getConstructor(columnMappingType());
         return constructor.newInstance(parametersValue);
     }

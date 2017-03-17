@@ -4,8 +4,8 @@
  * email: umberto.ferracci@gmail.com
  * Project: BdC
  * Package: org.bdc.view
- * Type: MainActivity
- * Last update: 15-mar-2017 13.41.16
+ * Type: MainActivity_old
+ * Last update: 17-mar-2017 7.53.09
  * 
  */
 
@@ -23,7 +23,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
-public class MainActivity {
+public class MainActivity_old {
 
     private JFrame frame;
 
@@ -38,7 +38,7 @@ public class MainActivity {
             public void run() {
 
                 try {
-                    MainActivity window = new MainActivity();
+                    MainActivity_old window = new MainActivity_old();
                     window.frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -50,7 +50,7 @@ public class MainActivity {
     /**
      * Create the application.
      */
-    public MainActivity() {
+    public MainActivity_old() {
         initialize();
     }
 

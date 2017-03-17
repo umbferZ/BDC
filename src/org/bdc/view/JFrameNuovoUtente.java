@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: org.bdc.view
  * Type: JFrameNuovoUtente
- * Last update: 15-mar-2017 13.41.16
+ * Last update: 17-mar-2017 7.53.09
  * 
  */
 
@@ -16,6 +16,7 @@ import java.awt.EventQueue;
 import java.awt.Font;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -51,16 +52,12 @@ public class JFrameNuovoUtente extends JFrame {
      * Launch the application.
      */
     public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-
-            @Override
-            public void run() {
-                try {
-                    JFrameNuovoUtente frame = new JFrameNuovoUtente();
-                    frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+        EventQueue.invokeLater(() -> {
+            try {
+                JFrameNuovoUtente frame = new JFrameNuovoUtente();
+                frame.setVisible(true);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         });
     }
@@ -69,6 +66,9 @@ public class JFrameNuovoUtente extends JFrame {
      * Create the frame.
      */
     public JFrameNuovoUtente() {
+        setType(Type.UTILITY);
+
+        setTitle("Nuovo utente");
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setBounds(100, 100, 450, 300);
         contentPane = new JPanel();
@@ -78,13 +78,13 @@ public class JFrameNuovoUtente extends JFrame {
 
         JPanel formLayout = new JPanel();
         formLayout.setBorder(new TitledBorder(null, "Nuovo Utente", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-        formLayout.setBounds(20, 23, 407, 228);
+        formLayout.setBounds(20, 0, 407, 263);
         contentPane.add(formLayout);
         formLayout.setLayout(new FormLayout(new ColumnSpec[] {
                 FormSpecs.RELATED_GAP_COLSPEC, FormSpecs.DEFAULT_COLSPEC, FormSpecs.RELATED_GAP_COLSPEC, ColumnSpec.decode("default:grow"),
         }, new RowSpec[] {
                 FormSpecs.RELATED_GAP_ROWSPEC, FormSpecs.DEFAULT_ROWSPEC, FormSpecs.RELATED_GAP_ROWSPEC, FormSpecs.DEFAULT_ROWSPEC, FormSpecs.RELATED_GAP_ROWSPEC, FormSpecs.DEFAULT_ROWSPEC, FormSpecs.RELATED_GAP_ROWSPEC, FormSpecs.DEFAULT_ROWSPEC,
-                FormSpecs.RELATED_GAP_ROWSPEC, FormSpecs.DEFAULT_ROWSPEC, FormSpecs.RELATED_GAP_ROWSPEC, FormSpecs.DEFAULT_ROWSPEC, FormSpecs.RELATED_GAP_ROWSPEC, FormSpecs.DEFAULT_ROWSPEC,
+                FormSpecs.RELATED_GAP_ROWSPEC, FormSpecs.DEFAULT_ROWSPEC, FormSpecs.RELATED_GAP_ROWSPEC, FormSpecs.DEFAULT_ROWSPEC, FormSpecs.RELATED_GAP_ROWSPEC, FormSpecs.DEFAULT_ROWSPEC, FormSpecs.RELATED_GAP_ROWSPEC, FormSpecs.DEFAULT_ROWSPEC,
         }));
 
         JLabel lblNome = new JLabel("Nome");
@@ -147,7 +147,13 @@ public class JFrameNuovoUtente extends JFrame {
         pwdPassword_2 = new JPasswordField();
         formLayout.add(pwdPassword_2, "4, 12, fill, default");
 
+        JLabel lblAmministratore = new JLabel("Amministratore");
+        formLayout.add(lblAmministratore, "2, 14");
+
+        JCheckBox chckbxNewCheckBox = new JCheckBox("");
+        formLayout.add(chckbxNewCheckBox, "4, 14");
+
         JButton btnInserisci = new JButton("Inserisci");
-        formLayout.add(btnInserisci, "4, 14");
+        formLayout.add(btnInserisci, "4, 16");
     }
 }

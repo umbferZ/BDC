@@ -5,13 +5,17 @@
  * Project: BdC
  * Package: org.bdc.view
  * Type: JFrameMain
- * Last update: 15-mar-2017 13.46.23
+ * Last update: 17-mar-2017 7.53.09
  * 
  */
 
 package org.bdc.view;
 
+import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -39,12 +43,16 @@ public class JFrameMain extends JFrame {
      * @param args the arguments
      */
     public static void main(String[] args) {
-        EventQueue.invokeLater(() -> {
-            try {
-                JFrameMain frame = new JFrameMain();
-                frame.setVisible(true);
-            } catch (Exception e) {
-                e.printStackTrace();
+        EventQueue.invokeLater(new Runnable() {
+
+            @Override
+            public void run() {
+                try {
+                    JFrameMain frame = new JFrameMain();
+                    frame.setVisible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
@@ -55,8 +63,7 @@ public class JFrameMain extends JFrame {
     public JFrameMain() {
         setTitle("Welcome");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setExtendedState(JFrame.MAXIMIZED_BOTH);
-        // setBounds(300, 100, 700, 500);
+        setBounds(100, 100, 700, 500);
 
         JMenuBar menuBar = new JMenuBar();
         setJMenuBar(menuBar);
@@ -65,11 +72,15 @@ public class JFrameMain extends JFrame {
         menuBar.add(mnFile);
 
         JMenuItem mntmExit = new JMenuItem("Exit");
-        mntmExit.addActionListener(e -> {
-            int exit = JOptionPane.showConfirmDialog(null, "Sicuro di voler uscire");
-            if (exit == JOptionPane.OK_OPTION)
-                dispose();
+        mntmExit.addActionListener(new ActionListener() {
 
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int exit = JOptionPane.showConfirmDialog(null, "Sicuro di voler uscire");
+                if (exit == JOptionPane.OK_OPTION)
+                    System.exit(0);
+
+            }
         });
         mnFile.add(mntmExit);
 
@@ -77,9 +88,13 @@ public class JFrameMain extends JFrame {
         menuBar.add(mnUtente);
 
         JMenuItem mntmNuovoUtente = new JMenuItem("Nuovo utente...");
-        mntmNuovoUtente.addActionListener(e -> {
-            JFrameNuovoUtente frameNuovoUtente = new JFrameNuovoUtente();
-            frameNuovoUtente.setVisible(true);
+        mntmNuovoUtente.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrameNuovoUtente frameNuovoUtente = new JFrameNuovoUtente();
+                frameNuovoUtente.setVisible(true);
+            }
         });
         mnUtente.add(mntmNuovoUtente);
 
@@ -87,20 +102,23 @@ public class JFrameMain extends JFrame {
         menuBar.add(mnSatellite);
 
         JMenuItem mntmNuvoSatellite = new JMenuItem("Nuvo satellite...");
-        mntmNuvoSatellite.addActionListener(e -> {
-            JFrameInserisciSattellite frameInserisciSattellite = new JFrameInserisciSattellite();
-            frameInserisciSattellite.setVisible(true);
+        mntmNuvoSatellite.addActionListener(new ActionListener() {
 
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrameInserisciSattellite frameInserisciSattellite = new JFrameInserisciSattellite();
+                frameInserisciSattellite.setVisible(true);
+            }
         });
         mnSatellite.add(mntmNuvoSatellite);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
-        contentPane.setLayout(null);
+        contentPane.setLayout(new BorderLayout(0, 0));
 
         lblWelcome = new JLabel("Welcome...");
-        lblWelcome.setBounds(139, 130, 170, 15);
-        contentPane.add(lblWelcome);
+        lblWelcome.setFont(new Font("Dialog", Font.PLAIN, 12));
+        contentPane.add(lblWelcome, BorderLayout.SOUTH);
     }
 
     /**

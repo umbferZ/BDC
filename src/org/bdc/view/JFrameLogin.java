@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: org.bdc.view
  * Type: JFrameLogin
- * Last update: 15-mar-2017 13.48.38
+ * Last update: 17-mar-2017 7.53.09
  * 
  */
 
@@ -13,20 +13,14 @@ package org.bdc.view;
 
 import java.awt.EventQueue;
 
-import javax.security.auth.login.LoginException;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
-import javax.swing.JProgressBar;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
-
-import org.bdc.controls.gestisciUtenti.C_UC_GestisciUtenti;
-import org.bdc.model.people.Utente;
 
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
@@ -52,12 +46,16 @@ public class JFrameLogin extends JFrame {
      * @param args the arguments
      */
     public static void main(String[] args) {
-        EventQueue.invokeLater(() -> {
-            try {
-                JFrameLogin frame = new JFrameLogin();
-                frame.setVisible(true);
-            } catch (Exception e) {
-                e.printStackTrace();
+        EventQueue.invokeLater(new Runnable() {
+
+            @Override
+            public void run() {
+                try {
+                    JFrameLogin frame = new JFrameLogin();
+                    frame.setVisible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
@@ -98,24 +96,30 @@ public class JFrameLogin extends JFrame {
         panel.add(pwdPassword, "4, 4, fill, default");
 
         btnLogin = new JButton("Login");
-        btnLogin.addActionListener(e -> {
-            String username = txtUsername.getText();
-            String password = new String(pwdPassword.getPassword());
-            try {
-                Utente utente = new C_UC_GestisciUtenti().login(username, password);
-                JFrameMain main = new JFrameMain();
-                main.welcome(utente.getNome() + " " + utente.getCognome());
-                main.setVisible(true);
-                setVisible(false);
-            } catch (LoginException e1) {
-                JOptionPane.showMessageDialog(null, e1.getMessage());
-            }
-        });
         panel.add(btnLogin, "4, 6");
+    }
 
-        JProgressBar progressBar = new JProgressBar();
-        progressBar.setBounds(12, 249, 424, 14);
-        progressBar.setVisible(false);
-        contentPane.add(progressBar);
+    public JButton getBtnLogin() {
+        return btnLogin;
+    }
+
+    public JPasswordField getPwdPassword() {
+        return pwdPassword;
+    }
+
+    public JTextField getTxtUsername() {
+        return txtUsername;
+    }
+
+    public void setBtnLogin(JButton btnLogin) {
+        this.btnLogin = btnLogin;
+    }
+
+    public void setPwdPassword(JPasswordField pwdPassword) {
+        this.pwdPassword = pwdPassword;
+    }
+
+    public void setTxtUsername(JTextField txtUsername) {
+        this.txtUsername = txtUsername;
     }
 }
