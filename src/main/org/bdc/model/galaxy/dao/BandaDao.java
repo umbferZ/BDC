@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: main.org.bdc.model.galaxy.dao
  * Type: BandaDao
- * Last update: 8-set-2017 18.18.27
+ * Last update: 9-set-2017 15.26.45
  * 
  */
 
@@ -23,12 +23,18 @@ import main.org.bdc.service.dal.EntityDaoHibernate;
  */
 public class BandaDao extends EntityDaoHibernate<Band, Integer> {
 
+    /**
+     * Gets the by band.
+     *
+     * @param resolution the resolution
+     * @return the by band
+     * @throws Exception the exception
+     */
     public Band getByBand(double resolution) throws Exception {
 
         String sql = "FROM Band WHERE risoluzione=:risoluzione";
         TypedQuery<Band> query = getSession().createQuery(sql);
         query.setParameter("risoluzione", resolution);
-
         List<Band> bands = query.getResultList();
         closeSession();
         if (bands.size() == 1)

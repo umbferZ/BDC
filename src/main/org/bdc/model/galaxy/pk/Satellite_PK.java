@@ -3,9 +3,9 @@
  * Created by Umberto Ferracci from urania's PC
  * email: umberto.ferracci@gmail.com
  * Project: BdC
- * Package: main.org.bdc.model.galaxy.satelliti
+ * Package: main.org.bdc.model.galaxy.pk
  * Type: Satellite_PK
- * Last update: 12-mar-2017 16.17.40
+ * Last update: 9-set-2017 12.50.58
  * 
  */
 
@@ -29,9 +29,9 @@ public class Satellite_PK implements Serializable {
     public Satellite_PK() {}
 
     /**
-     * Gets the name.
+     * Gets the nome.
      *
-     * @return the name
+     * @return the nome
      */
     public String getNome() {
 
@@ -39,9 +39,9 @@ public class Satellite_PK implements Serializable {
     }
 
     /**
-     * Sets the name.
+     * Sets the nome.
      *
-     * @param name the new name
+     * @param nome the new nome
      */
     public void setNome(String nome) {
 

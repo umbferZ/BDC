@@ -5,13 +5,14 @@
  * Project: BdC
  * Package: main.org.bdc.model.galaxy
  * Type: Flusso
- * Last update: 8-set-2017 17.48.54
+ * Last update: 9-set-2017 13.41.47
  * 
  */
 
 package main.org.bdc.model.galaxy;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
@@ -21,22 +22,31 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Flusso {
 
-    @ManyToOne
-    public Instrument strumento;
-
-    @ManyToOne
-    private Band      banda;
-
-    private double    errore;
-
     @Id
-    private double    valore;
+    @GeneratedValue
+    public int     id;
+
+    // @ManyToOne
+    // public Instrument strumento;
+
+    @ManyToOne
+    private Band   banda;
+
+    private double errore;
+
+    private double valore;
 
     /**
      * Instantiates a new flusso.
      */
     public Flusso() {}
 
+    /**
+     * Instantiates a new flusso.
+     *
+     * @param value the value
+     * @param band the band
+     */
     public Flusso(double value, Band band) {
         valore = value;
         banda = band;
@@ -60,14 +70,14 @@ public class Flusso {
         return errore;
     }
 
-    /**
-     * Gets the instrument.
-     *
-     * @return the instrument
-     */
-    public Instrument getStrumento() {
-        return strumento;
-    }
+    // /**
+    // * Gets the instrument.
+    // *
+    // * @return the instrument
+    // */
+    // public Instrument getStrumento() {
+    // return strumento;
+    // }
 
     /**
      * Gets the valore.
@@ -96,14 +106,14 @@ public class Flusso {
         this.errore = errore;
     }
 
-    /**
-     * Sets the instrument.
-     *
-     * @param instrument the new instrument
-     */
-    public void setStrumento(Instrument strumento) {
-        this.strumento = strumento;
-    }
+    // /**
+    // * Sets the instrument.
+    // *
+    // * @param instrument the new instrument
+    // */
+    // public void setStrumento(Instrument strumento) {
+    // this.strumento = strumento;
+    // }
 
     /**
      * Sets the valore.

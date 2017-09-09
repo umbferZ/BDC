@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: main.org.bdc.service.parser.monitor.consumers
  * Type: Consumer_File1
- * Last update: 9-set-2017 11.44.01
+ * Last update: 9-set-2017 13.51.11
  * 
  */
 
@@ -13,8 +13,8 @@ package main.org.bdc.service.parser.monitor.consumers;
 
 import main.org.bdc.model.DaoFactory;
 import main.org.bdc.model.galaxy.Clump;
+import main.org.bdc.model.galaxy.ClumpDetails;
 import main.org.bdc.model.galaxy.Map;
-import main.org.bdc.model.galaxy.Posizione;
 import main.org.bdc.service.parser.monitor.QueueProducerConsumer;
 import main.org.bdc.service.parser.monitor.beans.Bean_File1;
 
@@ -44,13 +44,10 @@ public class Consumer_File1 extends Consumer<Bean_File1> {
     @Override
     protected void inserts(Bean_File1 bean) {
         Clump clump = new Clump();
+        ClumpDetails details = new ClumpDetails(clump, bean.getClumpType(), bean.getDensity(), bean.getRatioTempMass(), bean.getTemp(), bean.getLatitude(), bean.getLongitude());
         clump.setMap(new Map("Higal"));
         clump.setId(bean.getClumpId());
-        clump.setTemperatura(bean.getTemp());
-        clump.setDensita(bean.getDensity());
-        clump.setRapportoMassaTemperatura(bean.getRatioTempMass());
-        clump.setClumpType(bean.getClumpType());
-        clump.setPosizione(new Posizione(bean.getLongitude(), bean.getLatitude()));
+        clump.setClumpDetails(details);
         dao.getClumpDao().insert(clump);
 
     }

@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: main.org.bdc.model.galaxy.pk
  * Type: Instrument_PK
- * Last update: 8-set-2017 16.02.24
+ * Last update: 9-set-2017 12.50.58
  * 
  */
 

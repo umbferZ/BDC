@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: main.org.bdc.view
  * Type: InserisciSatellite
- * Last update: 17-mar-2017 7.53.09
+ * Last update: 9-set-2017 15.38.28
  * 
  */
 
@@ -19,6 +19,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+@Deprecated
 public class InserisciSatellite extends JPanel {
 
     /**
@@ -26,13 +27,13 @@ public class InserisciSatellite extends JPanel {
      */
     private static final long serialVersionUID = 1L;
 
-    private JTextField        txt_start_month;
-
     private JTextField        txt_agenzia;
 
     private JTextField        txt_name;
 
     private JTextField        txt_start_day;
+
+    private JTextField        txt_start_month;
 
     private JTextField        txt_start_year;
 

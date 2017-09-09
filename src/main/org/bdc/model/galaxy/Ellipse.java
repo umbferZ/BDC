@@ -5,32 +5,35 @@
  * Project: BdC
  * Package: main.org.bdc.model.galaxy
  * Type: Ellipse
- * Last update: 8-set-2017 17.56.07
+ * Last update: 9-set-2017 13.39.09
  * 
  */
 
 package main.org.bdc.model.galaxy;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+
+import main.org.bdc.model.galaxy.pk.Ellipse_PK;
 
 /**
  * The Class Ellipse.
  */
 @Entity
+// todo PRIMARY KEY (band, clump)
+@IdClass(Ellipse_PK.class)
 public class Ellipse {
 
+    @Id
     @OneToOne
-    private Band   banda;
-
-    @OneToOne
-    private Clump  clump;
+    private Band   band;
 
     @Id
-    @GeneratedValue
-    private int    id;
+    @ManyToOne
+    private Clump  clump;
 
     private double rotazione;
 
@@ -39,26 +42,35 @@ public class Ellipse {
     private double yAss;
 
     /**
-     * Instantiates a new ellisse.
+     * Instantiates a new ellipse.
      */
     public Ellipse() {}
 
+    /**
+     * Instantiates a new ellipse.
+     *
+     * @param xAss the x ass
+     * @param yAss the y ass
+     * @param rotazione the rotazione
+     * @param band the band
+     * @param clump the clump
+     */
     public Ellipse(double xAss, double yAss, double rotazione, Band banda, Clump clump) {
         super();
         this.xAss = xAss;
         this.yAss = yAss;
         this.rotazione = rotazione;
-        this.banda = banda;
+        band = banda;
         this.clump = clump;
     }
 
     /**
-     * Gets the banda.
+     * Gets the band.
      *
-     * @return the banda
+     * @return the band
      */
     public Band getBanda() {
-        return banda;
+        return band;
     }
 
     /**
@@ -89,12 +101,12 @@ public class Ellipse {
     }
 
     /**
-     * Sets the banda.
+     * Sets the band.
      *
-     * @param banda the new banda
+     * @param band the new band
      */
     public void setBanda(Band banda) {
-        this.banda = banda;
+        band = banda;
     }
 
     /**

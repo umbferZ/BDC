@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: main.org.bdc.model.galaxy
  * Type: Instrument
- * Last update: 8-set-2017 16.48.28
+ * Last update: 9-set-2017 12.51.21
  * 
  */
 
@@ -49,6 +49,11 @@ public class Instrument {
      */
     public Instrument() {}
 
+    /**
+     * Instantiates a new instrument.
+     *
+     * @param name the name
+     */
     public Instrument(String name) {
         this(name, null);
     }
@@ -57,7 +62,7 @@ public class Instrument {
      * Instantiates a new instrument.
      *
      * @param name the name
-     * @param sat the sat
+     * @param satellite the satellite
      */
     public Instrument(String name, Satellite satellite) {
         super();

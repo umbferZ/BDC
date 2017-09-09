@@ -3,9 +3,9 @@
  * Created by Umberto Ferracci from urania's PC
  * email: umberto.ferracci@gmail.com
  * Project: BdC
- * Package: main.org.bdc.model.galaxy.satelliti.pk
+ * Package: main.org.bdc.model.galaxy.pk
  * Type: Band_PK
- * Last update: 12-mar-2017 16.10.44
+ * Last update: 9-set-2017 13.37.44
  * 
  */
 
@@ -13,73 +13,49 @@ package main.org.bdc.model.galaxy.pk;
 
 import java.io.Serializable;
 
+import javax.persistence.JoinColumn;
+
 /**
  * The Class Band_PK.
  */
 public class Band_PK implements Serializable {
 
-    protected double lunghezzaOnda;
+    @JoinColumn(name = "instrument_id")
+    protected int    instrument;
 
-    protected double risoluzione;
-
-    protected Instrument_PK instrument;
+    protected double resolution;
 
     /**
-     * Instantiates a new banda PK.
+     * Instantiates a new band PK.
      */
     public Band_PK() {}
 
-    /**
-     * Gets the lunghezza onda.
-     *
-     * @return the lunghezza onda
-     */
-    public double getLunghezzaOnda() {
-        return lunghezzaOnda;
+    @Override
+    public boolean equals(Object obj) {
+        // TODO Auto-generated method stub
+        return super.equals(obj);
     }
 
-    /**
-     * Gets the risoluzione.
-     *
-     * @return the risoluzione
-     */
-    public double getRisoluzione() {
-        return risoluzione;
-    }
-
-    /**
-     * Gets the instrument.
-     *
-     * @return the instrument
-     */
-    public Instrument_PK getStrument() {
+    public int getInstrument() {
         return instrument;
     }
 
-    /**
-     * Sets the lunghezza onda.
-     *
-     * @param lunghezzaOnda the new lunghezza onda
-     */
-    public void setLunghezzaOnda(double lunghezzaOnda) {
-        this.lunghezzaOnda = lunghezzaOnda;
+    public double getResolution() {
+        return resolution;
     }
 
-    /**
-     * Sets the risoluzione.
-     *
-     * @param risoluzione the new risoluzione
-     */
-    public void setRisoluzione(double risoluzione) {
-        this.risoluzione = risoluzione;
+    @Override
+    public int hashCode() {
+        // TODO Auto-generated method stub
+        return super.hashCode();
     }
 
-    /**
-     * Sets the instrument.
-     *
-     * @param instrument the new instrument
-     */
-    public void setStrument(Instrument_PK strument) {
-        this.instrument = strument;
+    public void setInstrument(int instrument) {
+        this.instrument = instrument;
     }
+
+    public void setResolution(double resolution) {
+        this.resolution = resolution;
+    }
+
 }

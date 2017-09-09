@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: main.org.bdc.controls.gestisciUtenti
  * Type: C_UC_Login
- * Last update: 10-ago-2017 16.59.08
+ * Last update: 9-set-2017 15.37.25
  * 
  */
 
@@ -83,7 +83,6 @@ public class C_UC_Login {
         public void actionPerformed(ActionEvent e) {
             if (checkFields())
                 try {
-
                     new C_UC_Main(login(user_id, password));
                     view.setVisible(false);
                 } catch (LoginException e1) {

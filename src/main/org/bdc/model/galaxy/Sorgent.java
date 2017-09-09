@@ -4,8 +4,8 @@
  * email: umberto.ferracci@gmail.com
  * Project: BdC
  * Package: main.org.bdc.model.galaxy
- * Type: Sorgente
- * Last update: 8-set-2017 15.55.28
+ * Type: Sorgent
+ * Last update: 9-set-2017 13.43.13
  * 
  */
 
@@ -19,32 +19,32 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 /**
- * The Class Sorgente.
+ * The Class Sorgent.
  */
 @Entity
-public class Sorgente {
+public class Sorgent {
 
     @OneToMany
     private List<Flusso> flussi;
 
     @Id
     @GeneratedValue
-    private String       id;
+    private int          id;
 
     private double       luminosità;
 
     /**
      * Instantiates a new sorgente.
      */
-    public Sorgente() {}
+    public Sorgent() {}
 
     /**
-     * Gets the flusso.
+     * Gets the flussi.
      *
-     * @return the flusso
+     * @return the flussi
      */
     public List<Flusso> getFlussi() {
-        return this.flussi;
+        return flussi;
     }
 
     /**
@@ -52,8 +52,8 @@ public class Sorgente {
      *
      * @return the id
      */
-    public String getId() {
-        return this.id;
+    public int getId() {
+        return id;
     }
 
     /**
@@ -62,13 +62,13 @@ public class Sorgente {
      * @return the luminosità
      */
     public double getLuminosità() {
-        return this.luminosità;
+        return luminosità;
     }
 
     /**
      * Sets the flusso.
      *
-     * @param flusso the new flusso
+     * @param flussi the new flusso
      */
     public void setFlusso(List<Flusso> flussi) {
         this.flussi = flussi;
@@ -79,7 +79,7 @@ public class Sorgente {
      *
      * @param id the new id
      */
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

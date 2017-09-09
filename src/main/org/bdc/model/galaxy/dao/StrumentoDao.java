@@ -3,9 +3,9 @@
  * Created by Umberto Ferracci from urania's PC
  * email: umberto.ferracci@gmail.com
  * Project: BdC
- * Package: main.org.bdc.model.galaxy.satelliti.dao
+ * Package: main.org.bdc.model.galaxy.dao
  * Type: StrumentoDao
- * Last update: 11-mar-2017 19.20.51
+ * Last update: 9-set-2017 12.50.58
  * 
  */
 

@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: main.org.bdc.model.galaxy
  * Type: Clump
- * Last update: 8-set-2017 18.23.00
+ * Last update: 9-set-2017 13.39.03
  * 
  */
 
@@ -15,13 +15,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.Transient;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  * The Class Clump.
@@ -29,32 +28,17 @@ import javax.persistence.Transient;
 @Entity
 public class Clump {
 
-    // @Enumerated(EnumType.ORDINAL)
-    private int           clumpType;
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "clump")
+    private ClumpDetails  clumpDetails;
 
-    private double        densita;
-
-    @ManyToMany(mappedBy = "clump")
+    @OneToMany(mappedBy = "clump")
     private List<Ellipse> ellispses;
 
     @Id
-    // @GeneratedValue
     private int           id;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Map           map;
-
-    // @ManyToMany
-    // private List<Map> mappeStellari;
-    @Transient
-    private double        massa;
-
-    @Embedded
-    private Posizione     posizione;
-
-    private double        rapportoMassaTemperatura;
-
-    private double        temperatura;
 
     /**
      * Instantiates a new clump.
@@ -63,36 +47,38 @@ public class Clump {
         ellispses = new ArrayList<>();
     }
 
+    public Clump(Map map, ClumpDetails clumpDetails) {
+        super();
+        this.map = map;
+        this.clumpDetails = clumpDetails;
+    }
+
+    /**
+     * Adds the ellipse.
+     *
+     * @param ellipse the ellipse
+     */
     public void addEllipse(Ellipse ellipse) {
         ellispses.add(ellipse);
     }
 
-    /**
-     * Gets the tipo clump.
-     *
-     * @return the tipo clump
-     */
-    public int getClumpType() {
-        return clumpType;
-    }
-
-    /**
-     * Gets the densita.
-     *
-     * @return the densita
-     */
-    public double getDensita() {
-        return densita;
-    }
-
-    public List<Ellipse> getEllispses() {
-        return ellispses;
+    public ClumpDetails getClumpDetails() {
+        return clumpDetails;
     }
 
     /**
      * Gets the ellispses.
      *
      * @return the ellispses
+     */
+    public List<Ellipse> getEllispses() {
+        return ellispses;
+    }
+
+    /**
+     * Gets the ellisse.
+     *
+     * @return the ellisse
      */
     public List<Ellipse> getEllisse() {
         return ellispses;
@@ -107,65 +93,32 @@ public class Clump {
         return id;
     }
 
+    /**
+     * Gets the map.
+     *
+     * @return the map
+     */
     public Map getMap() {
         return map;
     }
 
-    public double getMassa() {
-        int D = 10;
-        int S350 = 350;
-        massa = 0.053 * S350 * (D ^ 2) * (Math.exp(41.14 / temperatura) - 1);
-        return massa;
-    }
-
-    /**
-     * Gets the posizione.
-     *
-     * @return the posizione
-     */
-    public Posizione getPosizione() {
-        return posizione;
-    }
-
-    public double getRapportoMassaTemperatura() {
-        return rapportoMassaTemperatura;
-    }
-
-    /**
-     * Gets the temperatura.
-     *
-     * @return the temperatura
-     */
-    public double getTemperatura() {
-        return temperatura;
-    }
-
-    /**
-     * Sets the tipo clump.
-     *
-     * @param clumpType the new tipo clump
-     */
-    public void setClumpType(int clumpType) {
-        this.clumpType = clumpType;
-    }
-
-    /**
-     * Sets the densita.
-     *
-     * @param densita the new densita
-     */
-    public void setDensita(double densita) {
-        this.densita = densita;
-    }
-
-    public void setEllispses(List<Ellipse> ellispses) {
-        this.ellispses = ellispses;
+    public void setClumpDetails(ClumpDetails clumpDetails) {
+        this.clumpDetails = clumpDetails;
     }
 
     /**
      * Sets the ellispses.
      *
      * @param ellispses the new ellispses
+     */
+    public void setEllispses(List<Ellipse> ellispses) {
+        this.ellispses = ellispses;
+    }
+
+    /**
+     * Sets the ellisse.
+     *
+     * @param ellipses the new ellisse
      */
     public void setEllisse(List<Ellipse> ellipses) {
         ellispses = ellipses;
@@ -180,33 +133,13 @@ public class Clump {
         this.id = id;
     }
 
+    /**
+     * Sets the map.
+     *
+     * @param map the new map
+     */
     public void setMap(Map map) {
         this.map = map;
     }
 
-    public void setMassa(double massa) {
-        this.massa = massa;
-    }
-
-    /**
-     * Sets the posizione.
-     *
-     * @param posizione the new posizione
-     */
-    public void setPosizione(Posizione posizione) {
-        this.posizione = posizione;
-    }
-
-    public void setRapportoMassaTemperatura(double rapportoMassaTemperatura) {
-        this.rapportoMassaTemperatura = rapportoMassaTemperatura;
-    }
-
-    /**
-     * Sets the temperatura.
-     *
-     * @param temperatura the new temperatura
-     */
-    public void setTemperatura(double temperatura) {
-        this.temperatura = temperatura;
-    }
 }

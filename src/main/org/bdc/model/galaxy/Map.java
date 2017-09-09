@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: main.org.bdc.model.galaxy
  * Type: Map
- * Last update: 8-set-2017 17.11.33
+ * Last update: 9-set-2017 13.21.41
  * 
  */
 
@@ -23,7 +23,7 @@ import javax.persistence.OneToMany;
  * The Class Map.
  */
 @Entity
-// @IdClass(Map_PK.class)
+// @IdClass(Map_PK.class) // todo PRIMARY KEY (?,?)
 public class Map {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "map")
@@ -36,10 +36,15 @@ public class Map {
     private String           name;
 
     /**
-     * Instantiates a new mappa stellare.
+     * Instantiates a new map.
      */
     public Map() {}
 
+    /**
+     * Instantiates a new map.
+     *
+     * @param name the name
+     */
     public Map(String name) {
         this.name = name;
     }
@@ -54,18 +59,18 @@ public class Map {
     }
 
     /**
-     * Gets the name.
+     * Gets the nome.
      *
-     * @return the name
+     * @return the nome
      */
     public String getNome() {
         return name;
     }
 
     /**
-     * Gets the instruments.
+     * Gets the strumenti.
      *
-     * @return the instruments
+     * @return the strumenti
      */
     public List<Instrument> getStrumenti() {
         return instruments;
@@ -81,18 +86,18 @@ public class Map {
     }
 
     /**
-     * Sets the name.
+     * Sets the nome.
      *
-     * @param name the new name
+     * @param nome the new nome
      */
     public void setNome(String nome) {
         name = nome;
     }
 
     /**
-     * Sets the instruments.
+     * Sets the strumenti.
      *
-     * @param instruments the new instruments
+     * @param strumenti the new strumenti
      */
     public void setStrumenti(List<Instrument> strumenti) {
         instruments = strumenti;

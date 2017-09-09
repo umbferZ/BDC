@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: test
  * Type: Demo
- * Last update: 9-set-2017 11.42.15
+ * Last update: 9-set-2017 15.34.48
  * 
  */
 
@@ -23,7 +23,6 @@ import main.org.bdc.model.galaxy.Satellite;
 import main.org.bdc.model.galaxy.dao.SatelliteDao;
 import main.org.bdc.model.people.UserType;
 import main.org.bdc.model.people.User_Regegistered;
-import main.org.bdc.service.parser.CSVFactory;
 
 /**
  * The Class Demo.
@@ -150,8 +149,8 @@ public class Demo {
                 launcher.provaIstanze();
                 launcher.demoAdmin();
                 try {
-                    CSVFactory.translateFile1("/home/urania/Scrivania/csv/higal.csv");
-                    CSVFactory.translateFile2("/home/urania/Scrivania/csv/higal_additionalinfo.csv");
+                    // CSVFactory.translateFile1("/home/urania/Scrivania/csv/higal.csv");
+                    // CSVFactory.translateFile2("/home/urania/Scrivania/csv/higal_additionalinfo.csv");
                     // CSVFactory.translateFile3("/home/urania/Scrivania/csv/r08.csv");
                     // CSVFactory.translateFile4("/home/urania/Scrivania/csv/mips.csv");
                 } catch (Exception e) {

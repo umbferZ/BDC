@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: main.org.bdc.model.galaxy.pk
  * Type: Map_PK
- * Last update: 8-set-2017 16.15.28
+ * Last update: 9-set-2017 13.40.51
  * 
  */
 
@@ -13,6 +13,10 @@ package main.org.bdc.model.galaxy.pk;
 
 import java.io.Serializable;
 
+/**
+ * The Class Map_PK.
+ */
+@Deprecated
 public class Map_PK implements Serializable {
 
 }

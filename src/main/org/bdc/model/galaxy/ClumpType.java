@@ -6,7 +6,7 @@
  * Project: BdC
  * Package: main.org.bdc.model.galaxy
  * Type: ClumpType
- * Last update: 8-set-2017 16.58.22
+ * Last update: 9-set-2017 12.51.21
  * 
  */
 
@@ -20,6 +20,11 @@ public enum ClumpType {
 
     private int code;
 
+    /**
+     * Instantiates a new clump type.
+     *
+     * @param code the code
+     */
     ClumpType(int code) {
         this.code = code;
     }

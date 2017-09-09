@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: main.org.bdc.model.galaxy
  * Type: Satellite
- * Last update: 8-set-2017 15.55.28
+ * Last update: 9-set-2017 12.51.22
  * 
  */
 
@@ -52,9 +52,9 @@ public class Satellite {
      * Instantiates a new satellite.
      */
     public Satellite() {
-        this.instruments = new ArrayList<>();
-        this.startDate = Calendar.getInstance();
-        this.endDate = Calendar.getInstance();
+        instruments = new ArrayList<>();
+        startDate = Calendar.getInstance();
+        endDate = Calendar.getInstance();
 
     }
 
@@ -62,44 +62,44 @@ public class Satellite {
      * Instantiates a new satellite.
      *
      * @param name the name
-     * @param agency the agency
-     * @param startDate the startDate
-     * @param endDate the endDate
+     * @param agenzia the agenzia
+     * @param startDate the start date
+     * @param endDate the end date
      */
     public Satellite(String name, Agency agenzia, Calendar startDate, Calendar endDate) {
         this();
         this.name = name;
-        this.agency = agenzia;
+        agency = agenzia;
         this.startDate = startDate;
         this.endDate = endDate;
 
     }
 
     /**
-     * Adds the instrument.
+     * Adds the strumento.
      *
-     * @param instrument the instrument
+     * @param strument the strument
      */
     public void addStrumento(Instrument strument) {
-        this.instruments.add(strument);
+        instruments.add(strument);
     }
 
     /**
-     * Gets the agenzie.
+     * Gets the agenzia.
      *
-     * @return the agenzie
+     * @return the agenzia
      */
     public Agency getAgenzia() {
-        return this.agency;
+        return agency;
     }
 
     /**
-     * Gets the endDate.
+     * Gets the end date.
      *
-     * @return the endDate
+     * @return the end date
      */
     public Calendar getEndDate() {
-        return this.endDate;
+        return endDate;
     }
 
     /**
@@ -108,45 +108,45 @@ public class Satellite {
      * @return the name
      */
     public String getName() {
-        return this.name;
+        return name;
     }
 
     /**
-     * Gets the startDate.
+     * Gets the start date.
      *
-     * @return the startDate
+     * @return the start date
      */
     public Calendar getStartDate() {
-        return this.startDate;
+        return startDate;
     }
 
     /**
-     * Sets the agenzie.
+     * Sets the agenzia.
      *
-     * @param agenzie the new agenzie
+     * @param agenzia the new agenzia
      */
     public void setAgenzia(Agency agenzia) {
-        this.agency = agenzia;
+        agency = agenzia;
     }
 
     /**
-     * Sets the endDate.
+     * Sets the end date.
      *
-     * @param endDate the new endDate
+     * @param endDate the new end date
      */
     public void setEndDate(Calendar endDate) {
         this.endDate = endDate;
     }
 
     /**
-     * Sets the endDate.
+     * Sets the end date.
      *
      * @param year the year
      * @param monthOfYear the month of year
      * @param dayOfMonth the day of month
      */
     public void setEndDate(int year, int monthOfYear, int dayOfMonth) {
-        this.endDate.set(year, monthOfYear - 1, dayOfMonth);
+        endDate.set(year, monthOfYear - 1, dayOfMonth);
     }
 
     /**
@@ -159,15 +159,22 @@ public class Satellite {
     }
 
     /**
-     * Sets the startDate.
+     * Sets the start date.
      *
-     * @param startDate the new startDate
+     * @param startDate the new start date
      */
     public void setStartDate(Calendar startDate) {
         this.startDate = startDate;
     }
 
+    /**
+     * Sets the start date.
+     *
+     * @param year the year
+     * @param monthOfYear the month of year
+     * @param dayOfMonth the day of month
+     */
     public void setStartDate(int year, int monthOfYear, int dayOfMonth) {
-        this.startDate.set(year, monthOfYear - 1, dayOfMonth);
+        startDate.set(year, monthOfYear - 1, dayOfMonth);
     }
 }

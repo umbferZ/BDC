@@ -48,13 +48,14 @@
 		<mapping class="main.org.bdc.model.galaxy.Satellite" />
         <mapping class="main.org.bdc.model.galaxy.Map" />
 		<mapping class="main.org.bdc.model.galaxy.Clump" />
+		<mapping class="main.org.bdc.model.galaxy.ClumpDetails" />
 		<mapping class="main.org.bdc.model.galaxy.Ellipse" />
 		<mapping class="main.org.bdc.model.galaxy.Flusso" />
 
 
 		<mapping class="main.org.bdc.model.galaxy.Posizione" />
 
-		<mapping class="main.org.bdc.model.galaxy.Sorgente" />
+		<mapping class="main.org.bdc.model.galaxy.Sorgent" />
 
 	</session-factory>
 </hibernate-configuration>

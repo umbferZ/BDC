@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: main.org.bdc.model.galaxy
  * Type: Posizione
- * Last update: 8-set-2017 15.55.28
+ * Last update: 9-set-2017 12.51.21
  * 
  */
 
@@ -28,6 +28,12 @@ public class Posizione {
      */
     public Posizione() {}
 
+    /**
+     * Instantiates a new posizione.
+     *
+     * @param lat the lat
+     * @param lon the lon
+     */
     public Posizione(double lat, double lon) {
         super();
         this.lat = lat;
@@ -40,7 +46,7 @@ public class Posizione {
      * @return the lat
      */
     public double getLat() {
-        return this.lat;
+        return lat;
     }
 
     /**
@@ -49,7 +55,7 @@ public class Posizione {
      * @return the lon
      */
     public double getLon() {
-        return this.lon;
+        return lon;
     }
 
     /**
