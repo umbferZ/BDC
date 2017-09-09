@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: main.org.bdc.service.parser.monitor.producers
  * Type: Producer_File1
- * Last update: 12-mar-2017 16.25.12
+ * Last update: 8-set-2017 17.04.52
  * 
  */
 
@@ -29,12 +29,17 @@ public class Producer_File1 extends Producer<Bean_File1> {
         super(fileName, queue);
     }
 
-    /* (non-Javadoc)
-     * @see main.org.bdc.service.parser.monitor.producers.Producer#columnMappingType()
+    /*
+     * (non-Javadoc)
+     * @see
+     * main.org.bdc.service.parser.monitor.producers.Producer#columnMappingType(
+     * )
      */
     @Override
     protected Class[] columnMappingType() {
-        Class<?>[] types = new Class[] { int.class, double.class, double.class, double.class, double.class, double.class, String.class };
+        Class<?>[] types = new Class[] {
+                int.class, double.class, double.class, double.class, double.class, double.class, int.class
+        };
         return types;
     }
 

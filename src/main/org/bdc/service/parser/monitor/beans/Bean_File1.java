@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: main.org.bdc.service.parser.monitor.beans
  * Type: Bean_File1
- * Last update: 12-mar-2017 16.25.17
+ * Last update: 8-set-2017 16.56.54
  * 
  */
 
@@ -16,9 +16,9 @@ package main.org.bdc.service.parser.monitor.beans;
  */
 public class Bean_File1 extends SimpleBean {
 
-    private int clumpId;
+    private int    clumpId;
 
-    private String clumpType;
+    private int    clumpType;
 
     private double density;
 
@@ -41,7 +41,7 @@ public class Bean_File1 extends SimpleBean {
      * @param density the density
      * @param clumpType the clump type
      */
-    public Bean_File1(int clumpId, double longitude, double latitude, double temp, double ratioTempMass, double density, String clumpType) {
+    public Bean_File1(int clumpId, double longitude, double latitude, double temp, double ratioTempMass, double density, int clumpType) {
         super();
         this.clumpId = clumpId;
         this.longitude = longitude;
@@ -66,7 +66,7 @@ public class Bean_File1 extends SimpleBean {
      *
      * @return the clump type
      */
-    public String getClumpType() {
+    public int getClumpType() {
         return clumpType;
     }
 
@@ -129,7 +129,7 @@ public class Bean_File1 extends SimpleBean {
      *
      * @param clumpType the new clump type
      */
-    public void setClumpType(String clumpType) {
+    public void setClumpType(int clumpType) {
         this.clumpType = clumpType;
     }
 

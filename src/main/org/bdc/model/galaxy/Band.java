@@ -1,53 +1,60 @@
 /*
- *
+ * 
  * Created by Umberto Ferracci from urania's PC
  * email: umberto.ferracci@gmail.com
  * Project: BdC
- * Package: main.org.bdc.model.entity.satelliti
- * Type: Banda
- * Last update: 12-mar-2017 16.11.09
- *
+ * Package: main.org.bdc.model.galaxy
+ * Type: Band
+ * Last update: 9-set-2017 11.40.22
+ * 
  */
 
-package main.org.bdc.model.entity.satelliti;
+package main.org.bdc.model.galaxy;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.IdClass;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 
-import main.org.bdc.model.entity.satelliti.pk.Banda_PK;
-
-/** * The Class Banda. */
+/** * The Class Band. */
 @Entity
-@IdClass(Banda_PK.class)
-public class Banda {
+public class Band {
 
     @Id
-    private double lunghezzaOnda;
+    @GeneratedValue
+    private int        id;
 
-    @Id
-    private double risoluzione;
-
-    @Id
-    @JoinColumns({ @JoinColumn(name = "strumento_nome", referencedColumnName = "nome"), @JoinColumn(name = "satellite_nome", referencedColumnName = "satellite_nome") })
+    // @JoinColumns({
+    // @JoinColumn(name = "instrument_name", referencedColumnName = "name"),
+    // @JoinColumn(name = "satellite_name", referencedColumnName =
+    // "satellite_name")
+    // })
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Strumento strumento;
+    private Instrument instrument;
+
+    private double     lunghezzaOnda;
+
+    private double     risoluzione;
 
     /** * Instantiates a new banda. */
-    public Banda() {}
+    public Band() {}
 
     /**
      * * Instantiates a new banda. * * @param risoluzione the risoluzione
      * * @param lunghezzaOnda the lunghezza onda
      */
-    public Banda(double risoluzione, double lunghezzaOnda) {
+    public Band(double risoluzione, double lunghezzaOnda) {
         this.risoluzione = risoluzione;
         this.lunghezzaOnda = lunghezzaOnda;
+    }
+
+    public Band(double risoluzione, double lunghezzaOnda, Instrument instrument) {
+        super();
+        this.risoluzione = risoluzione;
+        this.lunghezzaOnda = lunghezzaOnda;
+        this.instrument = instrument;
     }
 
     /** * Gets the lunghezza onda. * * @return the lunghezza onda */
@@ -60,9 +67,9 @@ public class Banda {
         return risoluzione;
     }
 
-    /** * Gets the strumento. * * @return the strumento */
-    public Strumento getStrumento() {
-        return strumento;
+    /** * Gets the instrument. * * @return the instrument */
+    public Instrument getStrument() {
+        return instrument;
     }
 
     /**
@@ -78,8 +85,8 @@ public class Banda {
         this.risoluzione = risoluzione;
     }
 
-    /** * Sets the strumento. * * @param strumento the new strumento */
-    public void setStrumento(Strumento strumento) {
-        this.strumento = strumento;
+    /** * Sets the instrument. * * @param instrument the new instrument */
+    public void setStrument(Instrument instrument) {
+        this.instrument = instrument;
     }
 }

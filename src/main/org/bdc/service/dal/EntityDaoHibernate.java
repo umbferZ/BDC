@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: main.org.bdc.service.dal
  * Type: EntityDaoHibernate
- * Last update: 12-mar-2017 16.24.09
+ * Last update: 8-set-2017 18.07.57
  * 
  */
 
@@ -35,7 +35,7 @@ public abstract class EntityDaoHibernate<T, ID extends Serializable> implements 
 
     private Class<T> persistentClass;
 
-    private Session session;
+    private Session  session;
 
     /**
      * Instantiates a new entity dao hibernate.
@@ -122,10 +122,10 @@ public abstract class EntityDaoHibernate<T, ID extends Serializable> implements 
     public T getById(ID id, boolean lock) {
         T entity;
         Session s = openSession();
-        if (lock)
-            entity = s.get(getPersistentClass(), id);
-        else
-            entity = s.get(getPersistentClass(), id);
+        // if (lock)
+        // entity = s.get(getPersistentClass(), id);
+        // else
+        entity = s.get(getPersistentClass(), id);
         closeSession();
         return entity;
     }

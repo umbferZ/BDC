@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: main.org.bdc.service.parser.monitor.consumers
  * Type: Consumer_File4
- * Last update: 12-mar-2017 16.25.13
+ * Last update: 8-set-2017 15.28.27
  * 
  */
 
@@ -28,8 +28,11 @@ public class Consumer_File4 extends Consumer<Bean_File4> {
         super(queue);
     }
 
-    /* (non-Javadoc)
-     * @see main.org.bdc.service.parser.monitor.consumers.Consumer#inserts(main.org.bdc.service.parser.monitor.beans.SimpleBean)
+    /*
+     * (non-Javadoc)
+     * @see
+     * main.org.bdc.service.parser.monitor.consumers.Consumer#inserts(main.org.
+     * bdc.service.parser.monitor.beans.SimpleBean)
      */
     @Override
     protected void inserts(Bean_File4 bean) {

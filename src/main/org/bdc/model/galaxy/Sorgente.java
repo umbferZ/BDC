@@ -3,13 +3,13 @@
  * Created by Umberto Ferracci from urania's PC
  * email: umberto.ferracci@gmail.com
  * Project: BdC
- * Package: main.org.bdc.model.entity
+ * Package: main.org.bdc.model.galaxy
  * Type: Sorgente
- * Last update: 12-mar-2017 16.20.16
+ * Last update: 8-set-2017 15.55.28
  * 
  */
 
-package main.org.bdc.model.entity;
+package main.org.bdc.model.galaxy;
 
 import java.util.List;
 
@@ -29,9 +29,9 @@ public class Sorgente {
 
     @Id
     @GeneratedValue
-    private String id;
+    private String       id;
 
-    private double luminosità;
+    private double       luminosità;
 
     /**
      * Instantiates a new sorgente.
@@ -44,7 +44,7 @@ public class Sorgente {
      * @return the flusso
      */
     public List<Flusso> getFlussi() {
-        return flussi;
+        return this.flussi;
     }
 
     /**
@@ -53,7 +53,7 @@ public class Sorgente {
      * @return the id
      */
     public String getId() {
-        return id;
+        return this.id;
     }
 
     /**
@@ -62,7 +62,7 @@ public class Sorgente {
      * @return the luminosità
      */
     public double getLuminosità() {
-        return luminosità;
+        return this.luminosità;
     }
 
     /**

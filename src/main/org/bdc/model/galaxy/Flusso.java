@@ -1,22 +1,19 @@
 /*
- *
+ * 
  * Created by Umberto Ferracci from urania's PC
  * email: umberto.ferracci@gmail.com
  * Project: BdC
- * Package: main.org.bdc.model.entity
+ * Package: main.org.bdc.model.galaxy
  * Type: Flusso
- * Last update: 12-mar-2017 16.21.07
- *
+ * Last update: 8-set-2017 17.48.54
+ * 
  */
 
-package main.org.bdc.model.entity;
+package main.org.bdc.model.galaxy;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-
-import main.org.bdc.model.entity.satelliti.Banda;
-import main.org.bdc.model.entity.satelliti.Strumento;
 
 /**
  * The Class Flusso.
@@ -25,27 +22,32 @@ import main.org.bdc.model.entity.satelliti.Strumento;
 public class Flusso {
 
     @ManyToOne
-    public Strumento strumento;
+    public Instrument strumento;
 
     @ManyToOne
-    private Banda banda;
+    private Band      banda;
 
-    private double errore;
+    private double    errore;
 
     @Id
-    private double valore;
+    private double    valore;
 
     /**
      * Instantiates a new flusso.
      */
     public Flusso() {}
 
+    public Flusso(double value, Band band) {
+        valore = value;
+        banda = band;
+    }
+
     /**
      * Gets the banda.
      *
      * @return the banda
      */
-    public Banda getBanda() {
+    public Band getBanda() {
         return banda;
     }
 
@@ -59,11 +61,11 @@ public class Flusso {
     }
 
     /**
-     * Gets the strumento.
+     * Gets the instrument.
      *
-     * @return the strumento
+     * @return the instrument
      */
-    public Strumento getStrumento() {
+    public Instrument getStrumento() {
         return strumento;
     }
 
@@ -81,7 +83,7 @@ public class Flusso {
      *
      * @param banda the new banda
      */
-    public void setBanda(Banda banda) {
+    public void setBanda(Band banda) {
         this.banda = banda;
     }
 
@@ -95,11 +97,11 @@ public class Flusso {
     }
 
     /**
-     * Sets the strumento.
+     * Sets the instrument.
      *
-     * @param strumento the new strumento
+     * @param instrument the new instrument
      */
-    public void setStrumento(Strumento strumento) {
+    public void setStrumento(Instrument strumento) {
         this.strumento = strumento;
     }
 

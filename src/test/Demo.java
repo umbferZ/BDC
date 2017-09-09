@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: test
  * Type: Demo
- * Last update: 10-ago-2017 17.18.49
+ * Last update: 9-set-2017 11.42.15
  * 
  */
 
@@ -15,12 +15,12 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Calendar;
 
-import main.org.bdc.controls.gestisciSatellite.BeanInserisciSatellite;
-import main.org.bdc.controls.gestisciSatellite.C_UC_GestisciSatellite;
 import main.org.bdc.model.DaoFactory;
-import main.org.bdc.model.entity.satelliti.Banda;
-import main.org.bdc.model.entity.satelliti.Satellite;
-import main.org.bdc.model.entity.satelliti.Strumento;
+import main.org.bdc.model.galaxy.Agency;
+import main.org.bdc.model.galaxy.Band;
+import main.org.bdc.model.galaxy.Instrument;
+import main.org.bdc.model.galaxy.Satellite;
+import main.org.bdc.model.galaxy.dao.SatelliteDao;
 import main.org.bdc.model.people.UserType;
 import main.org.bdc.model.people.User_Regegistered;
 import main.org.bdc.service.parser.CSVFactory;
@@ -42,7 +42,7 @@ public class Demo {
     /**
      * Creates the admin.
      */
-    public void createAdmin() {
+    public void demoAdmin() {
         User_Regegistered admin = new User_Regegistered();
         admin.setFirstName("amministratore");
         admin.setLastName("amministratore");
@@ -54,39 +54,51 @@ public class Demo {
     }
 
     /**
-     * Prova controller.
+     * Insert satelliti.
      */
-    public void provaController() {
-        BeanInserisciSatellite bi = new BeanInserisciSatellite();
-        bi.setAgenziaSatellite("ESA");
-        bi.setNomeSatellite("Hersel");
-        bi.setStartDate(2009, 07, 10);
-        bi.setEndDate(2013, 06, 17);
-        C_UC_GestisciSatellite controller = new C_UC_GestisciSatellite();
-        controller.inserisciSatellite(bi);
-    }
+    public void demoSatelliti() {
+        Calendar startDate = Calendar.getInstance();
+        startDate.set(2009, 07 - 1, 10);
 
-    /**
-     * Prova dao.
-     */
-    public void provaDao() {
+        Satellite herschel = new Satellite();
+        herschel.setName("Herschel");
+        herschel.setAgenzia(new Agency("esa"));
+        herschel.setStartDate(2009, 07, 10);
+        herschel.setEndDate(2013, 06, 17);
 
-        Satellite satellite = new Satellite("ESA", "Hersel", Calendar.getInstance(), Calendar.getInstance());
+        Instrument pacs = new Instrument("PACS", herschel);
+        pacs.addBandaOperativa(new Band(70., 5.2, pacs));
+        pacs.addBandaOperativa(new Band(160., 12., pacs));
 
-        Strumento strumento = new Strumento("PACS", satellite);
+        Instrument spire = new Instrument("SPIRE", herschel);
+        spire.addBandaOperativa(new Band(250., 18., spire));
+        spire.addBandaOperativa(new Band(350., 24., spire));
+        spire.addBandaOperativa(new Band(500., 35., spire));
 
-        Banda b1 = new Banda(0.58, 52.0);
-        Banda b2 = new Banda(0.47, 52.);
+        Satellite spitzer = new Satellite();
+        spitzer.setName("Spitzer");
+        spitzer.setAgenzia(new Agency("NASA"));
+        spitzer.setStartDate(2003, 12, 18);
+        spitzer.setEndDate(2009, 05, 15);
 
-        strumento.addBandaOperativa(b1);
-        strumento.addBandaOperativa(b2);
+        Instrument irac = new Instrument("IRAC", spitzer);
+        irac.addBandaOperativa(new Band(3.6, 1.7, irac));
+        irac.addBandaOperativa(new Band(4.5, 1.8, irac));
+        irac.addBandaOperativa(new Band(5.8, 1.9, irac));
+        irac.addBandaOperativa(new Band(8.0, 2.0, irac));
 
-        b1.setStrumento(strumento);
-        b2.setStrumento(strumento);
+        Instrument mips = new Instrument("MIPS", spitzer);
+        mips.addBandaOperativa(new Band(24.0, 6.0, mips));
 
-        satellite.addStrumento(strumento);
+        herschel.addStrumento(pacs);
+        herschel.addStrumento(spire);
+        spitzer.addStrumento(irac);
+        spitzer.addStrumento(mips);
 
-        DaoFactory.getInstance().getSatelliteDao().insert(satellite);
+        SatelliteDao satelliteDao = DaoFactory.getInstance().getSatelliteDao();
+        satelliteDao.insert(herschel);
+        satelliteDao.insert(spitzer);
+
     }
 
     /**
@@ -94,7 +106,7 @@ public class Demo {
      */
     public void provaIstanze() {
         try {
-            Class<?> classe = Class.forName("main.org.bdc.model.entity.Posizione");
+            Class<?> classe = Class.forName("main.org.bdc.model.galaxy.Posizione");
 
             Class<?>[] parameterTypes = {
                     double.class, double.class
@@ -125,31 +137,6 @@ public class Demo {
         }
     }
 
-    /**
-     * Prova queue producer consumer.
-     *
-     * @param file the file
-     * @throws Exception the exception
-     */
-    public void provaQueueProducerConsumer(int file) throws Exception {
-        switch (file) {
-            case 1:
-                CSVFactory.translateFile1("/home/urania/Scrivania/csv/higal.csv");
-                break;
-            case 2:
-                CSVFactory.translateFile2("/home/urania/Scrivania/csv/higal_additionalinfo.csv");
-                break;
-            case 3:
-                CSVFactory.translateFile3("/home/urania/Scrivania/csv/r08.csv");
-                break;
-            case 4:
-                CSVFactory.translateFile4("/home/urania/Scrivania/csv/mips.csv");
-                break;
-            default:
-                throw new Exception();
-        }
-    }
-
     public void start() throws InterruptedException {
         Thread t = new Thread(new Runnable() {
 
@@ -159,16 +146,17 @@ public class Demo {
             @Override
             public void run() {
                 Demo launcher = new Demo();
-                launcher.provaController();
+                launcher.demoSatelliti();
                 launcher.provaIstanze();
-                launcher.provaDao();
-                launcher.createAdmin();
-                for (int i = 1; i <= 4; i++)
-                    try {
-                        launcher.provaQueueProducerConsumer(i);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+                launcher.demoAdmin();
+                try {
+                    CSVFactory.translateFile1("/home/urania/Scrivania/csv/higal.csv");
+                    CSVFactory.translateFile2("/home/urania/Scrivania/csv/higal_additionalinfo.csv");
+                    // CSVFactory.translateFile3("/home/urania/Scrivania/csv/r08.csv");
+                    // CSVFactory.translateFile4("/home/urania/Scrivania/csv/mips.csv");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
         t.start();

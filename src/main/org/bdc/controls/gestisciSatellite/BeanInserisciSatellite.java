@@ -5,12 +5,13 @@
  * Project: BdC
  * Package: main.org.bdc.controls.gestisciSatellite
  * Type: BeanInserisciSatellite
- * Last update: 10-ago-2017 16.44.14
+ * Last update: 8-set-2017 11.46.44
  * 
  */
 
 package main.org.bdc.controls.gestisciSatellite;
 
+@Deprecated
 public class BeanInserisciSatellite {
 
     private String nomeSatellite, agenziaSatellite;

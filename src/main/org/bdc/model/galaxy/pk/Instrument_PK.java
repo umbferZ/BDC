@@ -3,40 +3,41 @@
  * Created by Umberto Ferracci from urania's PC
  * email: umberto.ferracci@gmail.com
  * Project: BdC
- * Package: main.org.bdc.model.entity.satelliti.pk
- * Type: Strumento_PK
- * Last update: 12-mar-2017 16.10.33
+ * Package: main.org.bdc.model.galaxy.pk
+ * Type: Instrument_PK
+ * Last update: 8-set-2017 16.02.24
  * 
  */
 
-package main.org.bdc.model.entity.satelliti.pk;
+package main.org.bdc.model.galaxy.pk;
 
 import java.io.Serializable;
 
 import javax.persistence.JoinColumn;
 
 /**
- * The Class Strumento_PK.
+ * The Class Instrument_PK.
  */
-public class Strumento_PK implements Serializable {
+@Deprecated
+public class Instrument_PK implements Serializable {
 
-    protected String nome;
+    protected String name;
 
-    @JoinColumn(name = "satellite_nome")
+    @JoinColumn(name = "satellite_name")
     protected String satellite;
 
     /**
-     * Instantiates a new strumento PK.
+     * Instantiates a new instrument PK.
      */
-    public Strumento_PK() {}
+    public Instrument_PK() {}
 
     /**
-     * Gets the nome.
+     * Gets the name.
      *
-     * @return the nome
+     * @return the name
      */
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
     /**
@@ -49,12 +50,12 @@ public class Strumento_PK implements Serializable {
     }
 
     /**
-     * Sets the nome.
+     * Sets the name.
      *
-     * @param nome the new nome
+     * @param name the new name
      */
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setName(String name) {
+        this.name = name;
     }
 
     /**

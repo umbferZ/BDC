@@ -1,36 +1,36 @@
 /*
- *
+ * 
  * Created by Umberto Ferracci from urania's PC
  * email: umberto.ferracci@gmail.com
  * Project: BdC
- * Package: main.org.bdc.model.entity
- * Type: Ellisse
- * Last update: 12-mar-2017 16.21.05
- *
+ * Package: main.org.bdc.model.galaxy
+ * Type: Ellipse
+ * Last update: 8-set-2017 17.56.07
+ * 
  */
 
-package main.org.bdc.model.entity;
+package main.org.bdc.model.galaxy;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
-import main.org.bdc.model.entity.satelliti.Banda;
-
 /**
- * The Class Ellisse.
+ * The Class Ellipse.
  */
 @Entity
-public class Ellisse {
+public class Ellipse {
 
     @OneToOne
-    private Banda banda;
+    private Band   banda;
 
     @OneToOne
-    private Clump clump;
+    private Clump  clump;
 
     @Id
-    private int id;
+    @GeneratedValue
+    private int    id;
 
     private double rotazione;
 
@@ -41,14 +41,23 @@ public class Ellisse {
     /**
      * Instantiates a new ellisse.
      */
-    public Ellisse() {}
+    public Ellipse() {}
+
+    public Ellipse(double xAss, double yAss, double rotazione, Band banda, Clump clump) {
+        super();
+        this.xAss = xAss;
+        this.yAss = yAss;
+        this.rotazione = rotazione;
+        this.banda = banda;
+        this.clump = clump;
+    }
 
     /**
      * Gets the banda.
      *
      * @return the banda
      */
-    public Banda getBanda() {
+    public Band getBanda() {
         return banda;
     }
 
@@ -84,7 +93,7 @@ public class Ellisse {
      *
      * @param banda the new banda
      */
-    public void setBanda(Banda banda) {
+    public void setBanda(Band banda) {
         this.banda = banda;
     }
 

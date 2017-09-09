@@ -3,31 +3,31 @@
  * Created by Umberto Ferracci from urania's PC
  * email: umberto.ferracci@gmail.com
  * Project: BdC
- * Package: main.org.bdc.model.entity.satelliti.pk
- * Type: Banda_PK
+ * Package: main.org.bdc.model.galaxy.satelliti.pk
+ * Type: Band_PK
  * Last update: 12-mar-2017 16.10.44
  * 
  */
 
-package main.org.bdc.model.entity.satelliti.pk;
+package main.org.bdc.model.galaxy.pk;
 
 import java.io.Serializable;
 
 /**
- * The Class Banda_PK.
+ * The Class Band_PK.
  */
-public class Banda_PK implements Serializable {
+public class Band_PK implements Serializable {
 
     protected double lunghezzaOnda;
 
     protected double risoluzione;
 
-    protected Strumento_PK strumento;
+    protected Instrument_PK instrument;
 
     /**
      * Instantiates a new banda PK.
      */
-    public Banda_PK() {}
+    public Band_PK() {}
 
     /**
      * Gets the lunghezza onda.
@@ -48,12 +48,12 @@ public class Banda_PK implements Serializable {
     }
 
     /**
-     * Gets the strumento.
+     * Gets the instrument.
      *
-     * @return the strumento
+     * @return the instrument
      */
-    public Strumento_PK getStrumento() {
-        return strumento;
+    public Instrument_PK getStrument() {
+        return instrument;
     }
 
     /**
@@ -75,11 +75,11 @@ public class Banda_PK implements Serializable {
     }
 
     /**
-     * Sets the strumento.
+     * Sets the instrument.
      *
-     * @param strumento the new strumento
+     * @param instrument the new instrument
      */
-    public void setStrumento(Strumento_PK strumento) {
-        this.strumento = strumento;
+    public void setStrument(Instrument_PK strument) {
+        this.instrument = strument;
     }
 }

@@ -14,7 +14,7 @@ package main.org.bdc.service.parser.old;
 import java.util.ArrayList;
 import java.util.List;
 
-import main.org.bdc.model.entity.ClumpTipo;
+import main.org.bdc.model.galaxy.ClumpType;
 
 /**
  * The Class OLD_ConsumerFile1.
@@ -39,7 +39,7 @@ public class OLD_ConsumerFile1<T> extends OLD_Consumer<T, Integer> {
     @Override
     protected List<Class[]> mapsParameterTypes() {
 
-        Class[] clump = { int.class, double.class, double.class, double.class, ClumpTipo.class };
+        Class[] clump = { int.class, double.class, double.class, double.class, ClumpType.class };
         Class[] posizione = { double.class, double.class };
         List<Class[]> list = new ArrayList<>();
         list.add(clump);

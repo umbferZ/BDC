@@ -1,20 +1,20 @@
 /*
- * 
+ *
  * Created by Umberto Ferracci from urania's PC
  * email: umberto.ferracci@gmail.com
  * Project: BdC
  * Package: main.org.bdc.model
  * Type: DaoFactory
- * Last update: 12-mar-2017 16.23.00
- * 
+ * Last update: 8-set-2017 15.58.17
+ *
  */
 
 package main.org.bdc.model;
 
-import main.org.bdc.model.entity.clump.dao.ClumpDao;
-import main.org.bdc.model.entity.satelliti.dao.BandaDao;
-import main.org.bdc.model.entity.satelliti.dao.SatelliteDao;
-import main.org.bdc.model.entity.satelliti.dao.StrumentoDao;
+import main.org.bdc.model.galaxy.dao.BandaDao;
+import main.org.bdc.model.galaxy.dao.ClumpDao;
+import main.org.bdc.model.galaxy.dao.SatelliteDao;
+import main.org.bdc.model.galaxy.dao.StrumentoDao;
 import main.org.bdc.model.people.dao.UserDao;
 
 /**
@@ -68,9 +68,9 @@ public class DaoFactory {
     }
 
     /**
-     * Gets the strumento dao.
+     * Gets the instrument dao.
      *
-     * @return the strumento dao
+     * @return the instrument dao
      */
     public StrumentoDao getStrumentoDao() {
         return new StrumentoDao();

@@ -41,20 +41,20 @@
 		<property name="hibernate.hbm2ddl.auto">update</property>
 
 		<!-- Mapping Media -->
-		<mapping class="main.org.bdc.model.people.User_Regegistered" />
-		<mapping class="main.org.bdc.model.entity.satelliti.Banda" />
-		<mapping class="main.org.bdc.model.entity.satelliti.Strumento" />
-		<mapping class="main.org.bdc.model.entity.satelliti.Satellite" />
+        <mapping class="main.org.bdc.model.people.User_Regegistered" />
+		<mapping class="main.org.bdc.model.galaxy.Agency" />
+		<mapping class="main.org.bdc.model.galaxy.Band" />
+		<mapping class="main.org.bdc.model.galaxy.Instrument" />
+		<mapping class="main.org.bdc.model.galaxy.Satellite" />
+        <mapping class="main.org.bdc.model.galaxy.Map" />
+		<mapping class="main.org.bdc.model.galaxy.Clump" />
+		<mapping class="main.org.bdc.model.galaxy.Ellipse" />
+		<mapping class="main.org.bdc.model.galaxy.Flusso" />
 
 
-		<!-- <mapping class="main.org.bdc.model.entity.Clump" /> -->
-		<!-- <mapping class="main.org.bdc.model.entity.Ellisse" /> -->
-		<!-- <mapping class="main.org.bdc.model.entity.Flusso" /> -->
-		<!-- <mapping class="main.org.bdc.model.entity.satelliti.MappaStellare" 
-			/> -->
-		<!-- <mapping class="main.org.bdc.model.entity.Posizione" /> -->
+		<mapping class="main.org.bdc.model.galaxy.Posizione" />
 
-		<!-- <mapping class="main.org.bdc.model.entity.Sorgente" /> -->
+		<mapping class="main.org.bdc.model.galaxy.Sorgente" />
 
 	</session-factory>
 </hibernate-configuration>

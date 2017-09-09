@@ -1,21 +1,26 @@
 /*
- *
+ * 
  * Created by Umberto Ferracci from urania's PC
  * email: umberto.ferracci@gmail.com
  * Project: BdC
- * Package: main.org.bdc.model.entity
+ * Package: main.org.bdc.model.galaxy
  * Type: Clump
- * Last update: 12-mar-2017 16.20.59
- *
+ * Last update: 8-set-2017 18.23.00
+ * 
  */
 
-package main.org.bdc.model.entity;
+package main.org.bdc.model.galaxy;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 
 /**
@@ -24,34 +29,52 @@ import javax.persistence.Transient;
 @Entity
 public class Clump {
 
-    private double densita;
+    // @Enumerated(EnumType.ORDINAL)
+    private int           clumpType;
 
-    @OneToOne(mappedBy = "clump")
-    private Ellisse ellisse;
+    private double        densita;
+
+    @ManyToMany(mappedBy = "clump")
+    private List<Ellipse> ellispses;
 
     @Id
-    @GeneratedValue
-    private int id;
+    // @GeneratedValue
+    private int           id;
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Map           map;
 
     // @ManyToMany
-    // private List<MappaStellare> mappeStellari;
+    // private List<Map> mappeStellari;
     @Transient
-    private double massa;
+    private double        massa;
 
     @Embedded
-    private Posizione posizione;
+    private Posizione     posizione;
 
-    private double rapportoMassaTemperatura;
+    private double        rapportoMassaTemperatura;
 
-    private double temperatura;
-
-    // @Enumerated(EnumType.STRING)
-    private String tipoClump;
+    private double        temperatura;
 
     /**
      * Instantiates a new clump.
      */
-    public Clump() {}
+    public Clump() {
+        ellispses = new ArrayList<>();
+    }
+
+    public void addEllipse(Ellipse ellipse) {
+        ellispses.add(ellipse);
+    }
+
+    /**
+     * Gets the tipo clump.
+     *
+     * @return the tipo clump
+     */
+    public int getClumpType() {
+        return clumpType;
+    }
 
     /**
      * Gets the densita.
@@ -62,13 +85,17 @@ public class Clump {
         return densita;
     }
 
+    public List<Ellipse> getEllispses() {
+        return ellispses;
+    }
+
     /**
-     * Gets the ellisse.
+     * Gets the ellispses.
      *
-     * @return the ellisse
+     * @return the ellispses
      */
-    public Ellisse getEllisse() {
-        return ellisse;
+    public List<Ellipse> getEllisse() {
+        return ellispses;
     }
 
     /**
@@ -78,6 +105,10 @@ public class Clump {
      */
     public int getId() {
         return id;
+    }
+
+    public Map getMap() {
+        return map;
     }
 
     public double getMassa() {
@@ -110,12 +141,12 @@ public class Clump {
     }
 
     /**
-     * Gets the tipo clump.
+     * Sets the tipo clump.
      *
-     * @return the tipo clump
+     * @param clumpType the new tipo clump
      */
-    public String getTipoClump() {
-        return tipoClump;
+    public void setClumpType(int clumpType) {
+        this.clumpType = clumpType;
     }
 
     /**
@@ -127,13 +158,17 @@ public class Clump {
         this.densita = densita;
     }
 
+    public void setEllispses(List<Ellipse> ellispses) {
+        this.ellispses = ellispses;
+    }
+
     /**
-     * Sets the ellisse.
+     * Sets the ellispses.
      *
-     * @param ellisse the new ellisse
+     * @param ellispses the new ellispses
      */
-    public void setEllisse(Ellisse ellisse) {
-        this.ellisse = ellisse;
+    public void setEllisse(List<Ellipse> ellipses) {
+        ellispses = ellipses;
     }
 
     /**
@@ -143,6 +178,10 @@ public class Clump {
      */
     public void setId(int id) {
         this.id = id;
+    }
+
+    public void setMap(Map map) {
+        this.map = map;
     }
 
     public void setMassa(double massa) {
@@ -169,14 +208,5 @@ public class Clump {
      */
     public void setTemperatura(double temperatura) {
         this.temperatura = temperatura;
-    }
-
-    /**
-     * Sets the tipo clump.
-     *
-     * @param tipoClump the new tipo clump
-     */
-    public void setTipoClump(String tipoClump) {
-        this.tipoClump = tipoClump;
     }
 }

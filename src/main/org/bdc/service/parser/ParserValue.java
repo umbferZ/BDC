@@ -11,7 +11,7 @@
 
 package main.org.bdc.service.parser;
 
-import main.org.bdc.model.entity.ClumpTipo;
+import main.org.bdc.model.galaxy.ClumpType;
 import main.org.bdc.service.parser.exception.BadParseValueException;
 
 /**
@@ -36,8 +36,8 @@ public class ParserValue {
                 return !s.isEmpty() ? Double.parseDouble(s) : Double.NaN;
             case "float":
                 return !s.isEmpty() ? Double.parseDouble(s) : Float.NaN;
-            case "ClumpTipo":
-                return ClumpTipo.valueOf(s);
+            case "ClumpType":
+                return ClumpType.valueOf(s);
             case "String":
                 return s;
             default:

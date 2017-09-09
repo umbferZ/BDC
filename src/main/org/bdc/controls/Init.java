@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: main.org.bdc.controls
  * Type: Init
- * Last update: 10-ago-2017 17.19.22
+ * Last update: 8-set-2017 11.32.03
  * 
  */
 
@@ -33,7 +33,7 @@ public class Init {
                 try {
                     view = new JFrameInit();
                     view.setVisible(true);
-                    new Demo().start();
+                    new Demo().start(); // todo: remove this line
                     new C_UC_Login();
                     view.setVisible(false);
                 } catch (Exception e) {

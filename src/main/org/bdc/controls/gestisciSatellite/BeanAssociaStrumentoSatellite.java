@@ -5,12 +5,13 @@
  * Project: BdC
  * Package: main.org.bdc.controls.gestisciSatellite
  * Type: BeanAssociaStrumentoSatellite
- * Last update: 11-mar-2017 19.20.51
+ * Last update: 8-set-2017 11.47.21
  * 
  */
 
 package main.org.bdc.controls.gestisciSatellite;
 
+@Deprecated
 public class BeanAssociaStrumentoSatellite {
 
 }

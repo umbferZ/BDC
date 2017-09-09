@@ -100,11 +100,11 @@ public class JFrameInserisciSattellite extends JFrame {
         panel.add(txt_satellite_agenzia_2, "4, 2, fill, default");
         txt_satellite_agenzia_2.setColumns(10);
 
-        JLabel lblAgenzia = new JLabel("Agenzia");
+        JLabel lblAgenzia = new JLabel("Agency");
         panel.add(lblAgenzia, "2, 4, right, default");
 
         txt_satellite_agenzia = new JTextField();
-        txt_satellite_agenzia.setToolTipText("Agenzia che ha partecipato");
+        txt_satellite_agenzia.setToolTipText("Agency che ha partecipato");
         panel.add(txt_satellite_agenzia, "4, 4, fill, default");
         txt_satellite_agenzia.setColumns(10);
 

@@ -48,7 +48,7 @@ public class InserisciSatellite extends JPanel {
         JLabel lblNome = new JLabel("Nome:");
         add(lblNome);
 
-        JLabel lblNewLabel = new JLabel("Agenzia:");
+        JLabel lblNewLabel = new JLabel("Agency:");
         add(lblNewLabel);
 
         JLabel lblInizioMissione = new JLabel("Inizio Missione:");

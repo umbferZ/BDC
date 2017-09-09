@@ -16,7 +16,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import main.org.bdc.model.DaoFactory;
-import main.org.bdc.model.entity.Clump;
+import main.org.bdc.model.galaxy.Clump;
 
 public class C_UC_informazioniClump {
 

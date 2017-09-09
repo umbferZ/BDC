@@ -3,13 +3,13 @@
  * Created by Umberto Ferracci from urania's PC
  * email: umberto.ferracci@gmail.com
  * Project: BdC
- * Package: main.org.bdc.model.entity
+ * Package: main.org.bdc.model.galaxy
  * Type: Posizione
- * Last update: 12-mar-2017 16.21.10
+ * Last update: 8-set-2017 15.55.28
  * 
  */
 
-package main.org.bdc.model.entity;
+package main.org.bdc.model.galaxy;
 
 import javax.persistence.Embeddable;
 
@@ -40,7 +40,7 @@ public class Posizione {
      * @return the lat
      */
     public double getLat() {
-        return lat;
+        return this.lat;
     }
 
     /**
@@ -49,7 +49,7 @@ public class Posizione {
      * @return the lon
      */
     public double getLon() {
-        return lon;
+        return this.lon;
     }
 
     /**

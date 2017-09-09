@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: main.org.bdc.controls.gestisciSatellite
  * Type: C_UC_GestisciSatellite
- * Last update: 11-mar-2017 19.20.51
+ * Last update: 8-set-2017 16.48.59
  * 
  */
 
@@ -15,9 +15,10 @@ import java.util.Calendar;
 import java.util.List;
 
 import main.org.bdc.model.DaoFactory;
-import main.org.bdc.model.entity.satelliti.Banda;
-import main.org.bdc.model.entity.satelliti.Satellite;
-import main.org.bdc.model.entity.satelliti.Strumento;
+import main.org.bdc.model.galaxy.Agency;
+import main.org.bdc.model.galaxy.Band;
+import main.org.bdc.model.galaxy.Instrument;
+import main.org.bdc.model.galaxy.Satellite;
 
 public class C_UC_GestisciSatellite {
 
@@ -39,20 +40,20 @@ public class C_UC_GestisciSatellite {
             endDate.set(bean.getEndYear(), bean.getEndMonth() - 1, bean.getEndDay());
         }
         Satellite satellite = new Satellite();
-        satellite.setAgenzie(bean.getAgenziaSatellite());
-        satellite.setNome(bean.getNomeSatellite());
-        satellite.setInizio(startDate);
-        satellite.setFine(endDate);
+        satellite.setAgenzia(new Agency(bean.getAgenziaSatellite()));
+        satellite.setName(bean.getNomeSatellite());
+        satellite.setStartDate(startDate);
+        satellite.setEndDate(endDate);
         DaoFactory.getInstance().getSatelliteDao().insert(satellite);
         // TODO throw new Exception();
     }
 
     public void inserisciStrumento(BeanInserisciStrumento bs, List<BeanInserisciBanda> bb) {
 
-        Strumento strumento = new Strumento(bs.getNomeStrumento());
+        Instrument instrument = new Instrument(bs.getNomeStrumento());
         for (BeanInserisciBanda b : bb)
-            strumento.addBandaOperativa(new Banda(b.getRisoluzione(), b.getLunghezzaOnda()));
-        DaoFactory.getInstance().getStrumentoDao().insert(strumento);
+            instrument.addBandaOperativa(new Band(b.getRisoluzione(), b.getLunghezzaOnda()));
+        DaoFactory.getInstance().getStrumentoDao().insert(instrument);
 
     }
 }
