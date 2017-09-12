@@ -3,42 +3,47 @@
  * Created by Umberto Ferracci from urania's PC
  * email: umberto.ferracci@gmail.com
  * Project: BdC
- * Package: main.org.bdc.model.galaxy
+ * Package: main.org.bdc.model.instruments
  * Type: Instrument
- * Last update: 9-set-2017 12.51.21
+ * Last update: 11-set-2017 19.55.40
  * 
  */
 
-package main.org.bdc.model.galaxy;
+package main.org.bdc.model.instruments;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import main.org.bdc.model.galaxy.Map;
+import main.org.bdc.model.galaxy.Satellite;
 
 /**
  * The Class Instrument.
  */
 @Entity
-
 public class Instrument {
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "instrument")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "instrument")
     private List<Band> bands;
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int        id;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Map        map;
 
+    @Column(unique = true)
     private String     name;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -81,6 +86,18 @@ public class Instrument {
 
     }
 
+    public List<Band> getBands() {
+        return bands;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public Map getMap() {
+        return map;
+    }
+
     /**
      * Gets the name.
      *
@@ -97,6 +114,18 @@ public class Instrument {
      */
     public Satellite getSatellite() {
         return satellite;
+    }
+
+    public void setBands(List<Band> bands) {
+        this.bands = bands;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setMap(Map map) {
+        this.map = map;
     }
 
     /**

@@ -1,20 +1,23 @@
 /*
- *
+ * 
  * Created by Umberto Ferracci from urania's PC
  * email: umberto.ferracci@gmail.com
  * Project: BdC
  * Package: main.org.bdc.model
  * Type: DaoFactory
- * Last update: 8-set-2017 15.58.17
- *
+ * Last update: 11-set-2017 12.53.51
+ * 
  */
 
 package main.org.bdc.model;
 
-import main.org.bdc.model.galaxy.dao.BandaDao;
 import main.org.bdc.model.galaxy.dao.ClumpDao;
+import main.org.bdc.model.galaxy.dao.EllipseDao;
+import main.org.bdc.model.galaxy.dao.FlowDao;
 import main.org.bdc.model.galaxy.dao.SatelliteDao;
-import main.org.bdc.model.galaxy.dao.StrumentoDao;
+import main.org.bdc.model.galaxy.dao.SourceDao;
+import main.org.bdc.model.instruments.dao.BandaDao;
+import main.org.bdc.model.instruments.dao.InstrumentDao;
 import main.org.bdc.model.people.dao.UserDao;
 
 /**
@@ -41,11 +44,11 @@ public class DaoFactory {
     private DaoFactory() {}
 
     /**
-     * Gets the banda dao.
+     * Gets the band dao.
      *
-     * @return the banda dao
+     * @return the band dao
      */
-    public BandaDao getBandaDao() {
+    public BandaDao getBandDao() {
         return new BandaDao();
     }
 
@@ -59,6 +62,33 @@ public class DaoFactory {
     }
 
     /**
+     * Gets the ellipse dao.
+     *
+     * @return the ellipse dao
+     */
+    public EllipseDao getEllipseDao() {
+        return new EllipseDao();
+    }
+
+    /**
+     * Gets the flow dao.
+     *
+     * @return the flow dao
+     */
+    public FlowDao getFlowDao() {
+        return new FlowDao();
+    }
+
+    /**
+     * Gets the instrument dao.
+     *
+     * @return the instrument dao
+     */
+    public InstrumentDao getInstrumentDao() {
+        return new InstrumentDao();
+    }
+
+    /**
      * Gets the satellite dao.
      *
      * @return the satellite dao
@@ -68,18 +98,18 @@ public class DaoFactory {
     }
 
     /**
-     * Gets the instrument dao.
+     * Gets the source dao.
      *
-     * @return the instrument dao
+     * @return the source dao
      */
-    public StrumentoDao getStrumentoDao() {
-        return new StrumentoDao();
+    public SourceDao getSourceDao() {
+        return new SourceDao();
     }
 
     /**
-     * Gets the utente dao.
+     * Gets the user dao.
      *
-     * @return the utente dao
+     * @return the user dao
      */
     public UserDao getUserDao() {
         return new UserDao();

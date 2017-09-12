@@ -13,16 +13,16 @@ package main.org.bdc.controls.gestisciSatellite;
 
 import java.awt.EventQueue;
 
-import main.org.bdc.model.people.User_Regegistered;
+import main.org.bdc.model.people.UserRegegistered;
 import main.org.bdc.view.JFrameMain;
 
 public class C_UC_Main {
 
-    private User_Regegistered     user;
+    private UserRegegistered     user;
 
     private JFrameMain view;
 
-    public C_UC_Main(User_Regegistered user) {
+    public C_UC_Main(UserRegegistered user) {
         this.user = user;
         EventQueue.invokeLater(new Runnable() {
 

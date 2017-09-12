@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: main.org.bdc.model.galaxy
  * Type: Clump
- * Last update: 9-set-2017 13.39.03
+ * Last update: 11-set-2017 23.37.48
  * 
  */
 
@@ -31,8 +31,11 @@ public class Clump {
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "clump")
     private ClumpDetails  clumpDetails;
 
-    @OneToMany(mappedBy = "clump")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "clump")
     private List<Ellipse> ellispses;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Flow>    flows;
 
     @Id
     private int           id;
@@ -45,10 +48,11 @@ public class Clump {
      */
     public Clump() {
         ellispses = new ArrayList<>();
+        flows = new ArrayList<>();
     }
 
     public Clump(Map map, ClumpDetails clumpDetails) {
-        super();
+        this();
         this.map = map;
         this.clumpDetails = clumpDetails;
     }
@@ -60,6 +64,10 @@ public class Clump {
      */
     public void addEllipse(Ellipse ellipse) {
         ellispses.add(ellipse);
+    }
+
+    public void addFlow(Flow flow) {
+        flows.add(flow);
     }
 
     public ClumpDetails getClumpDetails() {
@@ -107,21 +115,21 @@ public class Clump {
     }
 
     /**
+     * Sets the ellisse.
+     *
+     * @param ellipses the new ellisse
+     */
+    public void setEllipse(List<Ellipse> ellipses) {
+        ellispses = ellipses;
+    }
+
+    /**
      * Sets the ellispses.
      *
      * @param ellispses the new ellispses
      */
     public void setEllispses(List<Ellipse> ellispses) {
         this.ellispses = ellispses;
-    }
-
-    /**
-     * Sets the ellisse.
-     *
-     * @param ellipses the new ellisse
-     */
-    public void setEllisse(List<Ellipse> ellipses) {
-        ellispses = ellipses;
     }
 
     /**

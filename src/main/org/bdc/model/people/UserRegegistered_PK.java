@@ -4,7 +4,7 @@
  * email: umberto.ferracci@gmail.com
  * Project: BdC
  * Package: main.org.bdc.model.people
- * Type: User_Regegistered_PK
+ * Type: UserRegegistered_PK
  * Last update: 12-mar-2017 16.23.01
  * 
  */
@@ -14,9 +14,9 @@ package main.org.bdc.model.people;
 import java.io.Serializable;
 
 /**
- * The Class User_Regegistered_PK.
+ * The Class UserRegegistered_PK.
  */
-public class User_Regegistered_PK implements Serializable {
+public class UserRegegistered_PK implements Serializable {
 
     private String email;
 
@@ -25,7 +25,7 @@ public class User_Regegistered_PK implements Serializable {
     /**
      * Instantiates a new utente PK.
      */
-    public User_Regegistered_PK() {
+    public UserRegegistered_PK() {
         super();
     }
 

@@ -6,7 +6,7 @@
  * Project: BdC
  * Package: main.org.bdc.model.galaxy
  * Type: Agency
- * Last update: 9-set-2017 12.51.21
+ * Last update: 10-set-2017 17.30.46
  * 
  */
 
@@ -47,7 +47,7 @@ public class Agency {
      * @return the name
      */
     public String getName() {
-        return name;
+        return this.name;
     }
 
     /**

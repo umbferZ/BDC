@@ -21,7 +21,7 @@ import javax.swing.JTextField;
 
 import main.org.bdc.controls.gestisciSatellite.C_UC_Main;
 import main.org.bdc.model.DaoFactory;
-import main.org.bdc.model.people.User_Regegistered;
+import main.org.bdc.model.people.UserRegegistered;
 import main.org.bdc.view.JFrameLogin;
 
 public class C_UC_Login {
@@ -54,7 +54,7 @@ public class C_UC_Login {
         return validateUserId() && validatePassword();
     }
 
-    private User_Regegistered login(String user_id, String password) throws LoginException {
+    private UserRegegistered login(String user_id, String password) throws LoginException {
         return DaoFactory.getInstance().getUserDao().login(user_id, password);
     }
 

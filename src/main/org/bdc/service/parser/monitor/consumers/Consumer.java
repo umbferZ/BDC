@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: main.org.bdc.service.parser.monitor.consumers
  * Type: Consumer
- * Last update: 12-mar-2017 16.25.12
+ * Last update: 10-set-2017 16.35.07
  * 
  */
 
@@ -41,28 +41,38 @@ public abstract class Consumer<SB extends SimpleBean> implements Runnable {
         return queue;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.lang.Runnable#run()
      */
     @Override
     public void run() {
         SB bean = null;
         int a = 0;
+        long time = 0;
+        int rows = 0;
         try {
+
             while (true) {
                 if (queue.isFinished())
                     if (queue.isEmpty())
                         return;
                 if (!queue.isEmpty()) {
                     bean = queue.take();
+                    long start = System.currentTimeMillis();
                     inserts(bean);
+                    time += System.currentTimeMillis() - start;
+                    rows++;
                 }
 
             }
+
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
             System.out.println(String.format("Consumer sets finish"));
+            if (rows > 0)
+                System.out.println(String.format("Avarage time for dequeue and insert is %d ms", time / rows));
             queue.setFinished(true);
         }
     }

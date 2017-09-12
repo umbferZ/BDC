@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: main.org.bdc.service.parser.monitor
  * Type: QueueProducerConsumer
- * Last update: 12-mar-2017 16.25.12
+ * Last update: 10-set-2017 16.39.46
  * 
  */
 
@@ -22,9 +22,9 @@ import main.org.bdc.service.parser.monitor.beans.SimpleBean;
  */
 public class QueueProducerConsumer<SB extends SimpleBean> extends ArrayBlockingQueue<SB> {
 
-    private static int capacity = 25;
+    private static int capacity = 10;
 
-    private boolean finished;
+    private boolean    finished;
 
     /**
      * Instantiates a new queue producer consumer.

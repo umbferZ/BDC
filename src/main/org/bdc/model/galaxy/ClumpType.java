@@ -6,7 +6,7 @@
  * Project: BdC
  * Package: main.org.bdc.model.galaxy
  * Type: ClumpType
- * Last update: 9-set-2017 12.51.21
+ * Last update: 10-set-2017 17.30.46
  * 
  */
 

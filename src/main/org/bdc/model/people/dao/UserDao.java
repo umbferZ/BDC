@@ -16,13 +16,13 @@ import java.util.List;
 import javax.persistence.TypedQuery;
 import javax.security.auth.login.LoginException;
 
-import main.org.bdc.model.people.User_Regegistered;
+import main.org.bdc.model.people.UserRegegistered;
 import main.org.bdc.service.dal.EntityDaoHibernate;
 
 /**
  * The Class UserDao.
  */
-public class UserDao extends EntityDaoHibernate<User_Regegistered, Integer> {
+public class UserDao extends EntityDaoHibernate<UserRegegistered, Integer> {
 
     /**
      * Login.
@@ -33,12 +33,12 @@ public class UserDao extends EntityDaoHibernate<User_Regegistered, Integer> {
      * @throws LoginException the login exception
      */
     @SuppressWarnings("unchecked")
-    public User_Regegistered login(String userId, String password) throws LoginException {
-        String sql = "FROM User_Regegistered WHERE userId=:userId AND password=:password";
-        TypedQuery<User_Regegistered> query = getSession().createQuery(sql);
+    public UserRegegistered login(String userId, String password) throws LoginException {
+        String sql = "FROM UserRegegistered WHERE userId=:userId AND password=:password";
+        TypedQuery<UserRegegistered> query = getSession().createQuery(sql);
         query.setParameter("userId", userId);
         query.setParameter("password", password);
-        List<User_Regegistered> utenti = query.getResultList();
+        List<UserRegegistered> utenti = query.getResultList();
         closeSession();
         if (utenti.size() == 1)
             return utenti.get(0);

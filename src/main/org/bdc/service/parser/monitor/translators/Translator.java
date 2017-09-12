@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: main.org.bdc.service.parser.monitor.translators
  * Type: Translator
- * Last update: 12-mar-2017 16.25.13
+ * Last update: 10-set-2017 16.42.26
  * 
  */
 
@@ -25,7 +25,7 @@ import main.org.bdc.service.parser.monitor.producers.Producer;
  */
 public abstract class Translator<SB extends SimpleBean> {
 
-    private String fileName;
+    private String                    fileName;
 
     private QueueProducerConsumer<SB> queue;
 
@@ -76,7 +76,7 @@ public abstract class Translator<SB extends SimpleBean> {
         } catch (InterruptedException e) {
             throw new FailedInsertException();
         }
-        System.out.println(String.format("Operazione eseguita in %d msec", System.currentTimeMillis() - startTime));
+        System.out.println(String.format("Operazione eseguita in %d m", System.currentTimeMillis() - startTime));
 
     }
 

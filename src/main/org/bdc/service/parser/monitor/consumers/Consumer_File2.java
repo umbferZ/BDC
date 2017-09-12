@@ -5,17 +5,20 @@
  * Project: BdC
  * Package: main.org.bdc.service.parser.monitor.consumers
  * Type: Consumer_File2
- * Last update: 9-set-2017 11.43.06
+ * Last update: 11-set-2017 23.53.54
  * 
  */
 
 package main.org.bdc.service.parser.monitor.consumers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import main.org.bdc.model.DaoFactory;
-import main.org.bdc.model.galaxy.Band;
 import main.org.bdc.model.galaxy.Clump;
 import main.org.bdc.model.galaxy.Ellipse;
-import main.org.bdc.model.galaxy.Flusso;
+import main.org.bdc.model.galaxy.Map;
+import main.org.bdc.model.instruments.Band;
 import main.org.bdc.service.parser.monitor.QueueProducerConsumer;
 import main.org.bdc.service.parser.monitor.beans.Bean_File2;
 
@@ -23,6 +26,8 @@ import main.org.bdc.service.parser.monitor.beans.Bean_File2;
  * The Class Consumer_File2.
  */
 public class Consumer_File2 extends Consumer<Bean_File2> {
+
+    Band       b_70, b_160, b_250, b_350, b_500;
 
     DaoFactory dao;
 
@@ -34,6 +39,15 @@ public class Consumer_File2 extends Consumer<Bean_File2> {
     public Consumer_File2(QueueProducerConsumer<Bean_File2> queue) {
         super(queue);
         dao = DaoFactory.getInstance();
+        try {
+            b_70 = dao.getBandDao().getByBand(70);
+            b_160 = dao.getBandDao().getByBand(160);
+            b_250 = dao.getBandDao().getByBand(250);
+            b_350 = dao.getBandDao().getByBand(350);
+            b_500 = dao.getBandDao().getByBand(500);
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
     }
 
     /*
@@ -44,31 +58,31 @@ public class Consumer_File2 extends Consumer<Bean_File2> {
      */
     @Override
     protected void inserts(Bean_File2 bean) {
+        Clump clump;
         try {
 
-            Clump clump = dao.getClumpDao().getByIdOrNew(bean.getClumpId());
+            clump = dao.getClumpDao().getByIdOrNew(bean.getClumpId());
+        } catch (Exception e) {
+            clump = new Clump();
+            clump.setId(bean.getClumpId());
+            clump.setMap(new Map("Higal"));
+        }
 
-            Band u70, u160, u250, u350, u500;
-            Flusso flow70, flow160, flow250, flow350, flow500;
-            Ellipse el70, el160, el250, el350, el500;
-            u70 = dao.getBandaDao().getByBand(70);
-            u160 = dao.getBandaDao().getByBand(160);
-            u250 = dao.getBandaDao().getByBand(250);
-            u350 = dao.getBandaDao().getByBand(350);
-            u500 = dao.getBandaDao().getByBand(500);
-            flow70 = new Flusso(bean.getFlow_70(), u70);
-            flow160 = new Flusso(bean.getFlow_160(), u160);
-            flow250 = new Flusso(bean.getFlow_250(), u250);
-            flow350 = new Flusso(bean.getFlow_350(), u350);
-            flow500 = new Flusso(bean.getFlow_500(), u500);
-            clump.addEllipse(new Ellipse(bean.gethMaxAx_70(), bean.gethMinAx_70(), bean.getAlpha_70(), u70, clump));
-            clump.addEllipse(new Ellipse(bean.gethMaxAx_160(), bean.gethMinAx_160(), bean.getAlpha_160(), u160, clump));
-            clump.addEllipse(new Ellipse(bean.gethMaxAx_250(), bean.gethMinAx_250(), bean.getAlpha_250(), u250, clump));
-            clump.addEllipse(new Ellipse(bean.gethMaxAx_350(), bean.gethMinAx_350(), bean.getAlpha_350(), u350, clump));
-            clump.addEllipse(new Ellipse(bean.gethMaxAx_500(), bean.gethMinAx_500(), bean.getAlpha_500(), u500, clump));
+        List<Ellipse> ellipses = new ArrayList<>();
+        //
+        // clump.addFlow(new Flow(bean.getFlow_70(), b_70));
+        // clump.addFlow(new Flow(bean.getFlow_160(), b_160));
+        // clump.addFlow(new Flow(bean.getFlow_250(), b_250));
+        // clump.addFlow(new Flow(bean.getFlow_350(), b_350));
+        // clump.addFlow(new Flow(bean.getFlow_500(), b_500));
 
-            dao.getClumpDao().insert(clump);
-
+        clump.addEllipse(new Ellipse(bean.gethMaxAx_70(), bean.gethMinAx_70(), bean.getAlpha_70(), b_70, clump));
+        clump.addEllipse(new Ellipse(bean.gethMaxAx_160(), bean.gethMinAx_160(), bean.getAlpha_160(), b_160, clump));
+        clump.addEllipse(new Ellipse(bean.gethMaxAx_250(), bean.gethMinAx_250(), bean.getAlpha_250(), b_250, clump));
+        clump.addEllipse(new Ellipse(bean.gethMaxAx_350(), bean.gethMinAx_350(), bean.getAlpha_350(), b_350, clump));
+        clump.addEllipse(new Ellipse(bean.gethMaxAx_500(), bean.gethMinAx_500(), bean.getAlpha_500(), b_500, clump));
+        try {
+            dao.getClumpDao().saveOrUpdate(clump);
         } catch (Exception e) {
             e.printStackTrace();
         }

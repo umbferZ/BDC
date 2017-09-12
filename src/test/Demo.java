@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: test
  * Type: Demo
- * Last update: 9-set-2017 15.34.48
+ * Last update: 12-set-2017 0.14.15
  * 
  */
 
@@ -17,12 +17,14 @@ import java.util.Calendar;
 
 import main.org.bdc.model.DaoFactory;
 import main.org.bdc.model.galaxy.Agency;
-import main.org.bdc.model.galaxy.Band;
-import main.org.bdc.model.galaxy.Instrument;
+import main.org.bdc.model.galaxy.Map;
 import main.org.bdc.model.galaxy.Satellite;
 import main.org.bdc.model.galaxy.dao.SatelliteDao;
+import main.org.bdc.model.instruments.Band;
+import main.org.bdc.model.instruments.Instrument;
+import main.org.bdc.model.people.UserRegegistered;
 import main.org.bdc.model.people.UserType;
-import main.org.bdc.model.people.User_Regegistered;
+import main.org.bdc.service.parser.CSVFactory;
 
 /**
  * The Class Demo.
@@ -42,14 +44,14 @@ public class Demo {
      * Creates the admin.
      */
     public void demoAdmin() {
-        User_Regegistered admin = new User_Regegistered();
+        UserRegegistered admin = new UserRegegistered();
         admin.setFirstName("amministratore");
         admin.setLastName("amministratore");
         admin.setEmail("admin@email");
         admin.setUserId("amministratore");
         admin.setPassword("amministratore");
         admin.setUserType(UserType.ADMIN);
-        DaoFactory.getInstance().getUserDao().insert(admin);
+        DaoFactory.getInstance().getUserDao().saveOrUpdate(admin);
     }
 
     /**
@@ -58,6 +60,7 @@ public class Demo {
     public void demoSatelliti() {
         Calendar startDate = Calendar.getInstance();
         startDate.set(2009, 07 - 1, 10);
+        Map higal = new Map("Higal"), mips_gal = new Map("MIPS-GAL"), glimpse = new Map("Glimpse");
 
         Satellite herschel = new Satellite();
         herschel.setName("Herschel");
@@ -68,11 +71,13 @@ public class Demo {
         Instrument pacs = new Instrument("PACS", herschel);
         pacs.addBandaOperativa(new Band(70., 5.2, pacs));
         pacs.addBandaOperativa(new Band(160., 12., pacs));
+        pacs.setMap(higal);
 
         Instrument spire = new Instrument("SPIRE", herschel);
         spire.addBandaOperativa(new Band(250., 18., spire));
         spire.addBandaOperativa(new Band(350., 24., spire));
         spire.addBandaOperativa(new Band(500., 35., spire));
+        spire.setMap(higal);
 
         Satellite spitzer = new Satellite();
         spitzer.setName("Spitzer");
@@ -85,9 +90,11 @@ public class Demo {
         irac.addBandaOperativa(new Band(4.5, 1.8, irac));
         irac.addBandaOperativa(new Band(5.8, 1.9, irac));
         irac.addBandaOperativa(new Band(8.0, 2.0, irac));
+        irac.setMap(glimpse);
 
         Instrument mips = new Instrument("MIPS", spitzer);
         mips.addBandaOperativa(new Band(24.0, 6.0, mips));
+        mips.setMap(mips_gal);
 
         herschel.addStrumento(pacs);
         herschel.addStrumento(spire);
@@ -95,8 +102,12 @@ public class Demo {
         spitzer.addStrumento(mips);
 
         SatelliteDao satelliteDao = DaoFactory.getInstance().getSatelliteDao();
-        satelliteDao.insert(herschel);
-        satelliteDao.insert(spitzer);
+        try {
+            satelliteDao.saveOrUpdate(herschel);
+            satelliteDao.saveOrUpdate(spitzer);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
 
     }
 
@@ -105,7 +116,7 @@ public class Demo {
      */
     public void provaIstanze() {
         try {
-            Class<?> classe = Class.forName("main.org.bdc.model.galaxy.Posizione");
+            Class<?> classe = Class.forName("main.org.bdc.model.galaxy.Position");
 
             Class<?>[] parameterTypes = {
                     double.class, double.class
@@ -149,10 +160,11 @@ public class Demo {
                 launcher.provaIstanze();
                 launcher.demoAdmin();
                 try {
-                    // CSVFactory.translateFile1("/home/urania/Scrivania/csv/higal.csv");
+                    CSVFactory.translateFile1("/home/urania/Scrivania/csv/higal.csv");
                     // CSVFactory.translateFile2("/home/urania/Scrivania/csv/higal_additionalinfo.csv");
-                    // CSVFactory.translateFile3("/home/urania/Scrivania/csv/r08.csv");
-                    // CSVFactory.translateFile4("/home/urania/Scrivania/csv/mips.csv");
+                    CSVFactory.translateFile3("/home/urania/Scrivania/csv/r08.csv");
+                    CSVFactory.translateFile4("/home/urania/Scrivania/csv/mips.csv");
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

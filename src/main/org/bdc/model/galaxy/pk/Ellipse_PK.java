@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: main.org.bdc.model.galaxy.pk
  * Type: Ellipse_PK
- * Last update: 9-set-2017 13.36.22
+ * Last update: 11-set-2017 19.39.29
  * 
  */
 
@@ -15,9 +15,9 @@ import java.io.Serializable;
 
 public class Ellipse_PK implements Serializable {
 
-    protected Band_PK band;
+    protected int band;
 
-    protected int     clump;
+    protected int clump;
 
     public Ellipse_PK() {
         super();

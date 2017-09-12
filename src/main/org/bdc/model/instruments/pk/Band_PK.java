@@ -5,22 +5,20 @@
  * Project: BdC
  * Package: main.org.bdc.model.galaxy.pk
  * Type: Band_PK
- * Last update: 9-set-2017 13.37.44
+ * Last update: 10-set-2017 18.11.09
  * 
  */
 
-package main.org.bdc.model.galaxy.pk;
+package main.org.bdc.model.instruments.pk;
 
 import java.io.Serializable;
-
-import javax.persistence.JoinColumn;
 
 /**
  * The Class Band_PK.
  */
 public class Band_PK implements Serializable {
 
-    @JoinColumn(name = "instrument_id")
+    // @JoinColumn(name = "instrument_id")
     protected int    instrument;
 
     protected double resolution;

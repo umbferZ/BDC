@@ -1,19 +1,15 @@
-<?xml version='1.0' encoding='utf-8'?>
-<!DOCTYPE hibernate-configuration PUBLIC
-        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
-        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
-
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+                                         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
-	<session-factory>
+	<session-factory name="">
 		<!-- Database connection settings -->
 		<property name="connection.driver_class">org.postgresql.Driver</property>
 		<property name="connection.url">jdbc:postgresql://localhost:5432/BDC</property>
 		<property name="connection.username">postgres</property>
 		<property name="connection.password">io</property>
-
-		<!-- JDBC connection pool (use the built-in) -->
-		<!-- <property name="connection.pool_size">1</property> -->
-		<!-- <property name="connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property> -->
+		<!-- JDBC connection pool (use the built-in) <property name="connection.pool_size">1</property> 
+			<property name="connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property> -->
 		<property name="hibernate.c3p0.acquire_increment">1</property>
 		<property name="hibernate.c3p0.idle_test_period">60</property>
 		<property name="hibernate.c3p0.min_size">1</property>
@@ -22,43 +18,32 @@
 		<property name="hibernate.c3p0.timeout">0</property>
 		<property name="hibernate.c3p0.acquireRetryAttempts">1</property>
 		<property name="hibernate.c3p0.acquireRetryDelay">250</property>
-
+		<property name="hibernate.generate_statistics">true</property>
 		<!-- SQL dialect -->
 		<property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
-
 		<!-- Enable Hibernate's current session context -->
 		<property name="current_session_context_class">thread</property>
-
 		<!-- Disable the second-level cache -->
 		<property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
-
 		<!-- Echo all executed SQL to stdout -->
-		<property name="hibernate.show_sql">false</property>
-		<property name="hibernate.format_sql">false</property>
+		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.format_sql">true</property>
 		<property name="hibernate.use_sql_comments">false</property>
-
 		<!-- Drop and re-create the database schema on startup -->
 		<property name="hibernate.hbm2ddl.auto">update</property>
-
+		<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
 		<!-- Mapping Media -->
-        <mapping class="main.org.bdc.model.people.User_Regegistered" />
+		<mapping class="main.org.bdc.model.people.UserRegegistered" />
 		<mapping class="main.org.bdc.model.galaxy.Agency" />
-		<mapping class="main.org.bdc.model.galaxy.Band" />
-		<mapping class="main.org.bdc.model.galaxy.Instrument" />
+		<mapping class="main.org.bdc.model.instruments.Band" />
+		<mapping class="main.org.bdc.model.instruments.Instrument" />
 		<mapping class="main.org.bdc.model.galaxy.Satellite" />
-        <mapping class="main.org.bdc.model.galaxy.Map" />
+		<mapping class="main.org.bdc.model.galaxy.Map" />
 		<mapping class="main.org.bdc.model.galaxy.Clump" />
 		<mapping class="main.org.bdc.model.galaxy.ClumpDetails" />
 		<mapping class="main.org.bdc.model.galaxy.Ellipse" />
-		<mapping class="main.org.bdc.model.galaxy.Flusso" />
-
-
-		<mapping class="main.org.bdc.model.galaxy.Posizione" />
-
-		<mapping class="main.org.bdc.model.galaxy.Sorgent" />
-
+		<mapping class="main.org.bdc.model.galaxy.Flow" />
+		<mapping class="main.org.bdc.model.galaxy.Position" />
+		<mapping class="main.org.bdc.model.galaxy.Source" />
 	</session-factory>
 </hibernate-configuration>
-
-
-

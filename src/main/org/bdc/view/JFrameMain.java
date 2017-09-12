@@ -83,7 +83,7 @@ public class JFrameMain extends JFrame {
         });
         mnFile.add(mntmExit);
 
-        mn_utente = new JMenu("User_Regegistered");
+        mn_utente = new JMenu("UserRegegistered");
         menuBar.add(mn_utente);
 
         JMenuItem mntmNuovoUtente = new JMenuItem("Nuovo utente...");

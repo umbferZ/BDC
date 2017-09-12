@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: main.org.bdc.service.dal
  * Type: EntityDaoHibernate
- * Last update: 8-set-2017 18.07.57
+ * Last update: 11-set-2017 23.07.10
  * 
  */
 
@@ -154,7 +154,7 @@ public abstract class EntityDaoHibernate<T, ID extends Serializable> implements 
      * org.umbZfer.services.persistence.dao.EntityDao#insert(java.lang.Object)
      */
     @Override
-    public T insert(T entity) {
+    public T saveOrUpdate(T entity) {
         Session s = openSession();
         Transaction transaction = null;
         try {

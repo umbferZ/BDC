@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: main.org.bdc.model.galaxy
  * Type: Satellite
- * Last update: 9-set-2017 12.51.22
+ * Last update: 10-set-2017 17.30.46
  * 
  */
 
@@ -25,6 +25,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.sun.istack.internal.Nullable;
+
+import main.org.bdc.model.instruments.Instrument;
 
 /**
  * The Class Satellite.
@@ -52,9 +54,9 @@ public class Satellite {
      * Instantiates a new satellite.
      */
     public Satellite() {
-        instruments = new ArrayList<>();
-        startDate = Calendar.getInstance();
-        endDate = Calendar.getInstance();
+        this.instruments = new ArrayList<>();
+        this.startDate = Calendar.getInstance();
+        this.endDate = Calendar.getInstance();
 
     }
 
@@ -69,7 +71,7 @@ public class Satellite {
     public Satellite(String name, Agency agenzia, Calendar startDate, Calendar endDate) {
         this();
         this.name = name;
-        agency = agenzia;
+        this.agency = agenzia;
         this.startDate = startDate;
         this.endDate = endDate;
 
@@ -81,7 +83,7 @@ public class Satellite {
      * @param strument the strument
      */
     public void addStrumento(Instrument strument) {
-        instruments.add(strument);
+        this.instruments.add(strument);
     }
 
     /**
@@ -90,7 +92,7 @@ public class Satellite {
      * @return the agenzia
      */
     public Agency getAgenzia() {
-        return agency;
+        return this.agency;
     }
 
     /**
@@ -99,7 +101,7 @@ public class Satellite {
      * @return the end date
      */
     public Calendar getEndDate() {
-        return endDate;
+        return this.endDate;
     }
 
     /**
@@ -108,7 +110,7 @@ public class Satellite {
      * @return the name
      */
     public String getName() {
-        return name;
+        return this.name;
     }
 
     /**
@@ -117,7 +119,7 @@ public class Satellite {
      * @return the start date
      */
     public Calendar getStartDate() {
-        return startDate;
+        return this.startDate;
     }
 
     /**
@@ -126,7 +128,7 @@ public class Satellite {
      * @param agenzia the new agenzia
      */
     public void setAgenzia(Agency agenzia) {
-        agency = agenzia;
+        this.agency = agenzia;
     }
 
     /**
@@ -146,7 +148,7 @@ public class Satellite {
      * @param dayOfMonth the day of month
      */
     public void setEndDate(int year, int monthOfYear, int dayOfMonth) {
-        endDate.set(year, monthOfYear - 1, dayOfMonth);
+        this.endDate.set(year, monthOfYear - 1, dayOfMonth);
     }
 
     /**
@@ -175,6 +177,6 @@ public class Satellite {
      * @param dayOfMonth the day of month
      */
     public void setStartDate(int year, int monthOfYear, int dayOfMonth) {
-        startDate.set(year, monthOfYear - 1, dayOfMonth);
+        this.startDate.set(year, monthOfYear - 1, dayOfMonth);
     }
 }

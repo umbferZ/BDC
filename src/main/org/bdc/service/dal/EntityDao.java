@@ -62,5 +62,5 @@ public interface EntityDao<T, ID extends Serializable> {
      * @param entity the entity
      * @return the t
      */
-    public T insert(T entity);
+    public T saveOrUpdate(T entity);
 }

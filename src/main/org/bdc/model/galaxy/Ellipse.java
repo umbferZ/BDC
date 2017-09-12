@@ -5,35 +5,42 @@
  * Project: BdC
  * Package: main.org.bdc.model.galaxy
  * Type: Ellipse
- * Last update: 9-set-2017 13.39.09
+ * Last update: 11-set-2017 23.36.06
  * 
  */
 
 package main.org.bdc.model.galaxy;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.IdClass;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
-import main.org.bdc.model.galaxy.pk.Ellipse_PK;
+import main.org.bdc.model.instruments.Band;
 
 /**
  * The Class Ellipse.
  */
 @Entity
 // todo PRIMARY KEY (band, clump)
-@IdClass(Ellipse_PK.class)
+// @IdClass(Ellipse_PK.class)
 public class Ellipse {
 
-    @Id
-    @OneToOne
+    // @Id
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Band   band;
 
-    @Id
-    @ManyToOne
+    // @Id
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Clump  clump;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int    id;
 
     private double rotazione;
 
@@ -55,12 +62,11 @@ public class Ellipse {
      * @param band the band
      * @param clump the clump
      */
-    public Ellipse(double xAss, double yAss, double rotazione, Band banda, Clump clump) {
-        super();
+    public Ellipse(double xAss, double yAss, double rotazione, Band band, Clump clump) {
         this.xAss = xAss;
         this.yAss = yAss;
         this.rotazione = rotazione;
-        band = banda;
+        this.band = band;
         this.clump = clump;
     }
 
@@ -69,9 +75,13 @@ public class Ellipse {
      *
      * @return the band
      */
-    public Band getBanda() {
+    public Band getBand() {
         return band;
     }
+
+    // public Clump getClump() {
+    // return clump;
+    // }
 
     /**
      * Gets the rotazione.
@@ -82,13 +92,21 @@ public class Ellipse {
         return rotazione;
     }
 
+    public double getxAss() {
+        return xAss;
+    }
+
     /**
      * Gets the x ass.
      *
      * @return the x ass
      */
-    public double getxAss() {
+    public double getXAss() {
         return xAss;
+    }
+
+    public double getyAss() {
+        return yAss;
     }
 
     /**
@@ -96,7 +114,7 @@ public class Ellipse {
      *
      * @return the y ass
      */
-    public double getyAss() {
+    public double getYAss() {
         return yAss;
     }
 
@@ -105,9 +123,13 @@ public class Ellipse {
      *
      * @param band the new band
      */
-    public void setBanda(Band banda) {
-        band = banda;
+    public void setBand(Band band) {
+        this.band = band;
     }
+
+    // public void setClump(Clump clump) {
+    // this.clump = clump;
+    // }
 
     /**
      * Sets the rotazione.
@@ -118,13 +140,21 @@ public class Ellipse {
         this.rotazione = rotazione;
     }
 
+    public void setxAss(double xAss) {
+        this.xAss = xAss;
+    }
+
     /**
      * Sets the x ass.
      *
      * @param xAss the new x ass
      */
-    public void setxAss(double xAss) {
+    public void setXAss(double xAss) {
         this.xAss = xAss;
+    }
+
+    public void setyAss(double yAss) {
+        this.yAss = yAss;
     }
 
     /**
@@ -132,7 +162,7 @@ public class Ellipse {
      *
      * @param yAss the new y ass
      */
-    public void setyAss(double yAss) {
+    public void setYAss(double yAss) {
         this.yAss = yAss;
     }
 }

@@ -4,19 +4,16 @@
  * email: umberto.ferracci@gmail.com
  * Project: BdC
  * Package: main.org.bdc.model.galaxy.dao
- * Type: StrumentoDao
- * Last update: 9-set-2017 12.50.58
+ * Type: FlowDao
+ * Last update: 11-set-2017 11.02.16
  * 
  */
 
 package main.org.bdc.model.galaxy.dao;
 
-import main.org.bdc.model.galaxy.Instrument;
+import main.org.bdc.model.galaxy.Flow;
 import main.org.bdc.service.dal.EntityDaoHibernate;
 
-/**
- * The Class StrumentoDao.
- */
-public class StrumentoDao extends EntityDaoHibernate<Instrument, Integer> {
+public class FlowDao extends EntityDaoHibernate<Flow, Integer> {
 
 }

@@ -16,9 +16,9 @@ import java.util.List;
 
 import main.org.bdc.model.DaoFactory;
 import main.org.bdc.model.galaxy.Agency;
-import main.org.bdc.model.galaxy.Band;
-import main.org.bdc.model.galaxy.Instrument;
 import main.org.bdc.model.galaxy.Satellite;
+import main.org.bdc.model.instruments.Band;
+import main.org.bdc.model.instruments.Instrument;
 
 public class C_UC_GestisciSatellite {
 
@@ -44,7 +44,7 @@ public class C_UC_GestisciSatellite {
         satellite.setName(bean.getNomeSatellite());
         satellite.setStartDate(startDate);
         satellite.setEndDate(endDate);
-        DaoFactory.getInstance().getSatelliteDao().insert(satellite);
+        DaoFactory.getInstance().getSatelliteDao().saveOrUpdate(satellite);
         // TODO throw new Exception();
     }
 
@@ -53,7 +53,7 @@ public class C_UC_GestisciSatellite {
         Instrument instrument = new Instrument(bs.getNomeStrumento());
         for (BeanInserisciBanda b : bb)
             instrument.addBandaOperativa(new Band(b.getRisoluzione(), b.getLunghezzaOnda()));
-        DaoFactory.getInstance().getStrumentoDao().insert(instrument);
+        DaoFactory.getInstance().getInstrumentDao().saveOrUpdate(instrument);
 
     }
 }

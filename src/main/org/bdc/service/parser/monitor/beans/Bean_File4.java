@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: main.org.bdc.service.parser.monitor.beans
  * Type: Bean_File4
- * Last update: 12-mar-2017 16.25.12
+ * Last update: 11-set-2017 15.46.01
  * 
  */
 
@@ -24,28 +24,28 @@ public class Bean_File4 extends SimpleBean {
 
     private double longitude;
 
-    private String sorgentId_GLIMPSE;
+    private String sourceId_GLIMPSE;
 
-    private String sorgentId_MIPSGAL;
+    private String sourceId_MIPSGAL;
 
     /**
      * Instantiates a new bean file 4.
      *
-     * @param sorgentId_MIPSGAL the sorgent id MIPSGAL
+     * @param sourceId_MIPSGAL the sorgent id MIPSGAL
      * @param longitude the longitude
      * @param latitude the latitude
      * @param flow_24d0 the flow 24 d 0
      * @param error_24d0 the error 24 d 0
-     * @param sorgentId_GLIMPSE the sorgent id GLIMPSE
+     * @param sourceId_GLIMPSE the sorgent id GLIMPSE
      */
-    public Bean_File4(String sorgentId_MIPSGAL, double longitude, double latitude, double flow_24d0, double error_24d0, String sorgentId_GLIMPSE) {
+    public Bean_File4(String sourceId_MIPSGAL, double longitude, double latitude, double flow_24d0, double error_24d0, String sourcetId_GLIMPSE) {
         super();
-        this.sorgentId_MIPSGAL = sorgentId_MIPSGAL;
+        this.sourceId_MIPSGAL = sourceId_MIPSGAL;
         this.longitude = longitude;
         this.latitude = latitude;
         this.flow_24d0 = flow_24d0;
         this.error_24d0 = error_24d0;
-        this.sorgentId_GLIMPSE = sorgentId_GLIMPSE;
+        sourceId_GLIMPSE = sourcetId_GLIMPSE;
     }
 
     /**
@@ -89,8 +89,8 @@ public class Bean_File4 extends SimpleBean {
      *
      * @return the sorgent id GLIMPSE
      */
-    public String getSorgentId_GLIMPSE() {
-        return sorgentId_GLIMPSE;
+    public String getSourceId_GLIMPSE() {
+        return sourceId_GLIMPSE;
     }
 
     /**
@@ -98,8 +98,8 @@ public class Bean_File4 extends SimpleBean {
      *
      * @return the sorgent id MIPSGAL
      */
-    public String getSorgentId_MIPSGAL() {
-        return sorgentId_MIPSGAL;
+    public String getSourceId_MIPSGAL() {
+        return sourceId_MIPSGAL;
     }
 
     /**
@@ -139,20 +139,20 @@ public class Bean_File4 extends SimpleBean {
     }
 
     /**
-     * Sets the sorgent id GLIMPSE.
+     * Sets the source id MIPSGAL.
      *
-     * @param sorgentId_GLIMPSE the new sorgent id GLIMPSE
+     * @param sourceId_MIPSGAL the new source id MIPSGAL
      */
-    public void setSorgentId_GLIMPSE(String sorgentId_GLIMPSE) {
-        this.sorgentId_GLIMPSE = sorgentId_GLIMPSE;
+    public void setSourceId_MIPSGAL(String sourceId_MIPSGAL) {
+        this.sourceId_MIPSGAL = sourceId_MIPSGAL;
     }
 
     /**
-     * Sets the sorgent id MIPSGAL.
+     * Sets the sorgent id GLIMPSE.
      *
-     * @param sorgentId_MIPSGAL the new sorgent id MIPSGAL
+     * @param sourceId_GLIMPSE the new sorgent id GLIMPSE
      */
-    public void setSorgentId_MIPSGAL(String sorgentId_MIPSGAL) {
-        this.sorgentId_MIPSGAL = sorgentId_MIPSGAL;
+    public void setSourcetId_GLIMPSE(String sourceId_GLIMPSE) {
+        this.sourceId_GLIMPSE = sourceId_GLIMPSE;
     }
 }

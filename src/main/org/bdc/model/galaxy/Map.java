@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: main.org.bdc.model.galaxy
  * Type: Map
- * Last update: 9-set-2017 13.21.41
+ * Last update: 11-set-2017 23.56.56
  * 
  */
 
@@ -18,6 +18,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+import main.org.bdc.model.instruments.Instrument;
 
 /**
  * The Class Map.
@@ -34,6 +36,9 @@ public class Map {
 
     @Id
     private String           name;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "map")
+    private List<Source>     sources;
 
     /**
      * Instantiates a new map.

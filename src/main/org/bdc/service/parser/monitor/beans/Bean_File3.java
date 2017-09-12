@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: main.org.bdc.service.parser.monitor.beans
  * Type: Bean_File3
- * Last update: 12-mar-2017 16.25.13
+ * Last update: 11-set-2017 12.42.55
  * 
  */
 
@@ -28,12 +28,12 @@ public class Bean_File3 extends SimpleBean {
 
     private double longitude;
 
-    private String sotgentId;
+    private String sourceId;
 
     /**
      * Instantiates a new bean file 3.
      *
-     * @param sotgentId the sotgent id
+     * @param sourceId the sotgent id
      * @param longitude the longitude
      * @param latitude the latitude
      * @param flow_3d6 the flow 3 d 6
@@ -41,9 +41,9 @@ public class Bean_File3 extends SimpleBean {
      * @param flow_5d8 the flow 5 d 8
      * @param flow_8d0 the flow 8 d 0
      */
-    public Bean_File3(String sotgentId, double longitude, double latitude, double flow_3d6, double flow_4d5, double flow_5d8, double flow_8d0) {
+    public Bean_File3(String sourceId, double longitude, double latitude, double flow_3d6, double flow_4d5, double flow_5d8, double flow_8d0) {
         super();
-        this.sotgentId = sotgentId;
+        this.sourceId = sourceId;
         this.longitude = longitude;
         this.latitude = latitude;
         this.flow_3d6 = flow_3d6;
@@ -58,7 +58,7 @@ public class Bean_File3 extends SimpleBean {
      * @return the flow 3 d 6
      */
     public double getFlow_3d6() {
-        return flow_3d6;
+        return this.flow_3d6;
     }
 
     /**
@@ -67,7 +67,7 @@ public class Bean_File3 extends SimpleBean {
      * @return the flow 4 d 5
      */
     public double getFlow_4d5() {
-        return flow_4d5;
+        return this.flow_4d5;
     }
 
     /**
@@ -76,7 +76,7 @@ public class Bean_File3 extends SimpleBean {
      * @return the flow 5 d 8
      */
     public double getFlow_5d8() {
-        return flow_5d8;
+        return this.flow_5d8;
     }
 
     /**
@@ -85,7 +85,7 @@ public class Bean_File3 extends SimpleBean {
      * @return the flow 8 d 0
      */
     public double getFlow_8d0() {
-        return flow_8d0;
+        return this.flow_8d0;
     }
 
     /**
@@ -94,7 +94,7 @@ public class Bean_File3 extends SimpleBean {
      * @return the latitude
      */
     public double getLatitude() {
-        return latitude;
+        return this.latitude;
     }
 
     /**
@@ -103,7 +103,7 @@ public class Bean_File3 extends SimpleBean {
      * @return the longitude
      */
     public double getLongitude() {
-        return longitude;
+        return this.longitude;
     }
 
     /**
@@ -111,8 +111,8 @@ public class Bean_File3 extends SimpleBean {
      *
      * @return the sotgent id
      */
-    public String getSotgentId() {
-        return sotgentId;
+    public String getSourceId() {
+        return this.sourceId;
     }
 
     /**
@@ -172,9 +172,9 @@ public class Bean_File3 extends SimpleBean {
     /**
      * Sets the sotgent id.
      *
-     * @param sotgentId the new sotgent id
+     * @param sourceId the new sotgent id
      */
-    public void setSotgentId(String sotgentId) {
-        this.sotgentId = sotgentId;
+    public void setSourceId(String sourceId) {
+        this.sourceId = sourceId;
     }
 }

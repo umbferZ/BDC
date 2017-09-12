@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: main.org.bdc.service.parser.monitor.producers
  * Type: Producer
- * Last update: 16-mar-2017 18.31.42
+ * Last update: 12-set-2017 0.00.36
  * 
  */
 
@@ -79,6 +79,8 @@ public abstract class Producer<SB extends SimpleBean> implements Runnable {
         FileReader fileReader = null;
         BufferedReader bufferReader = null;
         CSVReader csvReader = null;
+        long time = 0;
+        int rows = 0;
         try {
             fileReader = new FileReader(fileName);
             bufferReader = new BufferedReader(fileReader);
@@ -89,8 +91,13 @@ public abstract class Producer<SB extends SimpleBean> implements Runnable {
                     counter++;
             csvReader = new CSVReader(bufferReader, ',');
             csvReader.readNext();
-            while ((nextLine = csvReader.readNext()) != null)
+            while ((nextLine = csvReader.readNext()) != null) {
+                long start = System.currentTimeMillis();
                 queue.put(createBean(nextLine));
+                time += System.currentTimeMillis() - start;
+                rows++;
+                // break; // todo remove this line
+            }
         } catch (InterruptedException | IOException e) {
             e.printStackTrace();
         } catch (NoSuchMethodException e) {
@@ -111,6 +118,8 @@ public abstract class Producer<SB extends SimpleBean> implements Runnable {
             e.printStackTrace();
         } finally {
             System.out.println(String.format("Producer sets finish"));
+            if (rows > 0)
+                System.out.println(String.format("Avarage time for read and enqueue is %d ms", time / rows));
             queue.setFinished(true);
             try {
                 csvReader.close();

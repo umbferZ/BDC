@@ -81,7 +81,7 @@ public class JFrameNuovoUtente extends JFrame {
         contentPane.setLayout(null);
 
         JPanel formLayout = new JPanel();
-        formLayout.setBorder(new TitledBorder(null, "Nuovo User_Regegistered", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+        formLayout.setBorder(new TitledBorder(null, "Nuovo UserRegegistered", TitledBorder.LEADING, TitledBorder.TOP, null, null));
         formLayout.setBounds(20, 0, 407, 263);
         contentPane.add(formLayout);
         formLayout.setLayout(new FormLayout(new ColumnSpec[] {
@@ -116,7 +116,7 @@ public class JFrameNuovoUtente extends JFrame {
         formLayout.add(pnlLabel_1, "2, 8, fill, fill");
         pnlLabel_1.setLayout(new BorderLayout(0, 0));
 
-        JLabel lbl_user_id = new JLabel("User_Regegistered-Id");
+        JLabel lbl_user_id = new JLabel("UserRegegistered-Id");
         lbl_user_id.setHorizontalAlignment(SwingConstants.RIGHT);
         pnlLabel_1.add(lbl_user_id);
 

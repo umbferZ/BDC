@@ -4,8 +4,8 @@
  * email: umberto.ferracci@gmail.com
  * Project: BdC
  * Package: main.org.bdc.model.people
- * Type: User_Regegistered
- * Last update: 10-ago-2017 16.12.15
+ * Type: UserRegegistered
+ * Last update: 11-set-2017 10.48.02
  * 
  */
 
@@ -18,11 +18,11 @@ import javax.persistence.Id;
 import javax.persistence.IdClass;
 
 /**
- * The Class User_Regegistered.
+ * The Class UserRegegistered.
  */
 @Entity
-@IdClass(User_Regegistered_PK.class)
-public class User_Regegistered {
+@IdClass(UserRegegistered_PK.class)
+public class UserRegegistered {
 
     @Id
     private String   email;
@@ -42,7 +42,7 @@ public class User_Regegistered {
     /**
      * Instantiates a new utente.
      */
-    public User_Regegistered() {
+    public UserRegegistered() {
         super();
     }
 

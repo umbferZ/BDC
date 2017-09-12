@@ -48,7 +48,7 @@ public class Consumer_File1 extends Consumer<Bean_File1> {
         clump.setMap(new Map("Higal"));
         clump.setId(bean.getClumpId());
         clump.setClumpDetails(details);
-        dao.getClumpDao().insert(clump);
+        dao.getClumpDao().saveOrUpdate(clump);
 
     }
 
