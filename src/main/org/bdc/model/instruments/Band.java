@@ -5,29 +5,37 @@
  * Project: BdC
  * Package: main.org.bdc.model.instruments
  * Type: Band
- * Last update: 11-set-2017 22.59.58
+ * Last update: 12-set-2017 14.24.28
  * 
  */
 
 package main.org.bdc.model.instruments;
 
+import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+import main.org.bdc.model.galaxy.Flow;
 
 /**
  * The Class Band.
  */
 @Entity
 // @IdClass(Band_PK.class)
-public class Band {
+public class Band implements Serializable {
+
+    @OneToMany(mappedBy = "band")
+    private List<Flow> flows;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private int        id;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -48,9 +56,8 @@ public class Band {
      * @param resolution the resolution
      * @param lunghezzaOnda the lunghezza onda
      */
-    public Band(double risoluzione, double lunghezzaOnda) {
-        resolution = risoluzione;
-        this.lunghezzaOnda = lunghezzaOnda;
+    public Band(double resolution, double lunghezzaOnda) {
+        this(resolution, lunghezzaOnda, null);
     }
 
     /**
@@ -61,11 +68,22 @@ public class Band {
      * @param instrument the instrument
      */
     public Band(double resolution, double lunghezzaOnda, Instrument instrument) {
-        super();
         this.resolution = resolution;
         this.lunghezzaOnda = lunghezzaOnda;
         this.instrument = instrument;
     }
+
+    public List<Flow> getFlows() {
+        return flows;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    // public void addInstrument(Instrument instrument) {
+    // instruments.add(instrument);
+    // }
 
     /**
      * Gets the strument.
@@ -92,6 +110,14 @@ public class Band {
      */
     public double getResolution() {
         return resolution;
+    }
+
+    public void setFlows(List<Flow> flows) {
+        this.flows = flows;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     /**

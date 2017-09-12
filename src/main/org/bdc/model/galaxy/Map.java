@@ -5,17 +5,21 @@
  * Project: BdC
  * Package: main.org.bdc.model.galaxy
  * Type: Map
- * Last update: 11-set-2017 23.56.56
+ * Last update: 12-set-2017 17.24.31
  * 
  */
 
 package main.org.bdc.model.galaxy;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
@@ -26,15 +30,18 @@ import main.org.bdc.model.instruments.Instrument;
  */
 @Entity
 // @IdClass(Map_PK.class) // todo PRIMARY KEY (?,?)
-public class Map {
+public class Map implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "map")
     private List<Clump>      clumps;
 
-    @OneToMany(mappedBy = "map")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int              id;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "map")
     private List<Instrument> instruments;
 
-    @Id
     private String           name;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "map")
@@ -43,7 +50,11 @@ public class Map {
     /**
      * Instantiates a new map.
      */
-    public Map() {}
+    public Map() {
+        clumps = new ArrayList<>();
+        sources = new ArrayList<>();
+        instruments = new ArrayList<>();
+    }
 
     /**
      * Instantiates a new map.
@@ -52,6 +63,11 @@ public class Map {
      */
     public Map(String name) {
         this.name = name;
+    }
+
+    public void addClump(Clump clump) {
+        clumps.add(clump);
+
     }
 
     /**
@@ -63,13 +79,8 @@ public class Map {
         return clumps;
     }
 
-    /**
-     * Gets the nome.
-     *
-     * @return the nome
-     */
-    public String getNome() {
-        return name;
+    public int getId() {
+        return id;
     }
 
     /**
@@ -77,8 +88,21 @@ public class Map {
      *
      * @return the strumenti
      */
-    public List<Instrument> getStrumenti() {
+    public List<Instrument> getInstruments() {
         return instruments;
+    }
+
+    /**
+     * Gets the nome.
+     *
+     * @return the nome
+     */
+    public String getName() {
+        return name;
+    }
+
+    public List<Source> getSources() {
+        return sources;
     }
 
     /**
@@ -90,21 +114,29 @@ public class Map {
         this.clumps = clumps;
     }
 
-    /**
-     * Sets the nome.
-     *
-     * @param nome the new nome
-     */
-    public void setNome(String nome) {
-        name = nome;
+    public void setId(int id) {
+        this.id = id;
     }
 
     /**
      * Sets the strumenti.
      *
-     * @param strumenti the new strumenti
+     * @param instruments the new strumenti
      */
-    public void setStrumenti(List<Instrument> strumenti) {
-        instruments = strumenti;
+    public void setInstruments(List<Instrument> instruments) {
+        this.instruments = instruments;
+    }
+
+    /**
+     * Sets the nome.
+     *
+     * @param name the new nome
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setSources(List<Source> sources) {
+        this.sources = sources;
     }
 }

@@ -5,12 +5,13 @@
  * Project: BdC
  * Package: main.org.bdc.model.instruments
  * Type: Instrument
- * Last update: 11-set-2017 19.55.40
+ * Last update: 12-set-2017 15.01.14
  * 
  */
 
 package main.org.bdc.model.instruments;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +20,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -31,13 +31,13 @@ import main.org.bdc.model.galaxy.Satellite;
  * The Class Instrument.
  */
 @Entity
-public class Instrument {
+public class Instrument implements Serializable {
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "instrument")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "instrument")
     private List<Band> bands;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private int        id;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -52,7 +52,9 @@ public class Instrument {
     /**
      * Instantiates a new instrument.
      */
-    public Instrument() {}
+    public Instrument() {
+        bands = new ArrayList<>();
+    }
 
     /**
      * Instantiates a new instrument.
@@ -70,10 +72,10 @@ public class Instrument {
      * @param satellite the satellite
      */
     public Instrument(String name, Satellite satellite) {
-        super();
+        this();
         this.name = name;
         this.satellite = satellite;
-        bands = new ArrayList<>();
+
     }
 
     /**

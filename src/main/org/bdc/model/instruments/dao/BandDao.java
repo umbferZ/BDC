@@ -3,9 +3,9 @@
  * Created by Umberto Ferracci from urania's PC
  * email: umberto.ferracci@gmail.com
  * Project: BdC
- * Package: main.org.bdc.model.galaxy.dao
- * Type: BandaDao
- * Last update: 9-set-2017 16.49.10
+ * Package: main.org.bdc.model.instruments.dao
+ * Type: BandDao
+ * Last update: 12-set-2017 14.26.30
  * 
  */
 
@@ -19,9 +19,9 @@ import main.org.bdc.model.instruments.Band;
 import main.org.bdc.service.dal.EntityDaoHibernate;
 
 /**
- * The Class BandaDao.
+ * The Class BandDao.
  */
-public class BandaDao extends EntityDaoHibernate<Band, Integer> {
+public class BandDao extends EntityDaoHibernate<Band, Integer> {
 
     /**
      * Gets the by band.
@@ -32,7 +32,7 @@ public class BandaDao extends EntityDaoHibernate<Band, Integer> {
      */
     public Band getByBand(double resolution) throws Exception {
 
-        String sql = "FROM Band WHERE resolution=:resolution";
+        String sql = "FROM Band WHERE resolution= :resolution";
         TypedQuery<Band> query = getSession().createQuery(sql);
         query.setParameter("resolution", resolution);
         List<Band> bands = query.getResultList();

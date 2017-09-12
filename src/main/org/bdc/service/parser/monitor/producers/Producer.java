@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: main.org.bdc.service.parser.monitor.producers
  * Type: Producer
- * Last update: 12-set-2017 0.00.36
+ * Last update: 12-set-2017 13.07.15
  * 
  */
 
@@ -96,7 +96,8 @@ public abstract class Producer<SB extends SimpleBean> implements Runnable {
                 queue.put(createBean(nextLine));
                 time += System.currentTimeMillis() - start;
                 rows++;
-                // break; // todo remove this line
+                // if (rows > 10)
+                // break;
             }
         } catch (InterruptedException | IOException e) {
             e.printStackTrace();

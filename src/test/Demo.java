@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: test
  * Type: Demo
- * Last update: 12-set-2017 0.14.15
+ * Last update: 12-set-2017 17.25.21
  * 
  */
 
@@ -17,6 +17,7 @@ import java.util.Calendar;
 
 import main.org.bdc.model.DaoFactory;
 import main.org.bdc.model.galaxy.Agency;
+import main.org.bdc.model.galaxy.Clump;
 import main.org.bdc.model.galaxy.Map;
 import main.org.bdc.model.galaxy.Satellite;
 import main.org.bdc.model.galaxy.dao.SatelliteDao;
@@ -24,7 +25,6 @@ import main.org.bdc.model.instruments.Band;
 import main.org.bdc.model.instruments.Instrument;
 import main.org.bdc.model.people.UserRegegistered;
 import main.org.bdc.model.people.UserType;
-import main.org.bdc.service.parser.CSVFactory;
 
 /**
  * The Class Demo.
@@ -160,18 +160,34 @@ public class Demo {
                 launcher.provaIstanze();
                 launcher.demoAdmin();
                 try {
-                    CSVFactory.translateFile1("/home/urania/Scrivania/csv/higal.csv");
+                    // CSVFactory.translateFile1("/home/urania/Scrivania/csv/higal.csv");
                     // CSVFactory.translateFile2("/home/urania/Scrivania/csv/higal_additionalinfo.csv");
-                    CSVFactory.translateFile3("/home/urania/Scrivania/csv/r08.csv");
-                    CSVFactory.translateFile4("/home/urania/Scrivania/csv/mips.csv");
+                    // CSVFactory.translateFile3("/home/urania/Scrivania/csv/r08.csv");
+                    // CSVFactory.translateFile4("/home/urania/Scrivania/csv/mips.csv");
 
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+
             }
         });
         t.start();
         t.join();
+
+        try {
+
+            DaoFactory dao = DaoFactory.getInstance();
+            Map higal = dao.getMapDao().getMapByName("Higal");
+            System.out.println(String.format("%s %s n=%s", higal.getId(), higal.getName(), higal.getInstruments().size()));
+            Clump clump = new Clump();
+            clump.setId(666);
+            clump.setMap(higal);
+            higal.addClump(clump);
+            dao.getClumpDao().saveOrUpdate(clump);
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
 }

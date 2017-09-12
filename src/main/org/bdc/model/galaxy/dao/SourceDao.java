@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: main.org.bdc.model.galaxy.dao
  * Type: SourceDao
- * Last update: 11-set-2017 15.42.37
+ * Last update: 12-set-2017 18.48.28
  * 
  */
 
@@ -29,6 +29,11 @@ public class SourceDao extends EntityDaoHibernate<Source, Integer> {
         if (sources.size() == 1)
             return sources.get(0);
         throw new Exception("Error in sources");
+    }
+
+    public List<Source> getByPositionIntoSqure(double latitude, double longitude, double distance, int limit) {
+        // TODO Auto-generated method stub
+        return null;
     }
 
 }

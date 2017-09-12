@@ -5,12 +5,13 @@
  * Project: BdC
  * Package: main.org.bdc.model.galaxy
  * Type: Clump
- * Last update: 11-set-2017 23.37.48
+ * Last update: 12-set-2017 15.02.15
  * 
  */
 
 package main.org.bdc.model.galaxy;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +27,7 @@ import javax.persistence.OneToOne;
  * The Class Clump.
  */
 @Entity
-public class Clump {
+public class Clump implements Serializable {
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "clump")
     private ClumpDetails  clumpDetails;
@@ -92,6 +93,10 @@ public class Clump {
         return ellispses;
     }
 
+    public List<Flow> getFlows() {
+        return flows;
+    }
+
     /**
      * Gets the id.
      *
@@ -130,6 +135,10 @@ public class Clump {
      */
     public void setEllispses(List<Ellipse> ellispses) {
         this.ellispses = ellispses;
+    }
+
+    public void setFlows(List<Flow> flows) {
+        this.flows = flows;
     }
 
     /**

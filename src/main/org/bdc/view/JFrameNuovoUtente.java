@@ -72,17 +72,17 @@ public class JFrameNuovoUtente extends JFrame {
     public JFrameNuovoUtente() {
         setType(Type.UTILITY);
 
-        setTitle("Nuovo utente");
+        setTitle("New User");
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        setBounds(100, 100, 450, 300);
+        setBounds(100, 100, 450, 370);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
         JPanel formLayout = new JPanel();
-        formLayout.setBorder(new TitledBorder(null, "Nuovo UserRegegistered", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-        formLayout.setBounds(20, 0, 407, 263);
+        formLayout.setBorder(new TitledBorder(null, "Register new user", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+        formLayout.setBounds(20, 10, 410, 300);
         contentPane.add(formLayout);
         formLayout.setLayout(new FormLayout(new ColumnSpec[] {
                 FormSpecs.RELATED_GAP_COLSPEC, FormSpecs.DEFAULT_COLSPEC, FormSpecs.RELATED_GAP_COLSPEC, ColumnSpec.decode("default:grow"),
@@ -91,14 +91,14 @@ public class JFrameNuovoUtente extends JFrame {
                 FormSpecs.RELATED_GAP_ROWSPEC, FormSpecs.DEFAULT_ROWSPEC, FormSpecs.RELATED_GAP_ROWSPEC, FormSpecs.DEFAULT_ROWSPEC, FormSpecs.RELATED_GAP_ROWSPEC, FormSpecs.DEFAULT_ROWSPEC, FormSpecs.RELATED_GAP_ROWSPEC, FormSpecs.DEFAULT_ROWSPEC,
         }));
 
-        JLabel lbl_name = new JLabel("Nome");
+        JLabel lbl_name = new JLabel("Name");
         formLayout.add(lbl_name, "2, 2, right, default");
 
         txt_user_first_name = new JTextField();
         formLayout.add(txt_user_first_name, "4, 2, fill, default");
         txt_user_first_name.setColumns(10);
 
-        JLabel lbl_last_name = new JLabel("Cognome");
+        JLabel lbl_last_name = new JLabel("Surname");
         formLayout.add(lbl_last_name, "2, 4, right, default");
 
         txt_user_last_name = new JTextField();
@@ -116,11 +116,11 @@ public class JFrameNuovoUtente extends JFrame {
         formLayout.add(pnlLabel_1, "2, 8, fill, fill");
         pnlLabel_1.setLayout(new BorderLayout(0, 0));
 
-        JLabel lbl_user_id = new JLabel("UserRegegistered-Id");
+        JLabel lbl_user_id = new JLabel("User-id");
         lbl_user_id.setHorizontalAlignment(SwingConstants.RIGHT);
         pnlLabel_1.add(lbl_user_id);
 
-        JLabel lbl_min_chars_id = new JLabel("min 6 caratteri");
+        JLabel lbl_min_chars_id = new JLabel("min 6");
         lbl_min_chars_id.setHorizontalAlignment(SwingConstants.RIGHT);
         lbl_min_chars_id.setFont(new Font("Dialog", Font.PLAIN, 10));
         pnlLabel_1.add(lbl_min_chars_id, BorderLayout.SOUTH);
@@ -137,7 +137,7 @@ public class JFrameNuovoUtente extends JFrame {
         lbl_password.setHorizontalAlignment(SwingConstants.RIGHT);
         pnlLabel_2.add(lbl_password);
 
-        JLabel lbl_min_chars_pwd = new JLabel("min 6 caratteri");
+        JLabel lbl_min_chars_pwd = new JLabel("min 6");
         lbl_min_chars_pwd.setHorizontalAlignment(SwingConstants.RIGHT);
         lbl_min_chars_pwd.setFont(new Font("Dialog", Font.PLAIN, 10));
         pnlLabel_2.add(lbl_min_chars_pwd, BorderLayout.SOUTH);
@@ -145,19 +145,19 @@ public class JFrameNuovoUtente extends JFrame {
         pwd_password = new JPasswordField();
         formLayout.add(pwd_password, "4, 10, fill, default");
 
-        JLabel lbl_password_reply = new JLabel("Ripeti Password");
+        JLabel lbl_password_reply = new JLabel("Repeat Password");
         formLayout.add(lbl_password_reply, "2, 12, right, default");
 
         pwd_password_reply = new JPasswordField();
         formLayout.add(pwd_password_reply, "4, 12, fill, default");
 
-        JLabel lbl_amministratore = new JLabel("Amministratore");
+        JLabel lbl_amministratore = new JLabel("Admin");
         formLayout.add(lbl_amministratore, "2, 14");
 
         JCheckBox chckbx_admin = new JCheckBox("");
         formLayout.add(chckbx_admin, "4, 14");
 
-        JButton btn_insert = new JButton("Inserisci");
+        JButton btn_insert = new JButton("Insert");
         formLayout.add(btn_insert, "4, 16");
     }
 }

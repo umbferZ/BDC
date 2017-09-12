@@ -6,11 +6,13 @@
  * Project: BdC
  * Package: main.org.bdc.model.galaxy
  * Type: Agency
- * Last update: 10-set-2017 17.30.46
+ * Last update: 12-set-2017 15.02.23
  * 
  */
 
 package main.org.bdc.model.galaxy;
+
+import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -19,7 +21,7 @@ import javax.persistence.Id;
  * The Class Agency.
  */
 @Entity
-public class Agency {
+public class Agency implements Serializable {
 
     @Id
     private String name;
@@ -47,7 +49,7 @@ public class Agency {
      * @return the name
      */
     public String getName() {
-        return this.name;
+        return name;
     }
 
     /**

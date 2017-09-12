@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: main.org.bdc.service.parser.monitor.consumers
  * Type: Consumer_File3
- * Last update: 11-set-2017 20.34.24
+ * Last update: 12-set-2017 14.35.01
  * 
  */
 
@@ -13,7 +13,6 @@ package main.org.bdc.service.parser.monitor.consumers;
 
 import main.org.bdc.model.DaoFactory;
 import main.org.bdc.model.galaxy.Flow;
-import main.org.bdc.model.galaxy.Map;
 import main.org.bdc.model.galaxy.Position;
 import main.org.bdc.model.galaxy.Source;
 import main.org.bdc.model.instruments.Band;
@@ -25,9 +24,9 @@ import main.org.bdc.service.parser.monitor.beans.Bean_File3;
  */
 public class Consumer_File3 extends Consumer<Bean_File3> {
 
-    Band       b_3d6, b_4d5, b_5d8, b_8d0;
+    private Band       b_3d6, b_4d5, b_5d8, b_8d0;
 
-    DaoFactory dao;
+    private DaoFactory dao;
 
     /**
      * Instantiates a new consumer file 3.
@@ -43,7 +42,6 @@ public class Consumer_File3 extends Consumer<Bean_File3> {
             b_5d8 = dao.getBandDao().getByBand(5.8);
             b_8d0 = dao.getBandDao().getByBand(8.0);
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
@@ -56,7 +54,6 @@ public class Consumer_File3 extends Consumer<Bean_File3> {
      */
     @Override
     protected void inserts(Bean_File3 bean) {
-
         Source source = new Source();
         source.setId(bean.getSourceId());
         source.addFlow(new Flow(bean.getFlow_3d6(), b_3d6));
@@ -64,12 +61,8 @@ public class Consumer_File3 extends Consumer<Bean_File3> {
         source.addFlow(new Flow(bean.getFlow_5d8(), b_5d8));
         source.addFlow(new Flow(bean.getFlow_8d0(), b_8d0));
         source.setPosition(new Position(bean.getLatitude(), bean.getLongitude(), source));
-        source.setMap(new Map("Glimpse"));
-        try {
-            dao.getSourceDao().saveOrUpdate(source);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        // source.setMap(new Map("Glimpse"));
+        dao.getSourceDao().saveOrUpdate(source);
 
     }
 

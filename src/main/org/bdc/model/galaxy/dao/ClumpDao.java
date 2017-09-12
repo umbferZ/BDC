@@ -5,11 +5,13 @@
  * Project: BdC
  * Package: main.org.bdc.model.galaxy.dao
  * Type: ClumpDao
- * Last update: 9-set-2017 12.50.59
+ * Last update: 12-set-2017 18.52.39
  * 
  */
 
 package main.org.bdc.model.galaxy.dao;
+
+import java.util.List;
 
 import main.org.bdc.model.galaxy.Clump;
 import main.org.bdc.service.dal.EntityDaoHibernate;
@@ -42,5 +44,11 @@ public class ClumpDao extends EntityDaoHibernate<Clump, Integer> {
         }
         return clump;
 
+    }
+
+    public List<Clump> getByPositionIntoSquare(double latitude, double longitude, double distance, int limit) {
+        String query = "FROM Clump JOIN ClumpDetails WHERE latidude BETWEEN :latitudeMin AND :latitudeMax AND longitude BETWEEN :longitudeMax AND longitudeMin";
+        // TODO Auto-generated method stub
+        return null;
     }
 }

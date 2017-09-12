@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: main.org.bdc.service.parser.monitor.consumers
  * Type: Consumer_File1
- * Last update: 9-set-2017 13.51.11
+ * Last update: 12-set-2017 13.47.55
  * 
  */
 
@@ -33,6 +33,7 @@ public class Consumer_File1 extends Consumer<Bean_File1> {
     public Consumer_File1(QueueProducerConsumer<Bean_File1> queue) {
         super(queue);
         dao = DaoFactory.getInstance();
+
     }
 
     /*
@@ -43,9 +44,15 @@ public class Consumer_File1 extends Consumer<Bean_File1> {
      */
     @Override
     protected void inserts(Bean_File1 bean) {
+        Map higal = null;
+        try {
+            higal = dao.getMapDao().getMapByName("Higal");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         Clump clump = new Clump();
         ClumpDetails details = new ClumpDetails(clump, bean.getClumpType(), bean.getDensity(), bean.getRatioTempMass(), bean.getTemp(), bean.getLatitude(), bean.getLongitude());
-        clump.setMap(new Map("Higal"));
+        clump.setMap(higal);
         clump.setId(bean.getClumpId());
         clump.setClumpDetails(details);
         dao.getClumpDao().saveOrUpdate(clump);

@@ -30,7 +30,7 @@
 		<property name="hibernate.format_sql">true</property>
 		<property name="hibernate.use_sql_comments">false</property>
 		<!-- Drop and re-create the database schema on startup -->
-		<property name="hibernate.hbm2ddl.auto">update</property>
+		<property name="hibernate.hbm2ddl.auto">create</property>
 		<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
 		<!-- Mapping Media -->
 		<mapping class="main.org.bdc.model.people.UserRegegistered" />

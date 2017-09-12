@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: main.org.bdc.view
  * Type: JFrameMain
- * Last update: 10-ago-2017 14.45.20
+ * Last update: 12-set-2017 18.44.51
  * 
  */
 
@@ -24,6 +24,8 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import main.org.bdc.controls.C_UC_SearchPosition;
 
 /**
  * The Class JFrameMain.
@@ -70,23 +72,27 @@ public class JFrameMain extends JFrame {
         JMenu mnFile = new JMenu("File");
         menuBar.add(mnFile);
 
+        JMenuItem mntmUpload = new JMenuItem("Upload a file"); // TODO: Check if
+                                                               // admin
         JMenuItem mntmExit = new JMenuItem("Exit");
+
+        mnFile.add(mntmUpload);
+        mnFile.add(mntmExit);
+
         mntmExit.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                int exit = JOptionPane.showConfirmDialog(null, "Sicuro di voler uscire");
+                int exit = JOptionPane.showConfirmDialog(null, "Are you sure?");
                 if (exit == JOptionPane.OK_OPTION)
                     System.exit(0);
-
             }
         });
-        mnFile.add(mntmExit);
 
-        mn_utente = new JMenu("UserRegegistered");
+        mn_utente = new JMenu("Users");
         menuBar.add(mn_utente);
 
-        JMenuItem mntmNuovoUtente = new JMenuItem("Nuovo utente...");
+        JMenuItem mntmNuovoUtente = new JMenuItem("Insert new user");
         mntmNuovoUtente.addActionListener(new ActionListener() {
 
             @Override
@@ -95,12 +101,13 @@ public class JFrameMain extends JFrame {
                 frameNuovoUtente.setVisible(true);
             }
         });
+        // TODO: Dialog User registered!
         mn_utente.add(mntmNuovoUtente);
 
-        JMenu mnSatellite = new JMenu("Satellite");
+        JMenu mnSatellite = new JMenu("Satellites");
         menuBar.add(mnSatellite);
 
-        JMenuItem mntmNuvoSatellite = new JMenuItem("Nuvo satellite...");
+        JMenuItem mntmNuvoSatellite = new JMenuItem("Insert new satellite");
         mntmNuvoSatellite.addActionListener(new ActionListener() {
 
             @Override
@@ -109,7 +116,69 @@ public class JFrameMain extends JFrame {
                 frameInserisciSattellite.setVisible(true);
             }
         });
+        // TODO: Dialog Satellite inserted!
         mnSatellite.add(mntmNuvoSatellite);
+
+        JMenu mnClump = new JMenu("Clumps");
+        menuBar.add(mnClump);
+
+        JMenuItem mntmSearchClump = new JMenuItem("Search a clump");
+        mnClump.add(mntmSearchClump);
+        mntmSearchClump.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrameClumpSearch jFrameClumpSearch = new JFrameClumpSearch();
+                jFrameClumpSearch.setVisible(true);
+            }
+        });
+        JMenuItem mntmSearchClumpDensity = new JMenuItem("Show clumps density");
+        mnClump.add(mntmSearchClumpDensity);
+        JMenuItem mntmSearchClumpMass = new JMenuItem("Show clumps mass");
+        mnClump.add(mntmSearchClumpMass);
+        mntmSearchClumpMass.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrameClumpMass jFrameClumpMass = new JFrameClumpMass();
+                jFrameClumpMass.setVisible(true);
+            }
+        });
+        JMenuItem mntmSearchClumpMassStats = new JMenuItem("Show clumps mass statistics");
+        mnClump.add(mntmSearchClumpMassStats);
+
+        JMenu mnPosition = new JMenu("Position");
+        menuBar.add(mnPosition);
+
+        JMenuItem mntmSearchPosition = new JMenuItem("Search for position");
+        mnPosition.add(mntmSearchPosition);
+
+        mntmSearchPosition.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // JFrameSearchPosition jFrameSearchPosition = new
+                // JFrameSearchPosition();
+                // jFrameSearchPosition.setVisible(true);
+                new C_UC_SearchPosition();
+            }
+        });
+
+        JMenu mnSource = new JMenu("Sources");
+        menuBar.add(mnSource);
+
+        JMenuItem mntmSourceSearch = new JMenuItem("Search a source");
+        mnSource.add(mntmSourceSearch);
+
+        mntmSourceSearch.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrameSourceSearch jFrameSourceSearch = new JFrameSourceSearch();
+                jFrameSourceSearch.setVisible(true);
+            }
+        });
+
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);

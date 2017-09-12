@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: main.org.bdc.model
  * Type: DaoFactory
- * Last update: 11-set-2017 12.53.51
+ * Last update: 12-set-2017 14.23.26
  * 
  */
 
@@ -14,9 +14,10 @@ package main.org.bdc.model;
 import main.org.bdc.model.galaxy.dao.ClumpDao;
 import main.org.bdc.model.galaxy.dao.EllipseDao;
 import main.org.bdc.model.galaxy.dao.FlowDao;
+import main.org.bdc.model.galaxy.dao.MapDao;
 import main.org.bdc.model.galaxy.dao.SatelliteDao;
 import main.org.bdc.model.galaxy.dao.SourceDao;
-import main.org.bdc.model.instruments.dao.BandaDao;
+import main.org.bdc.model.instruments.dao.BandDao;
 import main.org.bdc.model.instruments.dao.InstrumentDao;
 import main.org.bdc.model.people.dao.UserDao;
 
@@ -32,7 +33,7 @@ public class DaoFactory {
      *
      * @return single instance of DaoFactory
      */
-    public static DaoFactory getInstance() {
+    public synchronized static DaoFactory getInstance() {
         if (instance == null)
             instance = new DaoFactory();
         return instance;
@@ -48,8 +49,8 @@ public class DaoFactory {
      *
      * @return the band dao
      */
-    public BandaDao getBandDao() {
-        return new BandaDao();
+    public BandDao getBandDao() {
+        return new BandDao();
     }
 
     /**
@@ -86,6 +87,10 @@ public class DaoFactory {
      */
     public InstrumentDao getInstrumentDao() {
         return new InstrumentDao();
+    }
+
+    public MapDao getMapDao() {
+        return new MapDao();
     }
 
     /**

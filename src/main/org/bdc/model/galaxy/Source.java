@@ -5,12 +5,13 @@
  * Project: BdC
  * Package: main.org.bdc.model.galaxy
  * Type: Source
- * Last update: 11-set-2017 20.29.35
+ * Last update: 12-set-2017 15.01.55
  * 
  */
 
 package main.org.bdc.model.galaxy;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +27,7 @@ import javax.persistence.OneToOne;
  * The Class Source.
  */
 @Entity
-public class Source {
+public class Source implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Flow> flows;

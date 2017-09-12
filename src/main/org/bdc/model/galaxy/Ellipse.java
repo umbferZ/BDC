@@ -5,42 +5,41 @@
  * Project: BdC
  * Package: main.org.bdc.model.galaxy
  * Type: Ellipse
- * Last update: 11-set-2017 23.36.06
+ * Last update: 12-set-2017 16.28.13
  * 
  */
 
 package main.org.bdc.model.galaxy;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 
+import main.org.bdc.model.galaxy.pk.Ellipse_PK;
 import main.org.bdc.model.instruments.Band;
 
 /**
  * The Class Ellipse.
  */
 @Entity
-// todo PRIMARY KEY (band, clump)
-// @IdClass(Ellipse_PK.class)
-public class Ellipse {
-
-    // @Id
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Band   band;
-
-    // @Id
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Clump  clump;
+@IdClass(Ellipse_PK.class)
+public class Ellipse implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int    id;
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @PrimaryKeyJoinColumn
+    private Band   band;
+
+    @Id
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @PrimaryKeyJoinColumn
+    private Clump  clump;
 
     private double rotazione;
 
@@ -66,7 +65,7 @@ public class Ellipse {
         this.xAss = xAss;
         this.yAss = yAss;
         this.rotazione = rotazione;
-        this.band = band;
+        // this.band = band;
         this.clump = clump;
     }
 
@@ -79,9 +78,9 @@ public class Ellipse {
         return band;
     }
 
-    // public Clump getClump() {
-    // return clump;
-    // }
+    public Clump getClump() {
+        return clump;
+    }
 
     /**
      * Gets the rotazione.
@@ -127,9 +126,9 @@ public class Ellipse {
         this.band = band;
     }
 
-    // public void setClump(Clump clump) {
-    // this.clump = clump;
-    // }
+    public void setClump(Clump clump) {
+        this.clump = clump;
+    }
 
     /**
      * Sets the rotazione.

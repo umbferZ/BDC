@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: main.org.bdc.model.galaxy
  * Type: ClumpDetails
- * Last update: 10-set-2017 18.13.29
+ * Last update: 12-set-2017 12.16.36
  * 
  */
 
@@ -13,7 +13,9 @@ package main.org.bdc.model.galaxy;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.OneToOne;
@@ -26,7 +28,7 @@ import main.org.bdc.model.galaxy.pk.ClumpDetails_PK;
 public class ClumpDetails implements Serializable {
 
     @Id
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Clump  clump;
 
     private int    clumpType;

@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: main.org.bdc.model.galaxy
  * Type: Position
- * Last update: 11-set-2017 12.57.56
+ * Last update: 12-set-2017 12.56.52
  * 
  */
 
@@ -76,6 +76,10 @@ public class Position implements Serializable {
         return longitude;
     }
 
+    public Source getSource() {
+        return source;
+    }
+
     /**
      * Sets the latitude.
      *
@@ -92,5 +96,9 @@ public class Position implements Serializable {
      */
     public void setLongitude(double longitude) {
         this.longitude = longitude;
+    }
+
+    public void setSource(Source source) {
+        this.source = source;
     }
 }

@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: main.org.bdc.service.dal
  * Type: EntityDaoHibernate
- * Last update: 11-set-2017 23.07.10
+ * Last update: 12-set-2017 17.19.55
  * 
  */
 
@@ -86,6 +86,7 @@ public abstract class EntityDaoHibernate<T, ID extends Serializable> implements 
      */
     @Override
     public List<T> getAll() {
+
         Session s = openSession();
         CriteriaBuilder builder = s.getCriteriaBuilder();
         CriteriaQuery<T> cq = builder.createQuery(persistentClass);
@@ -163,6 +164,7 @@ public abstract class EntityDaoHibernate<T, ID extends Serializable> implements 
             s.flush();
             transaction.commit();
         } catch (HibernateException e) {
+            e.printStackTrace();
             if (transaction != null)
                 transaction.rollback();
         } finally {

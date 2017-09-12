@@ -5,16 +5,20 @@
  * Project: BdC
  * Package: main.org.bdc.model.galaxy
  * Type: Flow
- * Last update: 11-set-2017 20.38.01
+ * Last update: 12-set-2017 15.01.31
  * 
  */
 
 package main.org.bdc.model.galaxy;
 
+import java.io.Serializable;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import main.org.bdc.model.instruments.Band;
 
@@ -22,14 +26,14 @@ import main.org.bdc.model.instruments.Band;
  * The Class Flow.
  */
 @Entity
-public class Flow {
+public class Flow implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     public int     id;
 
-    // @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    // private Band band;
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Band   band;
 
     private double error;
 
@@ -60,7 +64,7 @@ public class Flow {
     public Flow(double value, double error, Band band) {
         this.value = value;
         this.error = error;
-        // this.band = band;
+        this.band = band;
     }
 
     /**
@@ -68,9 +72,9 @@ public class Flow {
      *
      * @return the band
      */
-    // public Band getBanda() {
-    // return band;
-    // }
+    public Band getBanda() {
+        return band;
+    }
 
     /**
      * Gets the error.
@@ -95,9 +99,9 @@ public class Flow {
      *
      * @param band the new band
      */
-    // public void setBanda(Band banda) {
-    // band = banda;
-    // }
+    public void setBanda(Band banda) {
+        band = banda;
+    }
 
     /**
      * Sets the error.

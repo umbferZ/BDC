@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: main.org.bdc.service.dal
  * Type: HibernateUtil
- * Last update: 12-mar-2017 16.24.09
+ * Last update: 12-set-2017 17.32.01
  * 
  */
 
@@ -34,7 +34,8 @@ public class HibernateUtil {
      * Close session.
      */
     public static void closeSession() {
-        concreteSessionFactory.getCurrentSession().close();
+        if (concreteSessionFactory.isClosed())
+            concreteSessionFactory.getCurrentSession().close();
     }
 
     /**
@@ -44,6 +45,8 @@ public class HibernateUtil {
      * @throws HibernateException the hibernate exception
      */
     public static Session getSession() throws HibernateException {
+        // if (concreteSessionFactory.isOpen())
+        // return concreteSessionFactory.getCurrentSession();
         return concreteSessionFactory.openSession();
     }
 }
