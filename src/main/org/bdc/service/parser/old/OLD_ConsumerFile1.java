@@ -1,11 +1,10 @@
 /*
  * 
- * Created by Umberto Ferracci from urania's PC
- * email: umberto.ferracci@gmail.com
- * Project: BdC
+ * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
+ * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.service.parser.old
  * Type: OLD_ConsumerFile1
- * Last update: 12-mar-2017 16.25.12
+ * Last update: 13-set-2017 0.29.47
  * 
  */
 
@@ -23,8 +22,11 @@ import main.org.bdc.model.galaxy.ClumpType;
  */
 public class OLD_ConsumerFile1<T> extends OLD_Consumer<T, Integer> {
 
-    /* (non-Javadoc)
-     * @see main.org.bdc.service.parser.old.OLD_Consumer#mappaturaStringaOggetti(java.lang.Object[])
+    /*
+     * (non-Javadoc)
+     * @see
+     * main.org.bdc.service.parser.old.OLD_Consumer#mappaturaStringaOggetti(java
+     * .lang.Object[])
      */
     @Override
     protected void mappaturaStringaOggetti(Object... oggetti) {
@@ -33,28 +35,38 @@ public class OLD_ConsumerFile1<T> extends OLD_Consumer<T, Integer> {
 
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see main.org.bdc.service.parser.old.OLD_Consumer#mapsParameterTypes()
      */
     @Override
     protected List<Class[]> mapsParameterTypes() {
 
-        Class[] clump = { int.class, double.class, double.class, double.class, ClumpType.class };
-        Class[] posizione = { double.class, double.class };
+        Class[] clump = {
+                int.class, double.class, double.class, double.class, ClumpType.class
+        };
+        Class[] posizione = {
+                double.class, double.class
+        };
         List<Class[]> list = new ArrayList<>();
         list.add(clump);
         list.add(posizione);
         return list;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see main.org.bdc.service.parser.old.OLD_Consumer#mapsParameterValues()
      */
     @Override
     protected List<int[]> mapsParameterValues() {
 
-        int[] clump = { 0, 3, 4, 5, 6 };
-        int[] posizione = { 1, 2 };
+        int[] clump = {
+                0, 3, 4, 5, 6
+        };
+        int[] posizione = {
+                1, 2
+        };
         List<int[]> list = new ArrayList<>();
         list.add(clump);
         list.add(posizione);

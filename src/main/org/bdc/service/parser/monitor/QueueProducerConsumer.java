@@ -1,11 +1,10 @@
 /*
  * 
- * Created by Umberto Ferracci from urania's PC
- * email: umberto.ferracci@gmail.com
- * Project: BdC
+ * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
+ * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.service.parser.monitor
  * Type: QueueProducerConsumer
- * Last update: 10-set-2017 16.39.46
+ * Last update: 13-set-2017 0.29.59
  * 
  */
 
@@ -40,7 +39,7 @@ public class QueueProducerConsumer<SB extends SimpleBean> extends ArrayBlockingQ
      * @return true, if is finished
      */
     public boolean isFinished() {
-        return finished;
+        return this.finished;
     }
 
     /**

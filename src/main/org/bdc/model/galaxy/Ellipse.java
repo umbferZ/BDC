@@ -1,11 +1,10 @@
 /*
  * 
- * Created by Umberto Ferracci from urania's PC
- * email: umberto.ferracci@gmail.com
- * Project: BdC
+ * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
+ * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.model.galaxy
  * Type: Ellipse
- * Last update: 12-set-2017 16.28.13
+ * Last update: 13-set-2017 0.26.51
  * 
  */
 
@@ -75,11 +74,11 @@ public class Ellipse implements Serializable {
      * @return the band
      */
     public Band getBand() {
-        return band;
+        return this.band;
     }
 
     public Clump getClump() {
-        return clump;
+        return this.clump;
     }
 
     /**
@@ -88,11 +87,11 @@ public class Ellipse implements Serializable {
      * @return the rotazione
      */
     public double getRotazione() {
-        return rotazione;
+        return this.rotazione;
     }
 
     public double getxAss() {
-        return xAss;
+        return this.xAss;
     }
 
     /**
@@ -101,11 +100,11 @@ public class Ellipse implements Serializable {
      * @return the x ass
      */
     public double getXAss() {
-        return xAss;
+        return this.xAss;
     }
 
     public double getyAss() {
-        return yAss;
+        return this.yAss;
     }
 
     /**
@@ -114,7 +113,7 @@ public class Ellipse implements Serializable {
      * @return the y ass
      */
     public double getYAss() {
-        return yAss;
+        return this.yAss;
     }
 
     /**

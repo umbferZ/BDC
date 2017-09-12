@@ -1,11 +1,10 @@
 /*
  * 
- * Created by Umberto Ferracci from urania's PC
- * email: umberto.ferracci@gmail.com
- * Project: BdC
+ * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
+ * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.view
  * Type: JFrameInserisciSattellite
- * Last update: 17-mar-2017 7.53.09
+ * Last update: 13-set-2017 0.23.41
  * 
  */
 
@@ -76,15 +75,15 @@ public class JFrameInserisciSattellite extends JFrame {
         setType(Type.UTILITY);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setBounds(100, 100, 450, 300);
-        contentPane = new JPanel();
-        contentPane.setBorder(new EmptyBorder(0, 0, 0, 0));
-        setContentPane(contentPane);
-        contentPane.setLayout(null);
+        this.contentPane = new JPanel();
+        this.contentPane.setBorder(new EmptyBorder(0, 0, 0, 0));
+        setContentPane(this.contentPane);
+        this.contentPane.setLayout(null);
 
         JPanel panel = new JPanel();
         panel.setBorder(new TitledBorder(null, "New satellite", TitledBorder.LEADING, TitledBorder.TOP, null, null));
         panel.setBounds(47, 43, 354, 189);
-        contentPane.add(panel);
+        this.contentPane.add(panel);
         panel.setLayout(new FormLayout(new ColumnSpec[] {
                 FormSpecs.RELATED_GAP_COLSPEC, FormSpecs.DEFAULT_COLSPEC, FormSpecs.RELATED_GAP_COLSPEC, ColumnSpec.decode("default:grow"),
         }, new RowSpec[] {
@@ -95,18 +94,18 @@ public class JFrameInserisciSattellite extends JFrame {
         JLabel lblNome = new JLabel("Name");
         panel.add(lblNome, "2, 2, right, default");
 
-        txt_satellite_agenzia_2 = new JTextField();
-        txt_satellite_agenzia_2.setToolTipText("New satellite name");
-        panel.add(txt_satellite_agenzia_2, "4, 2, fill, default");
-        txt_satellite_agenzia_2.setColumns(10);
+        this.txt_satellite_agenzia_2 = new JTextField();
+        this.txt_satellite_agenzia_2.setToolTipText("New satellite name");
+        panel.add(this.txt_satellite_agenzia_2, "4, 2, fill, default");
+        this.txt_satellite_agenzia_2.setColumns(10);
 
         JLabel lblAgenzia = new JLabel("Agency");
         panel.add(lblAgenzia, "2, 4, right, default");
 
-        txt_satellite_agenzia = new JTextField();
-        txt_satellite_agenzia.setToolTipText("Agency");
-        panel.add(txt_satellite_agenzia, "4, 4, fill, default");
-        txt_satellite_agenzia.setColumns(10);
+        this.txt_satellite_agenzia = new JTextField();
+        this.txt_satellite_agenzia.setToolTipText("Agency");
+        panel.add(this.txt_satellite_agenzia, "4, 4, fill, default");
+        this.txt_satellite_agenzia.setColumns(10);
 
         JPanel pnlLabel_startMission = new JPanel();
         panel.add(pnlLabel_startMission, "2, 6, right, center");
@@ -130,23 +129,23 @@ public class JFrameInserisciSattellite extends JFrame {
                 FormSpecs.RELATED_GAP_ROWSPEC, FormSpecs.DEFAULT_ROWSPEC,
         }));
 
-        txt_start_d = new JTextField();
-        pnlForm_startMission.add(txt_start_d, "2, 2, fill, default");
-        txt_start_d.setColumns(10);
+        this.txt_start_d = new JTextField();
+        pnlForm_startMission.add(this.txt_start_d, "2, 2, fill, default");
+        this.txt_start_d.setColumns(10);
 
         JLabel lblMm = new JLabel("/");
         pnlForm_startMission.add(lblMm, "4, 2, right, default");
 
-        txt_start_m = new JTextField();
-        pnlForm_startMission.add(txt_start_m, "6, 2, fill, default");
-        txt_start_m.setColumns(10);
+        this.txt_start_m = new JTextField();
+        pnlForm_startMission.add(this.txt_start_m, "6, 2, fill, default");
+        this.txt_start_m.setColumns(10);
 
         JLabel lblYyyy = new JLabel("/");
         pnlForm_startMission.add(lblYyyy, "8, 2, right, default");
 
-        txt_start_y = new JTextField();
-        pnlForm_startMission.add(txt_start_y, "10, 2, fill, default");
-        txt_start_y.setColumns(10);
+        this.txt_start_y = new JTextField();
+        pnlForm_startMission.add(this.txt_start_y, "10, 2, fill, default");
+        this.txt_start_y.setColumns(10);
 
         JPanel pnlLabel_endMission = new JPanel();
         panel.add(pnlLabel_endMission, "2, 8, fill, center");
@@ -170,23 +169,23 @@ public class JFrameInserisciSattellite extends JFrame {
                 FormSpecs.RELATED_GAP_ROWSPEC, FormSpecs.DEFAULT_ROWSPEC,
         }));
 
-        txt_end_d = new JTextField();
-        pnlForm_endMission.add(txt_end_d, "2, 2, fill, default");
-        txt_end_d.setColumns(10);
+        this.txt_end_d = new JTextField();
+        pnlForm_endMission.add(this.txt_end_d, "2, 2, fill, default");
+        this.txt_end_d.setColumns(10);
 
         JLabel lblMm_1 = new JLabel("/");
         pnlForm_endMission.add(lblMm_1, "4, 2, right, default");
 
-        txt_end_m = new JTextField();
-        pnlForm_endMission.add(txt_end_m, "6, 2, fill, default");
-        txt_end_m.setColumns(10);
+        this.txt_end_m = new JTextField();
+        pnlForm_endMission.add(this.txt_end_m, "6, 2, fill, default");
+        this.txt_end_m.setColumns(10);
 
         JLabel lblYyyy_1 = new JLabel("/");
         pnlForm_endMission.add(lblYyyy_1, "8, 2, right, default");
 
-        txt_end_y = new JTextField();
-        pnlForm_endMission.add(txt_end_y, "10, 2, fill, default");
-        txt_end_y.setColumns(10);
+        this.txt_end_y = new JTextField();
+        pnlForm_endMission.add(this.txt_end_y, "10, 2, fill, default");
+        this.txt_end_y.setColumns(10);
 
         JButton btnInserisci = new JButton("Inserisci");
         panel.add(btnInserisci, "4, 10");

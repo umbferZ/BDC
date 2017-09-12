@@ -1,11 +1,10 @@
 /*
  * 
- * Created by Umberto Ferracci from urania's PC
- * email: umberto.ferracci@gmail.com
- * Project: BdC
- * Package: main.org.bdc.model.galaxy.pk
+ * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
+ * Project: BdC - Osservatorio Astronomico Virtuale
+ * Package: main.org.bdc.model.instruments.pk
  * Type: Band_PK
- * Last update: 10-set-2017 18.11.09
+ * Last update: 13-set-2017 0.27.24
  * 
  */
 
@@ -35,11 +34,11 @@ public class Band_PK implements Serializable {
     }
 
     public int getInstrument() {
-        return instrument;
+        return this.instrument;
     }
 
     public double getResolution() {
-        return resolution;
+        return this.resolution;
     }
 
     @Override

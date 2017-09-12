@@ -1,11 +1,10 @@
 /*
  * 
- * Created by Umberto Ferracci from urania's PC
- * email: umberto.ferracci@gmail.com
- * Project: BdC
+ * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
+ * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.service.parser.monitor.consumers
  * Type: Consumer_File1
- * Last update: 12-set-2017 13.47.55
+ * Last update: 13-set-2017 0.30.06
  * 
  */
 
@@ -15,6 +14,7 @@ import main.org.bdc.model.DaoFactory;
 import main.org.bdc.model.galaxy.Clump;
 import main.org.bdc.model.galaxy.ClumpDetails;
 import main.org.bdc.model.galaxy.Map;
+import main.org.bdc.service.dal.exception.SaveOrUpdateDalException;
 import main.org.bdc.service.parser.monitor.QueueProducerConsumer;
 import main.org.bdc.service.parser.monitor.beans.Bean_File1;
 
@@ -32,7 +32,7 @@ public class Consumer_File1 extends Consumer<Bean_File1> {
      */
     public Consumer_File1(QueueProducerConsumer<Bean_File1> queue) {
         super(queue);
-        dao = DaoFactory.getInstance();
+        this.dao = DaoFactory.getInstance();
 
     }
 
@@ -46,7 +46,7 @@ public class Consumer_File1 extends Consumer<Bean_File1> {
     protected void inserts(Bean_File1 bean) {
         Map higal = null;
         try {
-            higal = dao.getMapDao().getMapByName("Higal");
+            higal = this.dao.getMapDao().getMapByName("Higal");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -55,7 +55,12 @@ public class Consumer_File1 extends Consumer<Bean_File1> {
         clump.setMap(higal);
         clump.setId(bean.getClumpId());
         clump.setClumpDetails(details);
-        dao.getClumpDao().saveOrUpdate(clump);
+        try {
+            this.dao.getClumpDao().saveOrUpdate(clump);
+        } catch (SaveOrUpdateDalException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
 
     }
 

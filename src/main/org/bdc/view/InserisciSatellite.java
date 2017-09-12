@@ -1,11 +1,10 @@
 /*
  * 
- * Created by Umberto Ferracci from urania's PC
- * email: umberto.ferracci@gmail.com
- * Project: BdC
+ * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
+ * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.view
  * Type: InserisciSatellite
- * Last update: 9-set-2017 15.38.28
+ * Last update: 13-set-2017 0.23.41
  * 
  */
 
@@ -58,13 +57,13 @@ public class InserisciSatellite extends JPanel {
         JLabel lblFineMissione = new JLabel("Fine Missione:");
         add(lblFineMissione);
 
-        txt_name = new JTextField();
-        add(txt_name);
-        txt_name.setColumns(15);
+        this.txt_name = new JTextField();
+        add(this.txt_name);
+        this.txt_name.setColumns(15);
 
-        txt_agenzia = new JTextField();
-        add(txt_agenzia);
-        txt_agenzia.setColumns(15);
+        this.txt_agenzia = new JTextField();
+        add(this.txt_agenzia);
+        this.txt_agenzia.setColumns(15);
 
         // UtilDateModel model = new UtilDateModel();
         // JDatePanelImpl datePanet = new JDatePanelImpl(model, null);
@@ -74,17 +73,17 @@ public class InserisciSatellite extends JPanel {
         JButton btnInserisci = new JButton("Inserisci");
         add(btnInserisci);
 
-        txt_start_day = new JTextField();
-        add(txt_start_day);
-        txt_start_day.setColumns(10);
+        this.txt_start_day = new JTextField();
+        add(this.txt_start_day);
+        this.txt_start_day.setColumns(10);
 
-        txt_start_month = new JTextField();
-        add(txt_start_month);
-        txt_start_month.setColumns(10);
+        this.txt_start_month = new JTextField();
+        add(this.txt_start_month);
+        this.txt_start_month.setColumns(10);
 
-        txt_start_year = new JTextField();
-        add(txt_start_year);
-        txt_start_year.setColumns(10);
+        this.txt_start_year = new JTextField();
+        add(this.txt_start_year);
+        this.txt_start_year.setColumns(10);
 
         Panel panel = new Panel();
         add(panel);

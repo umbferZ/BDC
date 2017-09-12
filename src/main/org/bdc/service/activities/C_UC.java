@@ -1,11 +1,10 @@
 /*
  * 
- * Created by Umberto Ferracci from urania's PC
- * email: umberto.ferracci@gmail.com
- * Project: BdC
+ * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
+ * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.service.activities
  * Type: C_UC
- * Last update: 7-ago-2017 15.23.03
+ * Last update: 13-set-2017 0.29.16
  * 
  */
 

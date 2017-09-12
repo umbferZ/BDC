@@ -1,11 +1,10 @@
 /*
  * 
- * Created by Umberto Ferracci from urania's PC
- * email: umberto.ferracci@gmail.com
- * Project: BdC
+ * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
+ * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.model.galaxy.pk
  * Type: Ellipse_PK
- * Last update: 12-set-2017 13.00.28
+ * Last update: 13-set-2017 0.27.04
  * 
  */
 
@@ -30,11 +29,11 @@ public class Ellipse_PK implements Serializable {
     }
 
     public int getBand() {
-        return band;
+        return this.band;
     }
 
     public int getClump() {
-        return clump;
+        return this.clump;
     }
 
     @Override

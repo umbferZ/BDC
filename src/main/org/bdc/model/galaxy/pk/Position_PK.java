@@ -1,11 +1,10 @@
 /*
  * 
- * Created by Umberto Ferracci from urania's PC
- * email: umberto.ferracci@gmail.com
- * Project: BdC
+ * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
+ * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.model.galaxy.pk
  * Type: Position_PK
- * Last update: 11-set-2017 12.36.45
+ * Last update: 13-set-2017 0.27.04
  * 
  */
 
@@ -24,7 +23,7 @@ public class Position_PK implements Serializable {
     public Position_PK() {}
 
     public String getSource() {
-        return source;
+        return this.source;
     }
 
     public void setSource(String source) {

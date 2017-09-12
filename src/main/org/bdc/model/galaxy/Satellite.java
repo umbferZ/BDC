@@ -1,11 +1,10 @@
 /*
  * 
- * Created by Umberto Ferracci from urania's PC
- * email: umberto.ferracci@gmail.com
- * Project: BdC
+ * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
+ * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.model.galaxy
  * Type: Satellite
- * Last update: 12-set-2017 15.02.02
+ * Last update: 13-set-2017 0.26.51
  * 
  */
 
@@ -55,9 +54,9 @@ public class Satellite implements Serializable {
      * Instantiates a new satellite.
      */
     public Satellite() {
-        instruments = new ArrayList<>();
-        startDate = Calendar.getInstance();
-        endDate = Calendar.getInstance();
+        this.instruments = new ArrayList<>();
+        this.startDate = Calendar.getInstance();
+        this.endDate = Calendar.getInstance();
 
     }
 
@@ -72,7 +71,7 @@ public class Satellite implements Serializable {
     public Satellite(String name, Agency agenzia, Calendar startDate, Calendar endDate) {
         this();
         this.name = name;
-        agency = agenzia;
+        this.agency = agenzia;
         this.startDate = startDate;
         this.endDate = endDate;
 
@@ -84,7 +83,7 @@ public class Satellite implements Serializable {
      * @param strument the strument
      */
     public void addStrumento(Instrument strument) {
-        instruments.add(strument);
+        this.instruments.add(strument);
     }
 
     /**
@@ -93,7 +92,7 @@ public class Satellite implements Serializable {
      * @return the agenzia
      */
     public Agency getAgenzia() {
-        return agency;
+        return this.agency;
     }
 
     /**
@@ -102,7 +101,7 @@ public class Satellite implements Serializable {
      * @return the end date
      */
     public Calendar getEndDate() {
-        return endDate;
+        return this.endDate;
     }
 
     /**
@@ -111,7 +110,7 @@ public class Satellite implements Serializable {
      * @return the name
      */
     public String getName() {
-        return name;
+        return this.name;
     }
 
     /**
@@ -120,7 +119,7 @@ public class Satellite implements Serializable {
      * @return the start date
      */
     public Calendar getStartDate() {
-        return startDate;
+        return this.startDate;
     }
 
     /**
@@ -129,7 +128,7 @@ public class Satellite implements Serializable {
      * @param agenzia the new agenzia
      */
     public void setAgenzia(Agency agenzia) {
-        agency = agenzia;
+        this.agency = agenzia;
     }
 
     /**
@@ -149,7 +148,7 @@ public class Satellite implements Serializable {
      * @param dayOfMonth the day of month
      */
     public void setEndDate(int year, int monthOfYear, int dayOfMonth) {
-        endDate.set(year, monthOfYear - 1, dayOfMonth);
+        this.endDate.set(year, monthOfYear - 1, dayOfMonth);
     }
 
     /**
@@ -178,6 +177,6 @@ public class Satellite implements Serializable {
      * @param dayOfMonth the day of month
      */
     public void setStartDate(int year, int monthOfYear, int dayOfMonth) {
-        startDate.set(year, monthOfYear - 1, dayOfMonth);
+        this.startDate.set(year, monthOfYear - 1, dayOfMonth);
     }
 }

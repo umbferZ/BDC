@@ -1,11 +1,10 @@
 /*
  * 
- * Created by Umberto Ferracci from urania's PC
- * email: umberto.ferracci@gmail.com
- * Project: BdC
+ * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
+ * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.model.instruments
  * Type: Instrument
- * Last update: 12-set-2017 15.01.14
+ * Last update: 13-set-2017 0.27.12
  * 
  */
 
@@ -53,7 +52,7 @@ public class Instrument implements Serializable {
      * Instantiates a new instrument.
      */
     public Instrument() {
-        bands = new ArrayList<>();
+        this.bands = new ArrayList<>();
     }
 
     /**
@@ -84,20 +83,20 @@ public class Instrument implements Serializable {
      * @param banda the banda
      */
     public void addBandaOperativa(Band banda) {
-        bands.add(banda);
+        this.bands.add(banda);
 
     }
 
     public List<Band> getBands() {
-        return bands;
+        return this.bands;
     }
 
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public Map getMap() {
-        return map;
+        return this.map;
     }
 
     /**
@@ -106,7 +105,7 @@ public class Instrument implements Serializable {
      * @return the name
      */
     public String getName() {
-        return name;
+        return this.name;
     }
 
     /**
@@ -115,7 +114,7 @@ public class Instrument implements Serializable {
      * @return the satellite
      */
     public Satellite getSatellite() {
-        return satellite;
+        return this.satellite;
     }
 
     public void setBands(List<Band> bands) {

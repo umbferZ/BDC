@@ -1,11 +1,10 @@
 /*
  * 
- * Created by Umberto Ferracci from urania's PC
- * email: umberto.ferracci@gmail.com
- * Project: BdC
+ * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
+ * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.controls.gestisciUtenti
  * Type: C_UC_Login
- * Last update: 9-set-2017 15.37.25
+ * Last update: 13-set-2017 0.28.46
  * 
  */
 
@@ -19,7 +18,7 @@ import javax.security.auth.login.LoginException;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import main.org.bdc.controls.gestisciSatellite.C_UC_Main;
+import main.org.bdc.controls.C_UC_Main;
 import main.org.bdc.model.DaoFactory;
 import main.org.bdc.model.people.UserRegegistered;
 import main.org.bdc.view.JFrameLogin;
@@ -39,9 +38,9 @@ public class C_UC_Login {
             @Override
             public void run() {
                 try {
-                    view = new JFrameLogin();
-                    view.setVisible(true);
-                    view.addButtonLoginActionListener(new ButtonLoginActionListener());
+                    C_UC_Login.this.view = new JFrameLogin();
+                    C_UC_Login.this.view.setVisible(true);
+                    C_UC_Login.this.view.addButtonLoginActionListener(new ButtonLoginActionListener());
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -59,18 +58,18 @@ public class C_UC_Login {
     }
 
     private boolean validatePassword() {
-        JPasswordField fld_pwd = view.getPwdPassword();
-        if ((password = new String(fld_pwd.getPassword())).length() < 5) {
-            view.setErrorMessage("La password deve contenere almeno 5 caratteri");
+        JPasswordField fld_pwd = this.view.getPwdPassword();
+        if ((this.password = new String(fld_pwd.getPassword())).length() < 5) {
+            this.view.setErrorMessage("La password deve contenere almeno 5 caratteri");
             return false;
         }
         return true;
     }
 
     private boolean validateUserId() {
-        JTextField fld_user_id = view.getTxtUsername();
-        if ((user_id = fld_user_id.getText()).length() < 5) {
-            view.setErrorMessage("Lo user-id deve contenere almeno 5 caratteri");
+        JTextField fld_user_id = this.view.getTxtUsername();
+        if ((this.user_id = fld_user_id.getText()).length() < 5) {
+            this.view.setErrorMessage("Lo user-id deve contenere almeno 5 caratteri");
             return false;
         }
         return true;
@@ -83,10 +82,10 @@ public class C_UC_Login {
         public void actionPerformed(ActionEvent e) {
             if (checkFields())
                 try {
-                    new C_UC_Main(login(user_id, password));
-                    view.setVisible(false);
+                    new C_UC_Main(login(C_UC_Login.this.user_id, C_UC_Login.this.password));
+                    C_UC_Login.this.view.setVisible(false);
                 } catch (LoginException e1) {
-                    view.setErrorMessage(e1.getMessage());
+                    C_UC_Login.this.view.setErrorMessage(e1.getMessage());
                 }
 
         }

@@ -1,11 +1,10 @@
 /*
  * 
- * Created by Umberto Ferracci from urania's PC
- * email: umberto.ferracci@gmail.com
- * Project: BdC
+ * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
+ * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.service.parser.monitor.beans
  * Type: Bean_File2
- * Last update: 12-mar-2017 16.25.12
+ * Last update: 13-set-2017 0.30.03
  * 
  */
 
@@ -26,7 +25,7 @@ public class Bean_File2 extends SimpleBean {
 
     private double alpha_70;
 
-    private int clumpId;
+    private int    clumpId;
 
     private double flow_160;
 
@@ -115,7 +114,7 @@ public class Bean_File2 extends SimpleBean {
      * @return the alpha 160
      */
     public double getAlpha_160() {
-        return alpha_160;
+        return this.alpha_160;
     }
 
     /**
@@ -124,7 +123,7 @@ public class Bean_File2 extends SimpleBean {
      * @return the alpha 250
      */
     public double getAlpha_250() {
-        return alpha_250;
+        return this.alpha_250;
     }
 
     /**
@@ -133,7 +132,7 @@ public class Bean_File2 extends SimpleBean {
      * @return the alpha 350
      */
     public double getAlpha_350() {
-        return alpha_350;
+        return this.alpha_350;
     }
 
     /**
@@ -142,7 +141,7 @@ public class Bean_File2 extends SimpleBean {
      * @return the alpha 500
      */
     public double getAlpha_500() {
-        return alpha_500;
+        return this.alpha_500;
     }
 
     /**
@@ -151,7 +150,7 @@ public class Bean_File2 extends SimpleBean {
      * @return the alpha 70
      */
     public double getAlpha_70() {
-        return alpha_70;
+        return this.alpha_70;
     }
 
     /**
@@ -160,7 +159,7 @@ public class Bean_File2 extends SimpleBean {
      * @return the clump id
      */
     public int getClumpId() {
-        return clumpId;
+        return this.clumpId;
     }
 
     /**
@@ -169,7 +168,7 @@ public class Bean_File2 extends SimpleBean {
      * @return the flow 160
      */
     public double getFlow_160() {
-        return flow_160;
+        return this.flow_160;
     }
 
     /**
@@ -178,7 +177,7 @@ public class Bean_File2 extends SimpleBean {
      * @return the flow 250
      */
     public double getFlow_250() {
-        return flow_250;
+        return this.flow_250;
     }
 
     /**
@@ -187,7 +186,7 @@ public class Bean_File2 extends SimpleBean {
      * @return the flow 350
      */
     public double getFlow_350() {
-        return flow_350;
+        return this.flow_350;
     }
 
     /**
@@ -196,7 +195,7 @@ public class Bean_File2 extends SimpleBean {
      * @return the flow 500
      */
     public double getFlow_500() {
-        return flow_500;
+        return this.flow_500;
     }
 
     /**
@@ -205,7 +204,7 @@ public class Bean_File2 extends SimpleBean {
      * @return the flow 70
      */
     public double getFlow_70() {
-        return flow_70;
+        return this.flow_70;
     }
 
     /**
@@ -214,7 +213,7 @@ public class Bean_File2 extends SimpleBean {
      * @return the h max ax 160
      */
     public double gethMaxAx_160() {
-        return hMaxAx_160;
+        return this.hMaxAx_160;
     }
 
     /**
@@ -223,7 +222,7 @@ public class Bean_File2 extends SimpleBean {
      * @return the h max ax 250
      */
     public double gethMaxAx_250() {
-        return hMaxAx_250;
+        return this.hMaxAx_250;
     }
 
     /**
@@ -232,7 +231,7 @@ public class Bean_File2 extends SimpleBean {
      * @return the h max ax 350
      */
     public double gethMaxAx_350() {
-        return hMaxAx_350;
+        return this.hMaxAx_350;
     }
 
     /**
@@ -241,7 +240,7 @@ public class Bean_File2 extends SimpleBean {
      * @return the h max ax 500
      */
     public double gethMaxAx_500() {
-        return hMaxAx_500;
+        return this.hMaxAx_500;
     }
 
     /**
@@ -250,7 +249,7 @@ public class Bean_File2 extends SimpleBean {
      * @return the h max ax 70
      */
     public double gethMaxAx_70() {
-        return hMaxAx_70;
+        return this.hMaxAx_70;
     }
 
     /**
@@ -259,7 +258,7 @@ public class Bean_File2 extends SimpleBean {
      * @return the h min ax 160
      */
     public double gethMinAx_160() {
-        return hMinAx_160;
+        return this.hMinAx_160;
     }
 
     /**
@@ -268,7 +267,7 @@ public class Bean_File2 extends SimpleBean {
      * @return the h min ax 250
      */
     public double gethMinAx_250() {
-        return hMinAx_250;
+        return this.hMinAx_250;
     }
 
     /**
@@ -277,7 +276,7 @@ public class Bean_File2 extends SimpleBean {
      * @return the h min ax 350
      */
     public double gethMinAx_350() {
-        return hMinAx_350;
+        return this.hMinAx_350;
     }
 
     /**
@@ -286,7 +285,7 @@ public class Bean_File2 extends SimpleBean {
      * @return the h min ax 500
      */
     public double gethMinAx_500() {
-        return hMinAx_500;
+        return this.hMinAx_500;
     }
 
     /**
@@ -295,7 +294,7 @@ public class Bean_File2 extends SimpleBean {
      * @return the h min ax 70
      */
     public double gethMinAx_70() {
-        return hMinAx_70;
+        return this.hMinAx_70;
     }
 
     /**

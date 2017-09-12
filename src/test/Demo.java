@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: test
  * Type: Demo
- * Last update: 12-set-2017 17.25.21
+ * Last update: 13-set-2017 0.20.28
  * 
  */
 
@@ -25,6 +25,7 @@ import main.org.bdc.model.instruments.Band;
 import main.org.bdc.model.instruments.Instrument;
 import main.org.bdc.model.people.UserRegegistered;
 import main.org.bdc.model.people.UserType;
+import main.org.bdc.service.dal.exception.SaveOrUpdateDalException;
 
 /**
  * The Class Demo.
@@ -51,7 +52,12 @@ public class Demo {
         admin.setUserId("amministratore");
         admin.setPassword("amministratore");
         admin.setUserType(UserType.ADMIN);
-        DaoFactory.getInstance().getUserDao().saveOrUpdate(admin);
+        try {
+            DaoFactory.getInstance().getUserDao().saveOrUpdate(admin);
+        } catch (SaveOrUpdateDalException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     /**

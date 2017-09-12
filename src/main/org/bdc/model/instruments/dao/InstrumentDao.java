@@ -1,11 +1,10 @@
 /*
  * 
- * Created by Umberto Ferracci from urania's PC
- * email: umberto.ferracci@gmail.com
- * Project: BdC
- * Package: main.org.bdc.model.galaxy.dao
+ * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
+ * Project: BdC - Osservatorio Astronomico Virtuale
+ * Package: main.org.bdc.model.instruments.dao
  * Type: InstrumentDao
- * Last update: 9-set-2017 12.50.58
+ * Last update: 13-set-2017 0.27.28
  * 
  */
 

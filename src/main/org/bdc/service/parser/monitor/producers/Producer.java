@@ -1,11 +1,10 @@
 /*
  * 
- * Created by Umberto Ferracci from urania's PC
- * email: umberto.ferracci@gmail.com
- * Project: BdC
+ * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
+ * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.service.parser.monitor.producers
  * Type: Producer
- * Last update: 12-set-2017 13.07.15
+ * Last update: 13-set-2017 0.30.13
  * 
  */
 
@@ -46,7 +45,7 @@ public abstract class Producer<SB extends SimpleBean> implements Runnable {
      */
     @SuppressWarnings("unchecked")
     public Producer(String fileName, QueueProducerConsumer<SB> queue) {
-        typeBeanClass = (Class<SB>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+        this.typeBeanClass = (Class<SB>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
         this.fileName = fileName;
         this.queue = queue;
         columnMappingType();
@@ -58,7 +57,7 @@ public abstract class Producer<SB extends SimpleBean> implements Runnable {
      * @return the file name
      */
     public String getFileName() {
-        return fileName;
+        return this.fileName;
     }
 
     /**
@@ -67,7 +66,7 @@ public abstract class Producer<SB extends SimpleBean> implements Runnable {
      * @return the queue
      */
     public QueueProducerConsumer<SB> getQueue() {
-        return queue;
+        return this.queue;
     }
 
     /*
@@ -82,7 +81,7 @@ public abstract class Producer<SB extends SimpleBean> implements Runnable {
         long time = 0;
         int rows = 0;
         try {
-            fileReader = new FileReader(fileName);
+            fileReader = new FileReader(this.fileName);
             bufferReader = new BufferedReader(fileReader);
             String[] nextLine;
             int counter = 0;
@@ -93,7 +92,7 @@ public abstract class Producer<SB extends SimpleBean> implements Runnable {
             csvReader.readNext();
             while ((nextLine = csvReader.readNext()) != null) {
                 long start = System.currentTimeMillis();
-                queue.put(createBean(nextLine));
+                this.queue.put(createBean(nextLine));
                 time += System.currentTimeMillis() - start;
                 rows++;
                 // if (rows > 10)
@@ -121,7 +120,7 @@ public abstract class Producer<SB extends SimpleBean> implements Runnable {
             System.out.println(String.format("Producer sets finish"));
             if (rows > 0)
                 System.out.println(String.format("Avarage time for read and enqueue is %d ms", time / rows));
-            queue.setFinished(true);
+            this.queue.setFinished(true);
             try {
                 csvReader.close();
                 bufferReader.close();
@@ -177,7 +176,7 @@ public abstract class Producer<SB extends SimpleBean> implements Runnable {
         Object[] parametersValue = new Object[columnMappingType().length];
         for (int i = 0; i < columnMappingType().length; i++)
             parametersValue[i] = ParserValue.parse(columnMappingType()[i], values[i]);
-        Constructor<SB> constructor = typeBeanClass.getConstructor(columnMappingType());
+        Constructor<SB> constructor = this.typeBeanClass.getConstructor(columnMappingType());
         return constructor.newInstance(parametersValue);
     }
 }

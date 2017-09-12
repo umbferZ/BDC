@@ -1,11 +1,10 @@
 /*
  * 
- * Created by Umberto Ferracci from urania's PC
- * email: umberto.ferracci@gmail.com
- * Project: BdC
+ * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
+ * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.service.parser.monitor.beans
  * Type: Bean_File4
- * Last update: 11-set-2017 15.46.01
+ * Last update: 13-set-2017 0.30.03
  * 
  */
 
@@ -45,7 +44,7 @@ public class Bean_File4 extends SimpleBean {
         this.latitude = latitude;
         this.flow_24d0 = flow_24d0;
         this.error_24d0 = error_24d0;
-        sourceId_GLIMPSE = sourcetId_GLIMPSE;
+        this.sourceId_GLIMPSE = sourcetId_GLIMPSE;
     }
 
     /**
@@ -54,7 +53,7 @@ public class Bean_File4 extends SimpleBean {
      * @return the error 24 d 0
      */
     public double getError_24d0() {
-        return error_24d0;
+        return this.error_24d0;
     }
 
     /**
@@ -63,7 +62,7 @@ public class Bean_File4 extends SimpleBean {
      * @return the flow 24 d 0
      */
     public double getFlow_24d0() {
-        return flow_24d0;
+        return this.flow_24d0;
     }
 
     /**
@@ -72,7 +71,7 @@ public class Bean_File4 extends SimpleBean {
      * @return the latitude
      */
     public double getLatitude() {
-        return latitude;
+        return this.latitude;
     }
 
     /**
@@ -81,7 +80,7 @@ public class Bean_File4 extends SimpleBean {
      * @return the longitude
      */
     public double getLongitude() {
-        return longitude;
+        return this.longitude;
     }
 
     /**
@@ -90,7 +89,7 @@ public class Bean_File4 extends SimpleBean {
      * @return the sorgent id GLIMPSE
      */
     public String getSourceId_GLIMPSE() {
-        return sourceId_GLIMPSE;
+        return this.sourceId_GLIMPSE;
     }
 
     /**
@@ -99,7 +98,7 @@ public class Bean_File4 extends SimpleBean {
      * @return the sorgent id MIPSGAL
      */
     public String getSourceId_MIPSGAL() {
-        return sourceId_MIPSGAL;
+        return this.sourceId_MIPSGAL;
     }
 
     /**

@@ -1,11 +1,10 @@
 /*
  * 
- * Created by Umberto Ferracci from urania's PC
- * email: umberto.ferracci@gmail.com
- * Project: BdC
+ * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
+ * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.view
  * Type: MainActivity_old
- * Last update: 7-ago-2017 12.30.13
+ * Last update: 13-set-2017 0.23.41
  * 
  */
 
@@ -60,12 +59,12 @@ public class MainActivity_old {
      */
     private void initialize() {
 
-        frame = new JFrame();
-        frame.setBounds(100, 100, 450, 300);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.frame = new JFrame();
+        this.frame.setBounds(100, 100, 450, 300);
+        this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JMenuBar menuBar = new JMenuBar();
-        frame.setJMenuBar(menuBar);
+        this.frame.setJMenuBar(menuBar);
 
         JMenu mnNewMenu = new JMenu("New menu");
         menuBar.add(mnNewMenu);
@@ -82,17 +81,17 @@ public class MainActivity_old {
 
         JMenuItem mntmNewMenuItem_2 = new JMenuItem("New menu item");
         mnNewMenu.add(mntmNewMenuItem_2);
-        frame.getContentPane().setLayout(new BorderLayout(0, 0));
+        this.frame.getContentPane().setLayout(new BorderLayout(0, 0));
 
         JPanel panel = new JPanel();
-        frame.getContentPane().add(panel, BorderLayout.CENTER);
+        this.frame.getContentPane().add(panel, BorderLayout.CENTER);
         panel.setLayout(new CardLayout(0, 0));
 
         InserisciSatellite inserisciSatellitePanel = new InserisciSatellite();
         panel.add(inserisciSatellitePanel, "InserisciSatellite");
 
         JPanel panel_1 = new JPanel();
-        frame.getContentPane().add(panel_1, BorderLayout.SOUTH);
+        this.frame.getContentPane().add(panel_1, BorderLayout.SOUTH);
     }
 
 }

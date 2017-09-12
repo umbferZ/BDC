@@ -1,11 +1,10 @@
 /*
  * 
- * Created by Umberto Ferracci from urania's PC
- * email: umberto.ferracci@gmail.com
- * Project: BdC
+ * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
+ * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.service.parser.monitor.consumers
  * Type: Consumer_File4
- * Last update: 11-set-2017 20.36.28
+ * Last update: 13-set-2017 0.30.06
  * 
  */
 
@@ -35,9 +34,9 @@ public class Consumer_File4 extends Consumer<Bean_File4> {
      */
     public Consumer_File4(QueueProducerConsumer<Bean_File4> queue) {
         super(queue);
-        dao = DaoFactory.getInstance();
+        this.dao = DaoFactory.getInstance();
         try {
-            b_24 = dao.getBandDao().getByBand(24.0);
+            this.b_24 = this.dao.getBandDao().getByBand(24.0);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -56,7 +55,7 @@ public class Consumer_File4 extends Consumer<Bean_File4> {
             Source sourceToLowerBand;
             if (!bean.getSourceId_GLIMPSE().equals("")) {
                 try {
-                    sourceToLowerBand = dao.getSourceDao().getById(bean.getSourceId_GLIMPSE());
+                    sourceToLowerBand = this.dao.getSourceDao().getById(bean.getSourceId_GLIMPSE());
                 } catch (Exception e) {
                     sourceToLowerBand = new Source();
                     sourceToLowerBand.setId(bean.getSourceId_GLIMPSE());
@@ -67,8 +66,8 @@ public class Consumer_File4 extends Consumer<Bean_File4> {
             }
             source.setMap(new Map("MIPS-GAL"));
             source.setId(bean.getSourceId_MIPSGAL());
-            source.addFlow(new Flow(bean.getFlow_24d0(), bean.getError_24d0(), b_24));
-            dao.getSourceDao().saveOrUpdate(source);
+            source.addFlow(new Flow(bean.getFlow_24d0(), bean.getError_24d0(), this.b_24));
+            this.dao.getSourceDao().saveOrUpdate(source);
 
         } catch (Exception e) {
             // TODO Auto-generated catch block

@@ -1,11 +1,10 @@
 /*
  * 
- * Created by Umberto Ferracci from urania's PC
- * email: umberto.ferracci@gmail.com
- * Project: BdC
+ * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
+ * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.model.galaxy
  * Type: Position
- * Last update: 12-set-2017 12.56.52
+ * Last update: 13-set-2017 0.26.51
  * 
  */
 
@@ -64,7 +63,7 @@ public class Position implements Serializable {
      * @return the latitude
      */
     public double getLatitude() {
-        return latitude;
+        return this.latitude;
     }
 
     /**
@@ -73,11 +72,11 @@ public class Position implements Serializable {
      * @return the longitude
      */
     public double getLongitude() {
-        return longitude;
+        return this.longitude;
     }
 
     public Source getSource() {
-        return source;
+        return this.source;
     }
 
     /**

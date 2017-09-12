@@ -1,11 +1,10 @@
 /*
  * 
- * Created by Umberto Ferracci from urania's PC
- * email: umberto.ferracci@gmail.com
- * Project: BdC
+ * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
+ * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.service.parser.monitor.translators
  * Type: Translator
- * Last update: 10-set-2017 16.42.26
+ * Last update: 13-set-2017 0.30.17
  * 
  */
 
@@ -36,7 +35,7 @@ public abstract class Translator<SB extends SimpleBean> {
      */
     public Translator(String fileName) {
         this.fileName = fileName;
-        queue = new QueueProducerConsumer<>();
+        this.queue = new QueueProducerConsumer<>();
     }
 
     /**
@@ -86,7 +85,7 @@ public abstract class Translator<SB extends SimpleBean> {
      * @return the file name
      */
     protected String getFileName() {
-        return fileName;
+        return this.fileName;
     }
 
     /**
@@ -95,7 +94,7 @@ public abstract class Translator<SB extends SimpleBean> {
      * @return the queue
      */
     protected QueueProducerConsumer<SB> getQueue() {
-        return queue;
+        return this.queue;
     }
 
     /**

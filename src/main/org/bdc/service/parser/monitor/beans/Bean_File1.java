@@ -1,11 +1,10 @@
 /*
  * 
- * Created by Umberto Ferracci from urania's PC
- * email: umberto.ferracci@gmail.com
- * Project: BdC
+ * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
+ * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.service.parser.monitor.beans
  * Type: Bean_File1
- * Last update: 8-set-2017 16.56.54
+ * Last update: 13-set-2017 0.30.03
  * 
  */
 
@@ -58,7 +57,7 @@ public class Bean_File1 extends SimpleBean {
      * @return the clump id
      */
     public int getClumpId() {
-        return clumpId;
+        return this.clumpId;
     }
 
     /**
@@ -67,7 +66,7 @@ public class Bean_File1 extends SimpleBean {
      * @return the clump type
      */
     public int getClumpType() {
-        return clumpType;
+        return this.clumpType;
     }
 
     /**
@@ -76,7 +75,7 @@ public class Bean_File1 extends SimpleBean {
      * @return the density
      */
     public double getDensity() {
-        return density;
+        return this.density;
     }
 
     /**
@@ -85,7 +84,7 @@ public class Bean_File1 extends SimpleBean {
      * @return the latitude
      */
     public double getLatitude() {
-        return latitude;
+        return this.latitude;
     }
 
     /**
@@ -94,7 +93,7 @@ public class Bean_File1 extends SimpleBean {
      * @return the longitude
      */
     public double getLongitude() {
-        return longitude;
+        return this.longitude;
     }
 
     /**
@@ -103,7 +102,7 @@ public class Bean_File1 extends SimpleBean {
      * @return the ratio temp mass
      */
     public double getRatioTempMass() {
-        return ratioTempMass;
+        return this.ratioTempMass;
     }
 
     /**
@@ -112,7 +111,7 @@ public class Bean_File1 extends SimpleBean {
      * @return the temp
      */
     public double getTemp() {
-        return temp;
+        return this.temp;
     }
 
     /**

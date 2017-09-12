@@ -1,11 +1,10 @@
 /*
  * 
- * Created by Umberto Ferracci from urania's PC
- * email: umberto.ferracci@gmail.com
- * Project: BdC
+ * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
+ * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.model.galaxy
  * Type: Source
- * Last update: 12-set-2017 15.01.55
+ * Last update: 13-set-2017 0.26.51
  * 
  */
 
@@ -48,11 +47,11 @@ public class Source implements Serializable {
      * Instantiates a new sorgente.
      */
     public Source() {
-        flows = new ArrayList<>();
+        this.flows = new ArrayList<>();
     }
 
     public void addFlow(Flow flow) {
-        flows.add(flow);
+        this.flows.add(flow);
     }
 
     /**
@@ -61,11 +60,11 @@ public class Source implements Serializable {
      * @return the flows
      */
     public List<Flow> getFlow() {
-        return flows;
+        return this.flows;
     }
 
     public List<Flow> getFlows() {
-        return flows;
+        return this.flows;
     }
 
     /**
@@ -74,19 +73,19 @@ public class Source implements Serializable {
      * @return the id
      */
     public String getId() {
-        return id;
+        return this.id;
     }
 
     public Map getMap() {
-        return map;
+        return this.map;
     }
 
     public Position getPosition() {
-        return position;
+        return this.position;
     }
 
     public Source getSourceToLowerResolution() {
-        return sourceToLowerResolution;
+        return this.sourceToLowerResolution;
     }
 
     /**

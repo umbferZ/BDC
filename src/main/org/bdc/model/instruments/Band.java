@@ -1,11 +1,10 @@
 /*
  * 
- * Created by Umberto Ferracci from urania's PC
- * email: umberto.ferracci@gmail.com
- * Project: BdC
+ * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
+ * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.model.instruments
  * Type: Band
- * Last update: 12-set-2017 14.24.28
+ * Last update: 13-set-2017 0.27.12
  * 
  */
 
@@ -74,11 +73,11 @@ public class Band implements Serializable {
     }
 
     public List<Flow> getFlows() {
-        return flows;
+        return this.flows;
     }
 
     public int getId() {
-        return id;
+        return this.id;
     }
 
     // public void addInstrument(Instrument instrument) {
@@ -91,7 +90,7 @@ public class Band implements Serializable {
      * @return the strument
      */
     public Instrument getInstrument() {
-        return instrument;
+        return this.instrument;
     }
 
     /**
@@ -100,7 +99,7 @@ public class Band implements Serializable {
      * @return the lunghezza onda
      */
     public double getLunghezzaOnda() {
-        return lunghezzaOnda;
+        return this.lunghezzaOnda;
     }
 
     /**
@@ -109,7 +108,7 @@ public class Band implements Serializable {
      * @return the resolution
      */
     public double getResolution() {
-        return resolution;
+        return this.resolution;
     }
 
     public void setFlows(List<Flow> flows) {

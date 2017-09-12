@@ -1,11 +1,10 @@
 /*
  * 
- * Created by Umberto Ferracci from urania's PC
- * email: umberto.ferracci@gmail.com
- * Project: BdC
+ * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
+ * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.service.dal
  * Type: EntityDao
- * Last update: 12-mar-2017 16.24.10
+ * Last update: 13-set-2017 0.29.23
  * 
  */
 
@@ -13,6 +12,8 @@ package main.org.bdc.service.dal;
 
 import java.io.Serializable;
 import java.util.List;
+
+import main.org.bdc.service.dal.exception.SaveOrUpdateDalException;
 
 /**
  * The Interface EntityDao.
@@ -61,6 +62,7 @@ public interface EntityDao<T, ID extends Serializable> {
      *
      * @param entity the entity
      * @return the t
+     * @throws SaveOrUpdateDalException
      */
-    public T saveOrUpdate(T entity);
+    public T saveOrUpdate(T entity) throws SaveOrUpdateDalException;
 }

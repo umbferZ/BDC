@@ -1,11 +1,10 @@
 /*
  * 
- * Created by Umberto Ferracci from urania's PC
- * email: umberto.ferracci@gmail.com
- * Project: BdC
+ * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
+ * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.service.activities
  * Type: Activity
- * Last update: 7-ago-2017 15.22.23
+ * Last update: 13-set-2017 0.29.16
  * 
  */
 
@@ -25,12 +24,12 @@ public abstract class Activity {
     public final void run() {
         onCreate();
         try {
-            if ((contentView = getContentView()) == null)
+            if ((this.contentView = getContentView()) == null)
                 throw new Exception("");
-            typeClass = (Class<Component>) contentView.getClass();
-            Constructor<Component> constructor = typeClass.getConstructor();
-            contentView = constructor.newInstance();
-            contentView.setVisible(true);
+            this.typeClass = (Class<Component>) this.contentView.getClass();
+            Constructor<Component> constructor = this.typeClass.getConstructor();
+            this.contentView = constructor.newInstance();
+            this.contentView.setVisible(true);
         } catch (Exception e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
@@ -39,7 +38,7 @@ public abstract class Activity {
     }
 
     protected final Component getContentView() {
-        return contentView;
+        return this.contentView;
     }
 
     protected abstract void onClose();

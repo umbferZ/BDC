@@ -1,11 +1,10 @@
 /*
  * 
- * Created by Umberto Ferracci from urania's PC
- * email: umberto.ferracci@gmail.com
- * Project: BdC
+ * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
+ * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.view
  * Type: JFrameSearchPosition
- * Last update: 12-set-2017 19.15.25
+ * Last update: 13-set-2017 0.23.41
  * 
  */
 
@@ -46,6 +45,10 @@ public class JFrameSearchPosition extends JFrame {
 
     private JTextField   fld_long;
 
+    private JLabel       lblGeometry;
+
+    private JLabel       lblType;
+
     private ButtonGroup  radioGroupGeometry;
 
     private ButtonGroup  radioGroupType;
@@ -84,125 +87,130 @@ public class JFrameSearchPosition extends JFrame {
         setType(Type.UTILITY);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setBounds(100, 100, 450, 300);
-        contentPane = new JPanel();
-        contentPane.setBorder(new EmptyBorder(0, 0, 0, 0));
-        setContentPane(contentPane);
-        contentPane.setLayout(null);
+        this.contentPane = new JPanel();
+        this.contentPane.setBorder(new EmptyBorder(0, 0, 0, 0));
+        setContentPane(this.contentPane);
+        this.contentPane.setLayout(null);
 
-        radioGroupGeometry = new ButtonGroup();
+        this.radioGroupGeometry = new ButtonGroup();
 
-        radioGroupType = new ButtonGroup();
+        this.radioGroupType = new ButtonGroup();
 
         JPanel panel = new JPanel();
         panel.setBorder(new TitledBorder(null, "Search from position", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-        panel.setBounds(12, 12, 422, 229);
-        contentPane.add(panel);
+        panel.setBounds(12, 45, 422, 173);
+        this.contentPane.add(panel);
         panel.setLayout(new FormLayout(new ColumnSpec[] {
                 FormSpecs.RELATED_GAP_COLSPEC, FormSpecs.DEFAULT_COLSPEC, FormSpecs.RELATED_GAP_COLSPEC, ColumnSpec.decode("default:grow"), FormSpecs.RELATED_GAP_COLSPEC, FormSpecs.DEFAULT_COLSPEC, FormSpecs.RELATED_GAP_COLSPEC,
                 ColumnSpec.decode("default:grow"),
         }, new RowSpec[] {
                 FormSpecs.RELATED_GAP_ROWSPEC, FormSpecs.DEFAULT_ROWSPEC, FormSpecs.RELATED_GAP_ROWSPEC, FormSpecs.DEFAULT_ROWSPEC, FormSpecs.RELATED_GAP_ROWSPEC, FormSpecs.DEFAULT_ROWSPEC, FormSpecs.RELATED_GAP_ROWSPEC, FormSpecs.DEFAULT_ROWSPEC,
-                FormSpecs.RELATED_GAP_ROWSPEC, RowSpec.decode("default:grow"), FormSpecs.RELATED_GAP_ROWSPEC, FormSpecs.DEFAULT_ROWSPEC, FormSpecs.RELATED_GAP_ROWSPEC, RowSpec.decode("default:grow"), FormSpecs.RELATED_GAP_ROWSPEC,
-                FormSpecs.DEFAULT_ROWSPEC,
+                FormSpecs.RELATED_GAP_ROWSPEC, FormSpecs.DEFAULT_ROWSPEC, FormSpecs.RELATED_GAP_ROWSPEC,
         }));
 
         JLabel lblNome = new JLabel("Latitude");
         panel.add(lblNome, "2, 2, right, default");
 
-        fld_lat = new JTextField();
-        panel.add(fld_lat, "4, 2, fill, default");
-        fld_lat.setColumns(10);
+        this.fld_lat = new JTextField();
+        panel.add(this.fld_lat, "4, 2, fill, default");
+        this.fld_lat.setColumns(10);
 
         JLabel lblLongitude = new JLabel("Longitude");
         panel.add(lblLongitude, "6, 2, right, default");
 
-        fld_long = new JTextField();
-        panel.add(fld_long, "8, 2, fill, default");
-        fld_long.setColumns(10);
+        this.fld_long = new JTextField();
+        panel.add(this.fld_long, "8, 2, fill, default");
+        this.fld_long.setColumns(10);
 
         JLabel lblDistance = new JLabel("Distance");
         panel.add(lblDistance, "2, 4, right, default");
 
-        fld_dist = new JTextField();
-        panel.add(fld_dist, "4, 4, fill, default");
-        fld_dist.setColumns(10);
+        this.fld_dist = new JTextField();
+        panel.add(this.fld_dist, "4, 4, fill, default");
+        this.fld_dist.setColumns(10);
 
         JLabel lblNewLabel = new JLabel("Limit");
         panel.add(lblNewLabel, "6, 4, right, default");
 
-        fld_limit = new JTextField();
-        panel.add(fld_limit, "8, 4, fill, default");
-        fld_limit.setColumns(10);
+        this.fld_limit = new JTextField();
+        panel.add(this.fld_limit, "8, 4, fill, default");
+        this.fld_limit.setColumns(10);
 
-        rdbtnTypeSource = new JRadioButton("Source");
-        panel.add(rdbtnTypeSource, "4, 6");
-        radioGroupType.add(rdbtnTypeSource);
+        this.lblType = new JLabel("Type");
+        panel.add(this.lblType, "2, 6");
 
-        rdbtnTypeClump = new JRadioButton("Clump");
-        rdbtnTypeClump.setSelected(true);
-        panel.add(rdbtnTypeClump, "8, 6");
-        radioGroupType.add(rdbtnTypeClump);
+        this.rdbtnTypeSource = new JRadioButton("Source");
+        panel.add(this.rdbtnTypeSource, "4, 6");
+        this.radioGroupType.add(this.rdbtnTypeSource);
 
-        rdbtnGeometrySquare = new JRadioButton("Square");
-        panel.add(rdbtnGeometrySquare, "4, 8");
-        radioGroupGeometry.add(rdbtnGeometrySquare);
+        this.rdbtnTypeClump = new JRadioButton("Clump");
+        this.rdbtnTypeClump.setSelected(true);
+        panel.add(this.rdbtnTypeClump, "6, 6");
+        this.radioGroupType.add(this.rdbtnTypeClump);
 
-        rdbtnGeometryRound = new JRadioButton("Round");
-        rdbtnGeometryRound.setSelected(true);
-        panel.add(rdbtnGeometryRound, "8, 8");
-        radioGroupGeometry.add(rdbtnGeometryRound);
+        this.lblGeometry = new JLabel("Geometry");
+        panel.add(this.lblGeometry, "2, 8");
 
-        btnInserisci = new JButton("Search");
+        this.rdbtnGeometrySquare = new JRadioButton("Square");
+        panel.add(this.rdbtnGeometrySquare, "4, 8");
+        this.radioGroupGeometry.add(this.rdbtnGeometrySquare);
 
-        panel.add(btnInserisci, "8, 12, center, center");
+        this.rdbtnGeometryRound = new JRadioButton("Round");
+        this.rdbtnGeometryRound.setSelected(true);
+        panel.add(this.rdbtnGeometryRound, "6, 8");
+        this.radioGroupGeometry.add(this.rdbtnGeometryRound);
 
-        error = new JLabel("");
-        error.setBounds(12, 253, 422, 15);
-        contentPane.add(error);
+        this.btnInserisci = new JButton("Search");
+
+        panel.add(this.btnInserisci, "8, 10, center, center");
+
+        this.error = new JLabel("");
+        this.error.setBounds(12, 253, 422, 15);
+        this.contentPane.add(this.error);
     }
 
     public void addInserisciSearchListener(ActionListener listener) {
-        btnInserisci.addActionListener(listener);
+        this.btnInserisci.addActionListener(listener);
     }
 
     public JButton getBtnInserisci() {
-        return btnInserisci;
+        return this.btnInserisci;
     }
 
     public JLabel getError() {
-        return error;
+        return this.error;
     }
 
     public JTextField getFld_dist() {
-        return fld_dist;
+        return this.fld_dist;
     }
 
     public JTextField getFld_lat() {
-        return fld_lat;
+        return this.fld_lat;
     }
 
     public JTextField getFld_limit() {
-        return fld_limit;
+        return this.fld_limit;
     }
 
     public JTextField getFld_long() {
-        return fld_long;
+        return this.fld_long;
     }
 
     public JRadioButton getRdbtnGeometryRound() {
-        return rdbtnGeometryRound;
+        return this.rdbtnGeometryRound;
     }
 
     public JRadioButton getRdbtnGeometrySquare() {
-        return rdbtnGeometrySquare;
+        return this.rdbtnGeometrySquare;
     }
 
     public JRadioButton getRdbtnTypeClump() {
-        return rdbtnTypeClump;
+        return this.rdbtnTypeClump;
     }
 
     public JRadioButton getRdbtnTypeSource() {
-        return rdbtnTypeSource;
+        return this.rdbtnTypeSource;
     }
 
     public void setBtnInserisci(JButton btnInserisci) {

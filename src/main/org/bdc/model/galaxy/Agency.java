@@ -1,12 +1,11 @@
 
 /*
  * 
- * Created by Umberto Ferracci from urania's PC
- * email: umberto.ferracci@gmail.com
- * Project: BdC
+ * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
+ * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.model.galaxy
  * Type: Agency
- * Last update: 12-set-2017 15.02.23
+ * Last update: 13-set-2017 0.26.51
  * 
  */
 
@@ -49,7 +48,7 @@ public class Agency implements Serializable {
      * @return the name
      */
     public String getName() {
-        return name;
+        return this.name;
     }
 
     /**

@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: main.org.bdc.model.people.dao
  * Type: UserDao
- * Last update: 12-set-2017 13.39.06
+ * Last update: 12-set-2017 23.07.11
  * 
  */
 
@@ -13,7 +13,7 @@ package main.org.bdc.model.people.dao;
 
 import java.util.List;
 
-import javax.persistence.TypedQuery;
+import javax.persistence.Query;
 import javax.security.auth.login.LoginException;
 
 import main.org.bdc.model.people.UserRegegistered;
@@ -35,7 +35,7 @@ public class UserDao extends EntityDaoHibernate<UserRegegistered, Integer> {
     @SuppressWarnings("unchecked")
     public UserRegegistered login(String userId, String password) throws LoginException {
         String sql = "FROM UserRegegistered WHERE userId= :userId AND password= :password";
-        TypedQuery<UserRegegistered> query = getSession().createQuery(sql);
+        Query query = getSession().createQuery(sql);
         query.setParameter("userId", userId);
         query.setParameter("password", password);
         List<UserRegegistered> utenti = query.getResultList();

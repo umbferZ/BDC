@@ -1,11 +1,10 @@
 /*
  * 
- * Created by Umberto Ferracci from urania's PC
- * email: umberto.ferracci@gmail.com
- * Project: BdC
+ * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
+ * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.service.parser.monitor.translators
  * Type: Translator_File2
- * Last update: 12-mar-2017 16.25.13
+ * Last update: 13-set-2017 0.30.17
  * 
  */
 
@@ -31,16 +30,20 @@ public class Translator_File2 extends Translator<Bean_File2> {
         super(fileName);
     }
 
-    /* (non-Javadoc)
-     * @see main.org.bdc.service.parser.monitor.translators.Translator#getConsumer()
+    /*
+     * (non-Javadoc)
+     * @see
+     * main.org.bdc.service.parser.monitor.translators.Translator#getConsumer()
      */
     @Override
     public Consumer<Bean_File2> getConsumer() {
         return new Consumer_File2(getQueue());
     }
 
-    /* (non-Javadoc)
-     * @see main.org.bdc.service.parser.monitor.translators.Translator#getProducer()
+    /*
+     * (non-Javadoc)
+     * @see
+     * main.org.bdc.service.parser.monitor.translators.Translator#getProducer()
      */
     @Override
     public Producer<Bean_File2> getProducer() {

@@ -1,11 +1,10 @@
 /*
  * 
- * Created by Umberto Ferracci from urania's PC
- * email: umberto.ferracci@gmail.com
- * Project: BdC
+ * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
+ * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.view
  * Type: JFrameInit
- * Last update: 10-ago-2017 17.08.49
+ * Last update: 13-set-2017 0.23.41
  * 
  */
 
@@ -51,25 +50,25 @@ public class JFrameInit extends JFrame {
     public JFrameInit() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 450, 300);
-        contentPane = new JPanel();
-        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-        contentPane.setLayout(new BorderLayout(0, 0));
-        setContentPane(contentPane);
+        this.contentPane = new JPanel();
+        this.contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+        this.contentPane.setLayout(new BorderLayout(0, 0));
+        setContentPane(this.contentPane);
 
         JPanel panel = new JPanel();
         FlowLayout flowLayout = (FlowLayout) panel.getLayout();
         flowLayout.setAlignment(FlowLayout.LEFT);
         panel.setBorder(new TitledBorder(null, "Ossertaorio Astronomico Virtuale", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-        contentPane.add(panel, BorderLayout.CENTER);
+        this.contentPane.add(panel, BorderLayout.CENTER);
 
-        lblStatus = new JLabel("Inizializzazione");
+        this.lblStatus = new JLabel("Inizializzazione");
 
-        panel.add(lblStatus);
+        panel.add(this.lblStatus);
     }
 
     public void setStatus(String message) {
-        lblStatus.setText(message);
-        lblStatus.setVisible(true);
+        this.lblStatus.setText(message);
+        this.lblStatus.setVisible(true);
     }
 
 }

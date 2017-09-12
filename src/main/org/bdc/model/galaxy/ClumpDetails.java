@@ -1,11 +1,10 @@
 /*
  * 
- * Created by Umberto Ferracci from urania's PC
- * email: umberto.ferracci@gmail.com
- * Project: BdC
+ * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
+ * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.model.galaxy
  * Type: ClumpDetails
- * Last update: 12-set-2017 12.16.36
+ * Last update: 13-set-2017 0.26.51
  * 
  */
 
@@ -62,30 +61,30 @@ public class ClumpDetails implements Serializable {
     }
 
     public Clump getClump() {
-        return clump;
+        return this.clump;
     }
 
     public int getClumpType() {
-        return clumpType;
+        return this.clumpType;
     }
 
     public double getDensita() {
-        return densita;
+        return this.densita;
     }
 
     public double getMassa() {
         int D = 10;
         int S350 = 350;
-        massa = 0.053 * S350 * (D ^ 2) * (Math.exp(41.14 / temperatura) - 1);
-        return massa;
+        this.massa = 0.053 * S350 * (D ^ 2) * (Math.exp(41.14 / this.temperatura) - 1);
+        return this.massa;
     }
 
     public double getRapportoMassaTemperatura() {
-        return rapportoMassaTemperatura;
+        return this.rapportoMassaTemperatura;
     }
 
     public double getTemperatura() {
-        return temperatura;
+        return this.temperatura;
     }
 
     public void setClump(Clump clump) {

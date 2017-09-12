@@ -1,11 +1,10 @@
 /*
  * 
- * Created by Umberto Ferracci from urania's PC
- * email: umberto.ferracci@gmail.com
- * Project: BdC
+ * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
+ * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.service.parser.monitor.producers
  * Type: Producer_File4
- * Last update: 12-mar-2017 16.25.12
+ * Last update: 13-set-2017 0.30.13
  * 
  */
 
@@ -29,12 +28,17 @@ public class Producer_File4 extends Producer<Bean_File4> {
         super(fileName, queue);
     }
 
-    /* (non-Javadoc)
-     * @see main.org.bdc.service.parser.monitor.producers.Producer#columnMappingType()
+    /*
+     * (non-Javadoc)
+     * @see
+     * main.org.bdc.service.parser.monitor.producers.Producer#columnMappingType(
+     * )
      */
     @Override
     protected Class[] columnMappingType() {
-        Class[] types = new Class[] { String.class, double.class, double.class, double.class, double.class, String.class };
+        Class[] types = new Class[] {
+                String.class, double.class, double.class, double.class, double.class, String.class
+        };
         return types;
     }
 

@@ -1,11 +1,10 @@
 /*
  * 
- * Created by Umberto Ferracci from urania's PC
- * email: umberto.ferracci@gmail.com
- * Project: BdC
+ * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
+ * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.service.parser.monitor.consumers
  * Type: Consumer
- * Last update: 10-set-2017 16.35.07
+ * Last update: 13-set-2017 0.30.06
  * 
  */
 
@@ -38,7 +37,7 @@ public abstract class Consumer<SB extends SimpleBean> implements Runnable {
      * @return the queue
      */
     public QueueProducerConsumer<SB> getQueue() {
-        return queue;
+        return this.queue;
     }
 
     /*
@@ -54,11 +53,11 @@ public abstract class Consumer<SB extends SimpleBean> implements Runnable {
         try {
 
             while (true) {
-                if (queue.isFinished())
-                    if (queue.isEmpty())
+                if (this.queue.isFinished())
+                    if (this.queue.isEmpty())
                         return;
-                if (!queue.isEmpty()) {
-                    bean = queue.take();
+                if (!this.queue.isEmpty()) {
+                    bean = this.queue.take();
                     long start = System.currentTimeMillis();
                     inserts(bean);
                     time += System.currentTimeMillis() - start;
@@ -73,7 +72,7 @@ public abstract class Consumer<SB extends SimpleBean> implements Runnable {
             System.out.println(String.format("Consumer sets finish"));
             if (rows > 0)
                 System.out.println(String.format("Avarage time for dequeue and insert is %d ms", time / rows));
-            queue.setFinished(true);
+            this.queue.setFinished(true);
         }
     }
 

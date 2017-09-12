@@ -1,18 +1,22 @@
+/*
+ * 
+ * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
+ * Project: BdC - Osservatorio Astronomico Virtuale
+ * Package: main.org.bdc.view
+ * Type: JFrameClumpSearch
+ * Last update: 13-set-2017 0.23.41
+ * 
+ */
+
 package main.org.bdc.view;
 
-/**
- * Created by Sasha on 11/09/17.
- */
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
-import java.awt.Font;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
@@ -24,10 +28,9 @@ import com.jgoodies.forms.layout.RowSpec;
 
 public class JFrameClumpSearch extends JFrame {
 
-    private JPanel contentPane;
-
     private JTextField clump_id;
 
+    private JPanel     contentPane;
 
     /**
      * Launch the application.
@@ -55,18 +58,18 @@ public class JFrameClumpSearch extends JFrame {
         setType(Type.UTILITY);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setBounds(100, 100, 450, 200);
-        contentPane = new JPanel();
-        contentPane.setBorder(new EmptyBorder(0, 0, 0, 0));
-        setContentPane(contentPane);
-        contentPane.setLayout(null);
+        this.contentPane = new JPanel();
+        this.contentPane.setBorder(new EmptyBorder(0, 0, 0, 0));
+        setContentPane(this.contentPane);
+        this.contentPane.setLayout(null);
 
         JPanel panel = new JPanel();
         panel.setBorder(new TitledBorder(null, "Search Clump from ID", TitledBorder.LEADING, TitledBorder.TOP, null, null));
         panel.setBounds(47, 43, 354, 100);
-        contentPane.add(panel);
-        panel.setLayout(new FormLayout(new ColumnSpec[]{
+        this.contentPane.add(panel);
+        panel.setLayout(new FormLayout(new ColumnSpec[] {
                 FormSpecs.RELATED_GAP_COLSPEC, FormSpecs.DEFAULT_COLSPEC, FormSpecs.RELATED_GAP_COLSPEC, ColumnSpec.decode("default:grow"),
-        }, new RowSpec[]{
+        }, new RowSpec[] {
                 FormSpecs.RELATED_GAP_ROWSPEC, FormSpecs.DEFAULT_ROWSPEC, FormSpecs.RELATED_GAP_ROWSPEC, FormSpecs.DEFAULT_ROWSPEC, FormSpecs.RELATED_GAP_ROWSPEC, RowSpec.decode("default:grow"), FormSpecs.RELATED_GAP_ROWSPEC,
                 RowSpec.decode("default:grow"), FormSpecs.RELATED_GAP_ROWSPEC, FormSpecs.DEFAULT_ROWSPEC,
         }));
@@ -74,9 +77,9 @@ public class JFrameClumpSearch extends JFrame {
         JLabel lblNome = new JLabel("Clump ID");
         panel.add(lblNome, "2, 2, right, default");
 
-        clump_id = new JTextField();
-        panel.add(clump_id, "4, 2, fill, default");
-        clump_id.setColumns(10);
+        this.clump_id = new JTextField();
+        panel.add(this.clump_id, "4, 2, fill, default");
+        this.clump_id.setColumns(10);
 
         JButton btnInserisci = new JButton("Search");
         panel.add(btnInserisci, "4, 10");

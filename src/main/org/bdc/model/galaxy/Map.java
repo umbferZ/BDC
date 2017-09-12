@@ -1,11 +1,10 @@
 /*
  * 
- * Created by Umberto Ferracci from urania's PC
- * email: umberto.ferracci@gmail.com
- * Project: BdC
+ * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
+ * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.model.galaxy
  * Type: Map
- * Last update: 12-set-2017 17.24.31
+ * Last update: 13-set-2017 0.26.51
  * 
  */
 
@@ -51,9 +50,9 @@ public class Map implements Serializable {
      * Instantiates a new map.
      */
     public Map() {
-        clumps = new ArrayList<>();
-        sources = new ArrayList<>();
-        instruments = new ArrayList<>();
+        this.clumps = new ArrayList<>();
+        this.sources = new ArrayList<>();
+        this.instruments = new ArrayList<>();
     }
 
     /**
@@ -66,7 +65,7 @@ public class Map implements Serializable {
     }
 
     public void addClump(Clump clump) {
-        clumps.add(clump);
+        this.clumps.add(clump);
 
     }
 
@@ -76,11 +75,11 @@ public class Map implements Serializable {
      * @return the clumps
      */
     public List<Clump> getClumps() {
-        return clumps;
+        return this.clumps;
     }
 
     public int getId() {
-        return id;
+        return this.id;
     }
 
     /**
@@ -89,7 +88,7 @@ public class Map implements Serializable {
      * @return the strumenti
      */
     public List<Instrument> getInstruments() {
-        return instruments;
+        return this.instruments;
     }
 
     /**
@@ -98,11 +97,11 @@ public class Map implements Serializable {
      * @return the nome
      */
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public List<Source> getSources() {
-        return sources;
+        return this.sources;
     }
 
     /**

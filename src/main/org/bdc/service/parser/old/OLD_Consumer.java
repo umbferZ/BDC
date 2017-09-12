@@ -1,11 +1,10 @@
 /*
  * 
- * Created by Umberto Ferracci from urania's PC
- * email: umberto.ferracci@gmail.com
- * Project: BdC
+ * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
+ * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.service.parser.old
  * Type: OLD_Consumer
- * Last update: 12-mar-2017 16.25.13
+ * Last update: 13-set-2017 0.29.47
  * 
  */
 
@@ -29,24 +28,25 @@ import main.org.bdc.service.parser.exception.BadParseValueException;
  */
 public abstract class OLD_Consumer<T, ID extends Serializable> extends Thread {
 
-    List<EntityDao<T, ID>> entities;
+    List<EntityDao<T, ID>>  entities;
 
     BlockingQueue<String[]> queue;
 
-    String[] r;
+    String[]                r;
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.lang.Thread#run()
      */
     @Override
     public void run() {
 
         try {
-            String[] take = queue.take();
+            String[] take = this.queue.take();
             while (take[0] != null && take[1] != null) {
                 mappaturaStringaOggetti();
 
-                for (EntityDao<T, ID> entity : entities) {
+                for (EntityDao<T, ID> entity : this.entities) {
                     // FIXME get className
                     Class<?> classe = Class.forName("");
 
@@ -54,7 +54,7 @@ public abstract class OLD_Consumer<T, ID extends Serializable> extends Thread {
                     Object[] parametersValue = null;
 
                     for (int i = 0; i < parametersValue.length; i++)
-                        parametersValue[i] = ParserValue.parse(parameterTypes[i], r[0]);
+                        parametersValue[i] = ParserValue.parse(parameterTypes[i], this.r[0]);
 
                     Constructor<?> constructor = classe.getConstructor(parameterTypes);
                     constructor.newInstance();

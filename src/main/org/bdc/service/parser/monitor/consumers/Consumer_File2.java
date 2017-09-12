@@ -1,11 +1,10 @@
 /*
  * 
- * Created by Umberto Ferracci from urania's PC
- * email: umberto.ferracci@gmail.com
- * Project: BdC
+ * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
+ * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.service.parser.monitor.consumers
  * Type: Consumer_File2
- * Last update: 12-set-2017 16.35.41
+ * Last update: 13-set-2017 0.30.06
  * 
  */
 
@@ -37,14 +36,14 @@ public class Consumer_File2 extends Consumer<Bean_File2> {
     public Consumer_File2(QueueProducerConsumer<Bean_File2> queue) {
         super(queue);
 
-        dao = DaoFactory.getInstance();
+        this.dao = DaoFactory.getInstance();
         try {
-            higal = dao.getMapDao().getMapByName("Higal");
-            b_70 = dao.getBandDao().getByBand(70);
-            b_160 = dao.getBandDao().getByBand(160);
-            b_250 = dao.getBandDao().getByBand(250);
-            b_350 = dao.getBandDao().getByBand(350);
-            b_500 = dao.getBandDao().getByBand(500);
+            this.higal = this.dao.getMapDao().getMapByName("Higal");
+            this.b_70 = this.dao.getBandDao().getByBand(70);
+            this.b_160 = this.dao.getBandDao().getByBand(160);
+            this.b_250 = this.dao.getBandDao().getByBand(250);
+            this.b_350 = this.dao.getBandDao().getByBand(350);
+            this.b_500 = this.dao.getBandDao().getByBand(500);
 
         } catch (Exception e) {
             // TODO: handle exception
@@ -62,7 +61,7 @@ public class Consumer_File2 extends Consumer<Bean_File2> {
         Clump clump;
         clump = new Clump();
         clump.setId(bean.getClumpId());
-        clump.setMap(higal);
+        clump.setMap(this.higal);
 
         // clump.addFlow(new Flow(bean.getFlow_70(), b_70));
         // clump.addFlow(new Flow(bean.getFlow_160(), b_160));
@@ -81,7 +80,7 @@ public class Consumer_File2 extends Consumer<Bean_File2> {
         // clump.addEllipse(new Ellipse(bean.gethMaxAx_500(),
         // bean.gethMinAx_500(), bean.getAlpha_500(), b_500, clump));
         try {
-            dao.getClumpDao().saveOrUpdate(clump);
+            this.dao.getClumpDao().saveOrUpdate(clump);
             // dao.getMapDao().saveOrUpdate(higal);
         } catch (Exception e) {
             e.printStackTrace();

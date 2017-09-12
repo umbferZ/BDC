@@ -1,11 +1,10 @@
 /*
  * 
- * Created by Umberto Ferracci from urania's PC
- * email: umberto.ferracci@gmail.com
- * Project: BdC
+ * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
+ * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.model.people
  * Type: UserRegegistered_PK
- * Last update: 12-mar-2017 16.23.01
+ * Last update: 13-set-2017 0.25.20
  * 
  */
 
@@ -35,7 +34,7 @@ public class UserRegegistered_PK implements Serializable {
      * @return the email
      */
     public String getEmail() {
-        return email;
+        return this.email;
     }
 
     /**
@@ -44,7 +43,7 @@ public class UserRegegistered_PK implements Serializable {
      * @return the userId
      */
     public String getUserId() {
-        return userId;
+        return this.userId;
     }
 
     /**

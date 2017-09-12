@@ -1,11 +1,10 @@
 /*
  * 
- * Created by Umberto Ferracci from urania's PC
- * email: umberto.ferracci@gmail.com
- * Project: BdC
+ * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
+ * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.model.galaxy
  * Type: Flow
- * Last update: 12-set-2017 15.01.31
+ * Last update: 13-set-2017 0.26.51
  * 
  */
 
@@ -73,7 +72,7 @@ public class Flow implements Serializable {
      * @return the band
      */
     public Band getBanda() {
-        return band;
+        return this.band;
     }
 
     /**
@@ -82,7 +81,7 @@ public class Flow implements Serializable {
      * @return the error
      */
     public double getError() {
-        return error;
+        return this.error;
     }
 
     /**
@@ -91,7 +90,7 @@ public class Flow implements Serializable {
      * @return the value
      */
     public double getValue() {
-        return value;
+        return this.value;
     }
 
     /**
@@ -100,7 +99,7 @@ public class Flow implements Serializable {
      * @param band the new band
      */
     public void setBanda(Band banda) {
-        band = banda;
+        this.band = banda;
     }
 
     /**

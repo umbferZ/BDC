@@ -5,7 +5,7 @@
  * Project: BdC
  * Package: main.org.bdc.controls
  * Type: Init
- * Last update: 8-set-2017 11.32.03
+ * Last update: 12-set-2017 23.30.36
  * 
  */
 
@@ -15,7 +15,6 @@ import java.awt.EventQueue;
 
 import main.org.bdc.controls.gestisciUtenti.C_UC_Login;
 import main.org.bdc.view.JFrameInit;
-import test.Demo;
 
 public class Init {
 
@@ -33,7 +32,7 @@ public class Init {
                 try {
                     view = new JFrameInit();
                     view.setVisible(true);
-                    new Demo().start(); // todo: remove this line
+                    // new Demo().start(); // todo: remove this line
                     new C_UC_Login();
                     view.setVisible(false);
                 } catch (Exception e) {

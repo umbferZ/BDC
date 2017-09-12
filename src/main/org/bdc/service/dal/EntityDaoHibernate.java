@@ -1,11 +1,10 @@
 /*
  * 
- * Created by Umberto Ferracci from urania's PC
- * email: umberto.ferracci@gmail.com
- * Project: BdC
+ * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
+ * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.service.dal
  * Type: EntityDaoHibernate
- * Last update: 12-set-2017 17.19.55
+ * Last update: 13-set-2017 0.29.23
  * 
  */
 
@@ -25,6 +24,8 @@ import org.hibernate.Transaction;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Example;
 
+import main.org.bdc.service.dal.exception.SaveOrUpdateDalException;
+
 /**
  * The Class EntityDaoHibernate.
  *
@@ -42,7 +43,7 @@ public abstract class EntityDaoHibernate<T, ID extends Serializable> implements 
      */
     @SuppressWarnings("unchecked")
     public EntityDaoHibernate() {
-        persistentClass = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+        this.persistentClass = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
     }
 
     /**
@@ -89,7 +90,7 @@ public abstract class EntityDaoHibernate<T, ID extends Serializable> implements 
 
         Session s = openSession();
         CriteriaBuilder builder = s.getCriteriaBuilder();
-        CriteriaQuery<T> cq = builder.createQuery(persistentClass);
+        CriteriaQuery<T> cq = builder.createQuery(this.persistentClass);
         return s.createQuery(cq).getResultList();
     }
 
@@ -137,7 +138,7 @@ public abstract class EntityDaoHibernate<T, ID extends Serializable> implements 
      * @return the persistent class
      */
     public Class<T> getPersistentClass() {
-        return persistentClass;
+        return this.persistentClass;
     }
 
     /**
@@ -155,7 +156,7 @@ public abstract class EntityDaoHibernate<T, ID extends Serializable> implements 
      * org.umbZfer.services.persistence.dao.EntityDao#insert(java.lang.Object)
      */
     @Override
-    public T saveOrUpdate(T entity) {
+    public T saveOrUpdate(T entity) throws SaveOrUpdateDalException {
         Session s = openSession();
         Transaction transaction = null;
         try {
@@ -167,6 +168,7 @@ public abstract class EntityDaoHibernate<T, ID extends Serializable> implements 
             e.printStackTrace();
             if (transaction != null)
                 transaction.rollback();
+            throw new SaveOrUpdateDalException(String.format("Impossible to save or update entity %s", this.persistentClass.getName()));
         } finally {
             closeSession();
         }

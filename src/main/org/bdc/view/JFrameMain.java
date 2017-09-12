@@ -1,11 +1,10 @@
 /*
  * 
- * Created by Umberto Ferracci from urania's PC
- * email: umberto.ferracci@gmail.com
- * Project: BdC
+ * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
+ * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.view
  * Type: JFrameMain
- * Last update: 12-set-2017 18.44.51
+ * Last update: 13-set-2017 0.23.41
  * 
  */
 
@@ -26,37 +25,18 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import main.org.bdc.controls.C_UC_SearchPosition;
+import main.org.bdc.controls.gestisciUtenti.C_UC_InsertNewUser;
 
 /**
  * The Class JFrameMain.
  */
 public class JFrameMain extends JFrame {
 
-    JLabel         lbl_welcome;
-
     private JPanel contentPane;
 
-    private JMenu  mn_utente;
+    private JLabel lbl_welcome;
 
-    // /**
-    // * The main method.
-    // *
-    // * @param args the arguments
-    // */
-    // public static void main(String[] args) {
-    // EventQueue.invokeLater(new Runnable() {
-    //
-    // @Override
-    // public void run() {
-    // try {
-    // JFrameMain frame = new JFrameMain();
-    // frame.setVisible(true);
-    // } catch (Exception e) {
-    // e.printStackTrace();
-    // }
-    // }
-    // });
-    // }
+    private JMenu  mn_utente;
 
     /**
      * Instantiates a new j frame main.
@@ -89,20 +69,19 @@ public class JFrameMain extends JFrame {
             }
         });
 
-        mn_utente = new JMenu("Users");
-        menuBar.add(mn_utente);
+        this.mn_utente = new JMenu("Users");
+        menuBar.add(this.mn_utente);
 
         JMenuItem mntmNuovoUtente = new JMenuItem("Insert new user");
         mntmNuovoUtente.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrameNuovoUtente frameNuovoUtente = new JFrameNuovoUtente();
-                frameNuovoUtente.setVisible(true);
+                new C_UC_InsertNewUser();
             }
         });
         // TODO: Dialog User registered!
-        mn_utente.add(mntmNuovoUtente);
+        this.mn_utente.add(mntmNuovoUtente);
 
         JMenu mnSatellite = new JMenu("Satellites");
         menuBar.add(mnSatellite);
@@ -144,7 +123,7 @@ public class JFrameMain extends JFrame {
                 jFrameClumpMass.setVisible(true);
             }
         });
-        JMenuItem mntmSearchClumpMassStats = new JMenuItem("Show clumps mass statistics");
+        JMenuItem mntmSearchClumpMassStats = new JMenuItem("Show clumps massstatistics");
         mnClump.add(mntmSearchClumpMassStats);
 
         JMenu mnPosition = new JMenu("Position");
@@ -179,14 +158,14 @@ public class JFrameMain extends JFrame {
             }
         });
 
-        contentPane = new JPanel();
-        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-        setContentPane(contentPane);
-        contentPane.setLayout(new BorderLayout(0, 0));
+        this.contentPane = new JPanel();
+        this.contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+        setContentPane(this.contentPane);
+        this.contentPane.setLayout(new BorderLayout(0, 0));
 
-        lbl_welcome = new JLabel("Welcome...");
-        lbl_welcome.setFont(new Font("Dialog", Font.PLAIN, 12));
-        contentPane.add(lbl_welcome, BorderLayout.SOUTH);
+        this.lbl_welcome = new JLabel("Welcome...");
+        this.lbl_welcome.setFont(new Font("Dialog", Font.PLAIN, 12));
+        this.contentPane.add(this.lbl_welcome, BorderLayout.SOUTH);
     }
 
     /**
@@ -195,6 +174,7 @@ public class JFrameMain extends JFrame {
      * @param name the name
      */
     public void welcome(String name) {
-        lbl_welcome.setText("Welcome " + name);
+        this.lbl_welcome.setText("Welcome " + name);
     }
+
 }
