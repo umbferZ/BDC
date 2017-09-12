@@ -72,7 +72,7 @@ public class JFrameInserisciSattellite extends JFrame {
      * Create the frame.
      */
     public JFrameInserisciSattellite() {
-        setTitle("Nuovo satellite");
+        setTitle("New Satellite");
         setType(Type.UTILITY);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setBounds(100, 100, 450, 300);
@@ -82,7 +82,7 @@ public class JFrameInserisciSattellite extends JFrame {
         contentPane.setLayout(null);
 
         JPanel panel = new JPanel();
-        panel.setBorder(new TitledBorder(null, "Nuovo satellite", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+        panel.setBorder(new TitledBorder(null, "New satellite", TitledBorder.LEADING, TitledBorder.TOP, null, null));
         panel.setBounds(47, 43, 354, 189);
         contentPane.add(panel);
         panel.setLayout(new FormLayout(new ColumnSpec[] {
@@ -92,11 +92,11 @@ public class JFrameInserisciSattellite extends JFrame {
                 RowSpec.decode("default:grow"), FormSpecs.RELATED_GAP_ROWSPEC, FormSpecs.DEFAULT_ROWSPEC,
         }));
 
-        JLabel lblNome = new JLabel("Nome");
+        JLabel lblNome = new JLabel("Name");
         panel.add(lblNome, "2, 2, right, default");
 
         txt_satellite_agenzia_2 = new JTextField();
-        txt_satellite_agenzia_2.setToolTipText("Nome del nuovo satellite");
+        txt_satellite_agenzia_2.setToolTipText("New satellite name");
         panel.add(txt_satellite_agenzia_2, "4, 2, fill, default");
         txt_satellite_agenzia_2.setColumns(10);
 
@@ -104,7 +104,7 @@ public class JFrameInserisciSattellite extends JFrame {
         panel.add(lblAgenzia, "2, 4, right, default");
 
         txt_satellite_agenzia = new JTextField();
-        txt_satellite_agenzia.setToolTipText("Agency che ha partecipato");
+        txt_satellite_agenzia.setToolTipText("Agency");
         panel.add(txt_satellite_agenzia, "4, 4, fill, default");
         txt_satellite_agenzia.setColumns(10);
 
@@ -112,7 +112,7 @@ public class JFrameInserisciSattellite extends JFrame {
         panel.add(pnlLabel_startMission, "2, 6, right, center");
         pnlLabel_startMission.setLayout(new BorderLayout(0, 0));
 
-        JLabel lblInizioMissione = new JLabel("Inizio missione");
+        JLabel lblInizioMissione = new JLabel("Mission start");
         lblInizioMissione.setHorizontalAlignment(SwingConstants.RIGHT);
         pnlLabel_startMission.add(lblInizioMissione, BorderLayout.CENTER);
 
@@ -152,7 +152,7 @@ public class JFrameInserisciSattellite extends JFrame {
         panel.add(pnlLabel_endMission, "2, 8, fill, center");
         pnlLabel_endMission.setLayout(new BorderLayout(0, 0));
 
-        JLabel lblFineMissione = new JLabel("Fine Missione");
+        JLabel lblFineMissione = new JLabel("Mission end *");
         lblFineMissione.setHorizontalAlignment(SwingConstants.RIGHT);
         pnlLabel_endMission.add(lblFineMissione, BorderLayout.NORTH);
 

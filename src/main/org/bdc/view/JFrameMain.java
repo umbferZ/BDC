@@ -70,23 +70,25 @@ public class JFrameMain extends JFrame {
         JMenu mnFile = new JMenu("File");
         menuBar.add(mnFile);
 
+        JMenuItem mntmUpload = new JMenuItem("Upload a file"); //TODO: Check if admin
         JMenuItem mntmExit = new JMenuItem("Exit");
-        mntmExit.addActionListener(new ActionListener() {
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int exit = JOptionPane.showConfirmDialog(null, "Sicuro di voler uscire");
-                if (exit == JOptionPane.OK_OPTION)
-                    System.exit(0);
-
-            }
-        });
+        mnFile.add(mntmUpload);
         mnFile.add(mntmExit);
 
-        mn_utente = new JMenu("User_Regegistered");
+        mntmExit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int exit = JOptionPane.showConfirmDialog(null, "Are you sure?");
+                if (exit == JOptionPane.OK_OPTION)
+                    System.exit(0);
+            }
+        });
+
+        mn_utente = new JMenu("Users");
         menuBar.add(mn_utente);
 
-        JMenuItem mntmNuovoUtente = new JMenuItem("Nuovo utente...");
+        JMenuItem mntmNuovoUtente = new JMenuItem("Insert new user");
         mntmNuovoUtente.addActionListener(new ActionListener() {
 
             @Override
@@ -95,12 +97,13 @@ public class JFrameMain extends JFrame {
                 frameNuovoUtente.setVisible(true);
             }
         });
+        //TODO: Dialog User registered!
         mn_utente.add(mntmNuovoUtente);
 
-        JMenu mnSatellite = new JMenu("Satellite");
+        JMenu mnSatellite = new JMenu("Satellites");
         menuBar.add(mnSatellite);
 
-        JMenuItem mntmNuvoSatellite = new JMenuItem("Nuvo satellite...");
+        JMenuItem mntmNuvoSatellite = new JMenuItem("Insert new satellite");
         mntmNuvoSatellite.addActionListener(new ActionListener() {
 
             @Override
@@ -109,7 +112,66 @@ public class JFrameMain extends JFrame {
                 frameInserisciSattellite.setVisible(true);
             }
         });
+        //TODO: Dialog Satellite inserted!
         mnSatellite.add(mntmNuvoSatellite);
+
+        JMenu mnClump = new JMenu("Clumps");
+        menuBar.add(mnClump);
+
+        JMenuItem mntmSearchClump = new JMenuItem("Search a clump");
+        mnClump.add(mntmSearchClump);
+        mntmSearchClump.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrameClumpSearch jFrameClumpSearch = new JFrameClumpSearch();
+                jFrameClumpSearch.setVisible(true);
+            }
+        });
+        JMenuItem mntmSearchClumpDensity = new JMenuItem("Show clumps density");
+        mnClump.add(mntmSearchClumpDensity);
+        JMenuItem mntmSearchClumpMass = new JMenuItem("Show clumps mass");
+        mnClump.add(mntmSearchClumpMass);
+        mntmSearchClumpMass.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrameClumpMass jFrameClumpMass = new JFrameClumpMass();
+                jFrameClumpMass.setVisible(true);
+            }
+        });
+        JMenuItem mntmSearchClumpMassStats = new JMenuItem("Show clumps mass statistics");
+        mnClump.add(mntmSearchClumpMassStats);
+
+        JMenu mnPosition = new JMenu("Position");
+        menuBar.add(mnPosition);
+
+        JMenuItem mntmSearchPosition = new JMenuItem("Search for position");
+        mnPosition.add(mntmSearchPosition);
+
+        mntmSearchPosition.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrameSearchPosition jFrameSearchPosition = new JFrameSearchPosition();
+                jFrameSearchPosition.setVisible(true);
+            }
+        });
+
+        JMenu mnSource = new JMenu("Sources");
+        menuBar.add(mnSource);
+
+        JMenuItem mntmSourceSearch = new JMenuItem("Search a source");
+        mnSource.add(mntmSourceSearch);
+
+        mntmSourceSearch.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrameSourceSearch jFrameSourceSearch = new JFrameSourceSearch();
+                jFrameSourceSearch.setVisible(true);
+            }
+        });
+
+
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);

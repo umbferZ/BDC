@@ -69,7 +69,7 @@ public class JFrameLogin extends JFrame {
     public JFrameLogin() {
         setTitle("Login");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 450, 300);
+        setBounds(100, 100, 450, 250);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
@@ -77,7 +77,7 @@ public class JFrameLogin extends JFrame {
 
         JPanel panel = new JPanel();
         panel.setBorder(new TitledBorder(null, "Login System", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-        panel.setBounds(74, 84, 299, 106);
+        panel.setBounds(74, 30, 299, 130);
         contentPane.add(panel);
         panel.setLayout(new FormLayout(new ColumnSpec[] {
                 FormSpecs.RELATED_GAP_COLSPEC, FormSpecs.DEFAULT_COLSPEC, FormSpecs.RELATED_GAP_COLSPEC, ColumnSpec.decode("default:grow"),

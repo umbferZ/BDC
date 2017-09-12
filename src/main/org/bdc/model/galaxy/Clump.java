@@ -40,6 +40,8 @@ public class Clump {
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Map           map;
 
+    private int massa;
+
     /**
      * Instantiates a new clump.
      */
@@ -142,4 +144,11 @@ public class Clump {
         this.map = map;
     }
 
+    public int getMassa(){
+        return this.massa;
+    }
+
+    public void setMassa(int massa){
+        this.massa = massa;
+    }
 }
