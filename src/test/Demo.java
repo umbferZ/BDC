@@ -1,11 +1,10 @@
 /*
  * 
- * Created by Umberto Ferracci from urania's PC
- * email: umberto.ferracci@gmail.com
- * Project: BdC
+ * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
+ * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: test
  * Type: Demo
- * Last update: 13-set-2017 0.20.28
+ * Last update: 13-set-2017 9.37.50
  * 
  */
 
@@ -17,7 +16,6 @@ import java.util.Calendar;
 
 import main.org.bdc.model.DaoFactory;
 import main.org.bdc.model.galaxy.Agency;
-import main.org.bdc.model.galaxy.Clump;
 import main.org.bdc.model.galaxy.Map;
 import main.org.bdc.model.galaxy.Satellite;
 import main.org.bdc.model.galaxy.dao.SatelliteDao;
@@ -180,20 +178,21 @@ public class Demo {
         t.start();
         t.join();
 
-        try {
-
-            DaoFactory dao = DaoFactory.getInstance();
-            Map higal = dao.getMapDao().getMapByName("Higal");
-            System.out.println(String.format("%s %s n=%s", higal.getId(), higal.getName(), higal.getInstruments().size()));
-            Clump clump = new Clump();
-            clump.setId(666);
-            clump.setMap(higal);
-            higal.addClump(clump);
-            dao.getClumpDao().saveOrUpdate(clump);
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        // try {
+        //
+        // DaoFactory dao = DaoFactory.getInstance();
+        // Map higal = dao.getMapDao().getMapByName("Higal");
+        // System.out.println(String.format("%s %s n=%s", higal.getId(),
+        // higal.getName(), higal.getInstruments().size()));
+        // Clump clump = new Clump();
+        // clump.setId(666);
+        // clump.setMap(higal);
+        // higal.addClump(clump);
+        // dao.getClumpDao().saveOrUpdate(clump);
+        // } catch (Exception e) {
+        // // TODO Auto-generated catch block
+        // e.printStackTrace();
+        // }
     }
 
 }
