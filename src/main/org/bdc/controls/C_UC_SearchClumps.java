@@ -20,6 +20,7 @@ public class C_UC_SearchClumps {
     public void searchClumps(){
         ClumpDao clumpDao = new ClumpDao();
         clumpDao.getById();
+        
     }
 
 }
