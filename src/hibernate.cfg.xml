@@ -33,7 +33,7 @@
 		<property name="hibernate.hbm2ddl.auto">create</property>
 		<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
 		<!-- Mapping Media -->
-		<mapping class="main.org.bdc.model.people.UserRegegistered" />
+		<mapping class="main.org.bdc.model.people.UserRegistered" />
 		<mapping class="main.org.bdc.model.galaxy.Agency" />
 		<mapping class="main.org.bdc.model.instruments.Band" />
 		<mapping class="main.org.bdc.model.instruments.Instrument" />
