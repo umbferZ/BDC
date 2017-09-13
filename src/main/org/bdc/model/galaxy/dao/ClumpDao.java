@@ -14,6 +14,8 @@ import java.util.List;
 
 import javax.persistence.Query;
 
+import main.org.bdc.controls.C_UC_SearchClumps;
+import main.org.bdc.controls.C_UC_SearchClumpsMass;
 import main.org.bdc.model.galaxy.Clump;
 import main.org.bdc.model.galaxy.Flow;
 import main.org.bdc.service.dal.EntityDaoHibernate;
@@ -24,22 +26,8 @@ import main.org.bdc.service.dal.EntityDaoHibernate;
 public class ClumpDao extends EntityDaoHibernate<Clump, Integer> {
 
     public static void main(String[] args) {
-        ClumpDao dao = new ClumpDao();
-        try {
-            List<Clump> list = dao.getClumpMass();
-            int i = 0;
-            for (Clump c : list)
-                System.out.println(String.format("%d , c_id = %d, massa = %.10f flow= %.2f, temp = %.2f", i++, c.getId(), c.getMassa(), c.getFlows().get(3).getValue(), c.getClumpDetails().getTemperatura()));
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        try {
-            System.out.println(String.format("AVG mass = %.2f", dao.getAvgMassa()));
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        C_UC_SearchClumpsMass c_uc_searchClumpsMass = C_UC_SearchClumpsMass.getInstance();
+        c_uc_searchClumpsMass.searchClumpsMass();
     }
 
     /**
@@ -82,6 +70,10 @@ public class ClumpDao extends EntityDaoHibernate<Clump, Integer> {
     public List<Clump> getByPositionIntoSquare(double latitude, double longitude, double distance, int limit) {
         String query = "FROM Clump JOIN ClumpDetails WHERE latidude BETWEEN :latitudeMin AND :latitudeMax AND longitude BETWEEN :longitudeMax AND longitudeMin";
         return null;
+    }
+
+    public Clump getById(){
+
     }
 
     @SuppressWarnings("unchecked")

@@ -39,7 +39,7 @@ public class C_UC_ImportFile extends Component {
             System.out.println("You chose to open this file: " +
                     chooser.getSelectedFile().getName());
 
-            
+
             if (chooser.getSelectedFile().getName() == "higal.csv"){
                 try {
                     CSVFactory.translateFile1(chooser.getSelectedFile().getAbsolutePath());
