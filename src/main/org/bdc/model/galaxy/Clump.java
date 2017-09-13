@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.model.galaxy
  * Type: Clump
- * Last update: 13-set-2017 14.32.02
+ * Last update: 13-set-2017 18.51.23
  * 
  */
 
@@ -21,17 +21,13 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 
 /**
  * The Class Clump.
  */
 @Entity
 public class Clump implements Serializable {
-    public double getMassa() {
-        return massa;
-    }
-
-    private double massa;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "clump")
     private ClumpDetails  clumpDetails;
@@ -47,6 +43,9 @@ public class Clump implements Serializable {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Map           map;
+
+    @Transient
+    private double        massa;
 
     /**
      * Instantiates a new clump.
@@ -119,6 +118,10 @@ public class Clump implements Serializable {
         return map;
     }
 
+    public double getMassa() {
+        return massa;
+    }
+
     public void setClumpDetails(ClumpDetails clumpDetails) {
         this.clumpDetails = clumpDetails;
     }
@@ -161,6 +164,10 @@ public class Clump implements Serializable {
      */
     public void setMap(Map map) {
         this.map = map;
+    }
+
+    public void setMassa(double massa) {
+        this.massa = massa;
     }
 
 }

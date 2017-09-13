@@ -4,11 +4,13 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.model.galaxy
  * Type: Ellipse
- * Last update: 13-set-2017 14.38.07
+ * Last update: 13-set-2017 17.51.20
  * 
  */
 
 package main.org.bdc.model.galaxy;
+
+import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -25,12 +27,14 @@ import main.org.bdc.model.instruments.Band;
  */
 @Entity
 // @IdClass(Ellipse_PK.class)
-public class Ellipse {
+public class Ellipse implements Serializable {
 
+    // @Id
     @ManyToOne(fetch = FetchType.LAZY)
     @PrimaryKeyJoinColumn
     private Band   band;
 
+    // @Id
     @ManyToOne(fetch = FetchType.LAZY)
     @PrimaryKeyJoinColumn
     private Clump  clump;
