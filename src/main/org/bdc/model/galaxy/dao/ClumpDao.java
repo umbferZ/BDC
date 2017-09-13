@@ -73,7 +73,7 @@ public class ClumpDao extends EntityDaoHibernate<Clump, Integer> {
     }
 
     public Clump getById(){
-
+        return new Clump();
     }
 
     @SuppressWarnings("unchecked")
