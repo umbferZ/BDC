@@ -1,6 +1,5 @@
 package main.org.bdc.controls;
 
-import main.org.bdc.model.galaxy.Clump;
 import main.org.bdc.model.galaxy.dao.ClumpDao;
 
 import java.util.List;
