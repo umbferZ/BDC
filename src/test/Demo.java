@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: test
  * Type: Demo
- * Last update: 13-set-2017 22.32.05
+ * Last update: 13-set-2017 23.30.21
  * 
  */
 
@@ -166,9 +166,9 @@ public class Demo {
                 launcher.demoAdmin();
                 try {
                     CSVFactory.translateFile1("/home/urania/Scrivania/csv/higal.csv");
-                    // CSVFactory.translateFile2("/Users/Francesco/Desktop/higal_additionalinfo.csv");
-                    // CSVFactory.translateFile3("/Users/Francesco/Desktop/r08.csv");
-                    // CSVFactory.translateFile4("/Users/Francesco/Desktop/mips.csv");
+                    CSVFactory.translateFile2("/home/urania/Scrivania/csv/higal_additionalinfo.csv");
+                    CSVFactory.translateFile3("/home/urania/Scrivania/csv/r08.csv");
+                    CSVFactory.translateFile4("/home/urania/Scrivania/csv/mips.csv");
 
                 } catch (Exception e) {
                     e.printStackTrace();
