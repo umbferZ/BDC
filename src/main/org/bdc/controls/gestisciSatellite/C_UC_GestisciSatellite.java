@@ -19,8 +19,17 @@ import main.org.bdc.model.galaxy.Agency;
 import main.org.bdc.model.galaxy.Satellite;
 import main.org.bdc.model.instruments.Band;
 import main.org.bdc.model.instruments.Instrument;
+import main.org.bdc.service.dal.exception.SaveOrUpdateDalException;
 
 public class C_UC_GestisciSatellite {
+
+    private static C_UC_GestisciSatellite instance = null;
+
+    public synchronized static C_UC_GestisciSatellite getInstance() {
+        if (instance == null)
+            instance = new C_UC_GestisciSatellite();
+        return instance;
+    }
 
     public void associaStrumentoSatellite(BeanAssociaStrumentoSatellite bean) {
 
@@ -44,8 +53,11 @@ public class C_UC_GestisciSatellite {
         satellite.setName(bean.getNomeSatellite());
         satellite.setStartDate(startDate);
         satellite.setEndDate(endDate);
-        DaoFactory.getInstance().getSatelliteDao().saveOrUpdate(satellite);
-        // TODO throw new Exception();
+        try {
+            DaoFactory.getInstance().getSatelliteDao().saveOrUpdate(satellite);
+        } catch (SaveOrUpdateDalException e) {
+            e.printStackTrace();
+        }
     }
 
     public void inserisciStrumento(BeanInserisciStrumento bs, List<BeanInserisciBanda> bb) {
@@ -53,7 +65,11 @@ public class C_UC_GestisciSatellite {
         Instrument instrument = new Instrument(bs.getNomeStrumento());
         for (BeanInserisciBanda b : bb)
             instrument.addBandaOperativa(new Band(b.getRisoluzione(), b.getLunghezzaOnda()));
-        DaoFactory.getInstance().getInstrumentDao().saveOrUpdate(instrument);
+        try {
+            DaoFactory.getInstance().getInstrumentDao().saveOrUpdate(instrument);
+        } catch (SaveOrUpdateDalException e) {
+            e.printStackTrace();
+        }
 
     }
 }

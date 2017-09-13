@@ -15,17 +15,15 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import main.org.bdc.controls.C_UC_SearchPosition;
 import main.org.bdc.controls.gestisciUtenti.C_UC_InsertNewUser;
+import main.org.bdc.service.parser.CSVFactory;
+import main.org.bdc.service.parser.monitor.exceptions.FailedInsertException;
+import main.org.bdc.service.parser.monitor.exceptions.FailedReadException;
 
 /**
  * The Class JFrameMain.
@@ -52,7 +50,27 @@ public class JFrameMain extends JFrame {
         JMenu mnFile = new JMenu("File");
         menuBar.add(mnFile);
 
-        JMenuItem mntmUpload = new JMenuItem("Upload a file"); // TODO: Check if
+        JMenuItem mntmUpload = new JMenuItem("Upload a file");
+
+        mntmUpload.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ev) {
+                JFileChooser chooser = new JFileChooser();
+                FileNameExtensionFilter filter = new FileNameExtensionFilter(
+                        "CSV Format", "csv");
+                chooser.setFileFilter(filter);
+                int returnVal = chooser.showOpenDialog(null);
+                if (returnVal == JFileChooser.APPROVE_OPTION) {
+                    String path = chooser.getSelectedFile().getAbsolutePath();
+                    try {
+                        CSVFactory.translateFile1(path);
+                    } catch (FailedInsertException e) {
+                        e.printStackTrace();
+                    } catch (FailedReadException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
                                                                // admin
         JMenuItem mntmExit = new JMenuItem("Exit");
 
@@ -91,7 +109,7 @@ public class JFrameMain extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrameInserisciSattellite frameInserisciSattellite = new JFrameInserisciSattellite();
+                JFrameInserisciSatellite frameInserisciSattellite = new JFrameInserisciSatellite();
                 frameInserisciSattellite.setVisible(true);
             }
         });

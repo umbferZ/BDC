@@ -11,7 +11,6 @@
 
 package main.org.bdc.controls.gestisciSatellite;
 
-@Deprecated
 public class BeanInserisciSatellite {
 
     private String nomeSatellite, agenziaSatellite;

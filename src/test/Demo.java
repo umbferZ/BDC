@@ -17,15 +17,15 @@ import java.util.Calendar;
 
 import main.org.bdc.model.DaoFactory;
 import main.org.bdc.model.galaxy.Agency;
-import main.org.bdc.model.galaxy.Clump;
 import main.org.bdc.model.galaxy.Map;
 import main.org.bdc.model.galaxy.Satellite;
 import main.org.bdc.model.galaxy.dao.SatelliteDao;
 import main.org.bdc.model.instruments.Band;
 import main.org.bdc.model.instruments.Instrument;
-import main.org.bdc.model.people.UserRegegistered;
+import main.org.bdc.model.people.UserRegistered;
 import main.org.bdc.model.people.UserType;
 import main.org.bdc.service.dal.exception.SaveOrUpdateDalException;
+import main.org.bdc.service.parser.CSVFactory;
 
 /**
  * The Class Demo.
@@ -45,7 +45,7 @@ public class Demo {
      * Creates the admin.
      */
     public void demoAdmin() {
-        UserRegegistered admin = new UserRegegistered();
+        UserRegistered admin = new UserRegistered();
         admin.setFirstName("amministratore");
         admin.setLastName("amministratore");
         admin.setEmail("admin@email");
@@ -166,11 +166,10 @@ public class Demo {
                 launcher.provaIstanze();
                 launcher.demoAdmin();
                 try {
-                    // CSVFactory.translateFile1("/home/urania/Scrivania/csv/higal.csv");
+                    // CSVFactory.translateFile1("/Users/Francesco/Desktop/higal.csv");
                     // CSVFactory.translateFile2("/home/urania/Scrivania/csv/higal_additionalinfo.csv");
                     // CSVFactory.translateFile3("/home/urania/Scrivania/csv/r08.csv");
                     // CSVFactory.translateFile4("/home/urania/Scrivania/csv/mips.csv");
-
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -180,7 +179,7 @@ public class Demo {
         t.start();
         t.join();
 
-        try {
+        /*try {
 
             DaoFactory dao = DaoFactory.getInstance();
             Map higal = dao.getMapDao().getMapByName("Higal");
@@ -193,7 +192,7 @@ public class Demo {
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }
+        }*/
     }
 
 }

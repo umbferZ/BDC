@@ -13,14 +13,10 @@ package main.org.bdc.view;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.WindowConstants;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
@@ -28,8 +24,15 @@ import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.FormSpecs;
 import com.jgoodies.forms.layout.RowSpec;
+import main.org.bdc.controls.gestisciSatellite.BeanInserisciSatellite;
+import main.org.bdc.controls.gestisciSatellite.C_UC_GestisciSatellite;
+import main.org.bdc.controls.gestisciUtenti.C_UC_InsertNewUser;
+import main.org.bdc.model.DaoFactory;
+import main.org.bdc.model.galaxy.Agency;
+import main.org.bdc.model.galaxy.Satellite;
+import main.org.bdc.service.dal.exception.SaveOrUpdateDalException;
 
-public class JFrameInserisciSattellite extends JFrame {
+public class JFrameInserisciSatellite extends JFrame {
 
     private JPanel     contentPane;
 
@@ -49,6 +52,8 @@ public class JFrameInserisciSattellite extends JFrame {
 
     private JTextField txt_start_y;
 
+    private Satellite satellite;
+
     /**
      * Launch the application.
      */
@@ -58,7 +63,7 @@ public class JFrameInserisciSattellite extends JFrame {
             @Override
             public void run() {
                 try {
-                    JFrameInserisciSattellite frame = new JFrameInserisciSattellite();
+                    JFrameInserisciSatellite frame = new JFrameInserisciSatellite();
                     frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -70,7 +75,7 @@ public class JFrameInserisciSattellite extends JFrame {
     /**
      * Create the frame.
      */
-    public JFrameInserisciSattellite() {
+    public JFrameInserisciSatellite() {
         setTitle("New Satellite");
         setType(Type.UTILITY);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
@@ -189,5 +194,29 @@ public class JFrameInserisciSattellite extends JFrame {
 
         JButton btnInserisci = new JButton("Inserisci");
         panel.add(btnInserisci, "4, 10");
+        btnInserisci.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                BeanInserisciSatellite beanSatellite = new BeanInserisciSatellite();
+                beanSatellite.setNomeSatellite(txt_satellite_agenzia_2.getText());
+                beanSatellite.setAgenziaSatellite(txt_satellite_agenzia.getText());
+                beanSatellite.setStartDate(Integer.parseInt(txt_start_y.getText()), Integer.parseInt(txt_start_m.getText()), Integer.parseInt(txt_start_d.getText()));
+                beanSatellite.setEndDate(Integer.parseInt(txt_end_y.getText()), Integer.parseInt(txt_end_m.getText()), Integer.parseInt(txt_end_d.getText()));
+                //if (checkFields()){
+                    C_UC_GestisciSatellite c_uc_gestisciSatellite = C_UC_GestisciSatellite.getInstance();
+                    c_uc_gestisciSatellite.inserisciSatellite(beanSatellite);
+                    setVisible(false);
+                //}
+                //JOptionPane.showMessageDialog(getContentPane(), "Missing Fields!");
+
+            }
+
+            /*private boolean checkFields() {
+                if (txt_satellite_agenzia_2.getText() == "" || txt_satellite_agenzia.getText() == "")
+                    return false;
+                return true;
+            }*/
+        });
     }
 }

@@ -13,9 +13,9 @@ package main.org.bdc.model.people;
 import java.io.Serializable;
 
 /**
- * The Class UserRegegistered_PK.
+ * The Class UserRegistered_PK.
  */
-public class UserRegegistered_PK implements Serializable {
+public class UserRegistered_PK implements Serializable {
 
     private String email;
 
@@ -24,7 +24,7 @@ public class UserRegegistered_PK implements Serializable {
     /**
      * Instantiates a new utente PK.
      */
-    public UserRegegistered_PK() {
+    public UserRegistered_PK() {
         super();
     }
 

@@ -13,27 +13,30 @@ package main.org.bdc.controls;
 
 import java.awt.EventQueue;
 
-import main.org.bdc.model.people.UserRegegistered;
+import main.org.bdc.model.people.UserRegistered;
+import main.org.bdc.model.people.UserType;
 import main.org.bdc.view.JFrameMain;
+import main.org.bdc.view.menu.MenuBarAdmin;
+import main.org.bdc.view.menu.MenuBarUser;
 
 public class C_UC_Main {
 
-    private UserRegegistered user;
+    private UserRegistered user;
 
     private JFrameMain       view;
 
-    public C_UC_Main(UserRegegistered user) {
+    public C_UC_Main(UserRegistered user) {
         this.user = user;
         EventQueue.invokeLater(new Runnable() {
 
             @Override
             public void run() {
                 try {
-                    view = new JFrameMain();
-                    // if (user.getUserType() == UserType.ADMIN)
-                    // view.setJMenuBar(new MenuBarAdmin());
-                    // else
-                    // view.setJMenuBar(new MenuBarUser());
+                   view = new JFrameMain();
+                    /*if (user.getUserType() == UserType.ADMIN)
+                    view.setJMenuBar(new MenuBarAdmin());
+                    else
+                    view.setJMenuBar(new MenuBarUser());*/
                     view.setVisible(true);
                     view.welcome(String.format("%s", user.getUserId()));
                 } catch (Exception e) {

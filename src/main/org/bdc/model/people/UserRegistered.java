@@ -17,11 +17,11 @@ import javax.persistence.Id;
 import javax.persistence.IdClass;
 
 /**
- * S The Class UserRegegistered.
+ * S The Class UserRegistered.
  */
 @Entity
-@IdClass(UserRegegistered_PK.class)
-public class UserRegegistered {
+@IdClass(UserRegistered_PK.class)
+public class UserRegistered {
 
     @Id
     private String   email;
@@ -41,7 +41,7 @@ public class UserRegegistered {
     /**
      * Instantiates a new utente.
      */
-    public UserRegegistered() {
+    public UserRegistered() {
         super();
     }
 
