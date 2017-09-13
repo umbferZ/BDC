@@ -1,10 +1,11 @@
 /*
  * 
- * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
- * Project: BdC - Osservatorio Astronomico Virtuale
+ * Created by Umberto Ferracci from urania's PC
+ * email: umberto.ferracci@gmail.com
+ * Project: BdC
  * Package: test
  * Type: Demo
- * Last update: 13-set-2017 15.24.42
+ * Last update: 13-set-2017 0.20.28
  * 
  */
 
@@ -21,7 +22,7 @@ import main.org.bdc.model.galaxy.Satellite;
 import main.org.bdc.model.galaxy.dao.SatelliteDao;
 import main.org.bdc.model.instruments.Band;
 import main.org.bdc.model.instruments.Instrument;
-import main.org.bdc.model.people.UserRegegistered;
+import main.org.bdc.model.people.UserRegistered;
 import main.org.bdc.model.people.UserType;
 import main.org.bdc.service.dal.exception.SaveOrUpdateDalException;
 import main.org.bdc.service.parser.CSVFactory;
@@ -44,7 +45,7 @@ public class Demo {
      * Creates the admin.
      */
     public void demoAdmin() {
-        UserRegegistered admin = new UserRegegistered();
+        UserRegistered admin = new UserRegistered();
         admin.setFirstName("amministratore");
         admin.setLastName("amministratore");
         admin.setEmail("admin@email");

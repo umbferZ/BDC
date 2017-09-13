@@ -20,7 +20,7 @@ import javax.swing.JTextField;
 
 import main.org.bdc.controls.C_UC_Main;
 import main.org.bdc.model.DaoFactory;
-import main.org.bdc.model.people.UserRegegistered;
+import main.org.bdc.model.people.UserRegistered;
 import main.org.bdc.view.JFrameLogin;
 
 public class C_UC_Login {
@@ -53,7 +53,7 @@ public class C_UC_Login {
         return validateUserId() && validatePassword();
     }
 
-    private UserRegegistered login(String user_id, String password) throws LoginException {
+    private UserRegistered login(String user_id, String password) throws LoginException {
         return DaoFactory.getInstance().getUserDao().login(user_id, password);
     }
 

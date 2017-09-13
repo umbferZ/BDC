@@ -27,6 +27,11 @@ import javax.persistence.OneToOne;
  */
 @Entity
 public class Clump implements Serializable {
+    public double getMassa() {
+        return massa;
+    }
+
+    private double massa;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "clump")
     private ClumpDetails  clumpDetails;

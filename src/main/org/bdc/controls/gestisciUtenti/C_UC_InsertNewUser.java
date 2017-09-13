@@ -18,7 +18,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import main.org.bdc.model.DaoFactory;
-import main.org.bdc.model.people.UserRegegistered;
+import main.org.bdc.model.people.UserRegistered;
 import main.org.bdc.model.people.UserType;
 import main.org.bdc.service.dal.exception.SaveOrUpdateDalException;
 import main.org.bdc.view.JFrameNuovoUtente;
@@ -29,12 +29,12 @@ public class C_UC_InsertNewUser {
 
     private boolean           isAdmin;
 
-    private UserRegegistered  userReg;
+    private UserRegistered userReg;
 
     private JFrameNuovoUtente view;
 
     public C_UC_InsertNewUser() {
-        this.userReg = new UserRegegistered();
+        this.userReg = new UserRegistered();
         EventQueue.invokeLater(new Runnable() {
 
             @Override

@@ -44,8 +44,8 @@ public class HibernateUtil {
      * @throws HibernateException the hibernate exception
      */
     public static Session getSession() throws HibernateException {
-        // if (concreteSessionFactory.isOpen())
-        // return concreteSessionFactory.getCurrentSession();
+        //if (concreteSessionFactory.isOpen()) {
+          //  return concreteSessionFactory.getCurrentSession();}
         return concreteSessionFactory.openSession();
     }
 }
