@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.model.galaxy
  * Type: Clump
- * Last update: 13-set-2017 0.26.51
+ * Last update: 13-set-2017 14.32.02
  * 
  */
 
@@ -40,15 +40,15 @@ public class Clump implements Serializable {
     @Id
     private int           id;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Map           map;
 
     /**
      * Instantiates a new clump.
      */
     public Clump() {
-        this.ellispses = new ArrayList<>();
-        this.flows = new ArrayList<>();
+        ellispses = new ArrayList<>();
+        flows = new ArrayList<>();
     }
 
     public Clump(Map map, ClumpDetails clumpDetails) {
@@ -63,15 +63,15 @@ public class Clump implements Serializable {
      * @param ellipse the ellipse
      */
     public void addEllipse(Ellipse ellipse) {
-        this.ellispses.add(ellipse);
+        ellispses.add(ellipse);
     }
 
     public void addFlow(Flow flow) {
-        this.flows.add(flow);
+        flows.add(flow);
     }
 
     public ClumpDetails getClumpDetails() {
-        return this.clumpDetails;
+        return clumpDetails;
     }
 
     /**
@@ -80,7 +80,7 @@ public class Clump implements Serializable {
      * @return the ellispses
      */
     public List<Ellipse> getEllispses() {
-        return this.ellispses;
+        return ellispses;
     }
 
     /**
@@ -89,11 +89,11 @@ public class Clump implements Serializable {
      * @return the ellisse
      */
     public List<Ellipse> getEllisse() {
-        return this.ellispses;
+        return ellispses;
     }
 
     public List<Flow> getFlows() {
-        return this.flows;
+        return flows;
     }
 
     /**
@@ -102,7 +102,7 @@ public class Clump implements Serializable {
      * @return the id
      */
     public int getId() {
-        return this.id;
+        return id;
     }
 
     /**
@@ -111,7 +111,7 @@ public class Clump implements Serializable {
      * @return the map
      */
     public Map getMap() {
-        return this.map;
+        return map;
     }
 
     public void setClumpDetails(ClumpDetails clumpDetails) {
@@ -124,7 +124,7 @@ public class Clump implements Serializable {
      * @param ellipses the new ellisse
      */
     public void setEllipse(List<Ellipse> ellipses) {
-        this.ellispses = ellipses;
+        ellispses = ellipses;
     }
 
     /**

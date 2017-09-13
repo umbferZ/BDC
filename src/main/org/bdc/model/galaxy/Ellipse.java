@@ -4,41 +4,40 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.model.galaxy
  * Type: Ellipse
- * Last update: 13-set-2017 0.26.51
+ * Last update: 13-set-2017 14.38.07
  * 
  */
 
 package main.org.bdc.model.galaxy;
 
-import java.io.Serializable;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.IdClass;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 
-import main.org.bdc.model.galaxy.pk.Ellipse_PK;
 import main.org.bdc.model.instruments.Band;
 
 /**
  * The Class Ellipse.
  */
 @Entity
-@IdClass(Ellipse_PK.class)
-public class Ellipse implements Serializable {
+// @IdClass(Ellipse_PK.class)
+public class Ellipse {
 
-    @Id
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @PrimaryKeyJoinColumn
     private Band   band;
 
-    @Id
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @PrimaryKeyJoinColumn
     private Clump  clump;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int    id;
 
     private double rotazione;
 
@@ -64,7 +63,7 @@ public class Ellipse implements Serializable {
         this.xAss = xAss;
         this.yAss = yAss;
         this.rotazione = rotazione;
-        // this.band = band;
+        this.band = band;
         this.clump = clump;
     }
 
@@ -74,11 +73,11 @@ public class Ellipse implements Serializable {
      * @return the band
      */
     public Band getBand() {
-        return this.band;
+        return band;
     }
 
     public Clump getClump() {
-        return this.clump;
+        return clump;
     }
 
     /**
@@ -87,11 +86,11 @@ public class Ellipse implements Serializable {
      * @return the rotazione
      */
     public double getRotazione() {
-        return this.rotazione;
+        return rotazione;
     }
 
     public double getxAss() {
-        return this.xAss;
+        return xAss;
     }
 
     /**
@@ -100,11 +99,11 @@ public class Ellipse implements Serializable {
      * @return the x ass
      */
     public double getXAss() {
-        return this.xAss;
+        return xAss;
     }
 
     public double getyAss() {
-        return this.yAss;
+        return yAss;
     }
 
     /**
@@ -113,7 +112,7 @@ public class Ellipse implements Serializable {
      * @return the y ass
      */
     public double getYAss() {
-        return this.yAss;
+        return yAss;
     }
 
     /**

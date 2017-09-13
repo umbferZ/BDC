@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.model.galaxy
  * Type: Source
- * Last update: 13-set-2017 0.26.51
+ * Last update: 13-set-2017 15.09.43
  * 
  */
 
@@ -34,7 +34,7 @@ public class Source implements Serializable {
     @Id
     private String     id;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Map        map;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "source")
@@ -47,11 +47,11 @@ public class Source implements Serializable {
      * Instantiates a new sorgente.
      */
     public Source() {
-        this.flows = new ArrayList<>();
+        flows = new ArrayList<>();
     }
 
     public void addFlow(Flow flow) {
-        this.flows.add(flow);
+        flows.add(flow);
     }
 
     /**
@@ -60,11 +60,11 @@ public class Source implements Serializable {
      * @return the flows
      */
     public List<Flow> getFlow() {
-        return this.flows;
+        return flows;
     }
 
     public List<Flow> getFlows() {
-        return this.flows;
+        return flows;
     }
 
     /**
@@ -73,19 +73,19 @@ public class Source implements Serializable {
      * @return the id
      */
     public String getId() {
-        return this.id;
+        return id;
     }
 
     public Map getMap() {
-        return this.map;
+        return map;
     }
 
     public Position getPosition() {
-        return this.position;
+        return position;
     }
 
     public Source getSourceToLowerResolution() {
-        return this.sourceToLowerResolution;
+        return sourceToLowerResolution;
     }
 
     /**

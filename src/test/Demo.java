@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: test
  * Type: Demo
- * Last update: 13-set-2017 9.37.50
+ * Last update: 13-set-2017 15.24.42
  * 
  */
 
@@ -24,6 +24,7 @@ import main.org.bdc.model.instruments.Instrument;
 import main.org.bdc.model.people.UserRegegistered;
 import main.org.bdc.model.people.UserType;
 import main.org.bdc.service.dal.exception.SaveOrUpdateDalException;
+import main.org.bdc.service.parser.CSVFactory;
 
 /**
  * The Class Demo.
@@ -164,10 +165,10 @@ public class Demo {
                 launcher.provaIstanze();
                 launcher.demoAdmin();
                 try {
-                    // CSVFactory.translateFile1("/home/urania/Scrivania/csv/higal.csv");
-                    // CSVFactory.translateFile2("/home/urania/Scrivania/csv/higal_additionalinfo.csv");
-                    // CSVFactory.translateFile3("/home/urania/Scrivania/csv/r08.csv");
-                    // CSVFactory.translateFile4("/home/urania/Scrivania/csv/mips.csv");
+                    CSVFactory.translateFile1("/home/urania/Scrivania/csv/higal.csv");
+                    CSVFactory.translateFile2("/home/urania/Scrivania/csv/higal_additionalinfo.csv");
+                    CSVFactory.translateFile3("/home/urania/Scrivania/csv/r08.csv");
+                    CSVFactory.translateFile4("/home/urania/Scrivania/csv/mips.csv");
 
                 } catch (Exception e) {
                     e.printStackTrace();

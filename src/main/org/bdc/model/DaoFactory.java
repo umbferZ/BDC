@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.model
  * Type: DaoFactory
- * Last update: 13-set-2017 0.25.26
+ * Last update: 13-set-2017 15.24.32
  * 
  */
 
@@ -32,7 +32,7 @@ public class DaoFactory {
      *
      * @return single instance of DaoFactory
      */
-    public synchronized static DaoFactory getInstance() {
+    public static DaoFactory getInstance() {
         if (instance == null)
             instance = new DaoFactory();
         return instance;

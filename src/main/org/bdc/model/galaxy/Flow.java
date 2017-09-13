@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.model.galaxy
  * Type: Flow
- * Last update: 13-set-2017 0.26.51
+ * Last update: 13-set-2017 14.26.04
  * 
  */
 
@@ -12,7 +12,6 @@ package main.org.bdc.model.galaxy;
 
 import java.io.Serializable;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -31,7 +30,7 @@ public class Flow implements Serializable {
     @GeneratedValue
     public int     id;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Band   band;
 
     private double error;
@@ -72,7 +71,7 @@ public class Flow implements Serializable {
      * @return the band
      */
     public Band getBanda() {
-        return this.band;
+        return band;
     }
 
     /**
@@ -81,7 +80,7 @@ public class Flow implements Serializable {
      * @return the error
      */
     public double getError() {
-        return this.error;
+        return error;
     }
 
     /**
@@ -90,7 +89,7 @@ public class Flow implements Serializable {
      * @return the value
      */
     public double getValue() {
-        return this.value;
+        return value;
     }
 
     /**
@@ -99,7 +98,7 @@ public class Flow implements Serializable {
      * @param band the new band
      */
     public void setBanda(Band banda) {
-        this.band = banda;
+        band = banda;
     }
 
     /**

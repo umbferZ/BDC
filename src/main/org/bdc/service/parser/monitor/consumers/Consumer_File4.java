@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.service.parser.monitor.consumers
  * Type: Consumer_File4
- * Last update: 13-set-2017 0.30.06
+ * Last update: 13-set-2017 15.20.35
  * 
  */
 
@@ -27,6 +27,8 @@ public class Consumer_File4 extends Consumer<Bean_File4> {
 
     private DaoFactory dao;
 
+    private Map        mipsGal, higal;
+
     /**
      * Instantiates a new consumer file 4.
      *
@@ -34,9 +36,11 @@ public class Consumer_File4 extends Consumer<Bean_File4> {
      */
     public Consumer_File4(QueueProducerConsumer<Bean_File4> queue) {
         super(queue);
-        this.dao = DaoFactory.getInstance();
+        dao = DaoFactory.getInstance();
         try {
-            this.b_24 = this.dao.getBandDao().getByBand(24.0);
+            b_24 = dao.getBandDao().getByBand(24.0);
+            mipsGal = dao.getMapDao().getMapByName("MIPS-GAL");
+            higal = dao.getMapDao().getMapByName("Higal");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -50,27 +54,27 @@ public class Consumer_File4 extends Consumer<Bean_File4> {
      */
     @Override
     protected void inserts(Bean_File4 bean) {
-        try {
-            Source source = new Source();
-            Source sourceToLowerBand;
-            if (!bean.getSourceId_GLIMPSE().equals("")) {
-                try {
-                    sourceToLowerBand = this.dao.getSourceDao().getById(bean.getSourceId_GLIMPSE());
-                } catch (Exception e) {
-                    sourceToLowerBand = new Source();
-                    sourceToLowerBand.setId(bean.getSourceId_GLIMPSE());
-                    sourceToLowerBand.setMap(new Map("Glimpse"));
-                }
-                source.setSourceToLowerResolution(sourceToLowerBand);
 
+        Source source = new Source();
+        source.setId(bean.getSourceId_MIPSGAL());
+        source.setMap(mipsGal);
+        source.addFlow(new Flow(bean.getFlow_24d0(), bean.getError_24d0(), b_24));
+
+        Source sourceToLowerBand = null;
+        if (!bean.getSourceId_GLIMPSE().equals("")) {
+            try {
+                sourceToLowerBand = dao.getSourceDao().getById(bean.getSourceId_GLIMPSE());
+            } catch (Exception e) {
+                sourceToLowerBand = new Source();
+                sourceToLowerBand.setId(bean.getSourceId_GLIMPSE());
+                sourceToLowerBand.setMap(higal);
             }
-            source.setMap(new Map("MIPS-GAL"));
-            source.setId(bean.getSourceId_MIPSGAL());
-            source.addFlow(new Flow(bean.getFlow_24d0(), bean.getError_24d0(), this.b_24));
-            this.dao.getSourceDao().saveOrUpdate(source);
+            source.setSourceToLowerResolution(sourceToLowerBand);
+        }
 
+        try {
+            dao.getSourceDao().saveOrUpdate(source);
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 

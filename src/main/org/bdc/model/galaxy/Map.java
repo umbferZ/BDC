@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.model.galaxy
  * Type: Map
- * Last update: 13-set-2017 0.26.51
+ * Last update: 13-set-2017 14.31.55
  * 
  */
 
@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -41,6 +42,7 @@ public class Map implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "map")
     private List<Instrument> instruments;
 
+    @Column(unique = true)
     private String           name;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "map")
@@ -50,9 +52,9 @@ public class Map implements Serializable {
      * Instantiates a new map.
      */
     public Map() {
-        this.clumps = new ArrayList<>();
-        this.sources = new ArrayList<>();
-        this.instruments = new ArrayList<>();
+        clumps = new ArrayList<>();
+        sources = new ArrayList<>();
+        instruments = new ArrayList<>();
     }
 
     /**
@@ -65,7 +67,7 @@ public class Map implements Serializable {
     }
 
     public void addClump(Clump clump) {
-        this.clumps.add(clump);
+        clumps.add(clump);
 
     }
 
@@ -75,11 +77,11 @@ public class Map implements Serializable {
      * @return the clumps
      */
     public List<Clump> getClumps() {
-        return this.clumps;
+        return clumps;
     }
 
     public int getId() {
-        return this.id;
+        return id;
     }
 
     /**
@@ -88,7 +90,7 @@ public class Map implements Serializable {
      * @return the strumenti
      */
     public List<Instrument> getInstruments() {
-        return this.instruments;
+        return instruments;
     }
 
     /**
@@ -97,11 +99,11 @@ public class Map implements Serializable {
      * @return the nome
      */
     public String getName() {
-        return this.name;
+        return name;
     }
 
     public List<Source> getSources() {
-        return this.sources;
+        return sources;
     }
 
     /**
