@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.view
  * Type: JFrameMain
- * Last update: 13-set-2017 0.23.41
+ * Last update: 13-set-2017 22.44.21
  * 
  */
 
@@ -15,16 +15,18 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.filechooser.FileNameExtensionFilter;
 
 import main.org.bdc.controls.C_UC_ImportFile;
-import main.org.bdc.controls.C_UC_SearchObjectsInRegionByPosition;
 import main.org.bdc.controls.C_UC_InsertNewUser;
-import main.org.bdc.service.parser.CSVFactory;
-import main.org.bdc.service.parser.monitor.exceptions.FailedInsertException;
-import main.org.bdc.service.parser.monitor.exceptions.FailedReadException;
+import main.org.bdc.controls.C_UC_SearchObjectsInRegionByPosition;
 
 /**
  * The Class JFrameMain.
@@ -51,18 +53,24 @@ public class JFrameMain extends JFrame {
         JMenu mnFile = new JMenu("File");
         menuBar.add(mnFile);
 
+        JMenu mnUploadFiles = new JMenu("Upload"); // ho creato questo menu
+        mnFile.add(mnUploadFiles);
+
         JMenuItem mntmUpload = new JMenuItem("Upload a file");
 
         mntmUpload.addActionListener(new ActionListener() {
+
+            @Override
             public void actionPerformed(ActionEvent ev) {
                 C_UC_ImportFile c_uc_importFile = C_UC_ImportFile.getInstance();
                 c_uc_importFile.importFile();
             }
         });
-                                                               // admin
+        // admin
         JMenuItem mntmExit = new JMenuItem("Exit");
 
-        mnFile.add(mntmUpload);
+        mnUploadFiles.add(mntmUpload); // il nuovo menu lo inserisco i un altro
+                                       // menu
         mnFile.add(mntmExit);
 
         mntmExit.addActionListener(new ActionListener() {
@@ -75,8 +83,8 @@ public class JFrameMain extends JFrame {
             }
         });
 
-        this.mn_utente = new JMenu("Users");
-        menuBar.add(this.mn_utente);
+        mn_utente = new JMenu("Users");
+        menuBar.add(mn_utente);
 
         JMenuItem mntmNuovoUtente = new JMenuItem("Insert new user");
         mntmNuovoUtente.addActionListener(new ActionListener() {
@@ -87,7 +95,7 @@ public class JFrameMain extends JFrame {
             }
         });
         // TODO: Dialog User registered!
-        this.mn_utente.add(mntmNuovoUtente);
+        mn_utente.add(mntmNuovoUtente);
 
         JMenu mnSatellite = new JMenu("Satellites");
         menuBar.add(mnSatellite);
@@ -164,14 +172,14 @@ public class JFrameMain extends JFrame {
             }
         });
 
-        this.contentPane = new JPanel();
-        this.contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-        setContentPane(this.contentPane);
-        this.contentPane.setLayout(new BorderLayout(0, 0));
+        contentPane = new JPanel();
+        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+        setContentPane(contentPane);
+        contentPane.setLayout(new BorderLayout(0, 0));
 
-        this.lbl_welcome = new JLabel("Welcome...");
-        this.lbl_welcome.setFont(new Font("Dialog", Font.PLAIN, 12));
-        this.contentPane.add(this.lbl_welcome, BorderLayout.SOUTH);
+        lbl_welcome = new JLabel("Welcome...");
+        lbl_welcome.setFont(new Font("Dialog", Font.PLAIN, 12));
+        contentPane.add(lbl_welcome, BorderLayout.SOUTH);
     }
 
     /**
@@ -180,7 +188,7 @@ public class JFrameMain extends JFrame {
      * @param name the name
      */
     public void welcome(String name) {
-        this.lbl_welcome.setText("Welcome " + name);
+        lbl_welcome.setText("Welcome " + name);
     }
 
 }
