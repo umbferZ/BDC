@@ -19,8 +19,9 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-import main.org.bdc.controls.C_UC_SearchPosition;
-import main.org.bdc.controls.gestisciUtenti.C_UC_InsertNewUser;
+import main.org.bdc.controls.C_UC_ImportFile;
+import main.org.bdc.controls.C_UC_SearchObjectsInRegionByPosition;
+import main.org.bdc.controls.C_UC_InsertNewUser;
 import main.org.bdc.service.parser.CSVFactory;
 import main.org.bdc.service.parser.monitor.exceptions.FailedInsertException;
 import main.org.bdc.service.parser.monitor.exceptions.FailedReadException;
@@ -54,21 +55,8 @@ public class JFrameMain extends JFrame {
 
         mntmUpload.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ev) {
-                JFileChooser chooser = new JFileChooser();
-                FileNameExtensionFilter filter = new FileNameExtensionFilter(
-                        "CSV Format", "csv");
-                chooser.setFileFilter(filter);
-                int returnVal = chooser.showOpenDialog(null);
-                if (returnVal == JFileChooser.APPROVE_OPTION) {
-                    String path = chooser.getSelectedFile().getAbsolutePath();
-                    try {
-                        CSVFactory.translateFile1(path);
-                    } catch (FailedInsertException e) {
-                        e.printStackTrace();
-                    } catch (FailedReadException e) {
-                        e.printStackTrace();
-                    }
-                }
+                C_UC_ImportFile c_uc_importFile = C_UC_ImportFile.getInstance();
+                c_uc_importFile.importFile();
             }
         });
                                                                // admin
@@ -157,7 +145,7 @@ public class JFrameMain extends JFrame {
                 // JFrameSearchPosition jFrameSearchPosition = new
                 // JFrameSearchPosition();
                 // jFrameSearchPosition.setVisible(true);
-                new C_UC_SearchPosition();
+                new C_UC_SearchObjectsInRegionByPosition();
             }
         });
 

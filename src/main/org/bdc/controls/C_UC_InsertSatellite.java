@@ -9,34 +9,24 @@
  * 
  */
 
-package main.org.bdc.controls.gestisciSatellite;
+package main.org.bdc.controls;
 
 import java.util.Calendar;
-import java.util.List;
 
+import main.org.bdc.controls.gestisciSatellite.BeanInserisciSatellite;
 import main.org.bdc.model.DaoFactory;
 import main.org.bdc.model.galaxy.Agency;
 import main.org.bdc.model.galaxy.Satellite;
-import main.org.bdc.model.instruments.Band;
-import main.org.bdc.model.instruments.Instrument;
 import main.org.bdc.service.dal.exception.SaveOrUpdateDalException;
 
-public class C_UC_GestisciSatellite {
+public class C_UC_InsertSatellite {
 
-    private static C_UC_GestisciSatellite instance = null;
+    private static C_UC_InsertSatellite instance = null;
 
-    public synchronized static C_UC_GestisciSatellite getInstance() {
+    public synchronized static C_UC_InsertSatellite getInstance() {
         if (instance == null)
-            instance = new C_UC_GestisciSatellite();
+            instance = new C_UC_InsertSatellite();
         return instance;
-    }
-
-    public void associaStrumentoSatellite(BeanAssociaStrumentoSatellite bean) {
-
-    }
-
-    public void importaDati(BeanImportaDati bean) {
-
     }
 
     public void inserisciSatellite(BeanInserisciSatellite bean) {
@@ -60,16 +50,4 @@ public class C_UC_GestisciSatellite {
         }
     }
 
-    public void inserisciStrumento(BeanInserisciStrumento bs, List<BeanInserisciBanda> bb) {
-
-        Instrument instrument = new Instrument(bs.getNomeStrumento());
-        for (BeanInserisciBanda b : bb)
-            instrument.addBandaOperativa(new Band(b.getRisoluzione(), b.getLunghezzaOnda()));
-        try {
-            DaoFactory.getInstance().getInstrumentDao().saveOrUpdate(instrument);
-        } catch (SaveOrUpdateDalException e) {
-            e.printStackTrace();
-        }
-
-    }
 }

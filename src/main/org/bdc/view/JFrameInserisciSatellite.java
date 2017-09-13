@@ -25,12 +25,8 @@ import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.FormSpecs;
 import com.jgoodies.forms.layout.RowSpec;
 import main.org.bdc.controls.gestisciSatellite.BeanInserisciSatellite;
-import main.org.bdc.controls.gestisciSatellite.C_UC_GestisciSatellite;
-import main.org.bdc.controls.gestisciUtenti.C_UC_InsertNewUser;
-import main.org.bdc.model.DaoFactory;
-import main.org.bdc.model.galaxy.Agency;
+import main.org.bdc.controls.C_UC_InsertSatellite;
 import main.org.bdc.model.galaxy.Satellite;
-import main.org.bdc.service.dal.exception.SaveOrUpdateDalException;
 
 public class JFrameInserisciSatellite extends JFrame {
 
@@ -204,8 +200,8 @@ public class JFrameInserisciSatellite extends JFrame {
                 beanSatellite.setStartDate(Integer.parseInt(txt_start_y.getText()), Integer.parseInt(txt_start_m.getText()), Integer.parseInt(txt_start_d.getText()));
                 beanSatellite.setEndDate(Integer.parseInt(txt_end_y.getText()), Integer.parseInt(txt_end_m.getText()), Integer.parseInt(txt_end_d.getText()));
                 //if (checkFields()){
-                    C_UC_GestisciSatellite c_uc_gestisciSatellite = C_UC_GestisciSatellite.getInstance();
-                    c_uc_gestisciSatellite.inserisciSatellite(beanSatellite);
+                    C_UC_InsertSatellite c_uc_insertSatellite = C_UC_InsertSatellite.getInstance();
+                    c_uc_insertSatellite.inserisciSatellite(beanSatellite);
                     setVisible(false);
                 //}
                 //JOptionPane.showMessageDialog(getContentPane(), "Missing Fields!");

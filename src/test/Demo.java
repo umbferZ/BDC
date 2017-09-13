@@ -165,10 +165,10 @@ public class Demo {
                 launcher.provaIstanze();
                 launcher.demoAdmin();
                 try {
-                    CSVFactory.translateFile1("/home/urania/Scrivania/csv/higal.csv");
-                    CSVFactory.translateFile2("/home/urania/Scrivania/csv/higal_additionalinfo.csv");
-                    CSVFactory.translateFile3("/home/urania/Scrivania/csv/r08.csv");
-                    CSVFactory.translateFile4("/home/urania/Scrivania/csv/mips.csv");
+                    CSVFactory.translateFile1("/Users/Francesco/Desktop/higal.csv");
+                    //CSVFactory.translateFile2("/Users/Francesco/Desktop/higal_additionalinfo.csv");
+                    //CSVFactory.translateFile3("/Users/Francesco/Desktop/r08.csv");
+                    //CSVFactory.translateFile4("/Users/Francesco/Desktop/mips.csv");
 
                 } catch (Exception e) {
                     e.printStackTrace();

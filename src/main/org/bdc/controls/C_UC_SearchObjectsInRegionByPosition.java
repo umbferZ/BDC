@@ -22,7 +22,7 @@ import main.org.bdc.model.galaxy.Source;
 import main.org.bdc.view.JFrameMain;
 import main.org.bdc.view.JFrameSearchPosition;
 
-public class C_UC_SearchPosition {
+public class C_UC_SearchObjectsInRegionByPosition {
 
     public double                distance;
 
@@ -46,7 +46,7 @@ public class C_UC_SearchPosition {
 
     private JFrameSearchPosition view;
 
-    public C_UC_SearchPosition() {
+    public C_UC_SearchObjectsInRegionByPosition() {
         EventQueue.invokeLater(new Runnable() {
 
             @Override

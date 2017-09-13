@@ -8,7 +8,7 @@
  * 
  */
 
-package main.org.bdc.controls.gestisciUtenti;
+package main.org.bdc.controls;
 
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
