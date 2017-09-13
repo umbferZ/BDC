@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.view
  * Type: JFrameMain
- * Last update: 13-set-2017 22.44.21
+ * Last update: 13-set-2017 23.54.33
  * 
  */
 
@@ -56,7 +56,7 @@ public class JFrameMain extends JFrame {
         JMenu mnUploadFiles = new JMenu("Upload"); // ho creato questo menu
         mnFile.add(mnUploadFiles);
 
-        JMenuItem mntmUpload = new JMenuItem("Upload a file");
+        JMenuItem mntmUpload = new JMenuItem("Higal");
 
         mntmUpload.addActionListener(new ActionListener() {
 
@@ -70,7 +70,16 @@ public class JFrameMain extends JFrame {
         JMenuItem mntmExit = new JMenuItem("Exit");
 
         mnUploadFiles.add(mntmUpload); // il nuovo menu lo inserisco i un altro
-                                       // menu
+
+        JMenuItem mntmHigalAddictional = new JMenuItem("Higal Addictional");
+        mnUploadFiles.add(mntmHigalAddictional);
+
+        JMenuItem mntmMips = new JMenuItem("Glimpse");
+        mnUploadFiles.add(mntmMips);
+
+        JMenuItem mntmMipsgal = new JMenuItem("MIPS-GAL");
+        mnUploadFiles.add(mntmMipsgal);
+        // menu
         mnFile.add(mntmExit);
 
         mntmExit.addActionListener(new ActionListener() {
@@ -137,7 +146,7 @@ public class JFrameMain extends JFrame {
                 jFrameClumpMass.setVisible(true);
             }
         });
-        JMenuItem mntmSearchClumpMassStats = new JMenuItem("Show clumps massstatistics");
+        JMenuItem mntmSearchClumpMassStats = new JMenuItem("Show clumps mass statistics");
         mnClump.add(mntmSearchClumpMassStats);
 
         JMenu mnPosition = new JMenu("Position");
@@ -162,6 +171,21 @@ public class JFrameMain extends JFrame {
 
         JMenuItem mntmSourceSearch = new JMenuItem("Search a source");
         mnSource.add(mntmSourceSearch);
+
+        JMenu mnMap = new JMenu("Maps");
+        menuBar.add(mnMap);
+
+        JMenuItem mntmShowAllObject = new JMenuItem("Show all object");
+        mnMap.add(mntmShowAllObject);
+
+        JMenu mnInstruments = new JMenu("Instruments");
+        menuBar.add(mnInstruments);
+
+        JMenuItem mntmNewInstruments = new JMenuItem("New instrument");
+        mnInstruments.add(mntmNewInstruments);
+
+        JMenuItem mntmAddBand = new JMenuItem("Add band");
+        mnInstruments.add(mntmAddBand);
 
         mntmSourceSearch.addActionListener(new ActionListener() {
 
