@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.controls.gestisciUtenti
  * Type: C_UC_Login
- * Last update: 13-set-2017 0.28.46
+ * Last update: 13-set-2017 17.10.50
  * 
  */
 
@@ -32,21 +32,19 @@ public class C_UC_Login {
     private JFrameLogin view;
 
     public C_UC_Login() {
-
         EventQueue.invokeLater(new Runnable() {
 
             @Override
             public void run() {
                 try {
-                    C_UC_Login.this.view = new JFrameLogin();
-                    C_UC_Login.this.view.setVisible(true);
-                    C_UC_Login.this.view.addButtonLoginActionListener(new ButtonLoginActionListener());
+                    view = new JFrameLogin();
+                    view.setVisible(true);
+                    view.addButtonLoginActionListener(new ButtonLoginActionListener());
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         });
-
     }
 
     private boolean checkFields() {
@@ -58,18 +56,18 @@ public class C_UC_Login {
     }
 
     private boolean validatePassword() {
-        JPasswordField fld_pwd = this.view.getPwdPassword();
-        if ((this.password = new String(fld_pwd.getPassword())).length() < 5) {
-            this.view.setErrorMessage("La password deve contenere almeno 5 caratteri");
+        JPasswordField fld_pwd = view.getPwdPassword();
+        if ((password = new String(fld_pwd.getPassword())).length() < 5) {
+            view.setErrorMessage("La password deve contenere almeno 5 caratteri");
             return false;
         }
         return true;
     }
 
     private boolean validateUserId() {
-        JTextField fld_user_id = this.view.getTxtUsername();
-        if ((this.user_id = fld_user_id.getText()).length() < 5) {
-            this.view.setErrorMessage("Lo user-id deve contenere almeno 5 caratteri");
+        JTextField fld_user_id = view.getTxtUsername();
+        if ((user_id = fld_user_id.getText()).length() < 5) {
+            view.setErrorMessage("Lo user-id deve contenere almeno 5 caratteri");
             return false;
         }
         return true;
@@ -82,10 +80,10 @@ public class C_UC_Login {
         public void actionPerformed(ActionEvent e) {
             if (checkFields())
                 try {
-                    new C_UC_Main(login(C_UC_Login.this.user_id, C_UC_Login.this.password));
-                    C_UC_Login.this.view.setVisible(false);
+                    new C_UC_Main(login(user_id, password));
+                    view.setVisible(false);
                 } catch (LoginException e1) {
-                    C_UC_Login.this.view.setErrorMessage(e1.getMessage());
+                    view.setErrorMessage(e1.getMessage());
                 }
 
         }

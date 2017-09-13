@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.controls
  * Type: Init
- * Last update: 13-set-2017 9.37.53
+ * Last update: 13-set-2017 17.11.20
  * 
  */
 

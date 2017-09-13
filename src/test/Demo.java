@@ -1,11 +1,10 @@
 /*
  * 
- * Created by Umberto Ferracci from urania's PC
- * email: umberto.ferracci@gmail.com
- * Project: BdC
+ * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
+ * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: test
  * Type: Demo
- * Last update: 13-set-2017 0.20.28
+ * Last update: 13-set-2017 17.16.34
  * 
  */
 
@@ -167,9 +166,9 @@ public class Demo {
                 launcher.demoAdmin();
                 try {
                     CSVFactory.translateFile1("/home/urania/Scrivania/csv/higal.csv");
-                    CSVFactory.translateFile2("/home/urania/Scrivania/csv/higal_additionalinfo.csv");
+                    // CSVFactory.translateFile2("/home/urania/Scrivania/csv/higal_additionalinfo.csv");
                     CSVFactory.translateFile3("/home/urania/Scrivania/csv/r08.csv");
-                    CSVFactory.translateFile4("/home/urania/Scrivania/csv/mips.csv");
+                    // CSVFactory.translateFile4("/home/urania/Scrivania/csv/mips.csv");
 
                 } catch (Exception e) {
                     e.printStackTrace();

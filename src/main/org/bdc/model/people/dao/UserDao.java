@@ -1,11 +1,10 @@
 /*
  * 
- * Created by Umberto Ferracci from urania's PC
- * email: umberto.ferracci@gmail.com
- * Project: BdC
+ * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
+ * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.model.people.dao
  * Type: UserDao
- * Last update: 12-set-2017 23.07.11
+ * Last update: 13-set-2017 17.20.59
  * 
  */
 
@@ -33,9 +32,10 @@ public class UserDao extends EntityDaoHibernate<UserRegistered, Integer> {
      * @throws LoginException the login exception
      */
     @SuppressWarnings("unchecked")
+
     public UserRegistered login(String userId, String password) throws LoginException {
         String sql = "FROM UserRegistered WHERE userId= :userId AND password= :password";
-        Query query = getSession().createQuery(sql);
+        Query query = super.openSession().createQuery(sql);
         query.setParameter("userId", userId);
         query.setParameter("password", password);
         List<UserRegistered> utenti = query.getResultList();
