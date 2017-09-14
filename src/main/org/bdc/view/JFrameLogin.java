@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.view
  * Type: JFrameLogin
- * Last update: 14-set-2017 12.19.54
+ * Last update: 14-set-2017 12.23.14
  * 
  */
 
@@ -111,7 +111,7 @@ public class JFrameLogin extends JFrame {
 
         JLabel lblAdministratorUsera = new JLabel("Administrator: user_a, user_a");
         lblAdministratorUsera.setFont(new Font("Dialog", Font.PLAIN, 11));
-        lblAdministratorUsera.setBounds(12, 161, 422, 15);
+        lblAdministratorUsera.setBounds(12, 163, 422, 15);
         contentPane.add(lblAdministratorUsera);
 
         JLabel lblUserRegistered = new JLabel("User registered: user_r, user_r");
