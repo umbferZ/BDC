@@ -1,8 +1,6 @@
 package test;
 
 import main.org.bdc.controls.C_UC_InsertNewUser;
-import main.org.bdc.controls.C_UC_Login;
-import main.org.bdc.model.DaoFactory;
 import main.org.bdc.model.people.UserRegistered;
 import main.org.bdc.model.people.UserType;
 import main.org.bdc.service.dal.exception.SaveOrUpdateDalException;
@@ -11,7 +9,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
-import javax.jws.soap.SOAPBinding;
 import javax.security.auth.login.LoginException;
 import java.util.Arrays;
 import java.util.Collection;
@@ -43,7 +40,7 @@ public class TestInsertUser {
         user2.setFirstName("Umberto");
         user2.setLastName("Ferracci");
         user2.setEmail("umbferz@gmail.com");
-        user2.setUserId("amministratore");
+        user2.setUserId("user_a");
         user2.setPassword("amministratore");
         user2.setUserType(UserType.USER_REGISTERED);
 
@@ -57,8 +54,8 @@ public class TestInsertUser {
     public void test() throws SaveOrUpdateDalException, LoginException {
 
         C_UC_InsertNewUser c_uc_insertNewUser = new C_UC_InsertNewUser();
-        c_uc_insertNewUser.insert(this.user);
-        Assert.assertNotEquals("Already in DB", "amministratore", user.getUserId());
+        c_uc_insertNewUser.insertUser(this.user);
+        Assert.assertNotEquals("Already in DB", "user_a", user.getUserId());
 
     }
 }
