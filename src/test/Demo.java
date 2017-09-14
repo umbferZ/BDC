@@ -44,11 +44,11 @@ public class Demo {
      */
     public void demoAdmin() {
         UserRegistered admin = new UserRegistered();
-        admin.setFirstName("amministratore");
-        admin.setLastName("amministratore");
+        admin.setFirstName("user_a");
+        admin.setLastName("user_a");
         admin.setEmail("admin@email");
-        admin.setUserId("amministratore");
-        admin.setPassword("amministratore");
+        admin.setUserId("user_a");
+        admin.setPassword("user_a");
         admin.setUserType(UserType.ADMIN);
 
         UserRegistered user = new UserRegistered();
