@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.controls
  * Type: C_UC_InsertSatellite
- * Last update: 14-set-2017 15.08.36
+ * Last update: 14-set-2017 18.14.14
  * 
  */
 
@@ -16,7 +16,7 @@ import main.org.bdc.controls.gestisciSatellite.BeanInserisciSatellite;
 import main.org.bdc.model.DaoFactory;
 import main.org.bdc.model.galaxy.Agency;
 import main.org.bdc.model.galaxy.Satellite;
-import main.org.bdc.service.dal.exception.SaveOrUpdateDalException;
+import main.org.bdc.service.dal.exception.SaveDalException;
 
 public class C_UC_InsertSatellite {
 
@@ -28,7 +28,7 @@ public class C_UC_InsertSatellite {
         return instance;
     }
 
-    public void inserisciSatellite(BeanInserisciSatellite bean) throws SaveOrUpdateDalException {
+    public Satellite inserisciSatellite(BeanInserisciSatellite bean) throws SaveDalException {
 
         Calendar startDate = Calendar.getInstance();
         startDate.set(bean.getStartYear(), bean.getStartMonth() - 1, bean.getStartDay());
@@ -38,11 +38,13 @@ public class C_UC_InsertSatellite {
             endDate.set(bean.getEndYear(), bean.getEndMonth() - 1, bean.getEndDay());
         }
         Satellite satellite = new Satellite();
+        if (bean.getAgenziaSatellite().equals(""))
+            throw new SaveDalException("impossi save");
         satellite.setAgenzia(new Agency(bean.getAgenziaSatellite()));
         satellite.setName(bean.getNomeSatellite());
         satellite.setStartDate(startDate);
         satellite.setEndDate(endDate);
-        DaoFactory.getInstance().getSatelliteDao().saveOrUpdate(satellite);
+        return DaoFactory.getInstance().getSatelliteDao().save(satellite);
 
     }
 

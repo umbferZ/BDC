@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.model.galaxy
  * Type: Satellite
- * Last update: 13-set-2017 0.26.51
+ * Last update: 14-set-2017 18.12.57
  * 
  */
 
@@ -54,9 +54,9 @@ public class Satellite implements Serializable {
      * Instantiates a new satellite.
      */
     public Satellite() {
-        this.instruments = new ArrayList<>();
-        this.startDate = Calendar.getInstance();
-        this.endDate = Calendar.getInstance();
+        instruments = new ArrayList<>();
+        startDate = Calendar.getInstance();
+        endDate = Calendar.getInstance();
 
     }
 
@@ -71,7 +71,7 @@ public class Satellite implements Serializable {
     public Satellite(String name, Agency agenzia, Calendar startDate, Calendar endDate) {
         this();
         this.name = name;
-        this.agency = agenzia;
+        agency = agenzia;
         this.startDate = startDate;
         this.endDate = endDate;
 
@@ -83,7 +83,7 @@ public class Satellite implements Serializable {
      * @param strument the strument
      */
     public void addStrumento(Instrument strument) {
-        this.instruments.add(strument);
+        instruments.add(strument);
     }
 
     /**
@@ -92,7 +92,7 @@ public class Satellite implements Serializable {
      * @return the agenzia
      */
     public Agency getAgenzia() {
-        return this.agency;
+        return agency;
     }
 
     /**
@@ -101,7 +101,7 @@ public class Satellite implements Serializable {
      * @return the end date
      */
     public Calendar getEndDate() {
-        return this.endDate;
+        return endDate;
     }
 
     /**
@@ -110,7 +110,7 @@ public class Satellite implements Serializable {
      * @return the name
      */
     public String getName() {
-        return this.name;
+        return name;
     }
 
     /**
@@ -119,7 +119,7 @@ public class Satellite implements Serializable {
      * @return the start date
      */
     public Calendar getStartDate() {
-        return this.startDate;
+        return startDate;
     }
 
     /**
@@ -128,7 +128,7 @@ public class Satellite implements Serializable {
      * @param agenzia the new agenzia
      */
     public void setAgenzia(Agency agenzia) {
-        this.agency = agenzia;
+        agency = agenzia;
     }
 
     /**
@@ -148,7 +148,7 @@ public class Satellite implements Serializable {
      * @param dayOfMonth the day of month
      */
     public void setEndDate(int year, int monthOfYear, int dayOfMonth) {
-        this.endDate.set(year, monthOfYear - 1, dayOfMonth);
+        endDate.set(year, monthOfYear - 1, dayOfMonth);
     }
 
     /**
@@ -177,6 +177,6 @@ public class Satellite implements Serializable {
      * @param dayOfMonth the day of month
      */
     public void setStartDate(int year, int monthOfYear, int dayOfMonth) {
-        this.startDate.set(year, monthOfYear - 1, dayOfMonth);
+        startDate.set(year, monthOfYear - 1, dayOfMonth);
     }
 }
