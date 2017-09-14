@@ -1,9 +1,13 @@
 package test;
 
+import main.org.bdc.controls.C_UC_InsertSatellite;
+import main.org.bdc.controls.gestisciSatellite.BeanInserisciSatellite;
 import main.org.bdc.model.DaoFactory;
+import main.org.bdc.model.galaxy.Agency;
 import main.org.bdc.model.galaxy.Satellite;
 import main.org.bdc.model.galaxy.dao.SatelliteDao;
 import main.org.bdc.service.dal.exception.SaveOrUpdateDalException;
+import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -20,36 +24,34 @@ import java.util.Collection;
 @RunWith(value = Parameterized.class)
 public class TestInsertSatellite {
 
-    private Satellite satellite;
-    private String result;
+    private BeanInserisciSatellite satellite;
 
-    public TestInsertSatellite(String result, Satellite satellite) {
+    public TestInsertSatellite(BeanInserisciSatellite satellite) {
         this.satellite = satellite;
-        this.result = result;
     }
 
     @Parameterized.Parameters
-    public static Collection<Object[]> getTestParameters(){
+    public static Collection<BeanInserisciSatellite> getTestParameters(){
 
-        Satellite satellite1 = new Satellite();
-        Satellite satellite2 = new Satellite();
-        Satellite satellite3 = new Satellite();
+        BeanInserisciSatellite satelliteAlreadyInDB = new BeanInserisciSatellite();
+        satelliteAlreadyInDB.setNomeSatellite("Herschel");
+        BeanInserisciSatellite satelliteNotInDB = new BeanInserisciSatellite();
+        satelliteNotInDB.setNomeSatellite("Satellite Test");
+        satelliteNotInDB.setAgenziaSatellite("ESA");
+        satelliteNotInDB.setStartDate(12,12,2012);
+        satelliteNotInDB.setEndDate(13,7,2014);
 
 
-
-        return Arrays.asList(new Object[][]{
-                {"ok",satellite1}, {"ok", satellite2}, {"error",satellite3}
-        });
-
+        return Arrays.asList(
+                satelliteAlreadyInDB,
+                satelliteNotInDB
+        );
     }
 
-    @Rule
-    public ExpectedException thrown = ExpectedException.none();
+    @Test
+    public void test() throws SaveOrUpdateDalException {
+        C_UC_InsertSatellite.getInstance().inserisciSatellite(this.satellite);
+        Assert.assertNotEquals("Already in DB", "Herschel", satellite.getNomeSatellite());
 
-    @Test(expected = SaveOrUpdateDalException.class)
-    public void insert(){
-        //thrown.expect();
-        SatelliteDao satelliteDao = DaoFactory.getInstance().getSatelliteDao();
-        //Assert.assertNotNull(result, satelliteDao.saveOrUpdate(this.satellite));
     }
 }
