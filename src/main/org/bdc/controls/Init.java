@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.controls
  * Type: Init
- * Last update: 14-set-2017 3.36.29
+ * Last update: 14-set-2017 13.37.43
  * 
  */
 
@@ -13,6 +13,7 @@ package main.org.bdc.controls;
 import java.awt.EventQueue;
 
 import main.org.bdc.view.JFrameInit;
+import main.org.bdc.view.manager.CJFrameLogin;
 import test.Demo;
 
 public class Init {
@@ -32,7 +33,7 @@ public class Init {
                     view = new JFrameInit();
                     view.setVisible(true);
                     new Demo().start();
-                    new C_UC_Login();
+                    new CJFrameLogin();
                     view.setVisible(false);
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
