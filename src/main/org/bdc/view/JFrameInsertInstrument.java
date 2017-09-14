@@ -36,6 +36,7 @@ public class JFrameInsertInstrument extends JFrame {
     private JLabel     lbl_error;
 
     private JTextField txt_instrumentName;
+    private JLabel lblName;
 
     public JFrameInsertInstrument() {
         getContentPane().setLayout(null);
@@ -50,7 +51,7 @@ public class JFrameInsertInstrument extends JFrame {
                 FormSpecs.RELATED_GAP_ROWSPEC, FormSpecs.DEFAULT_ROWSPEC, FormSpecs.RELATED_GAP_ROWSPEC, FormSpecs.DEFAULT_ROWSPEC, FormSpecs.RELATED_GAP_ROWSPEC, FormSpecs.DEFAULT_ROWSPEC, FormSpecs.RELATED_GAP_ROWSPEC, FormSpecs.DEFAULT_ROWSPEC,
         }));
 
-        JLabel lblName = new JLabel("Name");
+        lblName = new JLabel("Name");
         panel.add(lblName, "2, 2, right, default");
 
         txt_instrumentName = new JTextField();

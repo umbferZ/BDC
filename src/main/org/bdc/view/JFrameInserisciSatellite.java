@@ -80,14 +80,12 @@ public class JFrameInserisciSatellite extends JFrame {
      * Create the frame.
      */
     public JFrameInserisciSatellite() {
-        setTitle("New Satellite");
-        setType(Type.UTILITY);
-        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        setBounds(100, 100, 450, 300);
-        contentPane = new JPanel();
-        contentPane.setBorder(new EmptyBorder(0, 0, 0, 0));
-        setContentPane(contentPane);
-        contentPane.setLayout(null);
+    	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
 
         JPanel panel = new JPanel();
         panel.setBorder(new TitledBorder(null, "New satellite", TitledBorder.LEADING, TitledBorder.TOP, null, null));

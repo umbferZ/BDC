@@ -18,11 +18,12 @@ import javax.swing.JTextField;
 
 import main.org.bdc.controls.C_UC_InsertNewInstrument;
 import main.org.bdc.view.JFrameInsertInstrument;
+import main.org.bdc.view.JFrameInsertInstrument2;
 import main.org.bdc.view.tools.CheckerField;
 
 public class CJFrameInsertInstrument {
 
-    private JFrameInsertInstrument view;
+    private JFrameInsertInstrument2 view;
 
     public CJFrameInsertInstrument() {
         EventQueue.invokeLater(new Runnable() {
@@ -30,7 +31,7 @@ public class CJFrameInsertInstrument {
             @Override
             public void run() {
                 try {
-                    view = new JFrameInsertInstrument();
+                    view = new JFrameInsertInstrument2();
                     view.setVisible(true);
                     view.addButtonInsertAL(new ButtonInsertAL());
                 } catch (Exception e) {
@@ -46,11 +47,11 @@ public class CJFrameInsertInstrument {
     }
 
     private boolean valdateName() {
-        JTextField jTextField = view.getTxt_instrumentName();
+        /*JTextField jTextField = view.getTxt_instrumentName();
         if (!CheckerField.checkTextField(jTextField)) {
-            view.showError("Name can't be empty");
+            view.lbl_error("Name can't be empty");
             return false;
-        }
+        }*/
         return true;
     }
 
