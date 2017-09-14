@@ -1,5 +1,5 @@
 package test;
-
+/*
 import main.org.bdc.controls.C_UC_SearchClumps;
 import main.org.bdc.controls.C_UC_SearchClumpsDensity;
 import main.org.bdc.model.galaxy.Clump;
@@ -11,10 +11,11 @@ import org.junit.runners.Parameterized;
 
 import java.util.Arrays;
 import java.util.Collection;
-
+*/
 /**
  * Created by Sasha on 13/09/17.
  */
+/*
 @RunWith(value = Parameterized.class)
 public class TestSearchClump {
 
@@ -46,8 +47,8 @@ public class TestSearchClump {
         /*C_UC_SearchClumps.getInstance().searchClumps(this.clump.getId());
         Assert.assertEquals("Error!", "GLIPSE", this.clump.getMap().getName());
         Assert.assertEquals("Not in DB", 179761, this.clump.getId());
-*/
+
 
     }
 }
-
+*/

@@ -12,7 +12,7 @@ package test;
 
 import java.util.Arrays;
 import java.util.Collection;
-
+/*
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,10 +22,12 @@ import main.org.bdc.controls.C_UC_InsertNewUser;
 import main.org.bdc.model.people.UserRegistered;
 import main.org.bdc.model.people.UserType;
 import main.org.bdc.service.dal.exception.SaveDalException;
-
+*/
 /**
  * Created by Sasha on 13/09/17.
  */
+
+/*
 @RunWith(value = Parameterized.class)
 public class TestInsertUser {
 
@@ -116,3 +118,4 @@ public class TestInsertUser {
 
     }
 }
+*/

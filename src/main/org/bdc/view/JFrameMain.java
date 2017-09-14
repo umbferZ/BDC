@@ -56,6 +56,8 @@ public class JFrameMain extends JFrame {
 
     private JMenuItem    mntm_newUser;
 
+    private JMenuItem mntmShowAllObject;
+
     private JProgressBar progressBar;
 
     public static void main(String[] args) {
@@ -245,10 +247,14 @@ public class JFrameMain extends JFrame {
         }
     }
 
-    public void addNewUserActionListener(ActionListener actionListener) {
+    public void addButtonNewUserActionListener(ActionListener actionListener) {
         mntm_newUser.addActionListener(actionListener);
     }
 
+    public void addButtonShowObjectActionListener(ActionListener actionListener){
+        mntmShowAllObject.addActionListener(actionListener);
+
+    }
     public JMenu getMn_uploadFiles() {
         return mn_uploadFiles;
     }

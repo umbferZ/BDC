@@ -5,10 +5,6 @@ import main.org.bdc.model.galaxy.Map;
 import main.org.bdc.model.instruments.Band;
 import main.org.bdc.model.instruments.Instrument;
 import main.org.bdc.model.people.UserRegistered;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -16,6 +12,8 @@ import java.util.Collection;
 /**
  * Created by Sasha on 13/09/17.
  */
+
+/*
 @RunWith(value = Parameterized.class)
 public class TestInsertInstrument {
 
@@ -53,3 +51,4 @@ public class TestInsertInstrument {
 
     }
 }
+*/

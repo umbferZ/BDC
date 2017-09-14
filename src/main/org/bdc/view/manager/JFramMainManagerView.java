@@ -43,7 +43,8 @@ public class JFramMainManagerView {
                     view.addImportActionListener(TypeFile.HigalAddictional, new ImportActionListener(TypeFile.HigalAddictional));
                     view.addImportActionListener(TypeFile.Glimpse, new ImportActionListener(TypeFile.Glimpse));
                     view.addImportActionListener(TypeFile.MIPSGAL, new ImportActionListener(TypeFile.MIPSGAL));
-                    view.addNewUserActionListener(new NewUserActionListener());
+                    view.addButtonNewUserActionListener(new ButtonNewUserActionListener());
+                    view.addButtonShowObjectActionListener(new ButtonShowObjectActionListener());
                     if (userRegistered.getUserType() == UserType.USER_REGISTERED) {
                         view.getMn_uploadFiles().setEnabled(false);
                         view.getMntm_newInstruments().setEnabled(false);
@@ -101,7 +102,7 @@ public class JFramMainManagerView {
 
     }
 
-    class NewUserActionListener implements ActionListener {
+    class ButtonNewUserActionListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -109,5 +110,15 @@ public class JFramMainManagerView {
 
         }
 
+
+    }
+
+    class ButtonShowObjectActionListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+
+        }
     }
 }

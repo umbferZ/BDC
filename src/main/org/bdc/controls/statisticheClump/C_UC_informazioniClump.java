@@ -18,6 +18,8 @@ import java.util.List;
 import main.org.bdc.model.DaoFactory;
 import main.org.bdc.model.galaxy.Clump;
 
+
+/*
 public class C_UC_informazioniClump {
 
     public List<BeanResponseMassaClump> getMasseClump() {
@@ -71,3 +73,4 @@ public class C_UC_informazioniClump {
         return bean;
     }
 }
+*/

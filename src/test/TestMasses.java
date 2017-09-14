@@ -4,10 +4,6 @@ import main.org.bdc.controls.C_UC_SearchClumpsMass;
 import main.org.bdc.model.galaxy.Clump;
 import main.org.bdc.model.galaxy.ClumpDetails;
 import main.org.bdc.model.galaxy.Flow;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
 
 import java.io.Serializable;
 import java.util.Arrays;
@@ -16,6 +12,8 @@ import java.util.List;
 /**
  * Created by Sasha on 13/09/17.
  */
+
+/*
 @RunWith(value = Parameterized.class)
 public class TestMasses {
 
@@ -76,3 +74,4 @@ public class TestMasses {
     }
 
 }
+*/

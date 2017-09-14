@@ -7,12 +7,8 @@ import main.org.bdc.model.galaxy.Agency;
 import main.org.bdc.model.galaxy.Satellite;
 import main.org.bdc.model.galaxy.dao.SatelliteDao;
 import main.org.bdc.service.dal.exception.SaveOrUpdateDalException;
-import org.junit.Assert;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
+
+
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -20,7 +16,7 @@ import java.util.Collection;
 /**
  * Created by Sasha on 13/09/17.
  */
-
+/*
 @RunWith(value = Parameterized.class)
 public class TestInsertSatellite {
 
@@ -65,3 +61,4 @@ public class TestInsertSatellite {
 
     }
 }
+*/
