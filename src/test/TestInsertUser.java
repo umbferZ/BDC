@@ -1,19 +1,17 @@
 /*
- *
+ * 
  * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: test
  * Type: TestInsertUser
- * Last update: 14-set-2017 3.08.44
- *
+ * Last update: 14-set-2017 12.35.06
+ * 
  */
 
 package test;
 
 import java.util.Arrays;
 import java.util.Collection;
-
-import javax.security.auth.login.LoginException;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -23,7 +21,7 @@ import org.junit.runners.Parameterized;
 import main.org.bdc.controls.C_UC_InsertNewUser;
 import main.org.bdc.model.people.UserRegistered;
 import main.org.bdc.model.people.UserType;
-import main.org.bdc.service.dal.exception.SaveOrUpdateDalException;
+import main.org.bdc.service.dal.exception.SaveDalException;
 
 /**
  * Created by Sasha on 13/09/17.
@@ -92,15 +90,7 @@ public class TestInsertUser {
         user.setPassword("");
         user.setUserType(UserType.USER_REGISTERED);
 
-        return Arrays.asList(
-                admin,
-                user,
-                userEmptyNameField,
-                userEmptySurnameField,
-                userEmptyEmailField,
-                userEmptyIDField,
-                userEmptyPasswordField
-        );
+        return Arrays.asList(admin, user, userEmptyNameField, userEmptySurnameField, userEmptyEmailField, userEmptyIDField, userEmptyPasswordField);
     }
 
     public TestInsertUser(UserRegistered user) {
@@ -108,22 +98,21 @@ public class TestInsertUser {
     }
 
     @Test
-    public void test() throws SaveOrUpdateDalException, LoginException {
+    public void test() {
 
         C_UC_InsertNewUser c_uc_insertNewUser = new C_UC_InsertNewUser();
-        c_uc_insertNewUser.insertUser(user);
+        UserRegistered userRegistered = null;
         try {
-            Assert.assertNotNull("", c_uc_insertNewUser.insertUser(user));
+            userRegistered = c_uc_insertNewUser.insertUser(user);
         } catch (SaveDalException e) {
             Assert.assertTrue(false);
         }
-        Assert.assertNotEquals("Already in DB", "user_a", user.getUserId());
-        Assert.assertNotEquals("Missing name field", "", user.getFirstName());
-        Assert.assertNotEquals("Missing surname field", "", user.getLastName());
-        Assert.assertNotEquals("Missing mail field", "", user.getEmail());
-        Assert.assertNotEquals("Missing id field", "", user.getUserId());
-        Assert.assertNotEquals("Missing password field", "", user.getPassword());
-
+        Assert.assertNotNull(userRegistered);
+        Assert.assertNotEquals("Missing id field", "", userRegistered.getUserId());
+        Assert.assertNotEquals("Missing name field", "", userRegistered.getFirstName());
+        Assert.assertNotEquals("Missing surname field", "", userRegistered.getLastName());
+        Assert.assertNotEquals("Missing mail field", "", userRegistered.getEmail());
+        Assert.assertNotEquals("Missing password field", "", userRegistered.getPassword());
 
     }
 }
