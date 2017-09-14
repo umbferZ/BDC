@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.controls
  * Type: C_UC_InsertNewUser
- * Last update: 14-set-2017 2.36.47
+ * Last update: 14-set-2017 11.33.28
  * 
  */
 
@@ -20,7 +20,7 @@ import javax.swing.JTextField;
 import main.org.bdc.model.DaoFactory;
 import main.org.bdc.model.people.UserRegistered;
 import main.org.bdc.model.people.UserType;
-import main.org.bdc.service.dal.exception.SaveOrUpdateDalException;
+import main.org.bdc.service.dal.exception.SaveDalException;
 import main.org.bdc.view.JFrameNuovoUtente;
 
 public class C_UC_InsertNewUser {
@@ -50,8 +50,8 @@ public class C_UC_InsertNewUser {
         });
     }
 
-    public void insertUser(UserRegistered userRegistered) throws SaveOrUpdateDalException {
-        DaoFactory.getInstance().getUserDao().saveOrUpdate(userReg);
+    public UserRegistered insertUser(UserRegistered userRegistered) throws SaveDalException {
+        return DaoFactory.getInstance().getUserDao().save(userRegistered);
     }
 
     private boolean checkFields() {
@@ -129,7 +129,7 @@ public class C_UC_InsertNewUser {
                     insertUser(userReg);
                     view.setVisible(false);
 
-                } catch (SaveOrUpdateDalException e1) {
+                } catch (SaveDalException e1) {
                     view.setErrorMessage(e1.getMessage());
                 }
             }

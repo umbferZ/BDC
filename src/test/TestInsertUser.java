@@ -1,19 +1,17 @@
 /*
- *
+ * 
  * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: test
  * Type: TestInsertUser
- * Last update: 14-set-2017 3.08.44
- *
+ * Last update: 14-set-2017 11.33.09
+ * 
  */
 
 package test;
 
 import java.util.Arrays;
 import java.util.Collection;
-
-import javax.security.auth.login.LoginException;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -23,7 +21,7 @@ import org.junit.runners.Parameterized;
 import main.org.bdc.controls.C_UC_InsertNewUser;
 import main.org.bdc.model.people.UserRegistered;
 import main.org.bdc.model.people.UserType;
-import main.org.bdc.service.dal.exception.SaveOrUpdateDalException;
+import main.org.bdc.service.dal.exception.SaveDalException;
 
 /**
  * Created by Sasha on 13/09/17.
@@ -60,10 +58,15 @@ public class TestInsertUser {
     }
 
     @Test
-    public void test() throws SaveOrUpdateDalException, LoginException {
+    public void test() {
 
         C_UC_InsertNewUser c_uc_insertNewUser = new C_UC_InsertNewUser();
-        c_uc_insertNewUser.insertUser(user);
+
+        try {
+            Assert.assertNotNull("", c_uc_insertNewUser.insertUser(user));
+        } catch (SaveDalException e) {
+            Assert.assertTrue(false);
+        }
         Assert.assertNotEquals("Already in DB", "user_a", user.getUserId());
 
     }

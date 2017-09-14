@@ -3,27 +3,27 @@
  * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.model.people
- * Type: UserRegegistered
- * Last update: 13-set-2017 0.28.52
+ * Type: UserRegistered
+ * Last update: 14-set-2017 11.19.09
  * 
  */
 
 package main.org.bdc.model.people;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
-import javax.persistence.IdClass;
 
 /**
  * S The Class UserRegistered.
  */
 @Entity
-@IdClass(UserRegistered_PK.class)
+// @IdClass(UserRegistered_PK.class)
 public class UserRegistered {
 
-    @Id
+    @Column(unique = true)
     private String   email;
 
     private String   firstName;

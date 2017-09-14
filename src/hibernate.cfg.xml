@@ -45,8 +45,6 @@
 		<mapping class="main.org.bdc.model.galaxy.Flow" />
 		<mapping class="main.org.bdc.model.galaxy.Position" />
 		<mapping class="main.org.bdc.model.galaxy.Source" />
-		<mapping class="test.provahib.Azienda" />
-		<mapping class="test.provahib.Lavoratore" />
 	</session-factory>
 </hibernate-configuration>
 

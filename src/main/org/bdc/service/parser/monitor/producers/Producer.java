@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.service.parser.monitor.producers
  * Type: Producer
- * Last update: 14-set-2017 3.34.49
+ * Last update: 14-set-2017 11.13.05
  * 
  */
 
@@ -119,11 +119,10 @@ public abstract class Producer<SB extends SimpleBean> implements Runnable {
         } catch (IllegalFileException e) {
             System.out.println(e.getMessage());
         } finally {
-
+            System.out.println(String.format("Producer sets finish"));
             if (rows > 0)
-                // System.out.println(String.format("Avarage time for read and
-                // enqueue is %d ms", time / rows));
-                this.queue.setFinished(true);
+                System.out.println(String.format("Avarage time for read and enqueue is %d ms", time / rows));
+            this.queue.setFinished(true);
             try {
                 csvReader.close();
                 bufferReader.close();

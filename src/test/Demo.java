@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: test
  * Type: Demo
- * Last update: 14-set-2017 3.37.46
+ * Last update: 14-set-2017 11.36.31
  * 
  */
 
@@ -23,7 +23,7 @@ import main.org.bdc.model.instruments.Band;
 import main.org.bdc.model.instruments.Instrument;
 import main.org.bdc.model.people.UserRegistered;
 import main.org.bdc.model.people.UserType;
-import main.org.bdc.service.dal.exception.SaveOrUpdateDalException;
+import main.org.bdc.service.dal.exception.SaveDalException;
 import main.org.bdc.service.parser.CSVFactory;
 
 /**
@@ -60,9 +60,9 @@ public class Demo {
         user.setPassword("user_r");
         user.setUserType(UserType.USER_REGISTERED);
         try {
-            DaoFactory.getInstance().getUserDao().saveOrUpdate(admin);
-            DaoFactory.getInstance().getUserDao().saveOrUpdate(user);
-        } catch (SaveOrUpdateDalException e) {
+            DaoFactory.getInstance().getUserDao().save(admin);
+            DaoFactory.getInstance().getUserDao().save(user);
+        } catch (SaveDalException e) {
             e.printStackTrace();
         }
     }
@@ -165,17 +165,19 @@ public class Demo {
         launcher.demoSatelliti();
         launcher.provaIstanze();
         launcher.demoAdmin();
-        Thread tt[] = new Thread[] {
-                CSVFactory.translateFile1("/home/urania/Scrivania/csv/higal.csv"), CSVFactory.translateFile2("/home/urania/Scrivania/csv/higal_additionalinfo.csv"), CSVFactory.translateFile3("/home/urania/Scrivania/csv/r08.csv"),
-                CSVFactory.translateFile4("/home/urania/Scrivania/csv/mips.csv")
-        };
-        for (Thread t : tt) {
-            t.start();
-            try {
-                t.join();
-            } catch (InterruptedException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
+        if (false) {
+            Thread tt[] = new Thread[] {
+                    CSVFactory.translateFile1("/home/urania/Scrivania/csv/higal.csv"), CSVFactory.translateFile2("/home/urania/Scrivania/csv/higal_additionalinfo.csv"), CSVFactory.translateFile3("/home/urania/Scrivania/csv/r08.csv"),
+                    CSVFactory.translateFile4("/home/urania/Scrivania/csv/mips.csv")
+            };
+            for (Thread t : tt) {
+                t.start();
+                try {
+                    t.join();
+                } catch (InterruptedException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
             }
         }
     }

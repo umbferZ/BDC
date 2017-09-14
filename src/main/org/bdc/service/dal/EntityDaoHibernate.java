@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.service.dal
  * Type: EntityDaoHibernate
- * Last update: 14-set-2017 3.36.49
+ * Last update: 14-set-2017 11.41.11
  * 
  */
 
@@ -20,8 +20,11 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Example;
+import org.hibernate.exception.ConstraintViolationException;
 
+import main.org.bdc.service.dal.exception.SaveDalException;
 import main.org.bdc.service.dal.exception.SaveOrUpdateDalException;
+import main.org.bdc.service.dal.exception.UpdateDalException;
 
 /**
  * The Class EntityDaoHibernate.
@@ -147,6 +150,32 @@ public abstract class EntityDaoHibernate<T, ID extends Serializable> implements 
         return session;
     }
 
+    @Override
+    public T save(T entity) throws SaveDalException {
+        Session s = openSession();
+        Transaction transaction = null;
+        try {
+            transaction = s.beginTransaction();
+            s.save(entity);
+            s.flush();
+            transaction.commit();
+        } catch (ConstraintViolationException e) {
+            if (transaction != null)
+                transaction.rollback();
+            System.out.println(e.getMessage());
+            throw new SaveDalException(String.format("Impossible to save the entity %s", persistentClass.getSimpleName()));
+        } catch (HibernateException e) {
+            if (transaction != null)
+                transaction.rollback();
+            System.out.println(e.getMessage());
+            throw new SaveDalException(String.format("Impossible to save the entity %s", persistentClass.getSimpleName()));
+
+        } finally {
+            closeSession();
+        }
+        return entity;
+    }
+
     /*
      * (non-Javadoc)
      * @see
@@ -179,6 +208,26 @@ public abstract class EntityDaoHibernate<T, ID extends Serializable> implements 
      */
     public void setPersistentClass(Class<T> persistentClass) {
         this.persistentClass = persistentClass;
+    }
+
+    @Override
+    public T update(T entity) throws UpdateDalException {
+        Session s = openSession();
+        Transaction transaction = null;
+        try {
+            transaction = s.beginTransaction();
+            s.update(entity);
+            s.flush();
+            transaction.commit();
+        } catch (HibernateException e) {
+            if (transaction != null)
+                transaction.rollback();
+            System.out.println(e.getMessage());
+            throw new UpdateDalException(String.format("Impossible to update the entity %s", persistentClass.getSimpleName()));
+        } finally {
+            closeSession();
+        }
+        return entity;
     }
 
     /**
