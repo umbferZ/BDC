@@ -1,9 +1,10 @@
 package main.org.bdc.controls;
 
+import main.org.bdc.model.DaoFactory;
 import main.org.bdc.model.galaxy.Clump;
 import main.org.bdc.model.galaxy.dao.ClumpDao;
 
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by Sasha on 13/09/17.
@@ -18,7 +19,7 @@ public class C_UC_SearchClumpsMass {
     }
 
     public void searchClumpsMass(){
-        ClumpDao clumpDao = new ClumpDao();
+        ClumpDao clumpDao = DaoFactory.getInstance().getClumpDao();
         try {
             List<Clump> list = clumpDao.getClumpMass();
             int i = 0;
@@ -31,7 +32,7 @@ public class C_UC_SearchClumpsMass {
     }
 
     public void showClumpsAvgMass(){
-        ClumpDao clumpDao = new ClumpDao();
+        ClumpDao clumpDao = DaoFactory.getInstance().getClumpDao();
         try {
             System.out.println(String.format("AVG mass = %.2f", clumpDao.getAvgMassa()));
         } catch (Exception e) {
@@ -39,4 +40,27 @@ public class C_UC_SearchClumpsMass {
             e.printStackTrace();
         }
     }
+
+    public void showClumpsMidMass(){
+        List<Clump> clumps = DaoFactory.getInstance().getClumpDao().getAll();
+        ArrayList<Double> massSort = new ArrayList<Double>();
+        for (Clump c : clumps) {
+            //massSort;
+        }
+        Collections.sort(massSort);
+        double mediana = massSort.size() % 2 == 0 ? (massSort.get(massSort.size() / 2) + massSort.get(massSort.size() / 2 - 1)) / 2 : (double) massSort.get(massSort.size() / 2);
+        System.out.println(String.format("Mediana: %.2f", mediana));
+    }
+
+    public void showClumpsDevMass(){
+        ClumpDao clumpDao = DaoFactory.getInstance().getClumpDao();
+
+    }
+
+    public void showClumpsMidDevMass(){
+        ClumpDao clumpDao = DaoFactory.getInstance().getClumpDao();
+
+    }
+
+
 }

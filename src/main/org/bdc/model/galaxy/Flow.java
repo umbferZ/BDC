@@ -39,8 +39,9 @@ public class Flow implements Serializable {
 
     /**
      * Instantiates a new flusso.
+     * @param v
      */
-    public Flow() {}
+    public Flow(float v) {}
 
     /**
      * Instantiates a new flow.
