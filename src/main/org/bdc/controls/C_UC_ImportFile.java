@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.controls
  * Type: C_UC_ImportFile
- * Last update: 13-set-2017 22.40.18
+ * Last update: 14-set-2017 1.04.30
  * 
  */
 
@@ -22,6 +22,7 @@ import main.org.bdc.service.parser.monitor.exceptions.FailedReadException;
 /**
  * Created by Sasha on 13/09/17.
  */
+@Deprecated
 public class C_UC_ImportFile extends Component {
 
     private static C_UC_ImportFile instance = null;

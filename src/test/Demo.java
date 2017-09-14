@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: test
  * Type: Demo
- * Last update: 13-set-2017 22.32.05
+ * Last update: 14-set-2017 2.33.50
  * 
  */
 
@@ -24,7 +24,6 @@ import main.org.bdc.model.instruments.Instrument;
 import main.org.bdc.model.people.UserRegistered;
 import main.org.bdc.model.people.UserType;
 import main.org.bdc.service.dal.exception.SaveOrUpdateDalException;
-import main.org.bdc.service.parser.CSVFactory;
 
 /**
  * The Class Demo.
@@ -51,10 +50,18 @@ public class Demo {
         admin.setUserId("amministratore");
         admin.setPassword("amministratore");
         admin.setUserType(UserType.ADMIN);
+
+        UserRegistered user = new UserRegistered();
+        user.setFirstName("user");
+        user.setLastName("user");
+        user.setEmail("user@user");
+        user.setUserId("user_r");
+        user.setPassword("user_r");
+        user.setUserType(UserType.USER_REGISTERED);
         try {
             DaoFactory.getInstance().getUserDao().saveOrUpdate(admin);
+            DaoFactory.getInstance().getUserDao().saveOrUpdate(user);
         } catch (SaveOrUpdateDalException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
@@ -65,7 +72,7 @@ public class Demo {
     public void demoSatelliti() {
         Calendar startDate = Calendar.getInstance();
         startDate.set(2009, 07 - 1, 10);
-        Map higal = new Map("Higal"), mips_gal = new Map("MIPS-GAL"), glimpse = new Map("Glimpse");
+        Map higal = new Map("Higal"), mips_gal = new Map("MIPSGAL-GAL"), glimpse = new Map("Glimpse");
 
         Satellite herschel = new Satellite();
         herschel.setName("Herschel");
@@ -97,7 +104,7 @@ public class Demo {
         irac.addBandaOperativa(new Band(8.0, 2.0, irac));
         irac.setMap(glimpse);
 
-        Instrument mips = new Instrument("MIPS", spitzer);
+        Instrument mips = new Instrument("MIPSGAL", spitzer);
         mips.addBandaOperativa(new Band(24.0, 6.0, mips));
         mips.setMap(mips_gal);
 
@@ -152,47 +159,25 @@ public class Demo {
         }
     }
 
-    public void start() throws InterruptedException {
-        Thread t = new Thread(new Runnable() {
-
-            // });
-            // Thread demo = new Thread(new Runnable() {
-
-            @Override
-            public void run() {
-                Demo launcher = new Demo();
-                launcher.demoSatelliti();
-                launcher.provaIstanze();
-                launcher.demoAdmin();
-                try {
-                     CSVFactory.translateFile1("/Users/Francesco/Desktop/higal.csv");
-                     CSVFactory.translateFile2("/Users/Francesco/Desktop/higal_additionalinfo.csv");
-                     CSVFactory.translateFile3("/Users/Francesco/Desktop/r08.csv");
-                     CSVFactory.translateFile4("/Users/Francesco/Desktop/mips.csv");
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-            }
-        });
-        t.start();
-        t.join();
-
+    public void start() {
+        Demo launcher = new Demo();
+        launcher.demoSatelliti();
+        launcher.provaIstanze();
+        launcher.demoAdmin();
+        // Thread tt[] = new Thread[] {
+        // CSVFactory.translateFile1("/home/urania/Scrivania/csv/higal.csv"),
+        // CSVFactory.translateFile2("/home/urania/Scrivania/csv/higal_additionalinfo.csv"),
+        // CSVFactory.translateFile3("/home/urania/Scrivania/csv/r08.csv"),
+        // CSVFactory.translateFile4("/home/urania/Scrivania/csv/mips.csv")
+        // };
+        // for (Thread t : tt) {
+        // t.start();
         // try {
-        //
-        // DaoFactory dao = DaoFactory.getInstance();
-        // Map higal = dao.getMapDao().getMapByName("Higal");
-        // System.out.println(String.format("%s %s n=%s", higal.getId(),
-        // higal.getName(), higal.getInstruments().size()));
-        // Clump clump = new Clump();
-        // clump.setId(666);
-        // clump.setMap(higal);
-        // higal.addClump(clump);
-        // dao.getClumpDao().saveOrUpdate(clump);
-        // } catch (Exception e) {
+        // t.join();
+        // } catch (InterruptedException e) {
         // // TODO Auto-generated catch block
         // e.printStackTrace();
+        // }
         // }
     }
 

@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.model.galaxy.dao
  * Type: ClumpDao
- * Last update: 13-set-2017 19.21.15
+ * Last update: 13-set-2017 23.26.38
  * 
  */
 
@@ -14,8 +14,7 @@ import java.util.List;
 
 import javax.persistence.Query;
 
-import main.org.bdc.controls.C_UC_SearchClumps;
-import main.org.bdc.controls.C_UC_SearchClumpsMass;
+import main.org.bdc.model.DaoFactory;
 import main.org.bdc.model.galaxy.Clump;
 import main.org.bdc.model.galaxy.Flow;
 import main.org.bdc.service.dal.EntityDaoHibernate;
@@ -26,8 +25,14 @@ import main.org.bdc.service.dal.EntityDaoHibernate;
 public class ClumpDao extends EntityDaoHibernate<Clump, Integer> {
 
     public static void main(String[] args) {
-        C_UC_SearchClumpsMass c_uc_searchClumpsMass = C_UC_SearchClumpsMass.getInstance();
-        c_uc_searchClumpsMass.searchClumpsMass();
+        try {
+            List<Clump> clumps = DaoFactory.getInstance().getClumpDao().getClumpMass();
+            for (Clump c : clumps)
+                System.out.println(String.format("id %d, tem %.2f, m %2.f", c.getId(), c.getClumpDetails().getTemperatura(), c.getMassa()));
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -48,6 +53,10 @@ public class ClumpDao extends EntityDaoHibernate<Clump, Integer> {
         for (Clump c : getClumpMass())
             avg += c.getMassa();
         return avg / clumps.size();
+    }
+
+    public Clump getById() {
+        return new Clump();
     }
 
     /**
@@ -72,20 +81,20 @@ public class ClumpDao extends EntityDaoHibernate<Clump, Integer> {
         return null;
     }
 
-    public Clump getById(){
-        return new Clump();
-    }
-
     @SuppressWarnings("unchecked")
     public List<Clump> getClumpMass() throws Exception {
-        /**
-         * select * from clump as c join clump_flow as cf on c.id = cf.clump_id
-         * join flow as f on cf.flows_id = f.id join band as b on f.band_id=b.id
-         * join clumpDetails cd on c.id = cd.clump_id where b.resolution = 350
-         * and f.value >0
-         */
 
-        String sql = "SELECT c FROM Clump c JOIN c.clumpDetails cd JOIN c.flows f WHERE f.band.resolution = 350 and f.value > 0";
+        // select *
+        // from clump as c
+        // join clump_flow as cf on c.id = cf.clump_id
+        // join flow as f on cf.flows_id = f.id
+        // join band as b on f.band_id=b.id
+        // join clumpDetails cd on c.id = cd.clump_id
+        // where b.resolution = 350
+        // and f.value >0
+
+        String sql = "SELECT c FROM Clump c JOIN c.clumpDetails cd JOIN c.flows f JOIN f.band b WHERE b.resolution = 350 and f.value > 0";
+
         Query query = super.openSession().createQuery(sql);
         List<Clump> clumps = query.getResultList();
         closeSession();
