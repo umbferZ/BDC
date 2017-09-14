@@ -39,7 +39,7 @@ public class Consumer_File4 extends Consumer<Bean_File4> {
         dao = DaoFactory.getInstance();
         try {
             b_24 = dao.getBandDao().getByBand(24.0);
-            mipsGal = dao.getMapDao().getMapByName("MIPS-GAL");
+            mipsGal = dao.getMapDao().getMapByName("MIPSGAL-GAL");
             higal = dao.getMapDao().getMapByName("Higal");
         } catch (Exception e) {
             e.printStackTrace();

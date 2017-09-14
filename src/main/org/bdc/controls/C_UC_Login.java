@@ -2,9 +2,9 @@
  * 
  * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
  * Project: BdC - Osservatorio Astronomico Virtuale
- * Package: main.org.bdc.controls.gestisciUtenti
+ * Package: main.org.bdc.controls
  * Type: C_UC_Login
- * Last update: 13-set-2017 17.10.50
+ * Last update: 14-set-2017 1.37.56
  * 
  */
 
@@ -18,10 +18,10 @@ import javax.security.auth.login.LoginException;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import main.org.bdc.controls.C_UC_Main;
 import main.org.bdc.model.DaoFactory;
 import main.org.bdc.model.people.UserRegistered;
 import main.org.bdc.view.JFrameLogin;
+import main.org.bdc.view.manager.JFramMainManagerView;
 
 public class C_UC_Login {
 
@@ -80,7 +80,8 @@ public class C_UC_Login {
         public void actionPerformed(ActionEvent e) {
             if (checkFields())
                 try {
-                    new C_UC_Main(login(user_id, password));
+                    // new C_UC_Main(login(user_id, password));
+                    new JFramMainManagerView(login(user_id, password));
                     view.setVisible(false);
                 } catch (LoginException e1) {
                     view.setErrorMessage(e1.getMessage());

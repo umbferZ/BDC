@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.view
  * Type: JFrameMain
- * Last update: 13-set-2017 23.54.33
+ * Last update: 14-set-2017 2.04.33
  * 
  */
 
@@ -15,6 +15,8 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -22,9 +24,9 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JProgressBar;
 import javax.swing.border.EmptyBorder;
 
-import main.org.bdc.controls.C_UC_ImportFile;
 import main.org.bdc.controls.C_UC_InsertNewUser;
 import main.org.bdc.controls.C_UC_SearchObjectsInRegionByPosition;
 
@@ -33,11 +35,25 @@ import main.org.bdc.controls.C_UC_SearchObjectsInRegionByPosition;
  */
 public class JFrameMain extends JFrame {
 
-    private JPanel contentPane;
+    private JPanel       contentPane;
 
-    private JLabel lbl_welcome;
+    private JLabel       lbl_welcome;
 
-    private JMenu  mn_utente;
+    private JMenu        mn_utente;
+
+    private JMenuItem    mntm_glimpse;
+
+    private JMenuItem    mntm_higal;
+
+    private JMenuItem    mntm_higalAddictional;
+
+    private JMenuItem    mntm_mipsGal;
+
+    private JProgressBar progressBar;
+
+    public static void main(String[] args) {
+
+    }
 
     /**
      * Instantiates a new j frame main.
@@ -56,29 +72,21 @@ public class JFrameMain extends JFrame {
         JMenu mnUploadFiles = new JMenu("Upload"); // ho creato questo menu
         mnFile.add(mnUploadFiles);
 
-        JMenuItem mntmUpload = new JMenuItem("Higal");
+        mntm_higal = new JMenuItem("Higal");
 
-        mntmUpload.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent ev) {
-                C_UC_ImportFile c_uc_importFile = C_UC_ImportFile.getInstance();
-                c_uc_importFile.importFile();
-            }
-        });
-        // admin
         JMenuItem mntmExit = new JMenuItem("Exit");
 
-        mnUploadFiles.add(mntmUpload); // il nuovo menu lo inserisco i un altro
+        mnUploadFiles.add(mntm_higal); // il nuovo menu lo inserisco i un altro
 
-        JMenuItem mntmHigalAddictional = new JMenuItem("Higal Addictional");
-        mnUploadFiles.add(mntmHigalAddictional);
+        mntm_higalAddictional = new JMenuItem("Higal Addictional");
 
-        JMenuItem mntmMips = new JMenuItem("Glimpse");
-        mnUploadFiles.add(mntmMips);
+        mnUploadFiles.add(mntm_higalAddictional);
 
-        JMenuItem mntmMipsgal = new JMenuItem("MIPS-GAL");
-        mnUploadFiles.add(mntmMipsgal);
+        mntm_glimpse = new JMenuItem("Glimpse");
+        mnUploadFiles.add(mntm_glimpse);
+
+        mntm_mipsGal = new JMenuItem("MIPSGAL-GAL");
+        mnUploadFiles.add(mntm_mipsGal);
         // menu
         mnFile.add(mntmExit);
 
@@ -103,7 +111,7 @@ public class JFrameMain extends JFrame {
                 new C_UC_InsertNewUser();
             }
         });
-        // TODO: Dialog User registered!
+        // TODO: Dialog User userRegistered!
         mn_utente.add(mntmNuovoUtente);
 
         JMenu mnSatellite = new JMenu("Satellites");
@@ -201,18 +209,61 @@ public class JFrameMain extends JFrame {
         setContentPane(contentPane);
         contentPane.setLayout(new BorderLayout(0, 0));
 
+        JPanel pn_statusBar = new JPanel();
+        contentPane.add(pn_statusBar, BorderLayout.SOUTH);
+
         lbl_welcome = new JLabel("Welcome...");
         lbl_welcome.setFont(new Font("Dialog", Font.PLAIN, 12));
-        contentPane.add(lbl_welcome, BorderLayout.SOUTH);
+
+        progressBar = new JProgressBar();
+        progressBar.setIndeterminate(true);
+        progressBar.setVisible(false);
+        GroupLayout gl_pn_statusBar = new GroupLayout(pn_statusBar);
+        gl_pn_statusBar.setHorizontalGroup(gl_pn_statusBar.createParallelGroup(Alignment.LEADING).addGroup(gl_pn_statusBar.createSequentialGroup().addContainerGap()
+                .addComponent(lbl_welcome, GroupLayout.PREFERRED_SIZE, 342, GroupLayout.PREFERRED_SIZE).addGap(172).addComponent(progressBar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE).addContainerGap()));
+        gl_pn_statusBar.setVerticalGroup(gl_pn_statusBar.createParallelGroup(Alignment.LEADING)
+                .addGroup(gl_pn_statusBar.createSequentialGroup().addContainerGap()
+                        .addGroup(gl_pn_statusBar.createParallelGroup(Alignment.TRAILING).addComponent(progressBar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE).addComponent(lbl_welcome))
+                        .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+        pn_statusBar.setLayout(gl_pn_statusBar);
+    }
+
+    public void addImportActionListener(TypeFile typeFile, ActionListener actionListener) {
+        switch (typeFile) {
+            case Higal:
+                mntm_higal.addActionListener(actionListener);
+                break;
+            case Glimpse:
+                mntm_glimpse.addActionListener(actionListener);
+                break;
+            case HigalAddictional:
+                mntm_higalAddictional.addActionListener(actionListener);
+                break;
+            case MIPSGAL:
+                mntm_mipsGal.addActionListener(actionListener);
+                break;
+        }
+    }
+
+    public JProgressBar getProgressBar() {
+        return progressBar;
+    }
+
+    public void setProgressBar(JProgressBar progressBar) {
+        this.progressBar = progressBar;
     }
 
     /**
      * Welcome.
      *
-     * @param name the name
+     * @param message the name
      */
-    public void welcome(String name) {
-        lbl_welcome.setText("Welcome " + name);
+    public void setStatusBarMessage(String message) {
+        lbl_welcome.setText(message);
+    }
+
+    public enum TypeFile {
+        Glimpse, Higal, HigalAddictional, MIPSGAL;
     }
 
 }

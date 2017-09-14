@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.service.parser.monitor.translators
  * Type: Translator
- * Last update: 13-set-2017 0.30.17
+ * Last update: 14-set-2017 1.47.57
  * 
  */
 
@@ -22,7 +22,7 @@ import main.org.bdc.service.parser.monitor.producers.Producer;
  *
  * @param <SB> the generic type
  */
-public abstract class Translator<SB extends SimpleBean> {
+public abstract class Translator<SB extends SimpleBean> implements Runnable {
 
     private String                    fileName;
 
@@ -52,31 +52,13 @@ public abstract class Translator<SB extends SimpleBean> {
      */
     public abstract Producer<SB> getProducer();
 
-    /**
-     * Translates.
-     *
-     * @throws FailedInsertException the failed insert exception
-     * @throws FailedReadException the failed read exception
-     */
-    public void translates() throws FailedInsertException, FailedReadException {
-        long startTime = System.currentTimeMillis();
-        Thread prod = new Thread(getProducer());
-        prod.start();
-        Thread cons = new Thread(getConsumer());
-        cons.start();
+    @Override
+    public void run() {
         try {
-            prod.join();
-        } catch (InterruptedException e) {
-            throw new FailedReadException();
+            translates();
+        } catch (FailedInsertException | FailedReadException e) {
+            e.printStackTrace();
         }
-
-        try {
-            cons.join();
-        } catch (InterruptedException e) {
-            throw new FailedInsertException();
-        }
-        System.out.println(String.format("Operazione eseguita in %d m", System.currentTimeMillis() - startTime));
-
     }
 
     /**
@@ -113,5 +95,33 @@ public abstract class Translator<SB extends SimpleBean> {
      */
     protected void setQueue(QueueProducerConsumer<SB> queue) {
         this.queue = queue;
+    }
+
+    /**
+     * Translates.
+     *
+     * @throws FailedInsertException the failed insert exception
+     * @throws FailedReadException the failed read exception
+     */
+    private void translates() throws FailedInsertException, FailedReadException {
+        long startTime = System.currentTimeMillis();
+        Thread prod = new Thread(getProducer());
+        prod.start();
+        Thread cons = new Thread(getConsumer());
+        cons.start();
+        // try {
+        // prod.join();
+        // } catch (InterruptedException e) {
+        // throw new FailedReadException();
+        // }
+        //
+        // try {
+        // cons.join();
+        // } catch (InterruptedException e) {
+        // throw new FailedInsertException();
+        // }
+        // System.out.println(String.format("Operazione eseguita in %d m",
+        // System.currentTimeMillis() - startTime));
+
     }
 }
