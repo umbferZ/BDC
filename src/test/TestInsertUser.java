@@ -1,17 +1,29 @@
+/*
+ *
+ * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
+ * Project: BdC - Osservatorio Astronomico Virtuale
+ * Package: test
+ * Type: TestInsertUser
+ * Last update: 14-set-2017 3.08.44
+ *
+ */
+
 package test;
 
-import main.org.bdc.controls.C_UC_InsertNewUser;
-import main.org.bdc.model.people.UserRegistered;
-import main.org.bdc.model.people.UserType;
-import main.org.bdc.service.dal.exception.SaveOrUpdateDalException;
+import java.util.Arrays;
+import java.util.Collection;
+
+import javax.security.auth.login.LoginException;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
-import javax.security.auth.login.LoginException;
-import java.util.Arrays;
-import java.util.Collection;
+import main.org.bdc.controls.C_UC_InsertNewUser;
+import main.org.bdc.model.people.UserRegistered;
+import main.org.bdc.model.people.UserType;
+import main.org.bdc.service.dal.exception.SaveOrUpdateDalException;
 
 /**
  * Created by Sasha on 13/09/17.
@@ -21,12 +33,8 @@ public class TestInsertUser {
 
     private UserRegistered user;
 
-    public TestInsertUser(UserRegistered user) {
-        this.user = user;
-    }
-
     @Parameterized.Parameters
-    public static Collection<UserRegistered> data(){
+    public static Collection<UserRegistered> data() {
 
         UserRegistered user1 = new UserRegistered();
         user1.setFirstName("Francesco");
@@ -44,17 +52,18 @@ public class TestInsertUser {
         user2.setPassword("amministratore");
         user2.setUserType(UserType.USER_REGISTERED);
 
-        return Arrays.asList(
-                user1,
-                user2
-        );
+        return Arrays.asList(user1, user2);
+    }
+
+    public TestInsertUser(UserRegistered user) {
+        this.user = user;
     }
 
     @Test
     public void test() throws SaveOrUpdateDalException, LoginException {
 
         C_UC_InsertNewUser c_uc_insertNewUser = new C_UC_InsertNewUser();
-        c_uc_insertNewUser.insertUser(this.user);
+        c_uc_insertNewUser.insertUser(user);
         Assert.assertNotEquals("Already in DB", "user_a", user.getUserId());
 
     }

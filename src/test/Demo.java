@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: test
  * Type: Demo
- * Last update: 14-set-2017 2.33.50
+ * Last update: 14-set-2017 3.37.46
  * 
  */
 
@@ -24,6 +24,7 @@ import main.org.bdc.model.instruments.Instrument;
 import main.org.bdc.model.people.UserRegistered;
 import main.org.bdc.model.people.UserType;
 import main.org.bdc.service.dal.exception.SaveOrUpdateDalException;
+import main.org.bdc.service.parser.CSVFactory;
 
 /**
  * The Class Demo.
@@ -143,19 +144,19 @@ public class Demo {
             constructor.newInstance(parametersValue);
 
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         } catch (NoSuchMethodException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         } catch (SecurityException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         } catch (InstantiationException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         } catch (IllegalAccessException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         } catch (IllegalArgumentException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         } catch (InvocationTargetException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 
@@ -164,21 +165,19 @@ public class Demo {
         launcher.demoSatelliti();
         launcher.provaIstanze();
         launcher.demoAdmin();
-        // Thread tt[] = new Thread[] {
-        // CSVFactory.translateFile1("/home/urania/Scrivania/csv/higal.csv"),
-        // CSVFactory.translateFile2("/home/urania/Scrivania/csv/higal_additionalinfo.csv"),
-        // CSVFactory.translateFile3("/home/urania/Scrivania/csv/r08.csv"),
-        // CSVFactory.translateFile4("/home/urania/Scrivania/csv/mips.csv")
-        // };
-        // for (Thread t : tt) {
-        // t.start();
-        // try {
-        // t.join();
-        // } catch (InterruptedException e) {
-        // // TODO Auto-generated catch block
-        // e.printStackTrace();
-        // }
-        // }
+        Thread tt[] = new Thread[] {
+                CSVFactory.translateFile1("/home/urania/Scrivania/csv/higal.csv"), CSVFactory.translateFile2("/home/urania/Scrivania/csv/higal_additionalinfo.csv"), CSVFactory.translateFile3("/home/urania/Scrivania/csv/r08.csv"),
+                CSVFactory.translateFile4("/home/urania/Scrivania/csv/mips.csv")
+        };
+        for (Thread t : tt) {
+            t.start();
+            try {
+                t.join();
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
     }
 
 }

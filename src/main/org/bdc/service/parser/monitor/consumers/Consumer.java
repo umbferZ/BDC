@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.service.parser.monitor.consumers
  * Type: Consumer
- * Last update: 14-set-2017 2.24.57
+ * Last update: 14-set-2017 3.35.06
  * 
  */
 
@@ -63,11 +63,10 @@ public abstract class Consumer<SB extends SimpleBean> implements Runnable {
                     time += System.currentTimeMillis() - start;
                     rows++;
                 }
-
             }
 
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         } finally {
             // System.out.println(String.format("Consumer sets finish"));
             if (rows > 0)

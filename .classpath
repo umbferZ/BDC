@@ -24,5 +24,6 @@
 	<classpathentry kind="lib" path="lib/jdbc/postgresql-42.0.0.jar"/>
 	<classpathentry kind="lib" path="lib/hibernate-5.2.8.Final/spatial/postgresql-9.4-1200-jdbc41.jar"/>
 	<classpathentry kind="lib" path="lib/hibernate-5.2.8.Final/spatial/slf4j-api-1.7.7.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

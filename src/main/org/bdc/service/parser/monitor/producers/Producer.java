@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.service.parser.monitor.producers
  * Type: Producer
- * Last update: 14-set-2017 2.28.12
+ * Last update: 14-set-2017 3.34.49
  * 
  */
 
@@ -33,6 +33,8 @@ public abstract class Producer<SB extends SimpleBean> implements Runnable {
 
     private String                    fileName;
 
+    private int                       nColumns;
+
     private QueueProducerConsumer<SB> queue;
 
     private Class<SB>                 typeBeanClass;
@@ -48,7 +50,7 @@ public abstract class Producer<SB extends SimpleBean> implements Runnable {
         this.typeBeanClass = (Class<SB>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
         this.fileName = fileName;
         this.queue = queue;
-        columnMappingType();
+        // columnMappingType();
     }
 
     /**
@@ -97,23 +99,25 @@ public abstract class Producer<SB extends SimpleBean> implements Runnable {
                 time += System.currentTimeMillis() - start;
             }
         } catch (InterruptedException | IOException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         } catch (NoSuchMethodException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         } catch (SecurityException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         } catch (InstantiationException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         } catch (IllegalAccessException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         } catch (IllegalArgumentException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         } catch (InvocationTargetException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         } catch (BadParseValueException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
+        } catch (IllegalFileException e) {
+            System.out.println(e.getMessage());
         } finally {
 
             if (rows > 0)
@@ -125,7 +129,7 @@ public abstract class Producer<SB extends SimpleBean> implements Runnable {
                 bufferReader.close();
                 fileReader.close();
             } catch (IOException e) {
-                e.printStackTrace();
+                System.out.println(e.getMessage());
             }
         }
     }
@@ -169,9 +173,13 @@ public abstract class Producer<SB extends SimpleBean> implements Runnable {
      * @throws IllegalArgumentException the illegal argument exception
      * @throws InvocationTargetException the invocation target exception
      * @throws ClassNotFoundException the class not found exception
+     * @throws IllegalFileException
      */
     @SuppressWarnings("unchecked")
-    private SB createBean(String... values) throws BadParseValueException, NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, ClassNotFoundException {
+    private SB createBean(String... values)
+            throws BadParseValueException, NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, ClassNotFoundException, IllegalFileException {
+        if (values.length != columnMappingType().length)
+            throw new IllegalFileException("Illegal file exception");
         Object[] parametersValue = new Object[columnMappingType().length];
         for (int i = 0; i < columnMappingType().length; i++)
             parametersValue[i] = ParserValue.parse(columnMappingType()[i], values[i]);

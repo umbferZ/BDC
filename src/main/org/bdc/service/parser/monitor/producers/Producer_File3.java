@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.service.parser.monitor.producers
  * Type: Producer_File3
- * Last update: 13-set-2017 0.30.13
+ * Last update: 14-set-2017 3.33.05
  * 
  */
 
