@@ -1,11 +1,10 @@
 /*
  * 
- * Created by Umberto Ferracci from urania's PC
- * email: umberto.ferracci@gmail.com
- * Project: BdC
- * Package: main.org.bdc.controls.gestisciSatellite
- * Type: C_UC_GestisciSatellite
- * Last update: 8-set-2017 16.48.59
+ * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
+ * Project: BdC - Osservatorio Astronomico Virtuale
+ * Package: main.org.bdc.controls
+ * Type: C_UC_InsertSatellite
+ * Last update: 14-set-2017 15.08.36
  * 
  */
 
@@ -29,7 +28,7 @@ public class C_UC_InsertSatellite {
         return instance;
     }
 
-    public void inserisciSatellite(BeanInserisciSatellite bean) {
+    public void inserisciSatellite(BeanInserisciSatellite bean) throws SaveOrUpdateDalException {
 
         Calendar startDate = Calendar.getInstance();
         startDate.set(bean.getStartYear(), bean.getStartMonth() - 1, bean.getStartDay());
@@ -43,11 +42,8 @@ public class C_UC_InsertSatellite {
         satellite.setName(bean.getNomeSatellite());
         satellite.setStartDate(startDate);
         satellite.setEndDate(endDate);
-        try {
-            DaoFactory.getInstance().getSatelliteDao().saveOrUpdate(satellite);
-        } catch (SaveOrUpdateDalException e) {
-            e.printStackTrace();
-        }
+        DaoFactory.getInstance().getSatelliteDao().saveOrUpdate(satellite);
+
     }
 
 }
