@@ -34,9 +34,19 @@ public class TestLogin {
         notindb.setUserId("notindb");
         notindb.setPassword("notindb");
 
+        UserRegistered missingPasswordFieldUser = new UserRegistered();
+        missingPasswordFieldUser.setUserId("utente");
+        missingPasswordFieldUser.setPassword("");
+
+        UserRegistered missingIdFieldUser = new UserRegistered();
+        missingIdFieldUser.setUserId("");
+        missingIdFieldUser.setPassword("password");
+
         return Arrays.asList(
                 correctUser,
-                notindb
+                notindb,
+                missingPasswordFieldUser,
+                missingIdFieldUser
         );
     }
 
@@ -52,6 +62,8 @@ public class TestLogin {
         Assert.assertEquals("User-id uncorrect", "amministratore", userRegistered.getUserId());
         Assert.assertEquals("Email uncorrect", "admin@email", userRegistered.getEmail());
         Assert.assertNotNull("Admin", userRegistered.getUserType());
+        Assert.assertNotEquals("Missing id field", "", userRegistered.getUserId());
+        Assert.assertNotEquals("Missing password field", "", userRegistered.getUserId());
 
     }
 }
