@@ -35,11 +35,20 @@ public class TestInsertSatellite {
 
         BeanInserisciSatellite satelliteAlreadyInDB = new BeanInserisciSatellite();
         satelliteAlreadyInDB.setNomeSatellite("Herschel");
+        satelliteAlreadyInDB.setAgenziaSatellite("ESA");
+        satelliteAlreadyInDB.setStartDate(12,12,2012);
+        satelliteAlreadyInDB.setEndDate(13,7,2014);
+
         BeanInserisciSatellite satelliteNotInDB = new BeanInserisciSatellite();
         satelliteNotInDB.setNomeSatellite("Satellite Test");
         satelliteNotInDB.setAgenziaSatellite("ESA");
         satelliteNotInDB.setStartDate(12,12,2012);
         satelliteNotInDB.setEndDate(13,7,2014);
+
+        BeanInserisciSatellite satelliteEmptyField = new BeanInserisciSatellite();
+        satelliteEmptyField.setNomeSatellite("Satellite");
+        satelliteEmptyField.setAgenziaSatellite("");
+        satelliteEmptyField.setStartDate(2,7,2015);
 
 
         return Arrays.asList(
@@ -52,6 +61,7 @@ public class TestInsertSatellite {
     public void test() throws SaveOrUpdateDalException {
         C_UC_InsertSatellite.getInstance().inserisciSatellite(this.satellite);
         Assert.assertNotEquals("Already in DB", "Herschel", satellite.getNomeSatellite());
+        Assert.assertNotEquals("Missing Fields", "", satellite.getAgenziaSatellite());
 
     }
 }
