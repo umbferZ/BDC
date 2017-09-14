@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.view.manager
  * Type: JFramMainManagerView
- * Last update: 14-set-2017 1.59.32
+ * Last update: 14-set-2017 12.57.44
  * 
  */
 
@@ -17,8 +17,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import main.org.bdc.controls.C_UC_ImportFile;
 import main.org.bdc.model.people.UserRegistered;
-import main.org.bdc.service.parser.CSVFactory;
+import main.org.bdc.service.parser.monitor.producers.IllegalFileException;
 import main.org.bdc.view.JFrameMain;
 import main.org.bdc.view.JFrameMain.TypeFile;
 
@@ -66,34 +67,24 @@ public class JFramMainManagerView {
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 String fileName = chooser.getSelectedFile().getAbsolutePath();
                 Thread threadFile = null;
-
-                switch (typeFile) {
-                    case Higal:
-                        threadFile = CSVFactory.translateFile1(fileName);
-                        break;
-                    case HigalAddictional:
-                        threadFile = CSVFactory.translateFile2(fileName);
-                        break;
-                    case Glimpse:
-                        threadFile = CSVFactory.translateFile3(fileName);
-                        break;
-                    case MIPSGAL:
-                        threadFile = CSVFactory.translateFile4(fileName);
-                        break;
-                }
-                view.setStatusBarMessage(String.format("Importing %s ...", fileName));
-                view.getProgressBar().setVisible(true);
-                threadFile.start();
-
                 try {
-                    threadFile.join();
-                    view.setStatusBarMessage(String.format("%s imported successfully ", fileName));
-                } catch (InterruptedException e) {
-                    view.setStatusBarMessage(String.format("Error in importing %s...", fileName));
-                } finally {
-                    view.getProgressBar().setVisible(false);
+                    threadFile = C_UC_ImportFile.getInstance().importFile(fileName, typeFile);
+                    view.setStatusBarMessage(String.format("Importing %s ...", fileName));
+                    view.getProgressBar().setVisible(true);
+                    threadFile.start();
+
+                    try {
+                        threadFile.join();
+                        view.setStatusBarMessage(String.format("%s imported successfully ", fileName));
+                    } catch (InterruptedException e) {
+                        view.setStatusBarMessage(String.format("Error in importing %s...", fileName));
+                    } finally {
+                        view.getProgressBar().setVisible(false);
+                    }
+                    view.setStatusBarMessage(String.format(" "));
+                } catch (IllegalFileException e) {
+                    view.setStatusBarMessage("Unsupported file");
                 }
-                view.setStatusBarMessage(String.format(" "));
 
             } else
                 view.setStatusBarMessage("Error");
