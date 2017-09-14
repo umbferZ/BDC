@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.service.parser
  * Type: CSVFactory
- * Last update: 13-set-2017 0.29.42
+ * Last update: 14-set-2017 2.13.39
  * 
  */
 
@@ -28,9 +28,11 @@ public class CSVFactory {
      * @param fileName the file name
      * @throws FailedInsertException the failed insert exception
      * @throws FailedReadException the failed read exception
+     * @throws InterruptedException
      */
-    public static void translateFile1(String fileName) throws FailedInsertException, FailedReadException {
-        new Translator_File1(fileName).translates();
+    public static Thread translateFile1(String fileName) {
+        return new Thread(new Translator_File1(fileName));
+
     }
 
     /**
@@ -40,8 +42,9 @@ public class CSVFactory {
      * @throws FailedInsertException the failed insert exception
      * @throws FailedReadException the failed read exception
      */
-    public static void translateFile2(String fileName) throws FailedInsertException, FailedReadException {
-        new Translator_File2(fileName).translates();
+    public static Thread translateFile2(String fileName) {
+        return new Thread(new Translator_File2(fileName));
+
     }
 
     /**
@@ -51,8 +54,9 @@ public class CSVFactory {
      * @throws FailedInsertException the failed insert exception
      * @throws FailedReadException the failed read exception
      */
-    public static void translateFile3(String fileName) throws FailedInsertException, FailedReadException {
-        new Translator_File3(fileName).translates();
+    public static Thread translateFile3(String fileName) {
+        return new Thread(new Translator_File3(fileName));
+
     }
 
     /**
@@ -62,8 +66,9 @@ public class CSVFactory {
      * @throws FailedInsertException the failed insert exception
      * @throws FailedReadException the failed read exception
      */
-    public static void translateFile4(String fileName) throws FailedInsertException, FailedReadException {
-        new Translator_File4(fileName).translates();
+    public static Thread translateFile4(String fileName) {
+        return new Thread(new Translator_File4(fileName));
+
     }
 
     /**

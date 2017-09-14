@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.service.parser.monitor.consumers
  * Type: Consumer
- * Last update: 13-set-2017 0.30.06
+ * Last update: 14-set-2017 2.24.57
  * 
  */
 
@@ -69,7 +69,7 @@ public abstract class Consumer<SB extends SimpleBean> implements Runnable {
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
-            System.out.println(String.format("Consumer sets finish"));
+            // System.out.println(String.format("Consumer sets finish"));
             if (rows > 0)
                 System.out.println(String.format("Avarage time for dequeue and insert is %d ms", time / rows));
             this.queue.setFinished(true);
