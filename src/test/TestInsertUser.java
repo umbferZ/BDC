@@ -109,7 +109,7 @@ public class TestInsertUser {
 
     @Test
     public void test() throws SaveOrUpdateDalException, LoginException {
-        
+
         C_UC_InsertNewUser c_uc_insertNewUser = new C_UC_InsertNewUser();
         c_uc_insertNewUser.insertUser(user);
         try {
