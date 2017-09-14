@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: test
  * Type: TestInsertUser
- * Last update: 14-set-2017 12.35.06
+ * Last update: 14-set-2017 13.18.14
  * 
  */
 
@@ -47,7 +47,7 @@ public class TestInsertUser {
         user.setLastName("Ferracci");
         user.setEmail("umbferz@gmail.com");
         user.setUserId("user_a");
-        user.setPassword("amministratore");
+        user.setPassword("user_a");
         user.setUserType(UserType.USER_REGISTERED);
 
         UserRegistered userEmptyNameField = new UserRegistered();

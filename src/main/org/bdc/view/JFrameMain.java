@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.view
  * Type: JFrameMain
- * Last update: 14-set-2017 2.04.33
+ * Last update: 14-set-2017 13.15.44
  * 
  */
 
@@ -39,6 +39,8 @@ public class JFrameMain extends JFrame {
 
     private JLabel       lbl_welcome;
 
+    private JMenu        mn_uploadFiles;
+
     private JMenu        mn_utente;
 
     private JMenuItem    mntm_glimpse;
@@ -48,6 +50,12 @@ public class JFrameMain extends JFrame {
     private JMenuItem    mntm_higalAddictional;
 
     private JMenuItem    mntm_mipsGal;
+
+    private JMenuItem    mntm_newInstruments;
+
+    private JMenuItem    mntm_newSatellite;
+
+    private JMenuItem    mntm_newUser;
 
     private JProgressBar progressBar;
 
@@ -69,24 +77,24 @@ public class JFrameMain extends JFrame {
         JMenu mnFile = new JMenu("File");
         menuBar.add(mnFile);
 
-        JMenu mnUploadFiles = new JMenu("Upload"); // ho creato questo menu
-        mnFile.add(mnUploadFiles);
+        mn_uploadFiles = new JMenu("Upload"); // ho creato questo menu
+        mnFile.add(mn_uploadFiles);
 
         mntm_higal = new JMenuItem("Higal");
 
         JMenuItem mntmExit = new JMenuItem("Exit");
 
-        mnUploadFiles.add(mntm_higal); // il nuovo menu lo inserisco i un altro
+        mn_uploadFiles.add(mntm_higal); // il nuovo menu lo inserisco i un altro
 
         mntm_higalAddictional = new JMenuItem("Higal Addictional");
 
-        mnUploadFiles.add(mntm_higalAddictional);
+        mn_uploadFiles.add(mntm_higalAddictional);
 
         mntm_glimpse = new JMenuItem("Glimpse");
-        mnUploadFiles.add(mntm_glimpse);
+        mn_uploadFiles.add(mntm_glimpse);
 
         mntm_mipsGal = new JMenuItem("MIPSGAL-GAL");
-        mnUploadFiles.add(mntm_mipsGal);
+        mn_uploadFiles.add(mntm_mipsGal);
         // menu
         mnFile.add(mntmExit);
 
@@ -103,8 +111,8 @@ public class JFrameMain extends JFrame {
         mn_utente = new JMenu("Users");
         menuBar.add(mn_utente);
 
-        JMenuItem mntmNuovoUtente = new JMenuItem("Insert new user");
-        mntmNuovoUtente.addActionListener(new ActionListener() {
+        mntm_newUser = new JMenuItem("Insert new user");
+        mntm_newUser.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -112,13 +120,19 @@ public class JFrameMain extends JFrame {
             }
         });
         // TODO: Dialog User userRegistered!
-        mn_utente.add(mntmNuovoUtente);
+        mn_utente.add(mntm_newUser);
+
+        JMenu mnMap = new JMenu("Maps");
+        menuBar.add(mnMap);
+
+        JMenuItem mntmShowAllObject = new JMenuItem("Show all object");
+        mnMap.add(mntmShowAllObject);
 
         JMenu mnSatellite = new JMenu("Satellites");
         menuBar.add(mnSatellite);
 
-        JMenuItem mntmNuvoSatellite = new JMenuItem("Insert new satellite");
-        mntmNuvoSatellite.addActionListener(new ActionListener() {
+        mntm_newSatellite = new JMenuItem("Insert new satellite");
+        mntm_newSatellite.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -127,7 +141,16 @@ public class JFrameMain extends JFrame {
             }
         });
         // TODO: Dialog Satellite inserted!
-        mnSatellite.add(mntmNuvoSatellite);
+        mnSatellite.add(mntm_newSatellite);
+
+        JMenu mnInstruments = new JMenu("Instruments");
+        mnSatellite.add(mnInstruments);
+
+        mntm_newInstruments = new JMenuItem("Insert new instrument");
+        mnInstruments.add(mntm_newInstruments);
+
+        JMenuItem mntmAddBand = new JMenuItem("Add band");
+        mnInstruments.add(mntmAddBand);
 
         JMenu mnClump = new JMenu("Clumps");
         menuBar.add(mnClump);
@@ -157,8 +180,14 @@ public class JFrameMain extends JFrame {
         JMenuItem mntmSearchClumpMassStats = new JMenuItem("Show clumps mass statistics");
         mnClump.add(mntmSearchClumpMassStats);
 
+        JMenu mnSource = new JMenu("Sources");
+        mnClump.add(mnSource);
+
+        JMenuItem mntmSourceSearch = new JMenuItem("Search a source");
+        mnSource.add(mntmSourceSearch);
+
         JMenu mnPosition = new JMenu("Position");
-        menuBar.add(mnPosition);
+        mnSource.add(mnPosition);
 
         JMenuItem mntmSearchPosition = new JMenuItem("Search for position");
         mnPosition.add(mntmSearchPosition);
@@ -173,27 +202,6 @@ public class JFrameMain extends JFrame {
                 new C_UC_SearchObjectsInRegionByPosition();
             }
         });
-
-        JMenu mnSource = new JMenu("Sources");
-        menuBar.add(mnSource);
-
-        JMenuItem mntmSourceSearch = new JMenuItem("Search a source");
-        mnSource.add(mntmSourceSearch);
-
-        JMenu mnMap = new JMenu("Maps");
-        menuBar.add(mnMap);
-
-        JMenuItem mntmShowAllObject = new JMenuItem("Show all object");
-        mnMap.add(mntmShowAllObject);
-
-        JMenu mnInstruments = new JMenu("Instruments");
-        menuBar.add(mnInstruments);
-
-        JMenuItem mntmNewInstruments = new JMenuItem("New instrument");
-        mnInstruments.add(mntmNewInstruments);
-
-        JMenuItem mntmAddBand = new JMenuItem("Add band");
-        mnInstruments.add(mntmAddBand);
 
         mntmSourceSearch.addActionListener(new ActionListener() {
 
@@ -245,8 +253,40 @@ public class JFrameMain extends JFrame {
         }
     }
 
+    public JMenu getMn_uploadFiles() {
+        return mn_uploadFiles;
+    }
+
+    public JMenuItem getMntm_newInstruments() {
+        return mntm_newInstruments;
+    }
+
+    public JMenuItem getMntm_newSatellite() {
+        return mntm_newSatellite;
+    }
+
+    public JMenuItem getMntm_newUser() {
+        return mntm_newUser;
+    }
+
     public JProgressBar getProgressBar() {
         return progressBar;
+    }
+
+    public void setMn_uploadFiles(JMenu mn_uploadFiles) {
+        this.mn_uploadFiles = mn_uploadFiles;
+    }
+
+    public void setMntm_newInstruments(JMenuItem mntm_newInstruments) {
+        this.mntm_newInstruments = mntm_newInstruments;
+    }
+
+    public void setMntm_newSatellite(JMenuItem mntm_newSatellite) {
+        this.mntm_newSatellite = mntm_newSatellite;
+    }
+
+    public void setMntm_newUser(JMenuItem mntm_newUser) {
+        this.mntm_newUser = mntm_newUser;
     }
 
     public void setProgressBar(JProgressBar progressBar) {
