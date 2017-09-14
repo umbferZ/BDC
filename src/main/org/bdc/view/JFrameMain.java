@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.view
  * Type: JFrameMain
- * Last update: 14-set-2017 13.47.51
+ * Last update: 14-set-2017 17.27.46
  * 
  */
 
@@ -55,6 +55,8 @@ public class JFrameMain extends JFrame {
     private JMenuItem    mntm_newSatellite;
 
     private JMenuItem    mntm_newUser;
+
+    private JMenuItem    mntm_showAllObject;
 
     private JProgressBar progressBar;
 
@@ -117,22 +119,14 @@ public class JFrameMain extends JFrame {
         JMenu mnMap = new JMenu("Maps");
         menuBar.add(mnMap);
 
-        JMenuItem mntmShowAllObject = new JMenuItem("Show all object");
-        mnMap.add(mntmShowAllObject);
+        mntm_showAllObject = new JMenuItem("Show all object");
+        mnMap.add(mntm_showAllObject);
 
         JMenu mnSatellite = new JMenu("Satellites");
         menuBar.add(mnSatellite);
 
         mntm_newSatellite = new JMenuItem("Insert new satellite");
-        mntm_newSatellite.addActionListener(new ActionListener() {
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JFrameInserisciSatellite frameInserisciSattellite = new JFrameInserisciSatellite();
-                frameInserisciSattellite.setVisible(true);
-            }
-        });
-        // TODO: Dialog Satellite inserted!
         mnSatellite.add(mntm_newSatellite);
 
         JMenu mnInstruments = new JMenu("Instruments");
@@ -228,6 +222,22 @@ public class JFrameMain extends JFrame {
         pn_statusBar.setLayout(gl_pn_statusBar);
     }
 
+    public void addButtonNewInstrumentAL(ActionListener actionListener) {
+        mntm_newInstruments.addActionListener(actionListener);
+    }
+
+    public void addButtonNewSatellite(ActionListener actionListener) {
+        mntm_newSatellite.addActionListener(actionListener);
+    }
+
+    public void addButtonNewUserActionListener(ActionListener actionListener) {
+        mntm_newUser.addActionListener(actionListener);
+    }
+
+    public void addButtonShowObjectActionListener(ActionListener actionListener) {
+        mntm_showAllObject.addActionListener(actionListener);
+    }
+
     public void addImportActionListener(TypeFile typeFile, ActionListener actionListener) {
         switch (typeFile) {
             case Higal:
@@ -243,10 +253,6 @@ public class JFrameMain extends JFrame {
                 mntm_mipsGal.addActionListener(actionListener);
                 break;
         }
-    }
-
-    public void addNewUserActionListener(ActionListener actionListener) {
-        mntm_newUser.addActionListener(actionListener);
     }
 
     public JMenu getMn_uploadFiles() {

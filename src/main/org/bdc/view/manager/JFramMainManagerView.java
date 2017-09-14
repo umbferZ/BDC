@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.view.manager
  * Type: JFramMainManagerView
- * Last update: 14-set-2017 13.48.05
+ * Last update: 14-set-2017 17.31.36
  * 
  */
 
@@ -37,18 +37,22 @@ public class JFramMainManagerView {
             @Override
             public void run() {
                 try {
-                    view = new JFrameMain();
-                    view.setVisible(true);
-                    view.addImportActionListener(TypeFile.Higal, new ImportActionListener(TypeFile.Higal));
-                    view.addImportActionListener(TypeFile.HigalAddictional, new ImportActionListener(TypeFile.HigalAddictional));
-                    view.addImportActionListener(TypeFile.Glimpse, new ImportActionListener(TypeFile.Glimpse));
-                    view.addImportActionListener(TypeFile.MIPSGAL, new ImportActionListener(TypeFile.MIPSGAL));
-                    view.addNewUserActionListener(new NewUserActionListener());
+                    JFramMainManagerView.this.view = new JFrameMain();
+                    JFramMainManagerView.this.view.setVisible(true);
+                    JFramMainManagerView.this.view.addImportActionListener(TypeFile.Higal, new ImportActionListener(TypeFile.Higal));
+                    JFramMainManagerView.this.view.addImportActionListener(TypeFile.HigalAddictional, new ImportActionListener(TypeFile.HigalAddictional));
+                    JFramMainManagerView.this.view.addImportActionListener(TypeFile.Glimpse, new ImportActionListener(TypeFile.Glimpse));
+                    JFramMainManagerView.this.view.addImportActionListener(TypeFile.MIPSGAL, new ImportActionListener(TypeFile.MIPSGAL));
+                    JFramMainManagerView.this.view.addButtonNewUserActionListener(new MenuIsertUser());
+                    JFramMainManagerView.this.view.addButtonNewSatellite(new MenuInsertSatellite());
+                    JFramMainManagerView.this.view.addButtonShowObjectActionListener(null);
+                    JFramMainManagerView.this.view.addButtonNewInstrumentAL(new MenuInsertStrumento());
+
                     if (userRegistered.getUserType() == UserType.USER_REGISTERED) {
-                        view.getMn_uploadFiles().setEnabled(false);
-                        view.getMntm_newInstruments().setEnabled(false);
-                        view.getMntm_newSatellite().setEnabled(false);
-                        view.getMntm_newUser().setEnabled(false);
+                        JFramMainManagerView.this.view.getMn_uploadFiles().setEnabled(false);
+                        JFramMainManagerView.this.view.getMntm_newInstruments().setEnabled(false);
+                        JFramMainManagerView.this.view.getMntm_newSatellite().setEnabled(false);
+                        JFramMainManagerView.this.view.getMntm_newUser().setEnabled(false);
                     }
 
                 } catch (Exception e) {
@@ -71,37 +75,55 @@ public class JFramMainManagerView {
             JFileChooser chooser = new JFileChooser();
             FileNameExtensionFilter filter = new FileNameExtensionFilter("CSV Format", "csv");
             chooser.setFileFilter(filter);
-            int returnVal = chooser.showOpenDialog(view);
+            int returnVal = chooser.showOpenDialog(JFramMainManagerView.this.view);
 
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 String fileName = chooser.getSelectedFile().getAbsolutePath();
                 Thread threadFile = null;
                 try {
-                    threadFile = C_UC_ImportFile.getInstance().importFile(fileName, typeFile);
-                    view.setStatusBarMessage(String.format("Importing %s ...", fileName));
-                    view.getProgressBar().setVisible(true);
+                    threadFile = C_UC_ImportFile.getInstance().importFile(fileName, this.typeFile);
+                    JFramMainManagerView.this.view.setStatusBarMessage(String.format("Importing %s ...", fileName));
+                    JFramMainManagerView.this.view.getProgressBar().setVisible(true);
                     threadFile.start();
 
                     try {
                         threadFile.join();
-                        view.setStatusBarMessage(String.format("%s imported successfully ", fileName));
+                        JFramMainManagerView.this.view.setStatusBarMessage(String.format("%s imported successfully ", fileName));
                     } catch (InterruptedException e) {
-                        view.setStatusBarMessage(String.format("Error in importing %s...", fileName));
+                        JFramMainManagerView.this.view.setStatusBarMessage(String.format("Error in importing %s...", fileName));
                     } finally {
-                        view.getProgressBar().setVisible(false);
+                        JFramMainManagerView.this.view.getProgressBar().setVisible(false);
                     }
-                    view.setStatusBarMessage(String.format(" "));
+                    JFramMainManagerView.this.view.setStatusBarMessage(String.format(" "));
                 } catch (IllegalFileException e) {
-                    view.setStatusBarMessage("Unsupported file");
+                    JFramMainManagerView.this.view.setStatusBarMessage("Unsupported file");
                 }
 
             } else
-                view.setStatusBarMessage("Error");
+                JFramMainManagerView.this.view.setStatusBarMessage("Error");
         }
 
     }
 
-    class NewUserActionListener implements ActionListener {
+    class MenuInsertSatellite implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            new CJFramNewSatellite(JFramMainManagerView.this.view);
+
+        }
+
+    }
+
+    class MenuInsertStrumento implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            new CJFrameInsertInstrument();
+        }
+    }
+
+    class MenuIsertUser implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
