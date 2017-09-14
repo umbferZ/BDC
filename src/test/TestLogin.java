@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: test
  * Type: TestLogin
- * Last update: 14-set-2017 12.27.57
+ * Last update: 14-set-2017 13.39.23
  * 
  */
 
@@ -59,7 +59,7 @@ public class TestLogin {
     @Test
     public void test() {
 
-        C_UC_Login c_uc_login = new C_UC_Login();
+        C_UC_Login c_uc_login = C_UC_Login.getInstance();
         UserRegistered userRegistered = null;
         try {
             userRegistered = c_uc_login.login(user.getUserId(), user.getPassword());

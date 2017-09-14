@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.view
  * Type: JFrameMain
- * Last update: 14-set-2017 13.15.44
+ * Last update: 14-set-2017 13.47.51
  * 
  */
 
@@ -27,7 +27,6 @@ import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.border.EmptyBorder;
 
-import main.org.bdc.controls.C_UC_InsertNewUser;
 import main.org.bdc.controls.C_UC_SearchObjectsInRegionByPosition;
 
 /**
@@ -112,14 +111,7 @@ public class JFrameMain extends JFrame {
         menuBar.add(mn_utente);
 
         mntm_newUser = new JMenuItem("Insert new user");
-        mntm_newUser.addActionListener(new ActionListener() {
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new C_UC_InsertNewUser();
-            }
-        });
-        // TODO: Dialog User userRegistered!
         mn_utente.add(mntm_newUser);
 
         JMenu mnMap = new JMenu("Maps");
@@ -251,6 +243,10 @@ public class JFrameMain extends JFrame {
                 mntm_mipsGal.addActionListener(actionListener);
                 break;
         }
+    }
+
+    public void addNewUserActionListener(ActionListener actionListener) {
+        mntm_newUser.addActionListener(actionListener);
     }
 
     public JMenu getMn_uploadFiles() {

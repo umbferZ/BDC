@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.view.manager
  * Type: CJFrameLogin
- * Last update: 14-set-2017 13.36.45
+ * Last update: 14-set-2017 13.44.58
  * 
  */
 

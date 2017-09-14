@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.view.manager
  * Type: JFramMainManagerView
- * Last update: 14-set-2017 13.16.51
+ * Last update: 14-set-2017 13.48.05
  * 
  */
 
@@ -43,6 +43,7 @@ public class JFramMainManagerView {
                     view.addImportActionListener(TypeFile.HigalAddictional, new ImportActionListener(TypeFile.HigalAddictional));
                     view.addImportActionListener(TypeFile.Glimpse, new ImportActionListener(TypeFile.Glimpse));
                     view.addImportActionListener(TypeFile.MIPSGAL, new ImportActionListener(TypeFile.MIPSGAL));
+                    view.addNewUserActionListener(new NewUserActionListener());
                     if (userRegistered.getUserType() == UserType.USER_REGISTERED) {
                         view.getMn_uploadFiles().setEnabled(false);
                         view.getMntm_newInstruments().setEnabled(false);
@@ -96,6 +97,16 @@ public class JFramMainManagerView {
 
             } else
                 view.setStatusBarMessage("Error");
+        }
+
+    }
+
+    class NewUserActionListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            new CJFrameNewUser();
+
         }
 
     }
