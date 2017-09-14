@@ -44,14 +44,14 @@ public class TestLogin {
     public void test() throws LoginException {
 
         C_UC_Login c_uc_login = new C_UC_Login();
-        c_uc_login.login(this.user.getUserId(), this.user.getPassword());
+        UserRegistered userRegistered = c_uc_login.login(this.user.getUserId(), this.user.getPassword());
 
-        Assert.assertEquals("Name uncorrect", "amministratore", user.getFirstName());
-        Assert.assertEquals("Surname uncorrect", "amministratore", user.getLastName());
-        Assert.assertEquals("Password uncorrect", "amministratore", user.getPassword());
-        Assert.assertEquals("User-id uncorrect", "amministratore", user.getUserId());
-        Assert.assertEquals("Email uncorrect", "admin@email", user.getEmail());
-        Assert.assertNotNull("Admin", user.getUserType());
+        Assert.assertEquals("Name uncorrect", "amministratore", userRegistered.getFirstName());
+        Assert.assertEquals("Surname uncorrect", "amministratore", userRegistered.getLastName());
+        Assert.assertEquals("Password uncorrect", "amministratore", userRegistered.getPassword());
+        Assert.assertEquals("User-id uncorrect", "amministratore", userRegistered.getUserId());
+        Assert.assertEquals("Email uncorrect", "admin@email", userRegistered.getEmail());
+        Assert.assertNotNull("Admin", userRegistered.getUserType());
 
     }
 }
