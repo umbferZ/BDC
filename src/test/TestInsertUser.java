@@ -36,23 +36,71 @@ public class TestInsertUser {
     @Parameterized.Parameters
     public static Collection<UserRegistered> data() {
 
-        UserRegistered user1 = new UserRegistered();
-        user1.setFirstName("Francesco");
-        user1.setLastName("Ottaviano");
-        user1.setEmail("fr.ottaviano@gmail.com");
-        user1.setUserId("fra.ottaviano");
-        user1.setPassword("francesco");
-        user1.setUserType(UserType.ADMIN);
+        UserRegistered admin = new UserRegistered();
+        admin.setFirstName("Francesco");
+        admin.setLastName("Ottaviano");
+        admin.setEmail("fr.ottaviano@gmail.com");
+        admin.setUserId("fra.ottaviano");
+        admin.setPassword("francesco");
+        admin.setUserType(UserType.ADMIN);
 
-        UserRegistered user2 = new UserRegistered();
-        user2.setFirstName("Umberto");
-        user2.setLastName("Ferracci");
-        user2.setEmail("umbferz@gmail.com");
-        user2.setUserId("user_a");
-        user2.setPassword("amministratore");
-        user2.setUserType(UserType.USER_REGISTERED);
+        UserRegistered user = new UserRegistered();
+        user.setFirstName("Umberto");
+        user.setLastName("Ferracci");
+        user.setEmail("umbferz@gmail.com");
+        user.setUserId("user_a");
+        user.setPassword("amministratore");
+        user.setUserType(UserType.USER_REGISTERED);
 
-        return Arrays.asList(user1, user2);
+        UserRegistered userEmptyNameField = new UserRegistered();
+        user.setFirstName("");
+        user.setLastName("Zelli");
+        user.setEmail("zelli@gmail.com");
+        user.setUserId("fedez94");
+        user.setPassword("password");
+        user.setUserType(UserType.USER_REGISTERED);
+
+        UserRegistered userEmptySurnameField = new UserRegistered();
+        user.setFirstName("Federica");
+        user.setLastName("");
+        user.setEmail("zelli@gmail.com");
+        user.setUserId("fedez94");
+        user.setPassword("password");
+        user.setUserType(UserType.USER_REGISTERED);
+
+        UserRegistered userEmptyEmailField = new UserRegistered();
+        user.setFirstName("Federica");
+        user.setLastName("Zelli");
+        user.setEmail("");
+        user.setUserId("fedez94");
+        user.setPassword("password");
+        user.setUserType(UserType.USER_REGISTERED);
+
+        UserRegistered userEmptyIDField = new UserRegistered();
+        user.setFirstName("Federica");
+        user.setLastName("Zelli");
+        user.setEmail("zelli@gmail.com");
+        user.setUserId("");
+        user.setPassword("password");
+        user.setUserType(UserType.USER_REGISTERED);
+
+        UserRegistered userEmptyPasswordField = new UserRegistered();
+        user.setFirstName("Federica");
+        user.setLastName("Zelli");
+        user.setEmail("zelli@gmail.com");
+        user.setUserId("fedez94");
+        user.setPassword("");
+        user.setUserType(UserType.USER_REGISTERED);
+
+        return Arrays.asList(
+                admin,
+                user,
+                userEmptyNameField,
+                userEmptySurnameField,
+                userEmptyEmailField,
+                userEmptyIDField,
+                userEmptyPasswordField
+        );
     }
 
     public TestInsertUser(UserRegistered user) {
@@ -61,10 +109,21 @@ public class TestInsertUser {
 
     @Test
     public void test() throws SaveOrUpdateDalException, LoginException {
-
+        
         C_UC_InsertNewUser c_uc_insertNewUser = new C_UC_InsertNewUser();
         c_uc_insertNewUser.insertUser(user);
+        try {
+            Assert.assertNotNull("", c_uc_insertNewUser.insertUser(user));
+        } catch (SaveDalException e) {
+            Assert.assertTrue(false);
+        }
         Assert.assertNotEquals("Already in DB", "user_a", user.getUserId());
+        Assert.assertNotEquals("Missing name field", "", user.getFirstName());
+        Assert.assertNotEquals("Missing surname field", "", user.getLastName());
+        Assert.assertNotEquals("Missing mail field", "", user.getEmail());
+        Assert.assertNotEquals("Missing id field", "", user.getUserId());
+        Assert.assertNotEquals("Missing password field", "", user.getPassword());
+
 
     }
 }
