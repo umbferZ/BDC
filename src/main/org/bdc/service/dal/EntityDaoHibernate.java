@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.service.dal
  * Type: EntityDaoHibernate
- * Last update: 14-set-2017 11.41.11
+ * Last update: 14-set-2017 12.12.24
  * 
  */
 
@@ -157,13 +157,17 @@ public abstract class EntityDaoHibernate<T, ID extends Serializable> implements 
         try {
             transaction = s.beginTransaction();
             s.save(entity);
-            s.flush();
-            transaction.commit();
-        } catch (ConstraintViolationException e) {
-            if (transaction != null)
-                transaction.rollback();
-            System.out.println(e.getMessage());
-            throw new SaveDalException(String.format("Impossible to save the entity %s", persistentClass.getSimpleName()));
+            try {
+                s.flush();
+            } catch (ConstraintViolationException e) {
+                if (transaction != null)
+                    transaction.rollback();
+                System.out.println(e.getMessage());
+                throw new SaveDalException(String.format("Impossible to save the entity %s", persistentClass.getSimpleName()));
+            } finally {
+                transaction.commit();
+            }
+
         } catch (HibernateException e) {
             if (transaction != null)
                 transaction.rollback();

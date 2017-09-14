@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.controls
  * Type: C_UC_Login
- * Last update: 14-set-2017 1.37.56
+ * Last update: 14-set-2017 12.21.40
  * 
  */
 
@@ -84,7 +84,7 @@ public class C_UC_Login {
                     new JFramMainManagerView(login(user_id, password));
                     view.setVisible(false);
                 } catch (LoginException e1) {
-                    view.setErrorMessage(e1.getMessage());
+                    view.setErrorMessage("Unable to login, wrong user-id or password");
                 }
 
         }

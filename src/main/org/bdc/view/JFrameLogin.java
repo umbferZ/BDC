@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.view
  * Type: JFrameLogin
- * Last update: 14-set-2017 2.41.17
+ * Last update: 14-set-2017 12.19.54
  * 
  */
 
@@ -102,20 +102,21 @@ public class JFrameLogin extends JFrame {
         btn_login = new JButton("Login");
         panel.add(btn_login, "4, 6");
 
-        lbl_error = new JLabel("lbl_error");
-        lbl_error.setForeground(Color.RED);
-        lbl_error.setBounds(12, 253, 422, 15);
+        lbl_error = new JLabel("");
+        lbl_error.setBounds(12, 201, 422, 17);
+        lbl_error.setFont(new Font("Dialog", Font.PLAIN, 12));
         lbl_error.setVisible(false);
+
         contentPane.add(lbl_error);
 
         JLabel lblAdministratorUsera = new JLabel("Administrator: user_a, user_a");
         lblAdministratorUsera.setFont(new Font("Dialog", Font.PLAIN, 11));
-        lblAdministratorUsera.setBounds(12, 174, 422, 15);
+        lblAdministratorUsera.setBounds(12, 161, 422, 15);
         contentPane.add(lblAdministratorUsera);
 
         JLabel lblUserRegistered = new JLabel("User registered: user_r, user_r");
         lblUserRegistered.setFont(new Font("Dialog", Font.PLAIN, 11));
-        lblUserRegistered.setBounds(12, 188, 422, 15);
+        lblUserRegistered.setBounds(12, 174, 422, 15);
         contentPane.add(lblUserRegistered);
     }
 

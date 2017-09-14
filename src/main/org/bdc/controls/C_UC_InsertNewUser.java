@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.controls
  * Type: C_UC_InsertNewUser
- * Last update: 14-set-2017 11.33.28
+ * Last update: 14-set-2017 12.16.27
  * 
  */
 
@@ -94,7 +94,7 @@ public class C_UC_InsertNewUser {
         password_reply = new String(fld_pwd_repeat.getPassword());
         password = new String(fld_pwd.getPassword());
         if (password.length() < 5) {
-            view.setErrorMessage("La password deve contenere almeno 5 caratteri");
+            view.setErrorMessage("La password deve contenere almeno 6 caratteri");
             return false;
         }
         if (!password.equals(password_reply)) {
@@ -107,7 +107,7 @@ public class C_UC_InsertNewUser {
     private boolean validateUserId() {
         JTextField fld_user_id = view.getTxt_user_id();
         if ((userId = fld_user_id.getText()).length() < 5) {
-            view.setErrorMessage("Lo user-id deve contenere almeno 5 caratteri");
+            view.setErrorMessage("Lo user-id deve contenere almeno 6 caratteri");
             return false;
         }
         return true;
@@ -128,9 +128,8 @@ public class C_UC_InsertNewUser {
                 try {
                     insertUser(userReg);
                     view.setVisible(false);
-
                 } catch (SaveDalException e1) {
-                    view.setErrorMessage(e1.getMessage());
+                    view.setErrorMessage("Already registered");
                 }
             }
         }
