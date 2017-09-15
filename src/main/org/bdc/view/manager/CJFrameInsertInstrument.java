@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.view.manager
  * Type: CJFrameInsertInstrument
- * Last update: 14-set-2017 17.00.56
+ * Last update: 15-set-2017 13.36.18
  * 
  */
 
@@ -16,7 +16,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JTextField;
 
-import main.org.bdc.controls.C_UC_InsertNewInstrument;
 import main.org.bdc.view.JFrameInsertInstrument;
 import main.org.bdc.view.tools.CheckerField;
 
@@ -68,8 +67,9 @@ public class CJFrameInsertInstrument {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (checkFiels())
-                C_UC_InsertNewInstrument.getInstance().inserisciStrumento(null, null);
+            // if (checkFiels())
+            // C_UC_InsertNewInstrument.getInstance().inserisciStrumento(null,
+            // null);
 
         }
 

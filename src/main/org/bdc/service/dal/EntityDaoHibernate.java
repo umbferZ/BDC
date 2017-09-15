@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.service.dal
  * Type: EntityDaoHibernate
- * Last update: 14-set-2017 12.12.24
+ * Last update: 15-set-2017 13.55.58
  * 
  */
 
@@ -110,6 +110,10 @@ public abstract class EntityDaoHibernate<T, ID extends Serializable> implements 
         crit.add(example);
         closeSession();
         return crit.list();
+    }
+
+    public T getById(ID id) {
+        return getById(id, true);
     }
 
     /*

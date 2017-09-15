@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.view.manager
  * Type: JFramMainManagerView
- * Last update: 14-set-2017 17.31.36
+ * Last update: 15-set-2017 14.51.11
  * 
  */
 
@@ -15,9 +15,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFileChooser;
+import javax.swing.JList;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import main.org.bdc.controls.C_UC_ImportFile;
+import main.org.bdc.controls.C_UC_SearchClumpsMass;
 import main.org.bdc.model.people.UserRegistered;
 import main.org.bdc.model.people.UserType;
 import main.org.bdc.service.parser.monitor.producers.IllegalFileException;
@@ -25,6 +27,8 @@ import main.org.bdc.view.JFrameMain;
 import main.org.bdc.view.JFrameMain.TypeFile;
 
 public class JFramMainManagerView {
+
+    private JList<String>  list;
 
     private UserRegistered userRegistered;
 
@@ -37,22 +41,35 @@ public class JFramMainManagerView {
             @Override
             public void run() {
                 try {
-                    JFramMainManagerView.this.view = new JFrameMain();
-                    JFramMainManagerView.this.view.setVisible(true);
-                    JFramMainManagerView.this.view.addImportActionListener(TypeFile.Higal, new ImportActionListener(TypeFile.Higal));
-                    JFramMainManagerView.this.view.addImportActionListener(TypeFile.HigalAddictional, new ImportActionListener(TypeFile.HigalAddictional));
-                    JFramMainManagerView.this.view.addImportActionListener(TypeFile.Glimpse, new ImportActionListener(TypeFile.Glimpse));
-                    JFramMainManagerView.this.view.addImportActionListener(TypeFile.MIPSGAL, new ImportActionListener(TypeFile.MIPSGAL));
-                    JFramMainManagerView.this.view.addButtonNewUserActionListener(new MenuIsertUser());
-                    JFramMainManagerView.this.view.addButtonNewSatellite(new MenuInsertSatellite());
-                    JFramMainManagerView.this.view.addButtonShowObjectActionListener(null);
-                    JFramMainManagerView.this.view.addButtonNewInstrumentAL(new MenuInsertStrumento());
+                    view = new JFrameMain();
+                    view.setVisible(true);
+
+                    list = view.getList();
+                    view.addImportActionListener(TypeFile.Higal, new ImportActionListener(TypeFile.Higal));
+                    view.addImportActionListener(TypeFile.HigalAddictional, new ImportActionListener(TypeFile.HigalAddictional));
+                    view.addImportActionListener(TypeFile.Glimpse, new ImportActionListener(TypeFile.Glimpse));
+                    view.addImportActionListener(TypeFile.MIPSGAL, new ImportActionListener(TypeFile.MIPSGAL));
+                    view.addMenuInsertUserAL(new MenuInsertUser());
+                    view.addMenuNewSatellite(new MenuInsertSatellite());
+                    view.addMenuShowAllObjectActionListener(null);
+                    view.addMenuInstrumentAL(new MenuInsertStrumento());
+                    view.addMenuClumpMassAL(new MenuClumpMass());
+                    view.addMenuSearchSourceAL(new MenuShowSources());
+                    view.addMenuSearchClumpAL(new MenuSearchClump());
+                    view.addMenuPositionAL(new ActionListener() {
+
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            new CJFrameSearchPosition(view);
+
+                        }
+                    });
 
                     if (userRegistered.getUserType() == UserType.USER_REGISTERED) {
-                        JFramMainManagerView.this.view.getMn_uploadFiles().setEnabled(false);
-                        JFramMainManagerView.this.view.getMntm_newInstruments().setEnabled(false);
-                        JFramMainManagerView.this.view.getMntm_newSatellite().setEnabled(false);
-                        JFramMainManagerView.this.view.getMntm_newUser().setEnabled(false);
+                        view.getMn_uploadFiles().setEnabled(false);
+                        view.getMntm_newInstruments().setEnabled(false);
+                        view.getMntm_newSatellite().setEnabled(false);
+                        view.getMntm_newUser().setEnabled(false);
                     }
 
                 } catch (Exception e) {
@@ -60,6 +77,14 @@ public class JFramMainManagerView {
                 }
             }
         });
+    }
+
+    public JList<String> getList() {
+        return list;
+    }
+
+    public void setList(JList<String> list) {
+        this.list = list;
     }
 
     class ImportActionListener implements ActionListener {
@@ -75,32 +100,44 @@ public class JFramMainManagerView {
             JFileChooser chooser = new JFileChooser();
             FileNameExtensionFilter filter = new FileNameExtensionFilter("CSV Format", "csv");
             chooser.setFileFilter(filter);
-            int returnVal = chooser.showOpenDialog(JFramMainManagerView.this.view);
+            int returnVal = chooser.showOpenDialog(view);
 
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 String fileName = chooser.getSelectedFile().getAbsolutePath();
                 Thread threadFile = null;
                 try {
-                    threadFile = C_UC_ImportFile.getInstance().importFile(fileName, this.typeFile);
-                    JFramMainManagerView.this.view.setStatusBarMessage(String.format("Importing %s ...", fileName));
-                    JFramMainManagerView.this.view.getProgressBar().setVisible(true);
+                    threadFile = C_UC_ImportFile.getInstance().importFile(fileName, typeFile);
+                    view.setStatusBarMessage(String.format("Importing %s ...", fileName));
                     threadFile.start();
 
                     try {
                         threadFile.join();
-                        JFramMainManagerView.this.view.setStatusBarMessage(String.format("%s imported successfully ", fileName));
+                        view.setStatusBarMessage(String.format("%s imported successfully ", fileName));
                     } catch (InterruptedException e) {
-                        JFramMainManagerView.this.view.setStatusBarMessage(String.format("Error in importing %s...", fileName));
-                    } finally {
-                        JFramMainManagerView.this.view.getProgressBar().setVisible(false);
+                        view.setStatusBarMessage(String.format("Error in importing %s...", fileName));
                     }
-                    JFramMainManagerView.this.view.setStatusBarMessage(String.format(" "));
+                    view.setStatusBarMessage(String.format(" "));
                 } catch (IllegalFileException e) {
-                    JFramMainManagerView.this.view.setStatusBarMessage("Unsupported file");
+                    view.setStatusBarMessage("Unsupported file");
                 }
 
             } else
-                JFramMainManagerView.this.view.setStatusBarMessage("Error");
+                view.setStatusBarMessage("Error");
+        }
+
+    }
+
+    class MenuClumpMass implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+            try {
+                list.setListData(C_UC_SearchClumpsMass.getInstance().searchClumpsMass());
+            } catch (Exception e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
         }
 
     }
@@ -109,7 +146,7 @@ public class JFramMainManagerView {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            new CJFramNewSatellite(JFramMainManagerView.this.view);
+            new CJFramNewSatellite(view);
 
         }
 
@@ -123,13 +160,33 @@ public class JFramMainManagerView {
         }
     }
 
-    class MenuIsertUser implements ActionListener {
+    class MenuInsertUser implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
             new CJFrameNewUser();
 
         }
+    }
+
+    class MenuSearchClump implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            new CJFrameClumpSearch(view);
+
+        }
 
     }
+
+    class MenuShowSources implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            new CJFrameSearchSource(view);
+
+        }
+
+    }
+
 }

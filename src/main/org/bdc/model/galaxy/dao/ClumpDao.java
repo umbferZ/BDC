@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.model.galaxy.dao
  * Type: ClumpDao
- * Last update: 15-set-2017 6.49.39
+ * Last update: 15-set-2017 15.16.40
  * 
  */
 
@@ -53,10 +53,6 @@ public class ClumpDao extends EntityDaoHibernate<Clump, Integer> {
         closeSession();
         System.out.println(clumps);
         return clumps;
-    }
-
-    public Clump getById() {
-        return new Clump();
     }
 
     /**
@@ -188,6 +184,7 @@ public class ClumpDao extends EntityDaoHibernate<Clump, Integer> {
             throw new Exception("No elements");
         for (Object[] o : rows) {
             Clump clump = new Clump();
+            clump.setId((int) o[0]);
             clump.setMassa((double) o[1]);
             clumps.add(clump);
             System.out.println(String.format("%s %s", o[0], o[1]));

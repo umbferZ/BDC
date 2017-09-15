@@ -4,13 +4,14 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.view
  * Type: JFrameMain
- * Last update: 15-set-2017 3.55.59
+ * Last update: 15-set-2017 14.32.39
  * 
  */
 
 package main.org.bdc.view;
 
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,46 +20,59 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JProgressBar;
+import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
-
-import main.org.bdc.controls.C_UC_SearchObjectsInRegionByPosition;
 
 /**
  * The Class JFrameMain.
  */
 public class JFrameMain extends JFrame {
 
-    private JPanel       contentPane;
+    private JPanel    contentPane;
 
-    private JLabel       lbl_welcome;
+    private JLabel    lbl_welcome;
 
-    private JMenu        mn_uploadFiles;
+    private JList     list;
 
-    private JMenu        mn_utente;
+    private JMenu     mn_uploadFiles;
 
-    private JMenuItem    mntm_glimpse;
+    private JMenu     mn_utente;
 
-    private JMenuItem    mntm_higal;
+    private JMenuItem mntm_glimpse;
 
-    private JMenuItem    mntm_higalAddictional;
+    private JMenuItem mntm_higal;
 
-    private JMenuItem    mntm_mipsGal;
+    private JMenuItem mntm_higalAddictional;
 
-    private JMenuItem    mntm_newInstruments;
+    private JMenuItem mntm_mipsGal;
 
-    private JMenuItem    mntm_newSatellite;
+    private JMenuItem mntm_newInstruments;
 
-    private JMenuItem    mntm_newUser;
+    private JMenuItem mntm_newSatellite;
 
-    private JMenuItem    mntm_showAllObject;
+    private JMenuItem mntm_newUser;
 
-    private JProgressBar progressBar;
+    private JMenuItem mntm_showAllObject;
+
+    private JMenuItem mntm_showClumpMass;
+
+    private JMenuItem mntm_YoungStars;
+
+    private JMenuItem mntmSearchClump;
+
+    private JMenuItem mntmSearchClumpDensity;
+
+    private JMenuItem mntmSearchClumpMassStats;
+
+    private JMenuItem mntmSearchPosition;
+
+    private JMenuItem mntmSearchSource;
 
     public static void main(String[] args) {
 
@@ -141,55 +155,33 @@ public class JFrameMain extends JFrame {
         JMenu mnClump = new JMenu("Clumps");
         menuBar.add(mnClump);
 
-        JMenuItem mntmSearchClump = new JMenuItem("Search a clump");
+        mntmSearchClump = new JMenuItem("Search a clump");
         mnClump.add(mntmSearchClump);
-        mntmSearchClump.addActionListener(new ActionListener() {
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JFrameClumpSearch jFrameClumpSearch = new JFrameClumpSearch();
-                jFrameClumpSearch.setVisible(true);
-            }
-        });
-        JMenuItem mntmSearchClumpDensity = new JMenuItem("Show clumps density");
+        mntmSearchClumpDensity = new JMenuItem("Show clumps density");
         mnClump.add(mntmSearchClumpDensity);
-        JMenuItem mntmSearchClumpMass = new JMenuItem("Show clumps mass");
-        mnClump.add(mntmSearchClumpMass);
-        mntmSearchClumpMass.addActionListener(new ActionListener() {
+        mntm_showClumpMass = new JMenuItem("Show clumps mass");
+        mnClump.add(mntm_showClumpMass);
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JFrameClumpMass jFrameClumpMass = new JFrameClumpMass();
-                jFrameClumpMass.setVisible(true);
-            }
-        });
-        JMenuItem mntmSearchClumpMassStats = new JMenuItem("Show clumps mass statistics");
+        mntmSearchClumpMassStats = new JMenuItem("Show clumps mass statistics");
         mnClump.add(mntmSearchClumpMassStats);
 
         JMenu mnSource = new JMenu("Sources");
-        mnClump.add(mnSource);
+        menuBar.add(mnSource);
 
-        JMenuItem mntmSourceSearch = new JMenuItem("Search a source");
-        mnSource.add(mntmSourceSearch);
+        mntm_YoungStars = new JMenuItem("Search young stars");
+        mnSource.add(mntm_YoungStars);
+
+        mntmSearchSource = new JMenuItem("Search source");
+        mnSource.add(mntmSearchSource);
 
         JMenu mnPosition = new JMenu("Position");
         mnSource.add(mnPosition);
 
-        JMenuItem mntmSearchPosition = new JMenuItem("Search for position");
+        mntmSearchPosition = new JMenuItem("Search for position");
         mnPosition.add(mntmSearchPosition);
 
-        mntmSearchPosition.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // JFrameSearchPosition jFrameSearchPosition = new
-                // JFrameSearchPosition();
-                // jFrameSearchPosition.setVisible(true);
-                new C_UC_SearchObjectsInRegionByPosition();
-            }
-        });
-
-        mntmSourceSearch.addActionListener(new ActionListener() {
+        mntm_YoungStars.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -208,34 +200,26 @@ public class JFrameMain extends JFrame {
 
         lbl_welcome = new JLabel("Welcome...");
         lbl_welcome.setFont(new Font("Dialog", Font.PLAIN, 12));
-
-        progressBar = new JProgressBar();
-        progressBar.setIndeterminate(true);
-        progressBar.setVisible(false);
         GroupLayout gl_pn_statusBar = new GroupLayout(pn_statusBar);
-        gl_pn_statusBar.setHorizontalGroup(gl_pn_statusBar.createParallelGroup(Alignment.LEADING).addGroup(gl_pn_statusBar.createSequentialGroup().addContainerGap()
-                .addComponent(lbl_welcome, GroupLayout.PREFERRED_SIZE, 342, GroupLayout.PREFERRED_SIZE).addGap(172).addComponent(progressBar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE).addContainerGap()));
-        gl_pn_statusBar.setVerticalGroup(gl_pn_statusBar.createParallelGroup(Alignment.LEADING)
-                .addGroup(gl_pn_statusBar.createSequentialGroup().addContainerGap()
-                        .addGroup(gl_pn_statusBar.createParallelGroup(Alignment.TRAILING).addComponent(progressBar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE).addComponent(lbl_welcome))
-                        .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+        gl_pn_statusBar.setHorizontalGroup(
+                gl_pn_statusBar.createParallelGroup(Alignment.LEADING).addGroup(gl_pn_statusBar.createSequentialGroup().addContainerGap().addComponent(lbl_welcome, GroupLayout.PREFERRED_SIZE, 342, GroupLayout.PREFERRED_SIZE).addGap(332)));
+        gl_pn_statusBar.setVerticalGroup(gl_pn_statusBar.createParallelGroup(Alignment.LEADING).addGroup(gl_pn_statusBar.createSequentialGroup().addContainerGap().addComponent(lbl_welcome).addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
         pn_statusBar.setLayout(gl_pn_statusBar);
+
+        JPanel listClump = new JPanel();
+        contentPane.add(listClump, BorderLayout.CENTER);
+        listClump.setLayout(new CardLayout(0, 0));
+
+        JScrollPane scrollPane = new JScrollPane();
+        listClump.add(scrollPane, "name_12425516435364");
+
+        list = new JList();
+        scrollPane.setViewportView(list);
     }
 
-    public void addButtonNewInstrumentAL(ActionListener actionListener) {
-        mntm_newInstruments.addActionListener(actionListener);
-    }
+    public void addButtonSearchClump(ActionListener actionListener) {
+        mntmSearchClump.addActionListener(actionListener);
 
-    public void addButtonNewSatellite(ActionListener actionListener) {
-        mntm_newSatellite.addActionListener(actionListener);
-    }
-
-    public void addButtonNewUserActionListener(ActionListener actionListener) {
-        mntm_newUser.addActionListener(actionListener);
-    }
-
-    public void addButtonShowObjectActionListener(ActionListener actionListener) {
-        mntm_showAllObject.addActionListener(actionListener);
     }
 
     public void addImportActionListener(TypeFile typeFile, ActionListener actionListener) {
@@ -255,8 +239,68 @@ public class JFrameMain extends JFrame {
         }
     }
 
+    public void addMenuClumpMassAL(ActionListener actionListener) {
+        mntm_showClumpMass.addActionListener(actionListener);
+    }
+
+    public void addMenuInsertUserAL(ActionListener actionListener) {
+        mntm_newUser.addActionListener(actionListener);
+    }
+
+    public void addMenuInstrumentAL(ActionListener actionListener) {
+        mntm_newInstruments.addActionListener(actionListener);
+    }
+
+    public void addMenuNewSatellite(ActionListener actionListener) {
+        mntm_newSatellite.addActionListener(actionListener);
+    }
+
+    public void addMenuPositionAL(ActionListener actionListener) {
+        mntmSearchPosition.addActionListener(actionListener);
+    }
+
+    public void addMenuSearchClumpAL(ActionListener actionListener) {
+        mntmSearchClump.addActionListener(actionListener);
+    }
+
+    public void addMenuSearchSourceAL(ActionListener actionListener) {
+        mntmSearchSource.addActionListener(actionListener);
+    }
+
+    public void addMenuShowAllObjectActionListener(ActionListener actionListener) {
+        mntm_showAllObject.addActionListener(actionListener);
+    }
+
+    public JLabel getLbl_welcome() {
+        return lbl_welcome;
+    }
+
+    public JList getList() {
+        return list;
+    }
+
     public JMenu getMn_uploadFiles() {
         return mn_uploadFiles;
+    }
+
+    public JMenu getMn_utente() {
+        return mn_utente;
+    }
+
+    public JMenuItem getMntm_glimpse() {
+        return mntm_glimpse;
+    }
+
+    public JMenuItem getMntm_higal() {
+        return mntm_higal;
+    }
+
+    public JMenuItem getMntm_higalAddictional() {
+        return mntm_higalAddictional;
+    }
+
+    public JMenuItem getMntm_mipsGal() {
+        return mntm_mipsGal;
     }
 
     public JMenuItem getMntm_newInstruments() {
@@ -271,12 +315,68 @@ public class JFrameMain extends JFrame {
         return mntm_newUser;
     }
 
-    public JProgressBar getProgressBar() {
-        return progressBar;
+    public JMenuItem getMntm_showAllObject() {
+        return mntm_showAllObject;
+    }
+
+    public JMenuItem getMntm_showClumpMass() {
+        return mntm_showClumpMass;
+    }
+
+    public JMenuItem getMntm_YoungStars() {
+        return mntm_YoungStars;
+    }
+
+    public JMenuItem getMntmSearchClump() {
+        return mntmSearchClump;
+    }
+
+    public JMenuItem getMntmSearchClumpDensity() {
+        return mntmSearchClumpDensity;
+    }
+
+    public JMenuItem getMntmSearchClumpMassStats() {
+        return mntmSearchClumpMassStats;
+    }
+
+    public JMenuItem getMntmSearchPosition() {
+        return mntmSearchPosition;
+    }
+
+    public JMenuItem getMntmSearchSource() {
+        return mntmSearchSource;
+    }
+
+    public void setLbl_welcome(JLabel lbl_welcome) {
+        this.lbl_welcome = lbl_welcome;
+    }
+
+    public void setList(JList list) {
+        this.list = list;
     }
 
     public void setMn_uploadFiles(JMenu mn_uploadFiles) {
         this.mn_uploadFiles = mn_uploadFiles;
+    }
+
+    public void setMn_utente(JMenu mn_utente) {
+        this.mn_utente = mn_utente;
+    }
+
+    public void setMntm_glimpse(JMenuItem mntm_glimpse) {
+        this.mntm_glimpse = mntm_glimpse;
+    }
+
+    public void setMntm_higal(JMenuItem mntm_higal) {
+        this.mntm_higal = mntm_higal;
+    }
+
+    public void setMntm_higalAddictional(JMenuItem mntm_higalAddictional) {
+        this.mntm_higalAddictional = mntm_higalAddictional;
+    }
+
+    public void setMntm_mipsGal(JMenuItem mntm_mipsGal) {
+        this.mntm_mipsGal = mntm_mipsGal;
     }
 
     public void setMntm_newInstruments(JMenuItem mntm_newInstruments) {
@@ -291,8 +391,36 @@ public class JFrameMain extends JFrame {
         this.mntm_newUser = mntm_newUser;
     }
 
-    public void setProgressBar(JProgressBar progressBar) {
-        this.progressBar = progressBar;
+    public void setMntm_showAllObject(JMenuItem mntm_showAllObject) {
+        this.mntm_showAllObject = mntm_showAllObject;
+    }
+
+    public void setMntm_showClumpMass(JMenuItem mntm_showClumpMass) {
+        this.mntm_showClumpMass = mntm_showClumpMass;
+    }
+
+    public void setMntm_YoungStars(JMenuItem mntm_YoungStars) {
+        this.mntm_YoungStars = mntm_YoungStars;
+    }
+
+    public void setMntmSearchClump(JMenuItem mntmSearchClump) {
+        this.mntmSearchClump = mntmSearchClump;
+    }
+
+    public void setMntmSearchClumpDensity(JMenuItem mntmSearchClumpDensity) {
+        this.mntmSearchClumpDensity = mntmSearchClumpDensity;
+    }
+
+    public void setMntmSearchClumpMassStats(JMenuItem mntmSearchClumpMassStats) {
+        this.mntmSearchClumpMassStats = mntmSearchClumpMassStats;
+    }
+
+    public void setMntmSearchPosition(JMenuItem mntmSearchPosition) {
+        this.mntmSearchPosition = mntmSearchPosition;
+    }
+
+    public void setMntmSearchSource(JMenuItem mntmSearchSource) {
+        this.mntmSearchSource = mntmSearchSource;
     }
 
     /**

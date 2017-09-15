@@ -1,15 +1,28 @@
+/*
+ * 
+ * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
+ * Project: BdC - Osservatorio Astronomico Virtuale
+ * Package: main.org.bdc.controls
+ * Type: C_UC_SearchClumpsMass
+ * Last update: 15-set-2017 12.06.05
+ * 
+ */
+
 package main.org.bdc.controls;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import main.org.bdc.model.DaoFactory;
 import main.org.bdc.model.galaxy.Clump;
 import main.org.bdc.model.galaxy.dao.ClumpDao;
 
-import java.util.*;
-
 /**
  * Created by Sasha on 13/09/17.
  */
 public class C_UC_SearchClumpsMass {
+
     private static C_UC_SearchClumpsMass instance = null;
 
     public synchronized static C_UC_SearchClumpsMass getInstance() {
@@ -18,20 +31,17 @@ public class C_UC_SearchClumpsMass {
         return instance;
     }
 
-    public void searchClumpsMass(){
+    public String[] searchClumpsMass() throws Exception {
         ClumpDao clumpDao = DaoFactory.getInstance().getClumpDao();
-        try {
-            List<Clump> list = clumpDao.getClumpMass();
-            int i = 0;
-            for (Clump c : list)
-                System.out.println(String.format("%d , c_id = %d, massa = %.10f flow= %.2f, temp = %.2f", i++, c.getId(), c.getMassa(), c.getFlows().get(3).getValue(), c.getClumpDetails().getTemperatura()));
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        List<Clump> list = clumpDao.getClumpMass();
+        String[] result = new String[list.size()];
+        for (int i = 0; i < list.size(); i++)
+            result[i] = String.format("clump %s - mass: %.2f", list.get(i).getId(), list.get(i).getMassa());
+        return result;
+
     }
 
-    public void showClumpsAvgMass(){
+    public void showClumpsAvgMass() {
         ClumpDao clumpDao = DaoFactory.getInstance().getClumpDao();
         try {
             System.out.println(String.format("AVG mass = %.2f", clumpDao.getAvgMassa()));
@@ -41,26 +51,25 @@ public class C_UC_SearchClumpsMass {
         }
     }
 
-    public void showClumpsMidMass(){
+    public void showClumpsDevMass() {
+        ClumpDao clumpDao = DaoFactory.getInstance().getClumpDao();
+
+    }
+
+    public void showClumpsMidDevMass() {
+        ClumpDao clumpDao = DaoFactory.getInstance().getClumpDao();
+
+    }
+
+    public void showClumpsMidMass() {
         List<Clump> clumps = DaoFactory.getInstance().getClumpDao().getAll();
-        ArrayList<Double> massSort = new ArrayList<Double>();
+        ArrayList<Double> massSort = new ArrayList<>();
         for (Clump c : clumps) {
-            //massSort;
+            // massSort;
         }
         Collections.sort(massSort);
         double mediana = massSort.size() % 2 == 0 ? (massSort.get(massSort.size() / 2) + massSort.get(massSort.size() / 2 - 1)) / 2 : (double) massSort.get(massSort.size() / 2);
         System.out.println(String.format("Mediana: %.2f", mediana));
     }
-
-    public void showClumpsDevMass(){
-        ClumpDao clumpDao = DaoFactory.getInstance().getClumpDao();
-
-    }
-
-    public void showClumpsMidDevMass(){
-        ClumpDao clumpDao = DaoFactory.getInstance().getClumpDao();
-
-    }
-
 
 }

@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.view.manager
  * Type: CJFramNewSatellite
- * Last update: 14-set-2017 15.23.09
+ * Last update: 15-set-2017 8.43.36
  * 
  */
 
@@ -18,7 +18,7 @@ import javax.swing.JTextField;
 
 import main.org.bdc.controls.C_UC_InsertSatellite;
 import main.org.bdc.controls.gestisciSatellite.BeanInserisciSatellite;
-import main.org.bdc.service.dal.exception.SaveOrUpdateDalException;
+import main.org.bdc.service.dal.exception.SaveDalException;
 import main.org.bdc.view.JFrameInserisciSatellite;
 import main.org.bdc.view.JFrameMain;
 import main.org.bdc.view.tools.CheckerField;
@@ -132,7 +132,7 @@ public class CJFramNewSatellite {
                     C_UC_InsertSatellite.getInstance().inserisciSatellite(bean);
                     view.setVisible(false);
                     parentView.setStatusBarMessage("New satellite inserted successfully");
-                } catch (SaveOrUpdateDalException e1) {
+                } catch (SaveDalException e1) {
                     view.showError("Impossible to insert a new satellite");
                 }
 

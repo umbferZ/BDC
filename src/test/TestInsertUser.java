@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: test
  * Type: TestInsertUser
- * Last update: 14-set-2017 13.18.14
+ * Last update: 15-set-2017 10.56.09
  * 
  */
 
@@ -100,7 +100,7 @@ public class TestInsertUser {
     @Test
     public void test() {
 
-        C_UC_InsertNewUser c_uc_insertNewUser = new C_UC_InsertNewUser();
+        C_UC_InsertNewUser c_uc_insertNewUser = C_UC_InsertNewUser.getInstance();
         UserRegistered userRegistered = null;
         try {
             userRegistered = c_uc_insertNewUser.insertUser(user);

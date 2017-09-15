@@ -4,13 +4,14 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.view
  * Type: JFrameSourceSearch
- * Last update: 13-set-2017 0.23.41
+ * Last update: 15-set-2017 9.59.15
  * 
  */
 
 package main.org.bdc.view;
 
 import java.awt.EventQueue;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -31,9 +32,13 @@ import com.jgoodies.forms.layout.RowSpec;
  */
 public class JFrameSourceSearch extends JFrame {
 
+    private JButton    btnInserisci;
+
     private JPanel     contentPane;
 
-    private JTextField position;
+    private JTextField txt_band;
+
+    private JTextField txt_clumpId;
 
     /**
      * Launch the application.
@@ -61,15 +66,15 @@ public class JFrameSourceSearch extends JFrame {
         setType(Type.UTILITY);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setBounds(100, 100, 450, 300);
-        this.contentPane = new JPanel();
-        this.contentPane.setBorder(new EmptyBorder(0, 0, 0, 0));
-        setContentPane(this.contentPane);
-        this.contentPane.setLayout(null);
+        contentPane = new JPanel();
+        contentPane.setBorder(new EmptyBorder(0, 0, 0, 0));
+        setContentPane(contentPane);
+        contentPane.setLayout(null);
 
         JPanel panel = new JPanel();
         panel.setBorder(new TitledBorder(null, "Search source", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-        panel.setBounds(47, 43, 354, 200);
-        this.contentPane.add(panel);
+        panel.setBounds(47, 43, 356, 142);
+        contentPane.add(panel);
         panel.setLayout(new FormLayout(new ColumnSpec[] {
                 FormSpecs.RELATED_GAP_COLSPEC, FormSpecs.DEFAULT_COLSPEC, FormSpecs.RELATED_GAP_COLSPEC, ColumnSpec.decode("default:grow"),
         }, new RowSpec[] {
@@ -77,12 +82,12 @@ public class JFrameSourceSearch extends JFrame {
                 RowSpec.decode("default:grow"), FormSpecs.RELATED_GAP_ROWSPEC, FormSpecs.DEFAULT_ROWSPEC,
         }));
 
-        JLabel lblNome = new JLabel("Position");
+        JLabel lblNome = new JLabel("ID-CLUMP");
         panel.add(lblNome, "2, 2, right, default");
 
-        this.position = new JTextField();
-        panel.add(this.position, "4, 2, fill, default");
-        this.position.setColumns(10);
+        txt_clumpId = new JTextField();
+        panel.add(txt_clumpId, "4, 2, fill, default");
+        txt_clumpId.setColumns(10);
 
         /*
          * JLabel lblr = new JLabel("Round"); panel.add(lblr,
@@ -92,8 +97,35 @@ public class JFrameSourceSearch extends JFrame {
          * JCheckBox(""); panel.add(square, "4, 10");
          */
 
-        JButton btnInserisci = new JButton("Search");
+        JLabel lblResolutionBand = new JLabel("Resolution band");
+        panel.add(lblResolutionBand, "2, 4, right, default");
+
+        txt_band = new JTextField();
+        panel.add(txt_band, "4, 4, fill, default");
+        txt_band.setColumns(10);
+
+        btnInserisci = new JButton("Search");
         panel.add(btnInserisci, "4, 10");
+
     }
 
+    public void addSearchActionListener(ActionListener actionListener) {
+        btnInserisci.addActionListener(actionListener);
+    }
+
+    public JTextField getTxt_band() {
+        return txt_band;
+    }
+
+    public JTextField getTxt_clumpId() {
+        return txt_clumpId;
+    }
+
+    public void setTxt_band(JTextField txt_band) {
+        this.txt_band = txt_band;
+    }
+
+    public void setTxt_clumpId(JTextField txt_clumpId) {
+        this.txt_clumpId = txt_clumpId;
+    }
 }
