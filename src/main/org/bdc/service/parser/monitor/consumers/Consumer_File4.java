@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.service.parser.monitor.consumers
  * Type: Consumer_File4
- * Last update: 13-set-2017 15.20.35
+ * Last update: 15-set-2017 5.46.31
  * 
  */
 
@@ -13,6 +13,7 @@ package main.org.bdc.service.parser.monitor.consumers;
 import main.org.bdc.model.DaoFactory;
 import main.org.bdc.model.galaxy.Flow;
 import main.org.bdc.model.galaxy.Map;
+import main.org.bdc.model.galaxy.Position;
 import main.org.bdc.model.galaxy.Source;
 import main.org.bdc.model.instruments.Band;
 import main.org.bdc.service.parser.monitor.QueueProducerConsumer;
@@ -70,6 +71,7 @@ public class Consumer_File4 extends Consumer<Bean_File4> {
                 sourceToLowerBand.setMap(higal);
             }
             source.setSourceToLowerResolution(sourceToLowerBand);
+            source.setPosition(new Position(bean.getLatitude(), bean.getLongitude(), source));
         }
 
         try {

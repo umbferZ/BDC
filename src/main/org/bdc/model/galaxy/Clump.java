@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.model.galaxy
  * Type: Clump
- * Last update: 13-set-2017 18.51.23
+ * Last update: 15-set-2017 1.50.10
  * 
  */
 
@@ -31,6 +31,9 @@ public class Clump implements Serializable {
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "clump")
     private ClumpDetails  clumpDetails;
+
+    @Transient
+    private double        distance;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "clump")
     private List<Ellipse> ellispses;
@@ -76,6 +79,10 @@ public class Clump implements Serializable {
 
     public ClumpDetails getClumpDetails() {
         return clumpDetails;
+    }
+
+    public double getDistance() {
+        return distance;
     }
 
     /**
@@ -124,6 +131,10 @@ public class Clump implements Serializable {
 
     public void setClumpDetails(ClumpDetails clumpDetails) {
         this.clumpDetails = clumpDetails;
+    }
+
+    public void setDistance(double distance) {
+        this.distance = distance;
     }
 
     /**

@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.model.instruments
  * Type: Instrument
- * Last update: 13-set-2017 0.27.12
+ * Last update: 14-set-2017 18.47.27
  * 
  */
 
@@ -42,7 +42,7 @@ public class Instrument implements Serializable {
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Map        map;
 
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     private String     name;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -52,7 +52,7 @@ public class Instrument implements Serializable {
      * Instantiates a new instrument.
      */
     public Instrument() {
-        this.bands = new ArrayList<>();
+        bands = new ArrayList<>();
     }
 
     /**
@@ -83,20 +83,20 @@ public class Instrument implements Serializable {
      * @param banda the banda
      */
     public void addBandaOperativa(Band banda) {
-        this.bands.add(banda);
+        bands.add(banda);
 
     }
 
     public List<Band> getBands() {
-        return this.bands;
+        return bands;
     }
 
     public int getId() {
-        return this.id;
+        return id;
     }
 
     public Map getMap() {
-        return this.map;
+        return map;
     }
 
     /**
@@ -105,7 +105,7 @@ public class Instrument implements Serializable {
      * @return the name
      */
     public String getName() {
-        return this.name;
+        return name;
     }
 
     /**
@@ -114,7 +114,7 @@ public class Instrument implements Serializable {
      * @return the satellite
      */
     public Satellite getSatellite() {
-        return this.satellite;
+        return satellite;
     }
 
     public void setBands(List<Band> bands) {

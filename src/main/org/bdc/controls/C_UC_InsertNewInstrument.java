@@ -1,13 +1,21 @@
+/*
+ * 
+ * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
+ * Project: BdC - Osservatorio Astronomico Virtuale
+ * Package: main.org.bdc.controls
+ * Type: C_UC_InsertNewInstrument
+ * Last update: 14-set-2017 18.32.22
+ * 
+ */
+
 package main.org.bdc.controls;
 
-import main.org.bdc.controls.gestisciSatellite.BeanInserisciBanda;
-import main.org.bdc.controls.gestisciSatellite.BeanInserisciStrumento;
+import java.util.List;
+
 import main.org.bdc.model.DaoFactory;
 import main.org.bdc.model.instruments.Band;
 import main.org.bdc.model.instruments.Instrument;
-import main.org.bdc.service.dal.exception.SaveOrUpdateDalException;
-
-import java.util.List;
+import main.org.bdc.service.dal.exception.SaveDalException;
 
 /**
  * Created by Sasha on 13/09/17.
@@ -22,16 +30,21 @@ public class C_UC_InsertNewInstrument {
         return instance;
     }
 
-    public void inserisciStrumento(BeanInserisciStrumento bs, List<BeanInserisciBanda> bb) {
+    public List<Instrument> getAllInstrument() {
+        return DaoFactory.getInstance().getInstrumentDao().getAll();
+    }
 
-        Instrument instrument = new Instrument(bs.getNomeStrumento());
-        for (BeanInserisciBanda b : bb)
-            instrument.addBandaOperativa(new Band(b.getRisoluzione(), b.getLunghezzaOnda()));
-        try {
-            DaoFactory.getInstance().getInstrumentDao().saveOrUpdate(instrument);
-        } catch (SaveOrUpdateDalException e) {
-            e.printStackTrace();
+    public Instrument inserisciStrumento(Instrument instrument) throws SaveDalException {
+        return DaoFactory.getInstance().getInstrumentDao().save(instrument);
+
+    }
+
+    public Band insertBand(Band band, Instrument instrument) throws SaveDalException {
+
+        if (instrument != null && band != null) {
+            band.setInstrument(instrument);
+            return DaoFactory.getInstance().getBandDao().save(band);
         }
-
+        throw new SaveDalException("Impossible to save");
     }
 }

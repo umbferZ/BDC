@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.model.galaxy
  * Type: Source
- * Last update: 13-set-2017 15.09.43
+ * Last update: 15-set-2017 1.40.49
  * 
  */
 
@@ -21,12 +21,16 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 
 /**
  * The Class Source.
  */
 @Entity
 public class Source implements Serializable {
+
+    @Transient
+    private double     distance;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Flow> flows;
@@ -52,6 +56,10 @@ public class Source implements Serializable {
 
     public void addFlow(Flow flow) {
         flows.add(flow);
+    }
+
+    public double getDistance() {
+        return distance;
     }
 
     /**
@@ -86,6 +94,10 @@ public class Source implements Serializable {
 
     public Source getSourceToLowerResolution() {
         return sourceToLowerResolution;
+    }
+
+    public void setDistance(double distance) {
+        this.distance = distance;
     }
 
     /**

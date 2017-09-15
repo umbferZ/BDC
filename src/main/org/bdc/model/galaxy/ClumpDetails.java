@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.model.galaxy
  * Type: ClumpDetails
- * Last update: 13-set-2017 0.26.51
+ * Last update: 15-set-2017 1.52.30
  * 
  */
 
@@ -61,30 +61,38 @@ public class ClumpDetails implements Serializable {
     }
 
     public Clump getClump() {
-        return this.clump;
+        return clump;
     }
 
     public int getClumpType() {
-        return this.clumpType;
+        return clumpType;
     }
 
     public double getDensita() {
-        return this.densita;
+        return densita;
+    }
+
+    public double getLat() {
+        return lat;
+    }
+
+    public double getLon() {
+        return lon;
     }
 
     public double getMassa() {
         int D = 10;
         int S350 = 350;
-        this.massa = 0.053 * S350 * (D ^ 2) * (Math.exp(41.14 / this.temperatura) - 1);
-        return this.massa;
+        massa = 0.053 * S350 * (D ^ 2) * (Math.exp(41.14 / temperatura) - 1);
+        return massa;
     }
 
     public double getRapportoMassaTemperatura() {
-        return this.rapportoMassaTemperatura;
+        return rapportoMassaTemperatura;
     }
 
     public double getTemperatura() {
-        return this.temperatura;
+        return temperatura;
     }
 
     public void setClump(Clump clump) {
@@ -97,6 +105,14 @@ public class ClumpDetails implements Serializable {
 
     public void setDensita(double densita) {
         this.densita = densita;
+    }
+
+    public void setLat(double lat) {
+        this.lat = lat;
+    }
+
+    public void setLon(double lon) {
+        this.lon = lon;
     }
 
     public void setMassa(double massa) {

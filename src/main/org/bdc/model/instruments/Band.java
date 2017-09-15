@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.model.instruments
  * Type: Band
- * Last update: 13-set-2017 0.27.12
+ * Last update: 14-set-2017 18.52.19
  * 
  */
 
@@ -73,11 +73,11 @@ public class Band implements Serializable {
     }
 
     public List<Flow> getFlows() {
-        return this.flows;
+        return flows;
     }
 
     public int getId() {
-        return this.id;
+        return id;
     }
 
     // public void addInstrument(Instrument instrument) {
@@ -90,7 +90,7 @@ public class Band implements Serializable {
      * @return the strument
      */
     public Instrument getInstrument() {
-        return this.instrument;
+        return instrument;
     }
 
     /**
@@ -99,7 +99,7 @@ public class Band implements Serializable {
      * @return the lunghezza onda
      */
     public double getLunghezzaOnda() {
-        return this.lunghezzaOnda;
+        return lunghezzaOnda;
     }
 
     /**
@@ -108,7 +108,7 @@ public class Band implements Serializable {
      * @return the resolution
      */
     public double getResolution() {
-        return this.resolution;
+        return resolution;
     }
 
     public void setFlows(List<Flow> flows) {

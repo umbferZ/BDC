@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.view
  * Type: JFrameMain
- * Last update: 14-set-2017 17.27.46
+ * Last update: 15-set-2017 3.55.59
  * 
  */
 
@@ -305,7 +305,17 @@ public class JFrameMain extends JFrame {
     }
 
     public enum TypeFile {
-        Glimpse, Higal, HigalAddictional, MIPSGAL;
+        Glimpse("Glimpse"), Higal("Higal"), HigalAddictional("Higal"), MIPSGAL("MIPSGAL-GAL");
+
+        private String name;
+
+        private TypeFile(String name) {
+            this.name = name;
+        }
+
+        public Object getName() {
+            return name();
+        }
     }
 
 }
