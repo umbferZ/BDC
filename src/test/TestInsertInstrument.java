@@ -28,6 +28,7 @@ import main.org.bdc.service.dal.exception.SaveDalException;
 /**
  * Created by Sasha on 13/09/17.
  */
+@SuppressWarnings("unchecked")
 @RunWith(value = Parameterized.class)
 public class TestInsertInstrument {
 

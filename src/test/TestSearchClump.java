@@ -56,6 +56,8 @@ public class TestSearchClump {
             clump = C_UC_SearchClumps.getInstance().searchClumps(this.clump.getId());
         } catch (SaveDalException e) {
             Assert.assertTrue(false);
+        } catch (Exception e) {
+            Assert.assertTrue(false);
         }
         Assert.assertNotNull(clump);
 
