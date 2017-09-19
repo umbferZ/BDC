@@ -14,6 +14,7 @@ import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.swing.JTextField;
 
 import main.org.bdc.controls.C_UC_SearchClumps;
@@ -54,12 +55,7 @@ public class CJFrameClumpSearch {
             view.showError("Scrivi l'id clump");
             return false;
         }
-        try {
-            clumpId = Integer.parseInt(jTextField.getText().trim());
-        } catch (Exception e) {
-            view.showError("distance non valido");
-            return false;
-        }
+        clumpId = Integer.parseInt(jTextField.getText());
         return true;
 
     }

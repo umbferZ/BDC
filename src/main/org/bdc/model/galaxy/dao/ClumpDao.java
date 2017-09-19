@@ -10,6 +10,7 @@
 
 package main.org.bdc.model.galaxy.dao;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -366,7 +367,7 @@ public class ClumpDao extends EntityDaoHibernate<Clump, Integer> {
             System.out.println(String.format("c_id %s, frac: %s", o[0], o[1]));
             Clump clump = new Clump();
             clump.setId((int) o[0]);
-            clump.setFraction((double) o[1]);
+            clump.setFraction((BigDecimal) o[1]);
             clumps.add(clump);
         }
         return clumps;
@@ -439,6 +440,7 @@ public class ClumpDao extends EntityDaoHibernate<Clump, Integer> {
         List<Object[]> rows = query.getResultList();
         closeSession();
         List<Clump> clumps = new ArrayList();
+        System.out.println("id" + id);
         if (rows.size() < 1)
             throw new Exception("No elements");
         for (Object[] o : rows) {

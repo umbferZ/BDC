@@ -12,6 +12,7 @@ package main.org.bdc.controls;
 
 import main.org.bdc.model.DaoFactory;
 import main.org.bdc.model.galaxy.Clump;
+import main.org.bdc.model.galaxy.Flow;
 import main.org.bdc.model.galaxy.dao.ClumpDao;
 
 import java.util.List;
@@ -33,10 +34,14 @@ public class C_UC_SearchClumps {
         ClumpDao clumpDao = DaoFactory.getInstance().getClumpDao();
         List<Clump> list = clumpDao.getClumpByID(id);
         String[] result = new String[list.size()];
-        for (int i = 0; i < list.size(); i++)
-            result[i] = String.format("clump %d - flux: %.2f - band_resolution: %.2f - lat: %.2f - lon: %.2f",
-                    list.get(i).getId(), list.get(i).getFlows().get(i).getValue(), list.get(i).getFlows().get(i).getBanda().getResolution(),
-                    list.get(i).getClumpDetails().getLat(), list.get(i).getClumpDetails().getLon());
+        for (int i = 0; i < list.size(); i++) {
+            Clump c = list.get(i);
+            for (Flow f : c.getFlows())
+                result[i] = String.format("clump %d - flux: %.4f - band resolution: %.2f - lat: %.4f - lon: %.4f",
+                        c.getId(), f.getValue(),
+                        f.getBanda().getResolution(),
+                        c.getClumpDetails().getLat(), c.getClumpDetails().getLon());
+        }
         return result;
     }
 

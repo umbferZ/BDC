@@ -11,6 +11,7 @@
 package main.org.bdc.model.galaxy;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,16 +51,17 @@ public class Clump implements Serializable {
     @Transient
     private double        massa;
 
-    public double getFraction() {
+
+    public BigDecimal getFraction() {
         return fraction;
     }
 
-    public void setFraction(double fraction) {
+    public void setFraction(BigDecimal fraction) {
         this.fraction = fraction;
     }
 
     @Transient
-    private double fraction;
+    private BigDecimal fraction;
 
     /**
      * Instantiates a new clump.

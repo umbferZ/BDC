@@ -55,7 +55,7 @@ public class C_UC_ClumpsMasses {
         List<Clump> list = clumpDao.getClumpDensity();
         String[] result = new String[list.size()];
         for (int i = 0; i < list.size(); i++)
-            result[i] = String.format("clump %s - fraction: %.2f", list.get(i).getId(), list.get(i).getFraction());
+            result[i] = String.format("clump %s - fraction: %.5f", list.get(i).getId(), list.get(i).getFraction());
         return result;
 
     }
