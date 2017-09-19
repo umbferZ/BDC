@@ -224,7 +224,7 @@ public class SourceDao extends EntityDaoHibernate<Source, Integer> {
     }
 
     public List<Source> getYoungStars(int id) throws Exception {
-        String sql = "";
+        String sql = "SELECT * FROM source";
         Session s = super.openSession();
         Query query = s.createNativeQuery(sql);
         List<Object[]> rows = query.getResultList();
@@ -234,6 +234,7 @@ public class SourceDao extends EntityDaoHibernate<Source, Integer> {
         List<Source> sources = new ArrayList<>();
         for (Object[] o : rows) {
             Source source = new Source();
+            source.setId((String) o[0]);
             sources.add(source);
         }
         return sources;

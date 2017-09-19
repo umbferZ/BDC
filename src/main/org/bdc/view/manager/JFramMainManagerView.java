@@ -179,6 +179,16 @@ public class JFramMainManagerView {
 
     }
 
+    class MenuSearchSource implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            new CJFrameSearchSource(view);
+
+        }
+
+    }
+
     class MenuShowSources implements ActionListener {
 
         @Override
