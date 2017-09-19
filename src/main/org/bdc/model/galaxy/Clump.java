@@ -50,6 +50,17 @@ public class Clump implements Serializable {
     @Transient
     private double        massa;
 
+    public double getFraction() {
+        return fraction;
+    }
+
+    public void setFraction(double fraction) {
+        this.fraction = fraction;
+    }
+
+    @Transient
+    private double fraction;
+
     /**
      * Instantiates a new clump.
      */

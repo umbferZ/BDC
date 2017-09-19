@@ -70,11 +70,7 @@ public class CJFrameClumpSearch {
         public void actionPerformed(ActionEvent e) {
             if (checkField())
                 try {
-                    Clump clump = C_UC_SearchClumps.getInstance().searchClumps(clumpId);
-                    String[] strings = new String[clump.getFlows().size()];
-                    for (int i = 0; i < clump.getFlows().size(); i++)
-                        strings[i] = String.format("latitudine %.2f, longitudine %.2f", clump.getClumpDetails().getLat(), clump.getClumpDetails().getLon());
-                    parent.getList().setListData(strings);
+                    parent.getList().setListData(C_UC_SearchClumps.getInstance().searchClumps(clumpId));
                 } catch (Exception e1) {
                     e1.printStackTrace();
                     parent.getList().setListData(new String[] {

@@ -39,7 +39,8 @@ public class SourceDao extends EntityDaoHibernate<Source, Integer> {
     @SuppressWarnings("unchecked")
     public static void main(String[] args) {
         try {
-            for (Source s : DaoFactory.getInstance().getSourceDao().getSourceInClump(179761, 250))
+            List<Source> sources = DaoFactory.getInstance().getSourceDao().getByMap("Glimpse", 1, 3.6);
+            for (Source s : sources)
                 System.out.println(String.format("%s", s.getId()));
         } catch (Exception e) {
             // TODO Auto-generated catch block
@@ -217,6 +218,22 @@ public class SourceDao extends EntityDaoHibernate<Source, Integer> {
             source.setDistance((double) o[3]);
             Position p = new Position((double) o[1], (double) o[2], source);
             source.setPosition(p);
+            sources.add(source);
+        }
+        return sources;
+    }
+
+    public List<Source> getYoungStars(int id) throws Exception {
+        String sql = "";
+        Session s = super.openSession();
+        Query query = s.createNativeQuery(sql);
+        List<Object[]> rows = query.getResultList();
+        closeSession();
+        if (rows.size() < 1)
+            throw new Exception();
+        List<Source> sources = new ArrayList<>();
+        for (Object[] o : rows) {
+            Source source = new Source();
             sources.add(source);
         }
         return sources;

@@ -10,24 +10,19 @@
 
 package main.org.bdc.controls;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import main.org.bdc.model.DaoFactory;
 import main.org.bdc.model.galaxy.Clump;
 import main.org.bdc.model.galaxy.dao.ClumpDao;
 
-/**
- * Created by Sasha on 13/09/17.
- */
-public class C_UC_SearchClumpsMass {
+public class C_UC_ClumpsMasses {
 
-    private static C_UC_SearchClumpsMass instance = null;
+    private static C_UC_ClumpsMasses instance = null;
 
-    public synchronized static C_UC_SearchClumpsMass getInstance() {
+    public synchronized static C_UC_ClumpsMasses getInstance() {
         if (instance == null)
-            instance = new C_UC_SearchClumpsMass();
+            instance = new C_UC_ClumpsMasses();
         return instance;
     }
 
@@ -51,6 +46,16 @@ public class C_UC_SearchClumpsMass {
         String[] result = new String[list.size()];
         for (int i = 0; i < list.size(); i++)
             result[i] = String.format("clump %s - mass: %.2f", list.get(i).getId(), list.get(i).getMassa());
+        return result;
+
+    }
+
+    public String[] searchClumpsDensities() throws Exception {
+        ClumpDao clumpDao = DaoFactory.getInstance().getClumpDao();
+        List<Clump> list = clumpDao.getClumpDensity();
+        String[] result = new String[list.size()];
+        for (int i = 0; i < list.size(); i++)
+            result[i] = String.format("clump %s - fraction: %.2f", list.get(i).getId(), list.get(i).getFraction());
         return result;
 
     }

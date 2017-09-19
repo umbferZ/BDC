@@ -10,12 +10,14 @@
 
 package main.org.bdc.view;
 
-import main.org.bdc.controls.C_UC_SearchClumpsMass;
-import main.org.bdc.model.DaoFactory;
+import main.org.bdc.controls.C_UC_ClumpsMasses;
+import main.org.bdc.controls.C_UC_SearchYoungStars;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -33,59 +35,38 @@ import javax.swing.border.EmptyBorder;
 /**
  * The Class JFrameMain.
  */
+
 public class JFrameMain extends JFrame {
 
     private JPanel    contentPane;
-
     private JLabel    lbl_welcome;
-
     private JList     list;
-
     private JMenu     mn_uploadFiles;
-
     private JMenu     mn_utente;
-
     private JMenuItem mntm_glimpse;
-
     private JMenuItem mntm_higal;
-
     private JMenuItem mntm_higalAddictional;
-
     private JMenuItem mntm_mipsGal;
-
     private JMenuItem mntm_newInstruments;
-
     private JMenuItem mntm_newSatellite;
-
     private JMenuItem mntm_newUser;
-
     private JMenuItem mntm_showAllObject;
-
     private JMenuItem mntm_showClumpMass;
-
     private JMenuItem mntm_YoungStars;
-
     private JMenuItem mntmSearchClump;
-
     private JMenuItem mntmSearchClumpDensity;
-
     private JMenuItem mntmSearchClumpMassStats;
-
     private JMenuItem mntmSearchPosition;
-
     private JMenuItem mntmSearchSource;
 
-    public static void main(String[] args) {
+    /* CONSTRUCTOR */
 
-    }
-
-    /**
-     * Instantiates a new j frame main.
-     */
     public JFrameMain() {
         setTitle("Osservatorio Astronomico Virtuale");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 700, 500);
+
+        /* MENU */
 
         JMenuBar menuBar = new JMenuBar();
         setJMenuBar(menuBar);
@@ -93,25 +74,19 @@ public class JFrameMain extends JFrame {
         JMenu mnFile = new JMenu("File");
         menuBar.add(mnFile);
 
-        mn_uploadFiles = new JMenu("Upload"); // ho creato questo menu
+        mn_uploadFiles = new JMenu("Upload");
         mnFile.add(mn_uploadFiles);
 
         mntm_higal = new JMenuItem("Higal");
-
-        JMenuItem mntmExit = new JMenuItem("Exit");
-
-        mn_uploadFiles.add(mntm_higal); // il nuovo menu lo inserisco i un altro
-
+        mn_uploadFiles.add(mntm_higal);
         mntm_higalAddictional = new JMenuItem("Higal Addictional");
-
         mn_uploadFiles.add(mntm_higalAddictional);
-
         mntm_glimpse = new JMenuItem("Glimpse");
         mn_uploadFiles.add(mntm_glimpse);
-
         mntm_mipsGal = new JMenuItem("MIPSGAL-GAL");
         mn_uploadFiles.add(mntm_mipsGal);
-        // menu
+
+        JMenuItem mntmExit = new JMenuItem("Exit");
         mnFile.add(mntmExit);
 
         mntmExit.addActionListener(new ActionListener() {
@@ -128,7 +103,6 @@ public class JFrameMain extends JFrame {
         menuBar.add(mn_utente);
 
         mntm_newUser = new JMenuItem("Insert new user");
-
         mn_utente.add(mntm_newUser);
 
         JMenu mnMap = new JMenu("Maps");
@@ -141,15 +115,11 @@ public class JFrameMain extends JFrame {
         menuBar.add(mnSatellite);
 
         mntm_newSatellite = new JMenuItem("Insert new satellite");
-
         mnSatellite.add(mntm_newSatellite);
-
         JMenu mnInstruments = new JMenu("Instruments");
         mnSatellite.add(mnInstruments);
-
         mntm_newInstruments = new JMenuItem("Insert new instrument");
         mnInstruments.add(mntm_newInstruments);
-
         JMenuItem mntmAddBand = new JMenuItem("Add band");
         mnInstruments.add(mntmAddBand);
 
@@ -158,19 +128,27 @@ public class JFrameMain extends JFrame {
 
         mntmSearchClump = new JMenuItem("Search a clump");
         mnClump.add(mntmSearchClump);
-
-        mntmSearchClumpDensity = new JMenuItem("Show clumps density");
+        mntmSearchClumpDensity = new JMenuItem("Show clumps for density");
         mnClump.add(mntmSearchClumpDensity);
+        mntmSearchClumpDensity.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    list.setListData(C_UC_ClumpsMasses.getInstance().searchClumpsDensities());
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+            }
+        });
         mntm_showClumpMass = new JMenuItem("Show clumps mass");
         mnClump.add(mntm_showClumpMass);
-
         mntmSearchClumpMassStats = new JMenuItem("Show clumps mass statistics");
         mnClump.add(mntmSearchClumpMassStats);
         mntmSearchClumpMassStats.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    list.setListData(C_UC_SearchClumpsMass.getInstance().showStats());
+                    list.setListData(C_UC_ClumpsMasses.getInstance().showStats());
                 } catch (Exception e1) {
                     e1.printStackTrace();
                 }
@@ -182,6 +160,26 @@ public class JFrameMain extends JFrame {
 
         mntm_YoungStars = new JMenuItem("Search young stars");
         mnSource.add(mntm_YoungStars);
+        mntm_YoungStars.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    list.setListData(C_UC_SearchYoungStars.getInstance().showClumps());
+                    list.addMouseListener(new MouseAdapter() {
+                        @Override
+                        public void mouseClicked(MouseEvent e) {
+                            try {
+                                list.setListData(C_UC_SearchYoungStars.getInstance().youngStars(Integer.parseInt(list.getSelectedValue().toString())));
+                            } catch (Exception e1) {
+                                e1.printStackTrace();
+                            }
+                        }
+                    });
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+            }
+        });
 
         mntmSearchSource = new JMenuItem("Search source");
         mnSource.add(mntmSearchSource);
@@ -192,23 +190,16 @@ public class JFrameMain extends JFrame {
         mntmSearchPosition = new JMenuItem("Search for position");
         mnPosition.add(mntmSearchPosition);
 
-        mntm_YoungStars.addActionListener(new ActionListener() {
+        /* END OF MENU */
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JFrameSourceSearch jFrameSourceSearch = new JFrameSourceSearch();
-                jFrameSourceSearch.setVisible(true);
-            }
-        });
+        /* GENERIC COMPONENTS */
 
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
         contentPane.setLayout(new BorderLayout(0, 0));
-
         JPanel pn_statusBar = new JPanel();
         contentPane.add(pn_statusBar, BorderLayout.SOUTH);
-
         lbl_welcome = new JLabel("Welcome...");
         lbl_welcome.setFont(new Font("Dialog", Font.PLAIN, 12));
         GroupLayout gl_pn_statusBar = new GroupLayout(pn_statusBar);
@@ -216,17 +207,20 @@ public class JFrameMain extends JFrame {
                 gl_pn_statusBar.createParallelGroup(Alignment.LEADING).addGroup(gl_pn_statusBar.createSequentialGroup().addContainerGap().addComponent(lbl_welcome, GroupLayout.PREFERRED_SIZE, 342, GroupLayout.PREFERRED_SIZE).addGap(332)));
         gl_pn_statusBar.setVerticalGroup(gl_pn_statusBar.createParallelGroup(Alignment.LEADING).addGroup(gl_pn_statusBar.createSequentialGroup().addContainerGap().addComponent(lbl_welcome).addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
         pn_statusBar.setLayout(gl_pn_statusBar);
-
         JPanel listClump = new JPanel();
         contentPane.add(listClump, BorderLayout.CENTER);
         listClump.setLayout(new CardLayout(0, 0));
-
         JScrollPane scrollPane = new JScrollPane();
         listClump.add(scrollPane, "name_12425516435364");
-
         list = new JList();
         scrollPane.setViewportView(list);
+
+        /* END OF GENERIC COMPONENTS */
     }
+
+    /* END OF CONSTRUCTOR */
+
+
 
     public void addButtonSearchClump(ActionListener actionListener) {
         mntmSearchClump.addActionListener(actionListener);

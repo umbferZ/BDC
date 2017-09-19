@@ -49,7 +49,7 @@ public class TestSearchClump {
         this.clump = clump;
     }
 
-    @Test
+    /*@Test
     public void test() {
         Clump clump = null;
         try {
@@ -61,5 +61,5 @@ public class TestSearchClump {
         }
         Assert.assertNotNull(clump);
 
-    }
+    }*/
 }

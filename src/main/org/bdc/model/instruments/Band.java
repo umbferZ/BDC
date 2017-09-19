@@ -59,6 +59,10 @@ public class Band implements Serializable {
         this(resolution, lunghezzaOnda, null);
     }
 
+    public Band(double resolution) {
+        this.resolution = resolution;
+    }
+
     /**
      * Instantiates a new band.
      *

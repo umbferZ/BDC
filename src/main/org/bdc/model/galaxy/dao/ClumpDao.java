@@ -32,12 +32,28 @@ public class ClumpDao extends EntityDaoHibernate<Clump, Integer> {
     public static void main(String[] args) {
 
         try {
-            for (Clump s : DaoFactory.getInstance().getClumpDao().getByPositionIntoRound(0, 0, 0.2, 20))
-                System.out.println(String.format("%s, %.2f, %.2f", s.getId(), s.getClumpDetails().getLat(), s.getClumpDetails().getLon()));
+            DaoFactory.getInstance().getClumpDao().getClumpByID(182334);
         } catch (Exception e) {
             e.printStackTrace();
         }
         //
+    }
+
+    public List<Clump> showClumps() throws Exception {
+        String sql = "SELECT * FROM Clump";
+        Session s = super.openSession();
+        Query query = s.createNativeQuery(sql);
+        List<Object[]> rows = query.getResultList();
+        closeSession();
+        if (rows.size() < 1)
+            throw new Exception();
+        List<Clump> clumps = new ArrayList<>();
+        for (Object[] o : rows) {
+            Clump clump = new Clump();
+            clump.setId((int) o[0]);
+            clumps.add(clump);
+        }
+        return clumps;
     }
 
     /**
@@ -257,6 +273,106 @@ public class ClumpDao extends EntityDaoHibernate<Clump, Integer> {
 
     }
 
+    public List<Clump> getClumpDensity() throws Exception {
+
+        String sql2 = "SELECT w1.clump_id, (w1.n_stars*1.0)/(w2.n_sources*1.0)*1.0 fraction\n" +
+                "\n" +
+                "FROM\n" +
+                "(\n" +
+                "\tSELECT r.clump_id, COUNT(*) n_stars\n" +
+                "\tFROM\n" +
+                "\t(\n" +
+                "\t\tSELECT s.id, p.latitude, p.longitude, (p.latitude^2-q.lat^2)+(p.longitude^2-q.lon^2) distance, q.ass, q.c_z_id clump_id\n" +
+                "\t\tFROM source s\n" +
+                "\t\tJOIN position p ON p.source_id = s.id\n" +
+                "\t\tJOIN map m ON m.id = s.map_id\n" +
+                "\t\tCROSS JOIN \n" +
+                "\t\t(\n" +
+                "\t\t\tSELECT distinct cd.lat lat, cd.lon lon, e.xass ass, c.id c_z_id\n" +
+                "\t\t\tFROM clump c\n" +
+                "\t\t\tJOIN clumpdetails cd ON c.id = cd.clump_id\n" +
+                "\t\t\tJOIN ellipse e ON c.id = e.clump_id\n" +
+                "\t\t\tJOIN band b ON b.id = e.band_id\n" +
+                "\t\t\tAND cd.densita BETWEEN 0.1 AND  1.0\n" +
+                "\t\t) AS q\n" +
+                "\n" +
+                "\t\tWHERE s.id NOT IN  (\n" +
+                "\t\t\tSELECT id\n" +
+                "\t\t\tFROM source\n" +
+                "\t\t\tWHERE sourcetolowerresolution_id IN\n" +
+                "\t\t\t(\n" +
+                "\t\t\t\tSELECT DISTINCT sf_z.source_id\n" +
+                "\t\t\t\tFROM source_flow sf_z\n" +
+                "\t\t\t\t JOIN(\n" +
+                "\t\t\t\t\tSELECT sf1.source_id, f1.value flux_4d5\n" +
+                "\t\t\t\t\tFROM source_flow sf1\n" +
+                "\t\t\t\t\tJOIN flow f1 ON f1.id = sf1.flows_id \n" +
+                "\t\t\t\t\tJOIN band b1 ON b1.id = f1.band_id AND b1.resolution = 4.5\n" +
+                "\t\t\t\t) AS q1 ON sf_z.source_id = q1.source_id\n" +
+                "\t\t\t\tJOIN(\n" +
+                "\t\t\t\t\tSELECT sf1.source_id, f1.value flux_3d6\n" +
+                "\t\t\t\t\tFROM source_flow sf1\n" +
+                "\t\t\t\t\tJOIN flow f1 ON f1.id = sf1.flows_id \n" +
+                "\t\t\t\t\tJOIN band b1 ON b1.id = f1.band_id AND b1.resolution = 3.6\n" +
+                "\t\t\t\t\tWHERE f1.value > 0\n" +
+                "\t\t\t\t) AS q2 ON sf_z.source_id = q2.source_id\n" +
+                "\t\t\t\tJOIN(\n" +
+                "\t\t\t\t\tSELECT sf1.source_id, f1.value flux_5d8\n" +
+                "\t\t\t\t\tFROM source_flow sf1\n" +
+                "\t\t\t\t\tJOIN flow f1 ON f1.id = sf1.flows_id \n" +
+                "\t\t\t\t\tJOIN band b1 ON b1.id = f1.band_id AND b1.resolution = 5.8\n" +
+                "\t\t\t\t) AS q3 ON sf_z.source_id = q3.source_id\n" +
+                "\t\t\t\tWHERE flux_4d5 - flux_5d8 > 0.7\n" +
+                "\t\t\t\tAND flux_3d6 - flux_4d5 > 0.7\n" +
+                "\t\t\t\tAND flux_3d6 - flux_4d5 > 1.4*(flux_4d5 - flux_5d8 -0.7) + 0.15\n" +
+                "\t\t\t)\n" +
+                "\t\t)\n" +
+                "\t\t\n" +
+                "\t)as r\n" +
+                "\tWHERE r.distance < r.ass\n" +
+                "\tGROUP BY r.clump_id\n" +
+                ") as w1\n" +
+                "JOIN (\n" +
+                "SELECT r.clump_id, COUNT(*) n_sources\n" +
+                "\tFROM\n" +
+                "\t(\n" +
+                "\t\tSELECT s.id, p.latitude, p.longitude, (p.latitude^2-q.lat^2)+(p.longitude^2-q.lon^2) distance, q.ass, q.c_z_id clump_id\n" +
+                "\t\tFROM source s\n" +
+                "\t\tJOIN position p ON p.source_id = s.id\n" +
+                "\t\tJOIN map m ON m.id = s.map_id\n" +
+                "\t\tCROSS JOIN \n" +
+                "\t\t(\n" +
+                "\t\t\tSELECT distinct cd.lat lat, cd.lon lon, e.xass ass, c.id c_z_id\n" +
+                "\t\t\tFROM clump c\n" +
+                "\t\t\tJOIN clumpdetails cd ON c.id = cd.clump_id\n" +
+                "\t\t\tJOIN ellipse e ON c.id = e.clump_id\n" +
+                "\t\t\tJOIN band b ON b.id = e.band_id\n" +
+                "\t\t\tAND cd.densita BETWEEN 0.1 AND  1.0\n" +
+                "\t\t) AS q\t\t\n" +
+                "\t)as r\n" +
+                "\tWHERE r.distance < r.ass\n" +
+                "\tGROUP BY r.clump_id\n" +
+                "\n" +
+                ")as w2 ON w1.clump_id = w2.clump_id\n" +
+                "ORDER BY fraction";
+
+        Query query = super.openSession().createNativeQuery(sql2);
+        List<Object[]> rows = query.getResultList();
+        closeSession();
+        List<Clump> clumps = new ArrayList();
+        if (rows.size() < 1)
+            throw new Exception("No elements");
+        for (Object[] o : rows) {
+            System.out.println(String.format("c_id %s, frac: %s", o[0], o[1]));
+            Clump clump = new Clump();
+            clump.setId((int) o[0]);
+            clump.setFraction((double) o[1]);
+            clumps.add(clump);
+        }
+        return clumps;
+
+    }
+
     public double getMedian() throws Exception {
 
         String sql = "SELECT  mass median " +
@@ -307,6 +423,39 @@ public class ClumpDao extends EntityDaoHibernate<Clump, Integer> {
         closeSession();
         return median;
 
+    }
+
+    public List<Clump> getClumpByID(int id) throws Exception {
+        String sql2 = "SELECT cf.clump_id, f.value, b.resolution, cd.lat, cd.lon\n" +
+                "FROM clump_flow as cf\n" +
+                "INNER JOIN flow as f on f.id = cf.flows_id\n" +
+                "INNER JOIN band as b on b.id = f.band_id\n" +
+                "INNER JOIN clumpDetails cd on cd.clump_id = cf.clump_id\n" +
+                "WHERE f.value > 0 \n" +
+                "AND cf.clump_id = :c_id\n";
+
+        Query query = super.openSession().createNativeQuery(sql2);
+        query.setParameter("c_id", id);
+        List<Object[]> rows = query.getResultList();
+        closeSession();
+        List<Clump> clumps = new ArrayList();
+        if (rows.size() < 1)
+            throw new Exception("No elements");
+        for (Object[] o : rows) {
+            Clump clump = new Clump();
+            clump.setId((int) o[0]);
+            ClumpDetails clumpDetails = new ClumpDetails();
+            clumpDetails.setLat((double) o[3]);
+            clumpDetails.setLon((double) o[4]);
+            clump.setClumpDetails(clumpDetails);
+            Flow flow = new Flow();
+            flow.setValue((double) o[1]);
+            flow.setBanda(new Band((double) o[2]));
+            clump.addFlow(flow);
+            clumps.add(clump);
+            System.out.println(String.format("%d %.2f %.2f %.2f %.2f", o[0], o[1], o[2], o[3], o[4]));
+        }
+        return clumps;
     }
 
 }

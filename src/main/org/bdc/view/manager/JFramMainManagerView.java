@@ -19,7 +19,7 @@ import javax.swing.JList;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import main.org.bdc.controls.C_UC_ImportFile;
-import main.org.bdc.controls.C_UC_SearchClumpsMass;
+import main.org.bdc.controls.C_UC_ClumpsMasses;
 import main.org.bdc.model.people.UserRegistered;
 import main.org.bdc.model.people.UserType;
 import main.org.bdc.service.parser.monitor.producers.IllegalFileException;
@@ -133,7 +133,7 @@ public class JFramMainManagerView {
         public void actionPerformed(ActionEvent e) {
 
             try {
-                list.setListData(C_UC_SearchClumpsMass.getInstance().searchClumpsMass());
+                list.setListData(C_UC_ClumpsMasses.getInstance().searchClumpsMass());
             } catch (Exception e1) {
                 // TODO Auto-generated catch block
                 e1.printStackTrace();

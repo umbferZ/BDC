@@ -47,7 +47,7 @@ public class CJFrameInsertInstrument {
     private boolean valdateName() {
         JTextField jTextField = view.getTxt_instrumentName();
         if (!CheckerField.checkTextField(jTextField)) {
-            view.showError("Name can't be empty");
+            //TODO: show error
             return false;
         }
         return true;
