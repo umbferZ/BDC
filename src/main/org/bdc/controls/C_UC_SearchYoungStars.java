@@ -5,12 +5,8 @@ import main.org.bdc.model.galaxy.Clump;
 import main.org.bdc.model.galaxy.Source;
 import main.org.bdc.model.galaxy.dao.ClumpDao;
 import main.org.bdc.model.galaxy.dao.SourceDao;
-
 import java.util.List;
 
-/**
- * Created by Sasha on 13/09/17.
- */
 public class C_UC_SearchYoungStars {
 
     private static C_UC_SearchYoungStars instance = null;
@@ -21,6 +17,7 @@ public class C_UC_SearchYoungStars {
         return instance;
     }
 
+    /* MAIN DI PROVA */
     public static void main(String[] args) {
         try {
             String[] clumps = C_UC_SearchYoungStars.getInstance().showClumps();
@@ -31,6 +28,7 @@ public class C_UC_SearchYoungStars {
         }
     }
 
+    /* Show all Clumps in JFrameMain's List */
     public String[] showClumps() throws Exception {
         ClumpDao clumpDao = DaoFactory.getInstance().getClumpDao();
         List<Clump> list = clumpDao.showClumps();
@@ -40,6 +38,7 @@ public class C_UC_SearchYoungStars {
         return result;
     }
 
+    /* REQ 11 */
     public String[] youngStars(int id) throws Exception {
         SourceDao sourceDao = DaoFactory.getInstance().getSourceDao();
         List<Source> sources = sourceDao.getYoungStars(id);

@@ -28,7 +28,6 @@ import main.org.bdc.service.dal.EntityDaoHibernate;
 /**
  * The Class SourceDao.
  */
-@SuppressWarnings("unchecked")
 public class SourceDao extends EntityDaoHibernate<Source, Integer> {
 
     /**
@@ -36,7 +35,8 @@ public class SourceDao extends EntityDaoHibernate<Source, Integer> {
      *
      * @param args the arguments
      */
-    @SuppressWarnings("unchecked")
+
+    /* MAIN DI PROVA */
     public static void main(String[] args) {
         try {
             List<Source> sources = DaoFactory.getInstance().getSourceDao().getByMap("Glimpse", 1, 3.6);
@@ -55,7 +55,8 @@ public class SourceDao extends EntityDaoHibernate<Source, Integer> {
      * @return the by id
      * @throws Exception the exception
      */
-    @SuppressWarnings("unchecked")
+
+    /* Get Sources by ID */
     public Source getById(String id) throws Exception {
         String sql = "FROM Source WHERE id=:id";
         TypedQuery<Source> query = getSession().createQuery(sql);
@@ -75,6 +76,8 @@ public class SourceDao extends EntityDaoHibernate<Source, Integer> {
      * @return the by map
      * @throws Exception the exception
      */
+
+    /* REQ 05 */
     public List<Source> getByMap(String mapType, int offset) throws Exception {
         String sql = "SELECT sf.source_id, f1.value , b1.resolution FROM source_flow sf JOIN flow f1 ON f1.id = sf.flows_id JOIN band b1 ON b1.id = f1.band_id WHERE sf.flows_id IN (SELECT f.id FROM flow AS f JOIN band AS b ON f.band_id = b.id JOIN instrument AS i ON b.instrument_id = i.id JOIN map AS m ON m.id = i.map_id WHERE m.name like :map AND f.value > 0 ) LIMIT 50 OFFSET :offset";
         Session s = super.openSession();
@@ -107,6 +110,8 @@ public class SourceDao extends EntityDaoHibernate<Source, Integer> {
      * @return the by map
      * @throws Exception the exception
      */
+
+    /* REQ 05 */
     public List<Source> getByMap(String mapType, int offset, double band) throws Exception {
         String sql = "SELECT sf.source_id, f1.value , b1.resolution FROM source_flow sf JOIN flow f1 ON f1.id = sf.flows_id JOIN band b1 ON b1.id = f1.band_id WHERE sf.flows_id IN (SELECT f.id FROM flow AS f JOIN band AS b ON f.band_id = b.id JOIN instrument AS i ON b.instrument_id = i.id JOIN map AS m ON m.id = i.map_id WHERE m.name like :map AND f.value > 0 AND b.resolution = :band ) LIMIT 50 OFFSET :offset";
         Session s = super.openSession();
@@ -141,7 +146,8 @@ public class SourceDao extends EntityDaoHibernate<Source, Integer> {
      * @return the by position into round
      * @throws Exception the exception
      */
-    @SuppressWarnings("unchecked")
+
+    /* REQ 08 */
     public List<Source> getByPositionIntoRound(double latitude, double longitude, double distance, int limit) throws Exception {
         String sql = "SELECT * FROM (SELECT s.id, p.latitude lat, p.longitude AS lon, ACOS(SIN(:lat)*SIN(latitude)+COS(:lat)*COS(latitude)*COS(:lon-longitude)) distance FROM source AS s JOIN position as p ON s.id = p.source_id) AS q WHERE distance < :d ORDER BY distance ASC LIMIT :l";
         Session s = super.openSession();
@@ -176,7 +182,8 @@ public class SourceDao extends EntityDaoHibernate<Source, Integer> {
      * @return the by position into squre
      * @throws Exception the exception
      */
-    @SuppressWarnings("unchecked")
+
+    /* REQ 08 */
     public List<Source> getByPositionIntoSqure(double latitude, double longitude, double distance, int limit) throws Exception {
         String sql = "SELECT s.id, p.latitude, p.longitude,SQRT((p.latitude^2-:lat^2)+(p.longitude^2-:lon^2)) distance FROM source AS s JOIN position AS p ON (s.id = p.source_id) WHERE p.latitude BETWEEN :lat-:d/SQRT(2) AND :lat+:d/SQRT(2) AND p.longitude BETWEEN :lon-:d/SQRT(2) AND :lon+:d/SQRT(2) ORDER BY distance limit :l";
         Session s = super.openSession();
@@ -201,6 +208,7 @@ public class SourceDao extends EntityDaoHibernate<Source, Integer> {
         return sources;
     }
 
+    /* REQ 09 */
     public List<Source> getSourceInClump(int clumpid, double bandResolution) throws Exception {
         String sql = "SELECT * FROM ( SELECT s.id, p.latitude, p.longitude, (p.latitude^2-q.lat^2)+(p.longitude^2-q.lon^2) distance, q.ass FROM source s JOIN position p ON p.source_id = s.id JOIN map m ON m.id = s.map_id CROSS JOIN ( SELECT cd.lat lat, cd.lon lon, e.xass ass FROM clump c JOIN clumpdetails cd ON c.id = cd.clump_id JOIN ellipse e ON c.id = e.clump_id JOIN band b ON b.id = e.band_id WHERE b.resolution = :band AND c.id = :clump ) AS q WHERE m.name like 'MIPSGAL-GAL' )as r WHERE r.distance < r.ass";
         Session s = super.openSession();
@@ -223,6 +231,7 @@ public class SourceDao extends EntityDaoHibernate<Source, Integer> {
         return sources;
     }
 
+    /* REQ 11 */
     public List<Source> getYoungStars(int id) throws Exception {
         String sql = "SELECT * FROM source";
         Session s = super.openSession();

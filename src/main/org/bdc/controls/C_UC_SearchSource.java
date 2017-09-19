@@ -16,9 +16,6 @@ import main.org.bdc.model.DaoFactory;
 import main.org.bdc.model.galaxy.Clump;
 import main.org.bdc.model.galaxy.Source;
 
-/**
- * Created by Sasha on 13/09/17.
- */
 public class C_UC_SearchSource {
 
     private static C_UC_SearchSource instance = null;
@@ -31,24 +28,27 @@ public class C_UC_SearchSource {
 
     private C_UC_SearchSource() {}
 
+    /* REQ 09 */
     public String[] searchSourceInMipsGal(int id, double band) throws Exception {
 
         List<Source> list = DaoFactory.getInstance().getSourceDao().getSourceInClump(id, band);
         String[] result = new String[list.size()];
         for (int i = 0; i < list.size(); i++) {
             Source s = list.get(i);
-            result[i] = String.format("source_id %s, latitude %.2f, longitude %.2f, distance %.2f", s.getId(), s.getPosition().getLatitude(), s.getPosition().getLongitude(), s.getDistance());
+            result[i] = String.format("Source ID: %s - Lat: %.5f - Lon: %.5f - Distance %.3f",
+                    s.getId(), s.getPosition().getLatitude(), s.getPosition().getLongitude(), s.getDistance());
         }
         return result;
     }
 
+    /* REQ 08 */
     public String[] searchSourceInRegion(boolean isClump, boolean isSquare, double latitude, double longitude, double distance, int limit) throws Exception {
         if (isClump && isSquare) {
             List<Clump> list = DaoFactory.getInstance().getClumpDao().getByPositionIntoSquare(latitude, longitude, distance, limit);
             String[] result = new String[list.size()];
             for (int i = 0; i < list.size(); i++) {
                 Clump s = list.get(i);
-                result[i] = String.format("clump_id %s, latitude %.2f, longitude %.2f, distance %.2f", s.getId(), s.getClumpDetails().getLat(), s.getClumpDetails().getLon(), s.getDistance());
+                result[i] = String.format("Clump ID: %s - Lat: %.5f - Lon: %.5f - Distance %.3f", s.getId(), s.getClumpDetails().getLat(), s.getClumpDetails().getLon(), s.getDistance());
             }
             return result;
         } else if (isClump && !isSquare) {
@@ -56,7 +56,7 @@ public class C_UC_SearchSource {
             String[] result = new String[list.size()];
             for (int i = 0; i < list.size(); i++) {
                 Clump s = list.get(i);
-                result[i] = String.format("clump_id %s, latitude %.2f, longitude %.2f, distance %.2f", s.getId(), s.getClumpDetails().getLat(), s.getClumpDetails().getLon(), s.getDistance());
+                result[i] = String.format("Clump ID: %s - Lat: %.5f - Lon: %.5f - Distance %.3f", s.getId(), s.getClumpDetails().getLat(), s.getClumpDetails().getLon(), s.getDistance());
             }
             return result;
 
@@ -65,7 +65,7 @@ public class C_UC_SearchSource {
             String[] result = new String[list.size()];
             for (int i = 0; i < list.size(); i++) {
                 Source s = list.get(i);
-                result[i] = String.format("source_id %s, latitude %.2f, longitude %.2f, distance %.2f", s.getId(), s.getPosition().getLatitude(), s.getPosition().getLongitude(), s.getDistance());
+                result[i] = String.format("Source ID: %s - Lat: %.5f - Lon: %.5f - Distance %.3f", s.getId(), s.getPosition().getLatitude(), s.getPosition().getLongitude(), s.getDistance());
             }
             return result;
         } else {
@@ -74,7 +74,7 @@ public class C_UC_SearchSource {
             String[] result = new String[list.size()];
             for (int i = 0; i < list.size(); i++) {
                 Source s = list.get(i);
-                result[i] = String.format("source_id %s, latitude %.2f, longitude %.2f, distance %.2f", s.getId(), s.getPosition().getLatitude(), s.getPosition().getLongitude(), s.getDistance());
+                result[i] = String.format("Source ID: %s - Lat: %.5f - Lon: %.5f - Distance %.3f", s.getId(), s.getPosition().getLatitude(), s.getPosition().getLongitude(), s.getDistance());
             }
             return result;
         }

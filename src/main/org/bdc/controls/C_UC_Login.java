@@ -26,9 +26,9 @@ public class C_UC_Login {
     }
 
     private C_UC_Login() {
-
     }
 
+    /* REQ 01 */
     public UserRegistered login(String user_id, String password) throws LoginException {
         return DaoFactory.getInstance().getUserDao().login(user_id, password);
     }

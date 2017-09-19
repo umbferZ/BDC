@@ -20,7 +20,6 @@ import main.org.bdc.service.dal.EntityDaoHibernate;
 public class MapDao extends EntityDaoHibernate<Map, Integer> {
 
     public Map getMapByName(String name) throws Exception {
-
         String sql = "FROM Map WHERE name= :name";
         Query query = super.openSession().createQuery(sql);
         query.setParameter("name", name);
@@ -28,7 +27,7 @@ public class MapDao extends EntityDaoHibernate<Map, Integer> {
         closeSession();
         if (maps.size() == 1)
             return maps.get(0);
-        throw new Exception("No map");
+        throw new Exception("No Map Available!");
     }
 
 }

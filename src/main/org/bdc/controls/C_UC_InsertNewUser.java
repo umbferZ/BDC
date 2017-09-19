@@ -30,6 +30,7 @@ public class C_UC_InsertNewUser {
 
     private C_UC_InsertNewUser() {}
 
+    /* REQ 03.2 */
     public UserRegistered insertUser(UserRegistered userRegistered) throws SaveDalException {
         return DaoFactory.getInstance().getUserDao().save(userRegistered);
     }

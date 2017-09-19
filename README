@@ -1,0 +1,3 @@
+IMPORTANTE!
+
+Per permettere la creazione del DB ad Hibernate modificare le Database connection settings presenti nel file BdC/src/hibernate.cfg.xml

@@ -28,8 +28,8 @@ public class C_UC_InsertSatellite {
         return instance;
     }
 
+    /* REQ 03.3 */
     public Satellite inserisciSatellite(BeanInserisciSatellite bean) throws SaveDalException {
-
         Calendar startDate = Calendar.getInstance();
         startDate.set(bean.getStartYear(), bean.getStartMonth() - 1, bean.getStartDay());
         Calendar endDate = null;
@@ -39,13 +39,12 @@ public class C_UC_InsertSatellite {
         }
         Satellite satellite = new Satellite();
         if (bean.getAgenziaSatellite().equals(""))
-            throw new SaveDalException("impossi save");
+            throw new SaveDalException("Impossible to save!");
         satellite.setAgenzia(new Agency(bean.getAgenziaSatellite()));
         satellite.setName(bean.getNomeSatellite());
         satellite.setStartDate(startDate);
         satellite.setEndDate(endDate);
         return DaoFactory.getInstance().getSatelliteDao().save(satellite);
-
     }
 
 }

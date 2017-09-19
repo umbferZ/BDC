@@ -30,16 +30,7 @@ import main.org.bdc.service.dal.EntityDaoHibernate;
  */
 public class ClumpDao extends EntityDaoHibernate<Clump, Integer> {
 
-    public static void main(String[] args) {
-
-        try {
-            DaoFactory.getInstance().getClumpDao().getClumpByID(182334);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        //
-    }
-
+    /* Show all Clumps */
     public List<Clump> showClumps() throws Exception {
         String sql = "SELECT * FROM Clump";
         Session s = super.openSession();
@@ -63,6 +54,8 @@ public class ClumpDao extends EntityDaoHibernate<Clump, Integer> {
      * @return the avg massa
      * @throws Exception
      */
+
+    /* REQ 10.1 */
     public double getAvgMassa() throws Exception {
 
         String sql = "SELECT AVG(q.mass) avg " +
@@ -84,6 +77,7 @@ public class ClumpDao extends EntityDaoHibernate<Clump, Integer> {
         return clumps;
     }
 
+    /* REQ 10.1 */
     public double getStdDevMassa() throws Exception {
 
         String sql = "SELECT STDDEV(q.mass) stddev " +
@@ -105,6 +99,60 @@ public class ClumpDao extends EntityDaoHibernate<Clump, Integer> {
         return clumps;
     }
 
+    /* REQ 10.1 */
+    public double getMedian() throws Exception {
+
+        String sql = "SELECT  mass median " +
+                "from ( " +
+                "SELECT a1.id, a1.mass, COUNT(a1.mass) Rank " +
+                "FROM " +
+                "( " +
+                "SELECT c.id, 0.053*f.value*100*(EXP(41.14/cd.temperatura-1)) mass " +
+                "from clump as c join clump_flow as cf on c.id = cf.clump_id " +
+                "join flow as f on cf.flows_id = f.id " +
+                "join band as b on f.band_id=b.id " +
+                "join clumpDetails cd on c.id = cd.clump_id " +
+                "where b.resolution = 350 " +
+                "and f.value >0 order by mass " +
+                ")AS a1, " +
+                "( " +
+                "SELECT c.id, 0.053*f.value*100*(EXP(41.14/cd.temperatura-1)) mass " +
+                "from clump as c join clump_flow as cf on c.id = cf.clump_id " +
+                "join flow as f on cf.flows_id = f.id " +
+                "join band as b on f.band_id=b.id " +
+                "join clumpDetails cd on c.id = cd.clump_id " +
+                "where b.resolution = 350 " +
+                "and f.value >0 order by mass " +
+                ") AS a2 " +
+                "WHERE a1.mass < a2.mass OR (a1.mass=a2.mass AND a1.id<=a2.id) " +
+                "GROUP BY a1.id, a1.mass " +
+                "ORDER BY a1.mass desc " +
+                ") AS a3 " +
+                "WHERE Rank = ( " +
+                "Select (count(*) +1) / 2 " +
+                "from " +
+                "( " +
+                "SELECT c.id, 0.053*f.value*100*(EXP(41.14/cd.temperatura-1)) mass " +
+                "from clump as c join clump_flow as cf on c.id = cf.clump_id " +
+                "join flow as f on cf.flows_id = f.id " +
+                "join band as b on f.band_id=b.id " +
+                "join clumpDetails cd on c.id = cd.clump_id " +
+                "where b.resolution = 350 " +
+                "and f.value >0 order by mass " +
+                ") as a4 " +
+                ")";
+
+        Session s = super.openSession();
+        org.hibernate.Transaction t = s.beginTransaction();
+        Query query = s.createNativeQuery(sql);
+        double median = (double) query.getSingleResult();
+        t.commit();
+        closeSession();
+        return median;
+
+    }
+
+    /* REQ 10.1 */
     public double getMADMassa() throws Exception {
 
         String sql = "SELECT STDDEV(q.mass)*0.67449 mad " +
@@ -126,24 +174,7 @@ public class ClumpDao extends EntityDaoHibernate<Clump, Integer> {
         return clumps;
     }
 
-
-    /**
-     * Gets the by id or new.
-     *
-     * @param idClump the id clump
-     * @return the by id or new
-     */
-    public Clump getByIdOrNew(int idClump) {
-        Clump clump;
-
-        if ((clump = getById(idClump, true)) == null) {
-            clump = new Clump();
-            clump.setId(idClump);
-        }
-        return clump;
-
-    }
-
+    /* REQ 05 */
     public List<Clump> getByMap(String mapType, int offset) throws Exception {
         String sql = "SELECT cf.clump_id, f1.value, b1.resolution  FROM clump_flow cf JOIN flow f1 ON f1.id = cf.flows_id JOIN band b1 ON b1.id = f1.band_id WHERE cf.flows_id IN (  SELECT f.id  FROM flow AS f  JOIN band AS b ON f.band_id = b.id  JOIN instrument AS i ON b.instrument_id = i.id  JOIN map AS m ON m.id = i.map_id  WHERE m.name like :map  AND f.value > 0 ) LIMIT 50 OFFSET :offset";
         Session s = super.openSession();
@@ -167,6 +198,7 @@ public class ClumpDao extends EntityDaoHibernate<Clump, Integer> {
         return clumps;
     }
 
+    /* REQ 05 */
     public List<Clump> getByMap(String mapType, int offset, double band) throws Exception {
         String sql = "SELECT cf.clump_id, f1.value, b1.resolution  FROM clump_flow cf JOIN flow f1 ON f1.id = cf.flows_id JOIN band b1 ON b1.id = f1.band_id WHERE cf.flows_id IN (  SELECT f.id  FROM flow AS f  JOIN band AS b ON f.band_id = b.id  JOIN instrument AS i ON b.instrument_id = i.id  JOIN map AS m ON m.id = i.map_id  WHERE m.name like :map  AND f.value > 0  AND b.resolution = :band ) LIMIT 50 OFFSET :offset";
         Session s = super.openSession();
@@ -191,6 +223,7 @@ public class ClumpDao extends EntityDaoHibernate<Clump, Integer> {
         return clumps;
     }
 
+    /* REQ 08 */
     public List<Clump> getByPositionIntoRound(double latitude, double longitude, double distance, int limit) throws Exception {
         String sql = "SELECT * FROM (SELECT c.id, cd.lat  lat, cd.lon lon, ACOS(SIN(:lat)*SIN(lat)+COS(:lat)*COS(lat)*COS(:lon-lon)) distance FROM clump AS c JOIN clumpDetails as cd ON c.id = cd.clump_id ) AS q WHERE distance < :d Order BY distance asc LIMIT :l";
         Session s = super.openSession();
@@ -218,6 +251,7 @@ public class ClumpDao extends EntityDaoHibernate<Clump, Integer> {
         return clumps;
     }
 
+    /* REQ 08 */
     public List<Clump> getByPositionIntoSquare(double latitude, double longitude, double distance, int limit) throws Exception {
 
         String sql = "SELECT c.id, cd.lat, cd.lon, SQRT((cd.lat^2-:lat^2)+(cd.lon^2-:lon^2)) distance FROM clump AS c JOIN clumpDetails as cd ON c.id = cd.clump_id WHERE cd.lat BETWEEN :lat-:d/SQRT(2) AND :lat+:d/SQRT(2) AND cd.lon BETWEEN :lon-:d/SQRT(2) AND :lon+:d/SQRT(2) ORDER BY distance ASC LIMIT :l";
@@ -247,6 +281,7 @@ public class ClumpDao extends EntityDaoHibernate<Clump, Integer> {
         return clumps;
     }
 
+    /* REQ 10 */
     public List<Clump> getClumpMass() throws Exception {
 
         String sql2 = "SELECT c.id, 0.053*f.value*100*(EXP(41.14/cd.temperatura-1)) mass " +
@@ -262,7 +297,7 @@ public class ClumpDao extends EntityDaoHibernate<Clump, Integer> {
         closeSession();
         List<Clump> clumps = new ArrayList();
         if (rows.size() < 1)
-            throw new Exception("No elements");
+            throw new Exception("No Elements!");
         for (Object[] o : rows) {
             Clump clump = new Clump();
             clump.setId((int) o[0]);
@@ -274,6 +309,7 @@ public class ClumpDao extends EntityDaoHibernate<Clump, Integer> {
 
     }
 
+    /* REQ 07 */
     public List<Clump> getClumpDensity() throws Exception {
 
         String sql2 = "SELECT w1.clump_id, (w1.n_stars*1.0)/(w2.n_sources*1.0)*1.0 fraction\n" +
@@ -362,9 +398,8 @@ public class ClumpDao extends EntityDaoHibernate<Clump, Integer> {
         closeSession();
         List<Clump> clumps = new ArrayList();
         if (rows.size() < 1)
-            throw new Exception("No elements");
+            throw new Exception("No Elements!");
         for (Object[] o : rows) {
-            System.out.println(String.format("c_id %s, frac: %s", o[0], o[1]));
             Clump clump = new Clump();
             clump.setId((int) o[0]);
             clump.setFraction((BigDecimal) o[1]);
@@ -374,58 +409,7 @@ public class ClumpDao extends EntityDaoHibernate<Clump, Integer> {
 
     }
 
-    public double getMedian() throws Exception {
-
-        String sql = "SELECT  mass median " +
-                "from ( " +
-                "SELECT a1.id, a1.mass, COUNT(a1.mass) Rank " +
-                "FROM " +
-                "( " +
-                "SELECT c.id, 0.053*f.value*100*(EXP(41.14/cd.temperatura-1)) mass " +
-                "from clump as c join clump_flow as cf on c.id = cf.clump_id " +
-                "join flow as f on cf.flows_id = f.id " +
-                "join band as b on f.band_id=b.id " +
-                "join clumpDetails cd on c.id = cd.clump_id " +
-                "where b.resolution = 350 " +
-                "and f.value >0 order by mass " +
-                ")AS a1, " +
-                "( " +
-                "SELECT c.id, 0.053*f.value*100*(EXP(41.14/cd.temperatura-1)) mass " +
-                "from clump as c join clump_flow as cf on c.id = cf.clump_id " +
-                "join flow as f on cf.flows_id = f.id " +
-                "join band as b on f.band_id=b.id " +
-                "join clumpDetails cd on c.id = cd.clump_id " +
-                "where b.resolution = 350 " +
-                "and f.value >0 order by mass " +
-                ") AS a2 " +
-                "WHERE a1.mass < a2.mass OR (a1.mass=a2.mass AND a1.id<=a2.id) " +
-                "GROUP BY a1.id, a1.mass " +
-                "ORDER BY a1.mass desc " +
-                ") AS a3 " +
-                "WHERE Rank = ( " +
-                "Select (count(*) +1) / 2 " +
-                "from " +
-                "( " +
-                "SELECT c.id, 0.053*f.value*100*(EXP(41.14/cd.temperatura-1)) mass " +
-                "from clump as c join clump_flow as cf on c.id = cf.clump_id " +
-                "join flow as f on cf.flows_id = f.id " +
-                "join band as b on f.band_id=b.id " +
-                "join clumpDetails cd on c.id = cd.clump_id " +
-                "where b.resolution = 350 " +
-                "and f.value >0 order by mass " +
-                ") as a4 " +
-                ")";
-
-        Session s = super.openSession();
-        org.hibernate.Transaction t = s.beginTransaction();
-        Query query = s.createNativeQuery(sql);
-        double median = (double) query.getSingleResult();
-        t.commit();
-        closeSession();
-        return median;
-
-    }
-
+    /* REQ 06 */
     public List<Clump> getClumpByID(int id) throws Exception {
         String sql2 = "SELECT cf.clump_id, f.value, b.resolution, cd.lat, cd.lon\n" +
                 "FROM clump_flow as cf\n" +
@@ -440,9 +424,8 @@ public class ClumpDao extends EntityDaoHibernate<Clump, Integer> {
         List<Object[]> rows = query.getResultList();
         closeSession();
         List<Clump> clumps = new ArrayList();
-        System.out.println("id" + id);
         if (rows.size() < 1)
-            throw new Exception("No elements");
+            throw new Exception("No Elements!");
         for (Object[] o : rows) {
             Clump clump = new Clump();
             clump.setId((int) o[0]);
@@ -455,7 +438,6 @@ public class ClumpDao extends EntityDaoHibernate<Clump, Integer> {
             flow.setBanda(new Band((double) o[2]));
             clump.addFlow(flow);
             clumps.add(clump);
-            System.out.println(String.format("%d %.2f %.2f %.2f %.2f", o[0], o[1], o[2], o[3], o[4]));
         }
         return clumps;
     }

@@ -14,10 +14,6 @@ import main.org.bdc.service.parser.CSVFactory;
 import main.org.bdc.service.parser.monitor.producers.IllegalFileException;
 import main.org.bdc.view.JFrameMain.TypeFile;
 
-/**
- * Created by Sasha on 13/09/17.
- */
-
 public class C_UC_ImportFile {
 
     private static C_UC_ImportFile instance = null;
@@ -30,6 +26,7 @@ public class C_UC_ImportFile {
 
     public C_UC_ImportFile() {}
 
+    /* REQ 04 */
     public Thread importFile(String fileName, TypeFile typeFile) throws IllegalFileException {
         switch (typeFile) {
             case Higal:

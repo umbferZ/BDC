@@ -16,9 +16,6 @@ import main.org.bdc.model.galaxy.dao.SourceDao;
 
 import java.util.List;
 
-/**
- * Created by Sasha on 13/09/17.
- */
 public class C_UC_SearchObjectInMap {
 
     private static C_UC_SearchObjectInMap instance = null;
@@ -29,6 +26,7 @@ public class C_UC_SearchObjectInMap {
         return instance;
     }
 
+    /* MAIN DI PROVA */
     public static void main(String[] args) {
         try {
             String[] sources = C_UC_SearchObjectInMap.getInstance().searchForAllBands("Glimpse", 1);
@@ -39,21 +37,24 @@ public class C_UC_SearchObjectInMap {
         }
     }
 
+    /* REQ 05 */
     public String[] searchByBand(String map_name, int limit, double band_res) throws Exception {
         SourceDao sourceDao = DaoFactory.getInstance().getSourceDao();
         List<Source> sources = sourceDao.getByMap(map_name, limit, band_res);
         String[] result = new String[sources.size()];
         for (int i = 0; i < sources.size(); i++)
-            result[i] = String.format("SourceID %s", sources.get(i).getId());
+            result[i] = String.format("Source ID %s", sources.get(i).getId());
         return result;
     }
 
+    /* REQ 05 */
     public String[] searchForAllBands(String map_name, int limit) throws Exception {
         SourceDao sourceDao = DaoFactory.getInstance().getSourceDao();
         List<Source> sources = sourceDao.getByMap(map_name, limit);
         String[] result = new String[sources.size()];
         for (int i = 0; i < sources.size(); i++)
-            result[i] = String.format("SourceID %s Band %.2f Flux %.2f", sources.get(i).getId(), sources.get(i).getFlows().get(i).getBanda().getResolution(),
+            result[i] = String.format("Source ID: %s - Band Resolution: %.2f - Flux Value: %.4f",
+                    sources.get(i).getId(), sources.get(i).getFlows().get(i).getBanda().getResolution(),
                     sources.get(i).getFlows().get(i).getValue());
         return result;
     }
