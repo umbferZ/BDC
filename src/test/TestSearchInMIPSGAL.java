@@ -2,19 +2,14 @@ package test;
 
 import main.org.bdc.controls.C_UC_SearchSource;
 import main.org.bdc.model.galaxy.Map;
-import main.org.bdc.model.galaxy.Position;
 import main.org.bdc.model.galaxy.Source;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-
 import java.util.Arrays;
 import java.util.Collection;
 
-/**
- * Created by Sasha on 17/09/17.
- */
 @RunWith(value = Parameterized.class)
 public class TestSearchInMIPSGAL {
 

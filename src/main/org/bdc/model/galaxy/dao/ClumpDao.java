@@ -47,13 +47,68 @@ public class ClumpDao extends EntityDaoHibernate<Clump, Integer> {
      * @throws Exception
      */
     public double getAvgMassa() throws Exception {
-        String sql = "select avg(0.053*f.value*100*(EXP(41.14/cd.temperatura-1))) from clump as c join clump_flow as cf on c.id = cf.clump_id join flow as f on cf.flows_id = f.id join band as b on f.band_id=b.id join clumpDetails cd on c.id = cd.clump_id  where b.resolution = 350 and f.value >0";
+
+        String sql = "SELECT AVG(q.mass) avg " +
+                "FROM " +
+                "( " +
+                "SELECT c.id, 0.053*f.value*100*(EXP(41.14/cd.temperatura-1)) mass " +
+                "from clump as c join clump_flow as cf on c.id = cf.clump_id " +
+                "join flow as f on cf.flows_id = f.id " +
+                "join band as b on f.band_id=b.id " +
+                "join clumpDetails cd on c.id = cd.clump_id " +
+                "where b.resolution = 350 " +
+                "and f.value >0 order by mass " +
+                ") AS q;";
+
         Query query = super.openSession().createNativeQuery(sql);
         double clumps = (double) query.getSingleResult();
         closeSession();
         System.out.println(clumps);
         return clumps;
     }
+
+    public double getStdDevMassa() throws Exception {
+
+        String sql = "SELECT STDDEV(q.mass) stddev " +
+                "FROM " +
+                "( " +
+                "SELECT c.id, 0.053*f.value*100*(EXP(41.14/cd.temperatura-1)) mass " +
+                "from clump as c join clump_flow as cf on c.id = cf.clump_id " +
+                "join flow as f on cf.flows_id = f.id " +
+                "join band as b on f.band_id=b.id " +
+                "join clumpDetails cd on c.id = cd.clump_id " +
+                "where b.resolution = 350 " +
+                "and f.value >0 order by mass " +
+                ") AS q;";
+
+        Query query = super.openSession().createNativeQuery(sql);
+        double clumps = (double) query.getSingleResult();
+        closeSession();
+        System.out.println(clumps);
+        return clumps;
+    }
+
+    public double getMADMassa() throws Exception {
+
+        String sql = "SELECT STDDEV(q.mass)*0.67449 mad " +
+                "FROM " +
+                "( " +
+                "SELECT c.id, 0.053*f.value*100*(EXP(41.14/cd.temperatura-1)) mass " +
+                "from clump as c join clump_flow as cf on c.id = cf.clump_id " +
+                "join flow as f on cf.flows_id = f.id " +
+                "join band as b on f.band_id=b.id " +
+                "join clumpDetails cd on c.id = cd.clump_id " +
+                "where b.resolution = 350 " +
+                "and f.value >0 order by mass " +
+                ") AS q;";
+
+        Query query = super.openSession().createNativeQuery(sql);
+        double clumps = (double) query.getSingleResult();
+        closeSession();
+        System.out.println(clumps);
+        return clumps;
+    }
+
 
     /**
      * Gets the by id or new.
@@ -147,7 +202,9 @@ public class ClumpDao extends EntityDaoHibernate<Clump, Integer> {
     }
 
     public List<Clump> getByPositionIntoSquare(double latitude, double longitude, double distance, int limit) throws Exception {
+
         String sql = "SELECT c.id, cd.lat, cd.lon, SQRT((cd.lat^2-:lat^2)+(cd.lon^2-:lon^2)) distance FROM clump AS c JOIN clumpDetails as cd ON c.id = cd.clump_id WHERE cd.lat BETWEEN :lat-:d/SQRT(2) AND :lat+:d/SQRT(2) AND cd.lon BETWEEN :lon-:d/SQRT(2) AND :lon+:d/SQRT(2) ORDER BY distance ASC LIMIT :l";
+
         Session s = super.openSession();
         Query query = s.createNativeQuery(sql);
         query.setParameter("lat", latitude);
@@ -174,7 +231,14 @@ public class ClumpDao extends EntityDaoHibernate<Clump, Integer> {
     }
 
     public List<Clump> getClumpMass() throws Exception {
-        String sql2 = "select c.id, 0.053*f.value*100*(EXP(41.14/cd.temperatura-1)) massa from clump as c join clump_flow as cf on c.id = cf.clump_id join flow as f on cf.flows_id = f.id join band as b on f.band_id=b.id join clumpDetails cd on c.id = cd.clump_id where b.resolution = 350 and f.value >0";
+
+        String sql2 = "SELECT c.id, 0.053*f.value*100*(EXP(41.14/cd.temperatura-1)) mass " +
+                "from clump as c join clump_flow as cf on c.id = cf.clump_id " +
+                "join flow as f on cf.flows_id = f.id " +
+                "join band as b on f.band_id=b.id " +
+                "join clumpDetails cd on c.id = cd.clump_id " +
+                "where b.resolution = 350 " +
+                "and f.value >0 order by mass;";
 
         Query query = super.openSession().createNativeQuery(sql2);
         List<Object[]> rows = query.getResultList();
@@ -194,26 +258,47 @@ public class ClumpDao extends EntityDaoHibernate<Clump, Integer> {
     }
 
     public double getMedian() throws Exception {
-        // CREATE OR REPLACE VIEW tabMasse AS
-        // SELECT c.id, 0.053*f.value*100*(EXP(41.14/cd.temperatura-1)) masse
-        // from clump as c join clump_flow as cf on c.id = cf.clump_id
-        // join flow as f on cf.flows_id = f.id
-        // join band as b on f.band_id=b.id
-        // join clumpDetails cd on c.id = cd.clump_id
-        // where b.resolution = 350
-        // and f.value >0 order by masse;
-        //
-        // SELECT masse median from (
-        // SELECT a1.id, a1.masse, COUNT(a1.masse) Rank
-        // FROM tabMasse a1, tabMasse a2
-        // WHERE a1.masse < a2.masse OR (a1.masse=a2.masse AND a1.id<=a2.id)
-        // GROUP BY a1.id, a1.masse
-        // ORDER BY a1.masse desc
-        // ) a3
-        // WHERE Rank = (
-        // Select (count(*) +1) / 2 from tabMasse);
 
-        String sql = "CREATE OR REPLACE VIEW tabMasse AS SELECT c.id, 0.053*f.value*100*(EXP(41.14/cd.temperatura-1)) masse from clump as c join clump_flow as cf on c.id = cf.clump_id join flow as f on cf.flows_id = f.id join band as b on f.band_id=b.id join clumpDetails cd on c.id = cd.clump_id where b.resolution = 350 and f.value >0 order by masse; SELECT  masse median from (SELECT a1.id, a1.masse, COUNT(a1.masse) Rank FROM tabMasse a1, tabMasse a2 WHERE a1.masse < a2.masse OR (a1.masse=a2.masse AND a1.id<=a2.id) GROUP BY a1.id, a1.masse ORDER BY a1.masse desc ) a3 WHERE Rank = (Select (count(*) +1) / 2from tabMasse);";
+        String sql = "SELECT  mass median " +
+                "from ( " +
+                "SELECT a1.id, a1.mass, COUNT(a1.mass) Rank " +
+                "FROM " +
+                "( " +
+                "SELECT c.id, 0.053*f.value*100*(EXP(41.14/cd.temperatura-1)) mass " +
+                "from clump as c join clump_flow as cf on c.id = cf.clump_id " +
+                "join flow as f on cf.flows_id = f.id " +
+                "join band as b on f.band_id=b.id " +
+                "join clumpDetails cd on c.id = cd.clump_id " +
+                "where b.resolution = 350 " +
+                "and f.value >0 order by mass " +
+                ")AS a1, " +
+                "( " +
+                "SELECT c.id, 0.053*f.value*100*(EXP(41.14/cd.temperatura-1)) mass " +
+                "from clump as c join clump_flow as cf on c.id = cf.clump_id " +
+                "join flow as f on cf.flows_id = f.id " +
+                "join band as b on f.band_id=b.id " +
+                "join clumpDetails cd on c.id = cd.clump_id " +
+                "where b.resolution = 350 " +
+                "and f.value >0 order by mass " +
+                ") AS a2 " +
+                "WHERE a1.mass < a2.mass OR (a1.mass=a2.mass AND a1.id<=a2.id) " +
+                "GROUP BY a1.id, a1.mass " +
+                "ORDER BY a1.mass desc " +
+                ") AS a3 " +
+                "WHERE Rank = ( " +
+                "Select (count(*) +1) / 2 " +
+                "from " +
+                "( " +
+                "SELECT c.id, 0.053*f.value*100*(EXP(41.14/cd.temperatura-1)) mass " +
+                "from clump as c join clump_flow as cf on c.id = cf.clump_id " +
+                "join flow as f on cf.flows_id = f.id " +
+                "join band as b on f.band_id=b.id " +
+                "join clumpDetails cd on c.id = cd.clump_id " +
+                "where b.resolution = 350 " +
+                "and f.value >0 order by mass " +
+                ") as a4 " +
+                ")";
+
         Session s = super.openSession();
         org.hibernate.Transaction t = s.beginTransaction();
         Query query = s.createNativeQuery(sql);

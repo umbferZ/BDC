@@ -31,6 +31,20 @@ public class C_UC_SearchClumpsMass {
         return instance;
     }
 
+    public String[] showStats() throws Exception {
+        ClumpDao clumpDao = DaoFactory.getInstance().getClumpDao();
+        double avg = clumpDao.getAvgMassa();
+        String[] result = new String[4];
+        result[0] = String.format("AVG: %.3f", avg);
+        double stddev = clumpDao.getStdDevMassa();
+        result[1] = String.format("STDDEV: %.3f", stddev);
+        double mad = clumpDao.getMADMassa();
+        result[2] = String.format("MAD: %.3f", mad);
+        double med = clumpDao.getMedian();
+        result[3] = String.format("MED: %.3f", med);
+        return result;
+    }
+
     public String[] searchClumpsMass() throws Exception {
         ClumpDao clumpDao = DaoFactory.getInstance().getClumpDao();
         List<Clump> list = clumpDao.getClumpMass();
@@ -39,37 +53,6 @@ public class C_UC_SearchClumpsMass {
             result[i] = String.format("clump %s - mass: %.2f", list.get(i).getId(), list.get(i).getMassa());
         return result;
 
-    }
-
-    public void showClumpsAvgMass() {
-        ClumpDao clumpDao = DaoFactory.getInstance().getClumpDao();
-        try {
-            System.out.println(String.format("AVG mass = %.2f", clumpDao.getAvgMassa()));
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-    }
-
-    public void showClumpsDevMass() {
-        ClumpDao clumpDao = DaoFactory.getInstance().getClumpDao();
-
-    }
-
-    public void showClumpsMidDevMass() {
-        ClumpDao clumpDao = DaoFactory.getInstance().getClumpDao();
-
-    }
-
-    public void showClumpsMidMass() {
-        List<Clump> clumps = DaoFactory.getInstance().getClumpDao().getAll();
-        ArrayList<Double> massSort = new ArrayList<>();
-        for (Clump c : clumps) {
-            // massSort;
-        }
-        Collections.sort(massSort);
-        double mediana = massSort.size() % 2 == 0 ? (massSort.get(massSort.size() / 2) + massSort.get(massSort.size() / 2 - 1)) / 2 : (double) massSort.get(massSort.size() / 2);
-        System.out.println(String.format("Mediana: %.2f", mediana));
     }
 
 }

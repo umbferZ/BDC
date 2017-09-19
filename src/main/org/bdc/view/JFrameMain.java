@@ -10,9 +10,10 @@
 
 package main.org.bdc.view;
 
-import java.awt.BorderLayout;
-import java.awt.CardLayout;
-import java.awt.Font;
+import main.org.bdc.controls.C_UC_SearchClumpsMass;
+import main.org.bdc.model.DaoFactory;
+
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -165,6 +166,16 @@ public class JFrameMain extends JFrame {
 
         mntmSearchClumpMassStats = new JMenuItem("Show clumps mass statistics");
         mnClump.add(mntmSearchClumpMassStats);
+        mntmSearchClumpMassStats.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    list.setListData(C_UC_SearchClumpsMass.getInstance().showStats());
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+            }
+        });
 
         JMenu mnSource = new JMenu("Sources");
         menuBar.add(mnSource);
