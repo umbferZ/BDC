@@ -23,9 +23,6 @@ import main.org.bdc.controls.gestisciSatellite.BeanInserisciSatellite;
 import main.org.bdc.model.galaxy.Satellite;
 import main.org.bdc.service.dal.exception.SaveDalException;
 
-/**
- * Created by Sasha on 13/09/17.
- */
 
 @RunWith(value = Parameterized.class)
 public class TestInsertSatellite {

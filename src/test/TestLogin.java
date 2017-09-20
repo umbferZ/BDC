@@ -23,9 +23,7 @@ import org.junit.runners.Parameterized;
 import main.org.bdc.controls.C_UC_Login;
 import main.org.bdc.model.people.UserRegistered;
 
-/**
- * Created by Sasha on 13/09/17.
- */
+
 @RunWith(value = Parameterized.class)
 public class TestLogin {
 
