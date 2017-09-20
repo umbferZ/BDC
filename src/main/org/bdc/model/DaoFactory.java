@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.model
  * Type: DaoFactory
- * Last update: 13-set-2017 15.24.32
+ * Last update: 20-set-2017 13.23.23
  * 
  */
 
@@ -88,6 +88,11 @@ public class DaoFactory {
         return new InstrumentDao();
     }
 
+    /**
+     * Gets the map dao.
+     *
+     * @return the map dao
+     */
     public MapDao getMapDao() {
         return new MapDao();
     }

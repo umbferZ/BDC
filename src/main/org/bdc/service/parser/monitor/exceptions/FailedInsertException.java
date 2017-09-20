@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.service.parser.monitor.exceptions
  * Type: FailedInsertException
- * Last update: 13-set-2017 0.30.09
+ * Last update: 20-set-2017 13.23.24
  * 
  */
 

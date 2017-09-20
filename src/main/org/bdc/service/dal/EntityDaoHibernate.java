@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.service.dal
  * Type: EntityDaoHibernate
- * Last update: 15-set-2017 13.55.58
+ * Last update: 20-set-2017 13.23.21
  * 
  */
 
@@ -56,6 +56,11 @@ public abstract class EntityDaoHibernate<T, ID extends Serializable> implements 
         closeSession();
     }
 
+    /**
+     * Creates the query.
+     *
+     * @param sql the sql
+     */
     public void createQuery(String sql) {
         Session s = openSession();
         Transaction tx = s.beginTransaction();
@@ -112,6 +117,12 @@ public abstract class EntityDaoHibernate<T, ID extends Serializable> implements 
         return crit.list();
     }
 
+    /**
+     * Gets the by id.
+     *
+     * @param id the id
+     * @return the by id
+     */
     public T getById(ID id) {
         return getById(id, true);
     }
@@ -154,6 +165,9 @@ public abstract class EntityDaoHibernate<T, ID extends Serializable> implements 
         return session;
     }
 
+    /* (non-Javadoc)
+     * @see main.org.bdc.service.dal.EntityDao#save(java.lang.Object)
+     */
     @Override
     public T save(T entity) throws SaveDalException {
         Session s = openSession();
@@ -218,6 +232,9 @@ public abstract class EntityDaoHibernate<T, ID extends Serializable> implements 
         this.persistentClass = persistentClass;
     }
 
+    /* (non-Javadoc)
+     * @see main.org.bdc.service.dal.EntityDao#update(java.lang.Object)
+     */
     @Override
     public T update(T entity) throws UpdateDalException {
         Session s = openSession();

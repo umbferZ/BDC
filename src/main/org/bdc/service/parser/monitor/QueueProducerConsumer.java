@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.service.parser.monitor
  * Type: QueueProducerConsumer
- * Last update: 13-set-2017 0.29.59
+ * Last update: 20-set-2017 13.23.25
  * 
  */
 

@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.model.galaxy
  * Type: Source
- * Last update: 15-set-2017 1.40.49
+ * Last update: 20-set-2017 13.23.24
  * 
  */
 
@@ -48,18 +48,37 @@ public class Source implements Serializable {
     private Source     sourceToLowerResolution;
 
     /**
-     * Instantiates a new sorgente.
+     * Instantiates a new source.
      */
     public Source() {
         flows = new ArrayList<>();
     }
 
+    /**
+     * Adds the flow.
+     *
+     * @param flow the flow
+     */
     public void addFlow(Flow flow) {
         flows.add(flow);
     }
 
+    /**
+     * Gets the distance.
+     *
+     * @return the distance
+     */
     public double getDistance() {
         return distance;
+    }
+
+    /**
+     * Gets the flow.
+     *
+     * @return the flow
+     */
+    public List<Flow> getFlow() {
+        return flows;
     }
 
     /**
@@ -67,10 +86,6 @@ public class Source implements Serializable {
      *
      * @return the flows
      */
-    public List<Flow> getFlow() {
-        return flows;
-    }
-
     public List<Flow> getFlows() {
         return flows;
     }
@@ -84,31 +99,56 @@ public class Source implements Serializable {
         return id;
     }
 
+    /**
+     * Gets the map.
+     *
+     * @return the map
+     */
     public Map getMap() {
         return map;
     }
 
+    /**
+     * Gets the position.
+     *
+     * @return the position
+     */
     public Position getPosition() {
         return position;
     }
 
+    /**
+     * Gets the source to lower resolution.
+     *
+     * @return the source to lower resolution
+     */
     public Source getSourceToLowerResolution() {
         return sourceToLowerResolution;
     }
 
+    /**
+     * Sets the distance.
+     *
+     * @param distance the new distance
+     */
     public void setDistance(double distance) {
         this.distance = distance;
     }
 
     /**
-     * Sets the flusso.
+     * Sets the flow.
      *
-     * @param flows the new flusso
+     * @param flows the new flow
      */
     public void setFlow(List<Flow> flows) {
         this.flows = flows;
     }
 
+    /**
+     * Sets the flows.
+     *
+     * @param flows the new flows
+     */
     public void setFlows(List<Flow> flows) {
         this.flows = flows;
     }
@@ -122,14 +162,29 @@ public class Source implements Serializable {
         this.id = id;
     }
 
+    /**
+     * Sets the map.
+     *
+     * @param map the new map
+     */
     public void setMap(Map map) {
         this.map = map;
     }
 
+    /**
+     * Sets the position.
+     *
+     * @param position the new position
+     */
     public void setPosition(Position position) {
         this.position = position;
     }
 
+    /**
+     * Sets the source to lower resolution.
+     *
+     * @param sourceToLowerResolution the new source to lower resolution
+     */
     public void setSourceToLowerResolution(Source sourceToLowerResolution) {
         this.sourceToLowerResolution = sourceToLowerResolution;
     }

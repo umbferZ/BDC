@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.model.galaxy.dao
  * Type: ClumpDao
- * Last update: 15-set-2017 15.16.40
+ * Last update: 20-set-2017 13.23.22
  * 
  */
 
@@ -30,6 +30,12 @@ import main.org.bdc.service.dal.EntityDaoHibernate;
  */
 public class ClumpDao extends EntityDaoHibernate<Clump, Integer> {
 
+    /**
+     * Show clumps.
+     *
+     * @return the list
+     * @throws Exception the exception
+     */
     /* Show all Clumps */
     public List<Clump> showClumps() throws Exception {
         String sql = "SELECT * FROM Clump";
@@ -52,7 +58,7 @@ public class ClumpDao extends EntityDaoHibernate<Clump, Integer> {
      * Gets the avg massa.
      *
      * @return the avg massa
-     * @throws Exception
+     * @throws Exception the exception
      */
 
     /* REQ 10.1 */
@@ -77,6 +83,12 @@ public class ClumpDao extends EntityDaoHibernate<Clump, Integer> {
         return clumps;
     }
 
+    /**
+     * Gets the std dev massa.
+     *
+     * @return the std dev massa
+     * @throws Exception the exception
+     */
     /* REQ 10.1 */
     public double getStdDevMassa() throws Exception {
 
@@ -99,6 +111,12 @@ public class ClumpDao extends EntityDaoHibernate<Clump, Integer> {
         return clumps;
     }
 
+    /**
+     * Gets the median.
+     *
+     * @return the median
+     * @throws Exception the exception
+     */
     /* REQ 10.1 */
     public double getMedian() throws Exception {
 
@@ -152,6 +170,12 @@ public class ClumpDao extends EntityDaoHibernate<Clump, Integer> {
 
     }
 
+    /**
+     * Gets the MAD massa.
+     *
+     * @return the MAD massa
+     * @throws Exception the exception
+     */
     /* REQ 10.1 */
     public double getMADMassa() throws Exception {
 
@@ -174,6 +198,14 @@ public class ClumpDao extends EntityDaoHibernate<Clump, Integer> {
         return clumps;
     }
 
+    /**
+     * Gets the by map.
+     *
+     * @param mapType the map type
+     * @param offset the offset
+     * @return the by map
+     * @throws Exception the exception
+     */
     /* REQ 05 */
     public List<Clump> getByMap(String mapType, int offset) throws Exception {
         String sql = "SELECT cf.clump_id, f1.value, b1.resolution  FROM clump_flow cf JOIN flow f1 ON f1.id = cf.flows_id JOIN band b1 ON b1.id = f1.band_id WHERE cf.flows_id IN (  SELECT f.id  FROM flow AS f  JOIN band AS b ON f.band_id = b.id  JOIN instrument AS i ON b.instrument_id = i.id  JOIN map AS m ON m.id = i.map_id  WHERE m.name like :map  AND f.value > 0 ) LIMIT 50 OFFSET :offset";
@@ -198,6 +230,15 @@ public class ClumpDao extends EntityDaoHibernate<Clump, Integer> {
         return clumps;
     }
 
+    /**
+     * Gets the by map.
+     *
+     * @param mapType the map type
+     * @param offset the offset
+     * @param band the band
+     * @return the by map
+     * @throws Exception the exception
+     */
     /* REQ 05 */
     public List<Clump> getByMap(String mapType, int offset, double band) throws Exception {
         String sql = "SELECT cf.clump_id, f1.value, b1.resolution  FROM clump_flow cf JOIN flow f1 ON f1.id = cf.flows_id JOIN band b1 ON b1.id = f1.band_id WHERE cf.flows_id IN (  SELECT f.id  FROM flow AS f  JOIN band AS b ON f.band_id = b.id  JOIN instrument AS i ON b.instrument_id = i.id  JOIN map AS m ON m.id = i.map_id  WHERE m.name like :map  AND f.value > 0  AND b.resolution = :band ) LIMIT 50 OFFSET :offset";
@@ -223,6 +264,16 @@ public class ClumpDao extends EntityDaoHibernate<Clump, Integer> {
         return clumps;
     }
 
+    /**
+     * Gets the by position into round.
+     *
+     * @param latitude the latitude
+     * @param longitude the longitude
+     * @param distance the distance
+     * @param limit the limit
+     * @return the by position into round
+     * @throws Exception the exception
+     */
     /* REQ 08 */
     public List<Clump> getByPositionIntoRound(double latitude, double longitude, double distance, int limit) throws Exception {
         String sql = "SELECT * FROM (SELECT c.id, cd.lat  lat, cd.lon lon, ACOS(SIN(:lat)*SIN(lat)+COS(:lat)*COS(lat)*COS(:lon-lon)) distance FROM clump AS c JOIN clumpDetails as cd ON c.id = cd.clump_id ) AS q WHERE distance < :d Order BY distance asc LIMIT :l";
@@ -251,6 +302,16 @@ public class ClumpDao extends EntityDaoHibernate<Clump, Integer> {
         return clumps;
     }
 
+    /**
+     * Gets the by position into square.
+     *
+     * @param latitude the latitude
+     * @param longitude the longitude
+     * @param distance the distance
+     * @param limit the limit
+     * @return the by position into square
+     * @throws Exception the exception
+     */
     /* REQ 08 */
     public List<Clump> getByPositionIntoSquare(double latitude, double longitude, double distance, int limit) throws Exception {
 
@@ -281,6 +342,12 @@ public class ClumpDao extends EntityDaoHibernate<Clump, Integer> {
         return clumps;
     }
 
+    /**
+     * Gets the clump mass.
+     *
+     * @return the clump mass
+     * @throws Exception the exception
+     */
     /* REQ 10 */
     public List<Clump> getClumpMass() throws Exception {
 
@@ -309,6 +376,12 @@ public class ClumpDao extends EntityDaoHibernate<Clump, Integer> {
 
     }
 
+    /**
+     * Gets the clump density.
+     *
+     * @return the clump density
+     * @throws Exception the exception
+     */
     /* REQ 07 */
     public List<Clump> getClumpDensity() throws Exception {
 
@@ -409,6 +482,13 @@ public class ClumpDao extends EntityDaoHibernate<Clump, Integer> {
 
     }
 
+    /**
+     * Gets the clump by ID.
+     *
+     * @param id the id
+     * @return the clump by ID
+     * @throws Exception the exception
+     */
     /* REQ 06 */
     public List<Clump> getClumpByID(int id) throws Exception {
         String sql2 = "SELECT cf.clump_id, f.value, b.resolution, cd.lat, cd.lon\n" +

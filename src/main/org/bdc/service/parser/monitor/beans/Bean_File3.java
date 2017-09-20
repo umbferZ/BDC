@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.service.parser.monitor.beans
  * Type: Bean_File3
- * Last update: 13-set-2017 0.30.03
+ * Last update: 20-set-2017 13.23.22
  * 
  */
 
@@ -32,7 +32,7 @@ public class Bean_File3 extends SimpleBean {
     /**
      * Instantiates a new bean file 3.
      *
-     * @param sourceId the sotgent id
+     * @param sourceId the source id
      * @param longitude the longitude
      * @param latitude the latitude
      * @param flow_3d6 the flow 3 d 6
@@ -106,9 +106,9 @@ public class Bean_File3 extends SimpleBean {
     }
 
     /**
-     * Gets the sotgent id.
+     * Gets the source id.
      *
-     * @return the sotgent id
+     * @return the source id
      */
     public String getSourceId() {
         return this.sourceId;
@@ -169,9 +169,9 @@ public class Bean_File3 extends SimpleBean {
     }
 
     /**
-     * Sets the sotgent id.
+     * Sets the source id.
      *
-     * @param sourceId the new sotgent id
+     * @param sourceId the new source id
      */
     public void setSourceId(String sourceId) {
         this.sourceId = sourceId;

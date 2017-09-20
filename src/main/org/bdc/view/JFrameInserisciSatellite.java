@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.view
  * Type: JFrameInserisciSatellite
- * Last update: 14-set-2017 15.14.58
+ * Last update: 20-set-2017 13.23.21
  * 
  */
 
@@ -32,6 +32,9 @@ import com.jgoodies.forms.layout.RowSpec;
 
 import main.org.bdc.model.galaxy.Satellite;
 
+/**
+ * The Class JFrameInserisciSatellite.
+ */
 public class JFrameInserisciSatellite extends JFrame {
 
     private JButton    btn_insert;
@@ -59,7 +62,9 @@ public class JFrameInserisciSatellite extends JFrame {
     private JTextField txt_startYear;
 
     /**
-     * Launch the application.
+     * The main method.
+     *
+     * @param args the arguments
      */
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
@@ -77,7 +82,7 @@ public class JFrameInserisciSatellite extends JFrame {
     }
 
     /**
-     * Create the frame.
+     * Instantiates a new j frame inserisci satellite.
      */
     public JFrameInserisciSatellite() {
         setTitle("New Satellite");
@@ -228,82 +233,182 @@ public class JFrameInserisciSatellite extends JFrame {
         // });
     }
 
+    /**
+     * Adds the button insert action listener.
+     *
+     * @param actionListener the action listener
+     */
     public void addButtonInsertActionListener(ActionListener actionListener) {
         btn_insert.addActionListener(actionListener);
     }
 
+    /**
+     * Gets the btn insert.
+     *
+     * @return the btn insert
+     */
     public JButton getBtn_insert() {
         return btn_insert;
     }
 
+    /**
+     * Gets the txt end day.
+     *
+     * @return the txt end day
+     */
     public JTextField getTxt_endDay() {
         return txt_endDay;
     }
 
+    /**
+     * Gets the txt end month.
+     *
+     * @return the txt end month
+     */
     public JTextField getTxt_endMonth() {
         return txt_endMonth;
     }
 
+    /**
+     * Gets the txt end year.
+     *
+     * @return the txt end year
+     */
     public JTextField getTxt_endYear() {
         return txt_endYear;
     }
 
+    /**
+     * Gets the txt satellite agency.
+     *
+     * @return the txt satellite agency
+     */
     public JTextField getTxt_satelliteAgency() {
         return txt_satelliteAgency;
     }
 
+    /**
+     * Gets the txt satellite name.
+     *
+     * @return the txt satellite name
+     */
     public JTextField getTxt_satelliteName() {
         return txt_satelliteName;
     }
 
+    /**
+     * Gets the txt start day.
+     *
+     * @return the txt start day
+     */
     public JTextField getTxt_startDay() {
         return txt_startDay;
     }
 
+    /**
+     * Gets the txt start month.
+     *
+     * @return the txt start month
+     */
     public JTextField getTxt_startMonth() {
         return txt_startMonth;
     }
 
+    /**
+     * Gets the txt start year.
+     *
+     * @return the txt start year
+     */
     public JTextField getTxt_startYear() {
         return txt_startYear;
     }
 
+    /**
+     * Sets the btn insert.
+     *
+     * @param btn_insert the new btn insert
+     */
     public void setBtn_insert(JButton btn_insert) {
         this.btn_insert = btn_insert;
     }
 
+    /**
+     * Sets the txt end day.
+     *
+     * @param txt_endDay the new txt end day
+     */
     public void setTxt_endDay(JTextField txt_endDay) {
         this.txt_endDay = txt_endDay;
     }
 
+    /**
+     * Sets the txt end month.
+     *
+     * @param txt_endMonth the new txt end month
+     */
     public void setTxt_endMonth(JTextField txt_endMonth) {
         this.txt_endMonth = txt_endMonth;
     }
 
+    /**
+     * Sets the txt end year.
+     *
+     * @param txt_endYear the new txt end year
+     */
     public void setTxt_endYear(JTextField txt_endYear) {
         this.txt_endYear = txt_endYear;
     }
 
+    /**
+     * Sets the txt satellite agency.
+     *
+     * @param txt_satelliteAgency the new txt satellite agency
+     */
     public void setTxt_satelliteAgency(JTextField txt_satelliteAgency) {
         this.txt_satelliteAgency = txt_satelliteAgency;
     }
 
+    /**
+     * Sets the txt satellite name.
+     *
+     * @param txt_satelliteName the new txt satellite name
+     */
     public void setTxt_satelliteName(JTextField txt_satelliteName) {
         this.txt_satelliteName = txt_satelliteName;
     }
 
+    /**
+     * Sets the txt start day.
+     *
+     * @param txt_startDay the new txt start day
+     */
     public void setTxt_startDay(JTextField txt_startDay) {
         this.txt_startDay = txt_startDay;
     }
 
+    /**
+     * Sets the txt start month.
+     *
+     * @param txt_startMonth the new txt start month
+     */
     public void setTxt_startMonth(JTextField txt_startMonth) {
         this.txt_startMonth = txt_startMonth;
     }
 
+    /**
+     * Sets the txt start year.
+     *
+     * @param txt_startYear the new txt start year
+     */
     public void setTxt_startYear(JTextField txt_startYear) {
         this.txt_startYear = txt_startYear;
     }
 
+    /**
+     * Show error.
+     *
+     * @param string the string
+     */
     public void showError(String string) {
         lbl_error.setText(string);
         lbl_error.setVisible(true);

@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.view.manager
  * Type: CJFrameClumpSearch
- * Last update: 15-set-2017 15.15.13
+ * Last update: 20-set-2017 13.23.24
  * 
  */
 
@@ -23,6 +23,9 @@ import main.org.bdc.view.JFrameClumpSearch;
 import main.org.bdc.view.JFrameMain;
 import main.org.bdc.view.tools.CheckerField;
 
+/**
+ * The Class CJFrameClumpSearch.
+ */
 public class CJFrameClumpSearch {
 
     private int               clumpId;
@@ -32,6 +35,11 @@ public class CJFrameClumpSearch {
     private JFrameClumpSearch view;
 
 
+    /**
+     * Instantiates a new CJ frame clump search.
+     *
+     * @param parent the parent
+     */
     public CJFrameClumpSearch(JFrameMain parent) {
         this.parent = parent;
         EventQueue.invokeLater(new Runnable() {
@@ -50,6 +58,11 @@ public class CJFrameClumpSearch {
         });
     }
 
+    /**
+     * Check field.
+     *
+     * @return true, if successful
+     */
     private boolean checkField() {
         JTextField jTextField = view.getClump_id();
         if (!CheckerField.checkTextField(jTextField)) {
@@ -61,8 +74,20 @@ public class CJFrameClumpSearch {
 
     }
 
+    /**
+     * The listener interface for receiving btn events. The class that is
+     * interested in processing a btn event implements this interface, and the
+     * object created with that class is registered with a component using the
+     * component's <code>addBtnListener<code> method. When the btn event occurs,
+     * that object's appropriate method is invoked.
+     *
+     * @see BtnEvent
+     */
     private class BtnListener implements ActionListener {
 
+        /* (non-Javadoc)
+         * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+         */
         @Override
         public void actionPerformed(ActionEvent e) {
             if (checkField())

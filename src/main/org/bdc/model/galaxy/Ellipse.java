@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.model.galaxy
  * Type: Ellipse
- * Last update: 13-set-2017 17.51.20
+ * Last update: 20-set-2017 13.23.24
  * 
  */
 
@@ -80,6 +80,11 @@ public class Ellipse implements Serializable {
         return band;
     }
 
+    /**
+     * Gets the clump.
+     *
+     * @return the clump
+     */
     public Clump getClump() {
         return clump;
     }
@@ -93,6 +98,11 @@ public class Ellipse implements Serializable {
         return rotazione;
     }
 
+    /**
+     * Gets the x ass.
+     *
+     * @return the x ass
+     */
     public double getxAss() {
         return xAss;
     }
@@ -106,6 +116,11 @@ public class Ellipse implements Serializable {
         return xAss;
     }
 
+    /**
+     * Gets the y ass.
+     *
+     * @return the y ass
+     */
     public double getyAss() {
         return yAss;
     }
@@ -128,6 +143,11 @@ public class Ellipse implements Serializable {
         this.band = band;
     }
 
+    /**
+     * Sets the clump.
+     *
+     * @param clump the new clump
+     */
     public void setClump(Clump clump) {
         this.clump = clump;
     }
@@ -141,6 +161,11 @@ public class Ellipse implements Serializable {
         this.rotazione = rotazione;
     }
 
+    /**
+     * Sets the x ass.
+     *
+     * @param xAss the new x ass
+     */
     public void setxAss(double xAss) {
         this.xAss = xAss;
     }
@@ -154,6 +179,11 @@ public class Ellipse implements Serializable {
         this.xAss = xAss;
     }
 
+    /**
+     * Sets the y ass.
+     *
+     * @param yAss the new y ass
+     */
     public void setyAss(double yAss) {
         this.yAss = yAss;
     }

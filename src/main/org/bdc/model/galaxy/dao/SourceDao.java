@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.model.galaxy.dao
  * Type: SourceDao
- * Last update: 15-set-2017 6.46.32
+ * Last update: 20-set-2017 13.23.25
  * 
  */
 
@@ -208,6 +208,14 @@ public class SourceDao extends EntityDaoHibernate<Source, Integer> {
         return sources;
     }
 
+    /**
+     * Gets the source in clump.
+     *
+     * @param clumpid the clumpid
+     * @param bandResolution the band resolution
+     * @return the source in clump
+     * @throws Exception the exception
+     */
     /* REQ 09 */
     public List<Source> getSourceInClump(int clumpid, double bandResolution) throws Exception {
         String sql = "SELECT * FROM ( SELECT s.id, p.latitude, p.longitude, (p.latitude^2-q.lat^2)+(p.longitude^2-q.lon^2) distance, q.ass FROM source s JOIN position p ON p.source_id = s.id JOIN map m ON m.id = s.map_id CROSS JOIN ( SELECT cd.lat lat, cd.lon lon, e.xass ass FROM clump c JOIN clumpdetails cd ON c.id = cd.clump_id JOIN ellipse e ON c.id = e.clump_id JOIN band b ON b.id = e.band_id WHERE b.resolution = :band AND c.id = :clump ) AS q WHERE m.name like 'MIPSGAL-GAL' )as r WHERE r.distance < r.ass";
@@ -231,6 +239,13 @@ public class SourceDao extends EntityDaoHibernate<Source, Integer> {
         return sources;
     }
 
+    /**
+     * Gets the young stars.
+     *
+     * @param id the id
+     * @return the young stars
+     * @throws Exception the exception
+     */
     /* REQ 11 */
     public List<Source> getYoungStars(int id) throws Exception {
         String sql = "SELECT *\n" +

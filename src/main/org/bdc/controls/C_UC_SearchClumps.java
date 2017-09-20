@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.controls
  * Type: C_UC_SearchClumps
- * Last update: 15-set-2017 15.43.10
+ * Last update: 20-set-2017 13.23.21
  * 
  */
 
@@ -16,16 +16,31 @@ import main.org.bdc.model.galaxy.Flow;
 import main.org.bdc.model.galaxy.dao.ClumpDao;
 import java.util.List;
 
+/**
+ * The Class C_UC_SearchClumps.
+ */
 public class C_UC_SearchClumps {
 
     private static C_UC_SearchClumps instance = null;
 
+    /**
+     * Gets the single instance of C_UC_SearchClumps.
+     *
+     * @return single instance of C_UC_SearchClumps
+     */
     public synchronized static C_UC_SearchClumps getInstance() {
         if (instance == null)
             instance = new C_UC_SearchClumps();
         return instance;
     }
 
+    /**
+     * Search clumps.
+     *
+     * @param id the id
+     * @return the string[]
+     * @throws Exception the exception
+     */
     /* REQ 06 */
     public String[] searchClumps(int id) throws Exception {
         ClumpDao clumpDao = DaoFactory.getInstance().getClumpDao();

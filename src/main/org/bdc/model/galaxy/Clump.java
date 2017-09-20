@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.model.galaxy
  * Type: Clump
- * Last update: 15-set-2017 1.50.10
+ * Last update: 20-set-2017 13.23.22
  * 
  */
 
@@ -52,10 +52,20 @@ public class Clump implements Serializable {
     private double        massa;
 
 
+    /**
+     * Gets the fraction.
+     *
+     * @return the fraction
+     */
     public BigDecimal getFraction() {
         return fraction;
     }
 
+    /**
+     * Sets the fraction.
+     *
+     * @param fraction the new fraction
+     */
     public void setFraction(BigDecimal fraction) {
         this.fraction = fraction;
     }
@@ -71,6 +81,12 @@ public class Clump implements Serializable {
         flows = new ArrayList<>();
     }
 
+    /**
+     * Instantiates a new clump.
+     *
+     * @param map the map
+     * @param clumpDetails the clump details
+     */
     public Clump(Map map, ClumpDetails clumpDetails) {
         this();
         this.map = map;
@@ -86,14 +102,29 @@ public class Clump implements Serializable {
         ellispses.add(ellipse);
     }
 
+    /**
+     * Adds the flow.
+     *
+     * @param flow the flow
+     */
     public void addFlow(Flow flow) {
         flows.add(flow);
     }
 
+    /**
+     * Gets the clump details.
+     *
+     * @return the clump details
+     */
     public ClumpDetails getClumpDetails() {
         return clumpDetails;
     }
 
+    /**
+     * Gets the distance.
+     *
+     * @return the distance
+     */
     public double getDistance() {
         return distance;
     }
@@ -116,6 +147,11 @@ public class Clump implements Serializable {
         return ellispses;
     }
 
+    /**
+     * Gets the flows.
+     *
+     * @return the flows
+     */
     public List<Flow> getFlows() {
         return flows;
     }
@@ -138,22 +174,37 @@ public class Clump implements Serializable {
         return map;
     }
 
+    /**
+     * Gets the massa.
+     *
+     * @return the massa
+     */
     public double getMassa() {
         return massa;
     }
 
+    /**
+     * Sets the clump details.
+     *
+     * @param clumpDetails the new clump details
+     */
     public void setClumpDetails(ClumpDetails clumpDetails) {
         this.clumpDetails = clumpDetails;
     }
 
+    /**
+     * Sets the distance.
+     *
+     * @param distance the new distance
+     */
     public void setDistance(double distance) {
         this.distance = distance;
     }
 
     /**
-     * Sets the ellisse.
+     * Sets the ellipse.
      *
-     * @param ellipses the new ellisse
+     * @param ellipses the new ellipse
      */
     public void setEllipse(List<Ellipse> ellipses) {
         ellispses = ellipses;
@@ -168,6 +219,11 @@ public class Clump implements Serializable {
         this.ellispses = ellispses;
     }
 
+    /**
+     * Sets the flows.
+     *
+     * @param flows the new flows
+     */
     public void setFlows(List<Flow> flows) {
         this.flows = flows;
     }
@@ -190,6 +246,11 @@ public class Clump implements Serializable {
         this.map = map;
     }
 
+    /**
+     * Sets the massa.
+     *
+     * @param massa the new massa
+     */
     public void setMassa(double massa) {
         this.massa = massa;
     }

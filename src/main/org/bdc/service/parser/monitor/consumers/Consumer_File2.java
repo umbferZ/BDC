@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.service.parser.monitor.consumers
  * Type: Consumer_File2
- * Last update: 13-set-2017 14.33.56
+ * Last update: 20-set-2017 13.23.21
  * 
  */
 

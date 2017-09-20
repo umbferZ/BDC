@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.model.galaxy
  * Type: Map
- * Last update: 13-set-2017 14.31.55
+ * Last update: 20-set-2017 13.23.25
  * 
  */
 
@@ -66,6 +66,11 @@ public class Map implements Serializable {
         this.name = name;
     }
 
+    /**
+     * Adds the clump.
+     *
+     * @param clump the clump
+     */
     public void addClump(Clump clump) {
         clumps.add(clump);
 
@@ -80,28 +85,38 @@ public class Map implements Serializable {
         return clumps;
     }
 
+    /**
+     * Gets the id.
+     *
+     * @return the id
+     */
     public int getId() {
         return id;
     }
 
     /**
-     * Gets the strumenti.
+     * Gets the instruments.
      *
-     * @return the strumenti
+     * @return the instruments
      */
     public List<Instrument> getInstruments() {
         return instruments;
     }
 
     /**
-     * Gets the nome.
+     * Gets the name.
      *
-     * @return the nome
+     * @return the name
      */
     public String getName() {
         return name;
     }
 
+    /**
+     * Gets the sources.
+     *
+     * @return the sources
+     */
     public List<Source> getSources() {
         return sources;
     }
@@ -115,28 +130,38 @@ public class Map implements Serializable {
         this.clumps = clumps;
     }
 
+    /**
+     * Sets the id.
+     *
+     * @param id the new id
+     */
     public void setId(int id) {
         this.id = id;
     }
 
     /**
-     * Sets the strumenti.
+     * Sets the instruments.
      *
-     * @param instruments the new strumenti
+     * @param instruments the new instruments
      */
     public void setInstruments(List<Instrument> instruments) {
         this.instruments = instruments;
     }
 
     /**
-     * Sets the nome.
+     * Sets the name.
      *
-     * @param name the new nome
+     * @param name the new name
      */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * Sets the sources.
+     *
+     * @param sources the new sources
+     */
     public void setSources(List<Source> sources) {
         this.sources = sources;
     }

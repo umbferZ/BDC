@@ -3,8 +3,8 @@
  * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.controls
- * Type: C_UC_SearchClumpsMass
- * Last update: 15-set-2017 12.06.05
+ * Type: C_UC_ClumpsMasses
+ * Last update: 20-set-2017 13.23.24
  * 
  */
 
@@ -16,16 +16,30 @@ import main.org.bdc.model.DaoFactory;
 import main.org.bdc.model.galaxy.Clump;
 import main.org.bdc.model.galaxy.dao.ClumpDao;
 
+/**
+ * The Class C_UC_ClumpsMasses.
+ */
 public class C_UC_ClumpsMasses {
 
     private static C_UC_ClumpsMasses instance = null;
 
+    /**
+     * Gets the single instance of C_UC_ClumpsMasses.
+     *
+     * @return single instance of C_UC_ClumpsMasses
+     */
     public synchronized static C_UC_ClumpsMasses getInstance() {
         if (instance == null)
             instance = new C_UC_ClumpsMasses();
         return instance;
     }
 
+    /**
+     * Show stats.
+     *
+     * @return the string[]
+     * @throws Exception the exception
+     */
     /* REQ 10.1 */
     public String[] showStats() throws Exception {
         ClumpDao clumpDao = DaoFactory.getInstance().getClumpDao();
@@ -41,6 +55,12 @@ public class C_UC_ClumpsMasses {
         return result;
     }
 
+    /**
+     * Search clumps mass.
+     *
+     * @return the string[]
+     * @throws Exception the exception
+     */
     /* REQ 10 */
     public String[] searchClumpsMass() throws Exception {
         ClumpDao clumpDao = DaoFactory.getInstance().getClumpDao();
@@ -52,6 +72,12 @@ public class C_UC_ClumpsMasses {
 
     }
 
+    /**
+     * Search clumps densities.
+     *
+     * @return the string[]
+     * @throws Exception the exception
+     */
     /* REQ 07 */
     public String[] searchClumpsDensities() throws Exception {
         ClumpDao clumpDao = DaoFactory.getInstance().getClumpDao();

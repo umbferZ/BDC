@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.service.parser.monitor.translators
  * Type: Translator
- * Last update: 14-set-2017 1.47.57
+ * Last update: 20-set-2017 13.23.25
  * 
  */
 
@@ -52,6 +52,9 @@ public abstract class Translator<SB extends SimpleBean> implements Runnable {
      */
     public abstract Producer<SB> getProducer();
 
+    /* (non-Javadoc)
+     * @see java.lang.Runnable#run()
+     */
     @Override
     public void run() {
         try {

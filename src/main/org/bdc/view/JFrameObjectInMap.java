@@ -1,3 +1,12 @@
+/*
+ * 
+ * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
+ * Project: BdC - Osservatorio Astronomico Virtuale
+ * Package: main.org.bdc.view
+ * Type: JFrameObjectInMap
+ * Last update: 20-set-2017 13.23.22
+ * 
+ */
 package main.org.bdc.view;
 
 import com.jgoodies.forms.layout.ColumnSpec;
@@ -11,22 +20,45 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 
 
+/**
+ * The Class JFrameObjectInMap.
+ */
 public class JFrameObjectInMap extends JFrame {
 
     private JButton btn_search;
 
+    /**
+     * Gets the map.
+     *
+     * @return the map
+     */
     public JTextField getMap() {
         return map;
     }
 
+    /**
+     * Sets the map.
+     *
+     * @param map the new map
+     */
     public void setMap(JTextField map) {
         this.map = map;
     }
 
+    /**
+     * Gets the band.
+     *
+     * @return the band
+     */
     public JTextField getBand() {
         return band;
     }
 
+    /**
+     * Sets the band.
+     *
+     * @param band the new band
+     */
     public void setBand(JTextField band) {
         this.band = band;
     }
@@ -40,7 +72,7 @@ public class JFrameObjectInMap extends JFrame {
     private JLabel     lblNewLabel;
 
     /**
-     * Create the frame.
+     * Instantiates a new j frame object in map.
      */
     public JFrameObjectInMap() {
 
@@ -86,20 +118,40 @@ public class JFrameObjectInMap extends JFrame {
         contentPane.add(lblNewLabel);
     }
 
+    /**
+     * Adds the button object.
+     *
+     * @param actionListener the action listener
+     */
     public void addButtonObject(ActionListener actionListener) {
         btn_search.addActionListener(actionListener);
     }
 
+    /**
+     * Gets the btn search.
+     *
+     * @return the btn search
+     */
     public JButton getBtn_search() {
         return btn_search;
     }
 
 
+    /**
+     * Sets the btn search.
+     *
+     * @param btn_search the new btn search
+     */
     public void setBtn_search(JButton btn_search) {
         this.btn_search = btn_search;
     }
 
 
+    /**
+     * Show error.
+     *
+     * @param string the string
+     */
     public void showError(String string) {
         lblNewLabel.setText(string);
         lblNewLabel.setVisible(true);

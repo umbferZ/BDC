@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.service.parser.monitor.translators
  * Type: Translator_File1
- * Last update: 13-set-2017 0.30.17
+ * Last update: 20-set-2017 13.23.23
  * 
  */
 

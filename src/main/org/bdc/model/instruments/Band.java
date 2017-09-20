@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.model.instruments
  * Type: Band
- * Last update: 14-set-2017 18.52.19
+ * Last update: 20-set-2017 13.23.24
  * 
  */
 
@@ -59,6 +59,11 @@ public class Band implements Serializable {
         this(resolution, lunghezzaOnda, null);
     }
 
+    /**
+     * Instantiates a new band.
+     *
+     * @param resolution the resolution
+     */
     public Band(double resolution) {
         this.resolution = resolution;
     }
@@ -76,10 +81,20 @@ public class Band implements Serializable {
         this.instrument = instrument;
     }
 
+    /**
+     * Gets the flows.
+     *
+     * @return the flows
+     */
     public List<Flow> getFlows() {
         return flows;
     }
 
+    /**
+     * Gets the id.
+     *
+     * @return the id
+     */
     public int getId() {
         return id;
     }
@@ -89,9 +104,9 @@ public class Band implements Serializable {
     // }
 
     /**
-     * Gets the strument.
+     * Gets the instrument.
      *
-     * @return the strument
+     * @return the instrument
      */
     public Instrument getInstrument() {
         return instrument;
@@ -115,18 +130,28 @@ public class Band implements Serializable {
         return resolution;
     }
 
+    /**
+     * Sets the flows.
+     *
+     * @param flows the new flows
+     */
     public void setFlows(List<Flow> flows) {
         this.flows = flows;
     }
 
+    /**
+     * Sets the id.
+     *
+     * @param id the new id
+     */
     public void setId(int id) {
         this.id = id;
     }
 
     /**
-     * Sets the strument.
+     * Sets the instrument.
      *
-     * @param instrument the new strument
+     * @param instrument the new instrument
      */
     public void setInstrument(Instrument instrument) {
         this.instrument = instrument;

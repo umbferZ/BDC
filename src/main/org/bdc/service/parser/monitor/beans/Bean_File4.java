@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.service.parser.monitor.beans
  * Type: Bean_File4
- * Last update: 13-set-2017 0.30.03
+ * Last update: 20-set-2017 13.23.25
  * 
  */
 
@@ -30,12 +30,12 @@ public class Bean_File4 extends SimpleBean {
     /**
      * Instantiates a new bean file 4.
      *
-     * @param sourceId_MIPSGAL the sorgent id MIPSGAL
+     * @param sourceId_MIPSGAL the source id MIPSGAL
      * @param longitude the longitude
      * @param latitude the latitude
      * @param flow_24d0 the flow 24 d 0
      * @param error_24d0 the error 24 d 0
-     * @param sourceId_GLIMPSE the sorgent id GLIMPSE
+     * @param sourcetId_GLIMPSE the sourcet id GLIMPSE
      */
     public Bean_File4(String sourceId_MIPSGAL, double longitude, double latitude, double flow_24d0, double error_24d0, String sourcetId_GLIMPSE) {
         super();
@@ -84,18 +84,18 @@ public class Bean_File4 extends SimpleBean {
     }
 
     /**
-     * Gets the sorgent id GLIMPSE.
+     * Gets the source id GLIMPSE.
      *
-     * @return the sorgent id GLIMPSE
+     * @return the source id GLIMPSE
      */
     public String getSourceId_GLIMPSE() {
         return this.sourceId_GLIMPSE;
     }
 
     /**
-     * Gets the sorgent id MIPSGAL.
+     * Gets the source id MIPSGAL.
      *
-     * @return the sorgent id MIPSGAL
+     * @return the source id MIPSGAL
      */
     public String getSourceId_MIPSGAL() {
         return this.sourceId_MIPSGAL;
@@ -147,9 +147,9 @@ public class Bean_File4 extends SimpleBean {
     }
 
     /**
-     * Sets the sorgent id GLIMPSE.
+     * Sets the sourcet id GLIMPSE.
      *
-     * @param sourceId_GLIMPSE the new sorgent id GLIMPSE
+     * @param sourceId_GLIMPSE the new sourcet id GLIMPSE
      */
     public void setSourcetId_GLIMPSE(String sourceId_GLIMPSE) {
         this.sourceId_GLIMPSE = sourceId_GLIMPSE;

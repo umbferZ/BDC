@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.view.manager
  * Type: CJFrameSearchPosition
- * Last update: 15-set-2017 13.33.49
+ * Last update: 20-set-2017 13.23.25
  * 
  */
 
@@ -25,6 +25,9 @@ import main.org.bdc.view.JFrameMain;
 import main.org.bdc.view.JFrameSearchPosition;
 import main.org.bdc.view.tools.CheckerField;
 
+/**
+ * The Class CJFrameSearchPosition.
+ */
 public class CJFrameSearchPosition {
 
     public double                distance;
@@ -49,6 +52,11 @@ public class CJFrameSearchPosition {
 
     private JFrameSearchPosition view;
 
+    /**
+     * Instantiates a new CJ frame search position.
+     *
+     * @param mainView the main view
+     */
     public CJFrameSearchPosition(JFrameMain mainView) {
         this.mainView = mainView;
         EventQueue.invokeLater(new Runnable() {
@@ -67,12 +75,22 @@ public class CJFrameSearchPosition {
 
     }
 
+    /**
+     * Check field.
+     *
+     * @return true, if successful
+     */
     public boolean checkField() {
         isClump = view.getRdbtnTypeClump().isSelected();
         isSquare = view.getRdbtnGeometrySquare().isSelected();
         return checklat() && checkLon() && checkDist() && checkLimit();
     }
 
+    /**
+     * Check dist.
+     *
+     * @return true, if successful
+     */
     private boolean checkDist() {
         JTextField jTextField = view.getFld_dist();
         if (!CheckerField.checkTextField(jTextField)) {
@@ -88,6 +106,11 @@ public class CJFrameSearchPosition {
         return true;
     }
 
+    /**
+     * Checklat.
+     *
+     * @return true, if successful
+     */
     private boolean checklat() {
         JTextField jTextField = view.getFld_lat();
         if (!CheckerField.checkTextField(jTextField)) {
@@ -103,6 +126,11 @@ public class CJFrameSearchPosition {
         return true;
     }
 
+    /**
+     * Check limit.
+     *
+     * @return true, if successful
+     */
     private boolean checkLimit() {
         JTextField jTextField = view.getFld_limit();
         if (!CheckerField.checkTextField(jTextField)) {
@@ -118,6 +146,11 @@ public class CJFrameSearchPosition {
         return true;
     }
 
+    /**
+     * Check lon.
+     *
+     * @return true, if successful
+     */
     private boolean checkLon() {
         try {
             longitude = Double.parseDouble(view.getFld_long().getText().trim());
@@ -128,8 +161,22 @@ public class CJFrameSearchPosition {
         return true;
     }
 
+    /**
+     * The listener interface for receiving insertSearchAction events. The class
+     * that is interested in processing a insertSearchAction event implements
+     * this interface, and the object created with that class is registered with
+     * a component using the component's
+     * <code>addInsertSearchActionListener<code> method. When the
+     * insertSearchAction event occurs, that object's appropriate method is
+     * invoked.
+     *
+     * @see InsertSearchActionEvent
+     */
     private class InsertSearchActionListener implements ActionListener {
 
+        /* (non-Javadoc)
+         * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+         */
         @Override
         public void actionPerformed(ActionEvent e) {
             if (checkField())

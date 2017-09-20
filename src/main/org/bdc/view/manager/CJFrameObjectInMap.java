@@ -1,3 +1,12 @@
+/*
+ * 
+ * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
+ * Project: BdC - Osservatorio Astronomico Virtuale
+ * Package: main.org.bdc.view.manager
+ * Type: CJFrameObjectInMap
+ * Last update: 20-set-2017 13.23.21
+ * 
+ */
 package main.org.bdc.view.manager;
 
 import main.org.bdc.controls.C_UC_SearchClumps;
@@ -14,6 +23,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
+/**
+ * The Class CJFrameObjectInMap.
+ */
 public class CJFrameObjectInMap {
 
     private String map;
@@ -22,6 +34,11 @@ public class CJFrameObjectInMap {
 
     private JFrameObjectInMap view;
 
+    /**
+     * Instantiates a new CJ frame object in map.
+     *
+     * @param parent the parent
+     */
     public CJFrameObjectInMap(JFrameMain parent) {
         this.parent = parent;
         EventQueue.invokeLater(new Runnable() {
@@ -40,6 +57,11 @@ public class CJFrameObjectInMap {
         });
     }
 
+    /**
+     * Check field.
+     *
+     * @return true, if successful
+     */
     private boolean checkField() {
         JTextField jTextField = view.getMap();
         if (!CheckerField.checkTextField(jTextField)) {
@@ -51,8 +73,20 @@ public class CJFrameObjectInMap {
 
     }
 
+    /**
+     * The listener interface for receiving btn events. The class that is
+     * interested in processing a btn event implements this interface, and the
+     * object created with that class is registered with a component using the
+     * component's <code>addBtnListener<code> method. When the btn event occurs,
+     * that object's appropriate method is invoked.
+     *
+     * @see BtnEvent
+     */
     private class BtnListener implements ActionListener {
 
+        /* (non-Javadoc)
+         * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+         */
         @Override
         public void actionPerformed(ActionEvent e) {
             if (checkField())

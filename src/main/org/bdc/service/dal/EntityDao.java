@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.service.dal
  * Type: EntityDao
- * Last update: 14-set-2017 11.25.01
+ * Last update: 20-set-2017 13.23.22
  * 
  */
 
@@ -59,16 +59,30 @@ public interface EntityDao<T, ID extends Serializable> {
     @Deprecated
     public T getById(ID id, boolean lock);
 
-    public T save(T entity) throws SaveDalException;
-
     /**
-     * Insert.
+     * Save.
      *
      * @param entity the entity
      * @return the t
-     * @throws SaveOrUpdateDalException
+     * @throws SaveDalException the save dal exception
+     */
+    public T save(T entity) throws SaveDalException;
+
+    /**
+     * Save or update.
+     *
+     * @param entity the entity
+     * @return the t
+     * @throws SaveOrUpdateDalException the save or update dal exception
      */
     public T saveOrUpdate(T entity) throws SaveOrUpdateDalException;
 
+    /**
+     * Update.
+     *
+     * @param entity the entity
+     * @return the t
+     * @throws UpdateDalException the update dal exception
+     */
     public T update(T entity) throws UpdateDalException;
 }

@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.view
  * Type: JFrameClumpSearch
- * Last update: 15-set-2017 13.53.04
+ * Last update: 20-set-2017 13.23.24
  * 
  */
 
@@ -27,6 +27,9 @@ import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.FormSpecs;
 import com.jgoodies.forms.layout.RowSpec;
 
+/**
+ * The Class JFrameClumpSearch.
+ */
 public class JFrameClumpSearch extends JFrame {
 
     private JButton    btn_search;
@@ -38,7 +41,7 @@ public class JFrameClumpSearch extends JFrame {
     private JLabel     lblNewLabel;
 
     /**
-     * Create the frame.
+     * Instantiates a new j frame clump search.
      */
     public JFrameClumpSearch() {
 
@@ -78,26 +81,56 @@ public class JFrameClumpSearch extends JFrame {
         contentPane.add(lblNewLabel);
     }
 
+    /**
+     * Adds the button search AL.
+     *
+     * @param actionListener the action listener
+     */
     public void addButtonSearchAL(ActionListener actionListener) {
         btn_search.addActionListener(actionListener);
     }
 
+    /**
+     * Gets the btn search.
+     *
+     * @return the btn search
+     */
     public JButton getBtn_search() {
         return btn_search;
     }
 
+    /**
+     * Gets the clump id.
+     *
+     * @return the clump id
+     */
     public JTextField getClump_id() {
         return clump_id;
     }
 
+    /**
+     * Sets the btn search.
+     *
+     * @param btn_search the new btn search
+     */
     public void setBtn_search(JButton btn_search) {
         this.btn_search = btn_search;
     }
 
+    /**
+     * Sets the clump id.
+     *
+     * @param clump_id the new clump id
+     */
     public void setClump_id(JTextField clump_id) {
         this.clump_id = clump_id;
     }
 
+    /**
+     * Show error.
+     *
+     * @param string the string
+     */
     public void showError(String string) {
         lblNewLabel.setText(string);
         lblNewLabel.setVisible(true);

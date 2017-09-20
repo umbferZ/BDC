@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.model.instruments
  * Type: Instrument
- * Last update: 14-set-2017 18.47.27
+ * Last update: 20-set-2017 13.23.22
  * 
  */
 
@@ -87,14 +87,29 @@ public class Instrument implements Serializable {
 
     }
 
+    /**
+     * Gets the bands.
+     *
+     * @return the bands
+     */
     public List<Band> getBands() {
         return bands;
     }
 
+    /**
+     * Gets the id.
+     *
+     * @return the id
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * Gets the map.
+     *
+     * @return the map
+     */
     public Map getMap() {
         return map;
     }
@@ -117,14 +132,29 @@ public class Instrument implements Serializable {
         return satellite;
     }
 
+    /**
+     * Sets the bands.
+     *
+     * @param bands the new bands
+     */
     public void setBands(List<Band> bands) {
         this.bands = bands;
     }
 
+    /**
+     * Sets the id.
+     *
+     * @param id the new id
+     */
     public void setId(int id) {
         this.id = id;
     }
 
+    /**
+     * Sets the map.
+     *
+     * @param map the new map
+     */
     public void setMap(Map map) {
         this.map = map;
     }

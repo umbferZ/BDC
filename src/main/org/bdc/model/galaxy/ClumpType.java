@@ -5,7 +5,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.model.galaxy
  * Type: ClumpType
- * Last update: 13-set-2017 0.26.51
+ * Last update: 20-set-2017 13.23.20
  * 
  */
 

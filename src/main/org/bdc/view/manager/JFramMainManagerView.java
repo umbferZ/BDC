@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.view.manager
  * Type: JFramMainManagerView
- * Last update: 15-set-2017 14.51.11
+ * Last update: 20-set-2017 13.23.23
  * 
  */
 
@@ -26,6 +26,9 @@ import main.org.bdc.service.parser.monitor.producers.IllegalFileException;
 import main.org.bdc.view.JFrameMain;
 import main.org.bdc.view.JFrameMain.TypeFile;
 
+/**
+ * The Class JFramMainManagerView.
+ */
 public class JFramMainManagerView {
 
     private JList<String>  list;
@@ -34,6 +37,11 @@ public class JFramMainManagerView {
 
     private JFrameMain     view;
 
+    /**
+     * Instantiates a new j fram main manager view.
+     *
+     * @param userRegistered the user registered
+     */
     public JFramMainManagerView(UserRegistered userRegistered) {
         this.userRegistered = userRegistered;
         EventQueue.invokeLater(new Runnable() {
@@ -79,22 +87,50 @@ public class JFramMainManagerView {
         });
     }
 
+    /**
+     * Gets the list.
+     *
+     * @return the list
+     */
     public JList<String> getList() {
         return list;
     }
 
+    /**
+     * Sets the list.
+     *
+     * @param list the new list
+     */
     public void setList(JList<String> list) {
         this.list = list;
     }
 
+    /**
+     * The listener interface for receiving importAction events. The class that
+     * is interested in processing a importAction event implements this
+     * interface, and the object created with that class is registered with a
+     * component using the component's <code>addImportActionListener<code>
+     * method. When the importAction event occurs, that object's appropriate
+     * method is invoked.
+     *
+     * @see ImportActionEvent
+     */
     class ImportActionListener implements ActionListener {
 
         private TypeFile typeFile;
 
+        /**
+         * Instantiates a new import action listener.
+         *
+         * @param typeFile the type file
+         */
         public ImportActionListener(TypeFile typeFile) {
             this.typeFile = typeFile;
         }
 
+        /* (non-Javadoc)
+         * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+         */
         @Override
         public void actionPerformed(ActionEvent ev) {
             JFileChooser chooser = new JFileChooser();
@@ -127,8 +163,14 @@ public class JFramMainManagerView {
 
     }
 
+    /**
+     * The Class MenuClumpMass.
+     */
     class MenuClumpMass implements ActionListener {
 
+        /* (non-Javadoc)
+         * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+         */
         @Override
         public void actionPerformed(ActionEvent e) {
 
@@ -142,8 +184,14 @@ public class JFramMainManagerView {
 
     }
 
+    /**
+     * The Class MenuInsertSatellite.
+     */
     class MenuInsertSatellite implements ActionListener {
 
+        /* (non-Javadoc)
+         * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+         */
         @Override
         public void actionPerformed(ActionEvent e) {
             new CJFramNewSatellite(view);
@@ -152,16 +200,28 @@ public class JFramMainManagerView {
 
     }
 
+    /**
+     * The Class MenuInsertStrumento.
+     */
     class MenuInsertStrumento implements ActionListener {
 
+        /* (non-Javadoc)
+         * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+         */
         @Override
         public void actionPerformed(ActionEvent e) {
             new CJFrameInsertInstrument();
         }
     }
 
+    /**
+     * The Class MenuInsertUser.
+     */
     class MenuInsertUser implements ActionListener {
 
+        /* (non-Javadoc)
+         * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+         */
         @Override
         public void actionPerformed(ActionEvent e) {
             new CJFrameNewUser();
@@ -169,8 +229,14 @@ public class JFramMainManagerView {
         }
     }
 
+    /**
+     * The Class MenuSearchClump.
+     */
     class MenuSearchClump implements ActionListener {
 
+        /* (non-Javadoc)
+         * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+         */
         @Override
         public void actionPerformed(ActionEvent e) {
             new CJFrameClumpSearch(view);
@@ -179,8 +245,14 @@ public class JFramMainManagerView {
 
     }
 
+    /**
+     * The Class MenuSearchSource.
+     */
     class MenuSearchSource implements ActionListener {
 
+        /* (non-Javadoc)
+         * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+         */
         @Override
         public void actionPerformed(ActionEvent e) {
             new CJFrameSearchSource(view);
@@ -189,8 +261,14 @@ public class JFramMainManagerView {
 
     }
 
+    /**
+     * The Class MenuShowSources.
+     */
     class MenuShowSources implements ActionListener {
 
+        /* (non-Javadoc)
+         * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+         */
         @Override
         public void actionPerformed(ActionEvent e) {
             new CJFrameSearchSource(view);
@@ -199,8 +277,14 @@ public class JFramMainManagerView {
 
     }
 
+    /**
+     * The Class MenuObjectInMap.
+     */
     class MenuObjectInMap implements ActionListener {
 
+        /* (non-Javadoc)
+         * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+         */
         @Override
         public void actionPerformed(ActionEvent e) {
             new CJFrameObjectInMap(view);

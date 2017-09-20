@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.view
  * Type: JFrameInit
- * Last update: 13-set-2017 0.23.41
+ * Last update: 20-set-2017 13.23.22
  * 
  */
 
@@ -20,6 +20,9 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
+/**
+ * The Class JFrameInit.
+ */
 public class JFrameInit extends JFrame {
 
     private JPanel contentPane;
@@ -27,7 +30,9 @@ public class JFrameInit extends JFrame {
     private JLabel lblStatus;
 
     /**
-     * Launch the application.
+     * The main method.
+     *
+     * @param args the arguments
      */
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
@@ -45,7 +50,7 @@ public class JFrameInit extends JFrame {
     }
 
     /**
-     * Create the frame.
+     * Instantiates a new j frame init.
      */
     public JFrameInit() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -66,6 +71,11 @@ public class JFrameInit extends JFrame {
         panel.add(this.lblStatus);
     }
 
+    /**
+     * Sets the status.
+     *
+     * @param message the new status
+     */
     public void setStatus(String message) {
         this.lblStatus.setText(message);
         this.lblStatus.setVisible(true);

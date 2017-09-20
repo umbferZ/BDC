@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.model.galaxy.dao
  * Type: SatelliteDao
- * Last update: 13-set-2017 0.26.59
+ * Last update: 20-set-2017 13.23.25
  * 
  */
 

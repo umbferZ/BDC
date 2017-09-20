@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.view
  * Type: JFrameLogin
- * Last update: 14-set-2017 12.23.14
+ * Last update: 20-set-2017 13.23.24
  * 
  */
 
@@ -120,36 +120,76 @@ public class JFrameLogin extends JFrame {
         contentPane.add(lblUserRegistered);
     }
 
+    /**
+     * Adds the button login action listener.
+     *
+     * @param buttonLoginActionListener the button login action listener
+     */
     public void addButtonLoginActionListener(ActionListener buttonLoginActionListener) {
         btn_login.addActionListener(buttonLoginActionListener);
 
     }
 
+    /**
+     * Gets the btn login.
+     *
+     * @return the btn login
+     */
     public JButton getBtnLogin() {
         return btn_login;
     }
 
+    /**
+     * Gets the pwd password.
+     *
+     * @return the pwd password
+     */
     public JPasswordField getPwdPassword() {
         return pwd_password;
     }
 
+    /**
+     * Gets the txt username.
+     *
+     * @return the txt username
+     */
     public JTextField getTxtUsername() {
         return txt_user_name;
     }
 
+    /**
+     * Sets the btn login.
+     *
+     * @param btnLogin the new btn login
+     */
     public void setBtnLogin(JButton btnLogin) {
         btn_login = btnLogin;
     }
 
+    /**
+     * Sets the error message.
+     *
+     * @param message the new error message
+     */
     public void setErrorMessage(String message) {
         lbl_error.setText(message);
         lbl_error.setVisible(true);
     }
 
+    /**
+     * Sets the pwd password.
+     *
+     * @param pwdPassword the new pwd password
+     */
     public void setPwdPassword(JPasswordField pwdPassword) {
         pwd_password = pwdPassword;
     }
 
+    /**
+     * Sets the txt username.
+     *
+     * @param txtUsername the new txt username
+     */
     public void setTxtUsername(JTextField txtUsername) {
         txt_user_name = txtUsername;
     }

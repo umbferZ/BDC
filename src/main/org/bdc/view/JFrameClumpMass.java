@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.view
  * Type: JFrameClumpMass
- * Last update: 13-set-2017 0.23.41
+ * Last update: 20-set-2017 13.23.24
  * 
  */
 
@@ -20,7 +20,7 @@ import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 
 /**
- * Created by Sasha on 11/09/17.
+ * The Class JFrameClumpMass.
  */
 public class JFrameClumpMass extends JFrame {
 
@@ -29,7 +29,9 @@ public class JFrameClumpMass extends JFrame {
     private JTable table;
 
     /**
-     * Launch the application.
+     * The main method.
+     *
+     * @param args the arguments
      */
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
@@ -46,6 +48,9 @@ public class JFrameClumpMass extends JFrame {
         });
     }
 
+    /**
+     * Instantiates a new j frame clump mass.
+     */
     public JFrameClumpMass() {
         setTitle("Clumps Mass");
         setType(Type.UTILITY);

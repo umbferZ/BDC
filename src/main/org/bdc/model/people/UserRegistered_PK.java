@@ -3,8 +3,8 @@
  * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.model.people
- * Type: UserRegegistered_PK
- * Last update: 13-set-2017 0.25.20
+ * Type: UserRegistered_PK
+ * Last update: 20-set-2017 13.23.24
  * 
  */
 
@@ -22,7 +22,7 @@ public class UserRegistered_PK implements Serializable {
     private String userId;
 
     /**
-     * Instantiates a new utente PK.
+     * Instantiates a new user registered PK.
      */
     public UserRegistered_PK() {
         super();
@@ -38,9 +38,9 @@ public class UserRegistered_PK implements Serializable {
     }
 
     /**
-     * Gets the userId.
+     * Gets the user id.
      *
-     * @return the userId
+     * @return the user id
      */
     public String getUserId() {
         return this.userId;
@@ -56,9 +56,9 @@ public class UserRegistered_PK implements Serializable {
     }
 
     /**
-     * Sets the userId.
+     * Sets the user id.
      *
-     * @param userId the new userId
+     * @param userId the new user id
      */
     public void setUserId(String userId) {
         this.userId = userId;

@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.controls
  * Type: C_UC_SearchObjectInMap
- * Last update: 15-set-2017 11.53.36
+ * Last update: 20-set-2017 13.23.25
  * 
  */
 
@@ -17,16 +17,29 @@ import main.org.bdc.model.galaxy.dao.SourceDao;
 
 import java.util.List;
 
+/**
+ * The Class C_UC_SearchObjectInMap.
+ */
 public class C_UC_SearchObjectInMap {
 
     private static C_UC_SearchObjectInMap instance = null;
 
+    /**
+     * Gets the single instance of C_UC_SearchObjectInMap.
+     *
+     * @return single instance of C_UC_SearchObjectInMap
+     */
     public synchronized static C_UC_SearchObjectInMap getInstance() {
         if (instance == null)
             instance = new C_UC_SearchObjectInMap();
         return instance;
     }
 
+    /**
+     * The main method.
+     *
+     * @param args the arguments
+     */
     /* MAIN DI PROVA */
     public static void main(String[] args) {
         try {
@@ -38,6 +51,15 @@ public class C_UC_SearchObjectInMap {
         }
     }
 
+    /**
+     * Search by band.
+     *
+     * @param map_name the map name
+     * @param limit the limit
+     * @param band_res the band res
+     * @return the string[]
+     * @throws Exception the exception
+     */
     /* REQ 05 */
     public String[] searchByBand(String map_name, int limit, double band_res) throws Exception {
         SourceDao sourceDao = DaoFactory.getInstance().getSourceDao();
@@ -48,6 +70,14 @@ public class C_UC_SearchObjectInMap {
         return result;
     }
 
+    /**
+     * Search for all bands.
+     *
+     * @param map_name the map name
+     * @param limit the limit
+     * @return the string[]
+     * @throws Exception the exception
+     */
     /* REQ 05 */
     public String[] searchForAllBands(String map_name, int limit) throws Exception {
         SourceDao sourceDao = DaoFactory.getInstance().getSourceDao();

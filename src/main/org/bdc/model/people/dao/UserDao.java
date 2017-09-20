@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.model.people.dao
  * Type: UserDao
- * Last update: 13-set-2017 17.20.59
+ * Last update: 20-set-2017 13.23.21
  * 
  */
 
@@ -26,9 +26,9 @@ public class UserDao extends EntityDaoHibernate<UserRegistered, Integer> {
     /**
      * Login.
      *
-     * @param userId the username
+     * @param userId the user id
      * @param password the password
-     * @return the utente
+     * @return the user registered
      * @throws LoginException the login exception
      */
     @SuppressWarnings("unchecked")

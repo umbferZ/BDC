@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.model.people
  * Type: UserType
- * Last update: 13-set-2017 0.25.20
+ * Last update: 20-set-2017 13.23.25
  * 
  */
 

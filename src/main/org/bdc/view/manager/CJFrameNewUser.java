@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.view.manager
  * Type: CJFrameNewUser
- * Last update: 14-set-2017 13.43.55
+ * Last update: 20-set-2017 13.23.22
  * 
  */
 
@@ -23,6 +23,9 @@ import main.org.bdc.model.people.UserType;
 import main.org.bdc.service.dal.exception.SaveDalException;
 import main.org.bdc.view.JFrameNuovoUtente;
 
+/**
+ * The Class CJFrameNewUser.
+ */
 public class CJFrameNewUser {
 
     private String            firstName, lastName, email, password, userId, password_reply;
@@ -33,6 +36,9 @@ public class CJFrameNewUser {
 
     private JFrameNuovoUtente view;
 
+    /**
+     * Instantiates a new CJ frame new user.
+     */
     public CJFrameNewUser() {
         userReg = new UserRegistered();
         EventQueue.invokeLater(new Runnable() {
@@ -50,11 +56,21 @@ public class CJFrameNewUser {
         });
     }
 
+    /**
+     * Check fields.
+     *
+     * @return true, if successful
+     */
     private boolean checkFields() {
         isAdmin = view.getChckbx_admin().isSelected();
         return validateFirstName() && validateLastName() && validateEmail() && validatePassword() && validateUserId();
     }
 
+    /**
+     * Validate email.
+     *
+     * @return true, if successful
+     */
     private boolean validateEmail() {
         if ((email = view.getTxt_user_email().getText()).length() < 1) {
             view.setErrorMessage("L'email non può essere vuota");
@@ -67,6 +83,11 @@ public class CJFrameNewUser {
         return true;
     }
 
+    /**
+     * Validate first name.
+     *
+     * @return true, if successful
+     */
     private boolean validateFirstName() {
         JTextField txt_user_first_name = view.getTxt_user_first_name();
         if ((firstName = txt_user_first_name.getText()).length() < 1) {
@@ -76,6 +97,11 @@ public class CJFrameNewUser {
         return true;
     }
 
+    /**
+     * Validate last name.
+     *
+     * @return true, if successful
+     */
     private boolean validateLastName() {
         if ((lastName = view.getTxt_user_last_name().getText()).length() < 1) {
             view.setErrorMessage("Check last name");
@@ -84,6 +110,11 @@ public class CJFrameNewUser {
         return true;
     }
 
+    /**
+     * Validate password.
+     *
+     * @return true, if successful
+     */
     private boolean validatePassword() {
         JPasswordField fld_pwd = view.getPwd_password();
         JPasswordField fld_pwd_repeat = view.getPwd_password_reply();
@@ -100,6 +131,11 @@ public class CJFrameNewUser {
         return true;
     }
 
+    /**
+     * Validate user id.
+     *
+     * @return true, if successful
+     */
     private boolean validateUserId() {
         JTextField fld_user_id = view.getTxt_user_id();
         if ((userId = fld_user_id.getText()).length() < 5) {
@@ -110,8 +146,22 @@ public class CJFrameNewUser {
 
     }
 
+    /**
+     * The listener interface for receiving buttonInsertAction events. The class
+     * that is interested in processing a buttonInsertAction event implements
+     * this interface, and the object created with that class is registered with
+     * a component using the component's
+     * <code>addButtonInsertActionListener<code> method. When the
+     * buttonInsertAction event occurs, that object's appropriate method is
+     * invoked.
+     *
+     * @see ButtonInsertActionEvent
+     */
     private class ButtonInsertActionListener implements ActionListener {
 
+        /* (non-Javadoc)
+         * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+         */
         @Override
         public void actionPerformed(ActionEvent e) {
             if (checkFields()) {

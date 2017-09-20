@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.view.manager
  * Type: CJFrameInsertInstrument
- * Last update: 15-set-2017 13.36.18
+ * Last update: 20-set-2017 13.23.24
  * 
  */
 
@@ -24,6 +24,9 @@ import main.org.bdc.service.dal.exception.SaveDalException;
 import main.org.bdc.view.JFrameInsertInstrument;
 import main.org.bdc.view.tools.CheckerField;
 
+/**
+ * The Class CJFrameInsertInstrument.
+ */
 public class CJFrameInsertInstrument {
 
     private JFrameInsertInstrument view;
@@ -32,6 +35,9 @@ public class CJFrameInsertInstrument {
     private String mapName;
     private Instrument instrument = new Instrument();
 
+    /**
+     * Instantiates a new CJ frame insert instrument.
+     */
     public CJFrameInsertInstrument() {
         EventQueue.invokeLater(new Runnable() {
 
@@ -48,11 +54,21 @@ public class CJFrameInsertInstrument {
         });
     }
 
+    /**
+     * Check fiels.
+     *
+     * @return true, if successful
+     */
     private boolean checkFiels() {
 
         return valdateName() && validateSatellite() && validateMap();
     }
 
+    /**
+     * Valdate name.
+     *
+     * @return true, if successful
+     */
     private boolean valdateName() {
         JTextField jTextField = view.getTxt_instrumentName();
         if (!CheckerField.checkTextField(jTextField)) {
@@ -64,6 +80,11 @@ public class CJFrameInsertInstrument {
         return true;
     }
 
+    /**
+     * Validate map.
+     *
+     * @return true, if successful
+     */
     private boolean validateMap() {
         JTextField jTextField = view.getTxt_mapName();
         if (!CheckerField.checkTextField(jTextField)) {
@@ -75,6 +96,11 @@ public class CJFrameInsertInstrument {
         return true;
     }
 
+    /**
+     * Validate satellite.
+     *
+     * @return true, if successful
+     */
     private boolean validateSatellite() {
         JTextField jTextField = view.getTxt_satName();
         if (!CheckerField.checkTextField(jTextField)) {
@@ -86,8 +112,14 @@ public class CJFrameInsertInstrument {
         return true;
     }
 
+    /**
+     * The Class ButtonInsertAL.
+     */
     private class ButtonInsertAL implements ActionListener {
 
+        /* (non-Javadoc)
+         * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+         */
         @Override
         public void actionPerformed(ActionEvent e) {
             if (checkFiels()) {

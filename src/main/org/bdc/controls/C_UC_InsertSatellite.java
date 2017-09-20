@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.controls
  * Type: C_UC_InsertSatellite
- * Last update: 14-set-2017 18.14.14
+ * Last update: 20-set-2017 13.23.24
  * 
  */
 
@@ -18,16 +18,31 @@ import main.org.bdc.model.galaxy.Agency;
 import main.org.bdc.model.galaxy.Satellite;
 import main.org.bdc.service.dal.exception.SaveDalException;
 
+/**
+ * The Class C_UC_InsertSatellite.
+ */
 public class C_UC_InsertSatellite {
 
     private static C_UC_InsertSatellite instance = null;
 
+    /**
+     * Gets the single instance of C_UC_InsertSatellite.
+     *
+     * @return single instance of C_UC_InsertSatellite
+     */
     public synchronized static C_UC_InsertSatellite getInstance() {
         if (instance == null)
             instance = new C_UC_InsertSatellite();
         return instance;
     }
 
+    /**
+     * Inserisci satellite.
+     *
+     * @param bean the bean
+     * @return the satellite
+     * @throws SaveDalException the save dal exception
+     */
     /* REQ 03.3 */
     public Satellite inserisciSatellite(BeanInserisciSatellite bean) throws SaveDalException {
         Calendar startDate = Calendar.getInstance();

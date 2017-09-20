@@ -1,3 +1,12 @@
+/*
+ * 
+ * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
+ * Project: BdC - Osservatorio Astronomico Virtuale
+ * Package: main.org.bdc.controls
+ * Type: C_UC_SearchYoungStars
+ * Last update: 20-set-2017 13.23.21
+ * 
+ */
 package main.org.bdc.controls;
 
 import main.org.bdc.model.DaoFactory;
@@ -7,16 +16,29 @@ import main.org.bdc.model.galaxy.dao.ClumpDao;
 import main.org.bdc.model.galaxy.dao.SourceDao;
 import java.util.List;
 
+/**
+ * The Class C_UC_SearchYoungStars.
+ */
 public class C_UC_SearchYoungStars {
 
     private static C_UC_SearchYoungStars instance = null;
 
+    /**
+     * Gets the single instance of C_UC_SearchYoungStars.
+     *
+     * @return single instance of C_UC_SearchYoungStars
+     */
     public synchronized static C_UC_SearchYoungStars getInstance() {
         if (instance == null)
             instance = new C_UC_SearchYoungStars();
         return instance;
     }
 
+    /**
+     * The main method.
+     *
+     * @param args the arguments
+     */
     /* MAIN DI PROVA */
     public static void main(String[] args) {
         try {
@@ -28,6 +50,12 @@ public class C_UC_SearchYoungStars {
         }
     }
 
+    /**
+     * Show clumps.
+     *
+     * @return the string[]
+     * @throws Exception the exception
+     */
     /* Show all Clumps in JFrameMain's List */
     public String[] showClumps() throws Exception {
         ClumpDao clumpDao = DaoFactory.getInstance().getClumpDao();
@@ -38,6 +66,13 @@ public class C_UC_SearchYoungStars {
         return result;
     }
 
+    /**
+     * Young stars.
+     *
+     * @param id the id
+     * @return the string[]
+     * @throws Exception the exception
+     */
     /* REQ 11 */
     public String[] youngStars(int id) throws Exception {
         SourceDao sourceDao = DaoFactory.getInstance().getSourceDao();

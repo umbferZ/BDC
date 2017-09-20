@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.model.galaxy
  * Type: Flow
- * Last update: 15-set-2017 14.55.19
+ * Last update: 20-set-2017 13.23.23
  * 
  */
 
@@ -37,6 +37,9 @@ public class Flow implements Serializable {
 
     private double value;
 
+    /**
+     * Instantiates a new flow.
+     */
     public Flow() {}
 
     /**
@@ -63,16 +66,16 @@ public class Flow implements Serializable {
     }
 
     /**
-     * Instantiates a new flusso.
+     * Instantiates a new flow.
      *
-     * @param v
+     * @param v the v
      */
     public Flow(float v) {}
 
     /**
-     * Gets the band.
+     * Gets the banda.
      *
-     * @return the band
+     * @return the banda
      */
     public Band getBanda() {
         return band;
@@ -97,9 +100,9 @@ public class Flow implements Serializable {
     }
 
     /**
-     * Sets the band.
+     * Sets the banda.
      *
-     * @param band the new band
+     * @param banda the new banda
      */
     public void setBanda(Band banda) {
         band = banda;

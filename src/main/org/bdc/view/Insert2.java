@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.view
  * Type: Insert2
- * Last update: 14-set-2017 17.38.32
+ * Last update: 20-set-2017 13.23.23
  * 
  */
 
@@ -20,12 +20,17 @@ import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
 
+/**
+ * The Class Insert2.
+ */
 public class Insert2 extends JFrame {
 
     private JPanel contentPane;
 
     /**
-     * Launch the application.
+     * The main method.
+     *
+     * @param args the arguments
      */
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
@@ -43,7 +48,7 @@ public class Insert2 extends JFrame {
     }
 
     /**
-     * Create the frame.
+     * Instantiates a new insert 2.
      */
     public Insert2() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

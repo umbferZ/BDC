@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.controls
  * Type: Init
- * Last update: 14-set-2017 13.37.43
+ * Last update: 20-set-2017 13.23.24
  * 
  */
 
@@ -16,14 +16,25 @@ import main.org.bdc.view.JFrameInit;
 import main.org.bdc.view.manager.CJFrameLogin;
 import test.Demo;
 
+/**
+ * The Class Init.
+ */
 public class Init {
 
     private JFrameInit view;
 
+    /**
+     * The main method.
+     *
+     * @param args the arguments
+     */
     public static void main(String[] args) {
         new Init().start();
     }
 
+    /**
+     * Start.
+     */
     public void start() {
         EventQueue.invokeLater(new Runnable() {
 

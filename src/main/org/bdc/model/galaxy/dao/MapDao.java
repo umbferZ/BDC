@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.model.galaxy.dao
  * Type: MapDao
- * Last update: 13-set-2017 14.10.40
+ * Last update: 20-set-2017 13.23.21
  * 
  */
 
@@ -17,8 +17,18 @@ import javax.persistence.Query;
 import main.org.bdc.model.galaxy.Map;
 import main.org.bdc.service.dal.EntityDaoHibernate;
 
+/**
+ * The Class MapDao.
+ */
 public class MapDao extends EntityDaoHibernate<Map, Integer> {
 
+    /**
+     * Gets the map by name.
+     *
+     * @param name the name
+     * @return the map by name
+     * @throws Exception the exception
+     */
     public Map getMapByName(String name) throws Exception {
         String sql = "FROM Map WHERE name= :name";
         Query query = super.openSession().createQuery(sql);

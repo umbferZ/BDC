@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.model.people
  * Type: UserRegistered
- * Last update: 14-set-2017 11.19.09
+ * Last update: 20-set-2017 13.23.22
  * 
  */
 
@@ -17,7 +17,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.Id;
 
 /**
- * S The Class UserRegistered.
+ * The Class UserRegistered.
  */
 @Entity
 // @IdClass(UserRegistered_PK.class)
@@ -39,7 +39,7 @@ public class UserRegistered {
     private UserType userType;
 
     /**
-     * Instantiates a new utente.
+     * Instantiates a new user registered.
      */
     public UserRegistered() {
         super();
@@ -55,18 +55,18 @@ public class UserRegistered {
     }
 
     /**
-     * Gets the firstName.
+     * Gets the first name.
      *
-     * @return the firstName
+     * @return the first name
      */
     public String getFirstName() {
         return firstName;
     }
 
     /**
-     * Gets the lastName.
+     * Gets the last name.
      *
-     * @return the lastName
+     * @return the last name
      */
     public String getLastName() {
         return lastName;
@@ -82,18 +82,18 @@ public class UserRegistered {
     }
 
     /**
-     * Gets the userId.
+     * Gets the user id.
      *
-     * @return the userId
+     * @return the user id
      */
     public String getUserId() {
         return userId;
     }
 
     /**
-     * Gets the tipo utente.
+     * Gets the user type.
      *
-     * @return the tipo utente
+     * @return the user type
      */
     public UserType getUserType() {
         return userType;
@@ -109,18 +109,18 @@ public class UserRegistered {
     }
 
     /**
-     * Sets the firstName.
+     * Sets the first name.
      *
-     * @param firstName the new firstName
+     * @param firstName the new first name
      */
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
     /**
-     * Sets the lastName.
+     * Sets the last name.
      *
-     * @param lastName the new lastName
+     * @param lastName the new last name
      */
     public void setLastName(String lastName) {
         this.lastName = lastName;
@@ -136,18 +136,18 @@ public class UserRegistered {
     }
 
     /**
-     * Sets the userId.
+     * Sets the user id.
      *
-     * @param userId the new userId
+     * @param userId the new user id
      */
     public void setUserId(String userId) {
         this.userId = userId;
     }
 
     /**
-     * Sets the tipo utente.
+     * Sets the user type.
      *
-     * @param userType the new tipo utente
+     * @param userType the new user type
      */
     public void setUserType(UserType userType) {
         this.userType = userType;

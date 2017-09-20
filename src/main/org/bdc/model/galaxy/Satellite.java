@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.model.galaxy
  * Type: Satellite
- * Last update: 14-set-2017 18.48.27
+ * Last update: 20-set-2017 13.23.23
  * 
  */
 
@@ -60,6 +60,11 @@ public class Satellite implements Serializable {
 
     }
 
+    /**
+     * Instantiates a new satellite.
+     *
+     * @param name the name
+     */
     public Satellite(String name) {
         super();
         this.name = name;

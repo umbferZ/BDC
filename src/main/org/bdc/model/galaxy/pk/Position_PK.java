@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.model.galaxy.pk
  * Type: Position_PK
- * Last update: 13-set-2017 0.27.04
+ * Last update: 20-set-2017 13.23.23
  * 
  */
 
@@ -20,12 +20,25 @@ public class Position_PK implements Serializable {
 
     private String source;
 
+    /**
+     * Instantiates a new position PK.
+     */
     public Position_PK() {}
 
+    /**
+     * Gets the source.
+     *
+     * @return the source
+     */
     public String getSource() {
         return this.source;
     }
 
+    /**
+     * Sets the source.
+     *
+     * @param source the new source
+     */
     public void setSource(String source) {
         this.source = source;
     }

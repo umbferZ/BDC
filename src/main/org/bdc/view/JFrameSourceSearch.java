@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.view
  * Type: JFrameSourceSearch
- * Last update: 15-set-2017 9.59.15
+ * Last update: 20-set-2017 13.23.25
  * 
  */
 
@@ -28,7 +28,7 @@ import com.jgoodies.forms.layout.FormSpecs;
 import com.jgoodies.forms.layout.RowSpec;
 
 /**
- * Created by Sasha on 11/09/17.
+ * The Class JFrameSourceSearch.
  */
 public class JFrameSourceSearch extends JFrame {
 
@@ -41,7 +41,9 @@ public class JFrameSourceSearch extends JFrame {
     private JTextField txt_clumpId;
 
     /**
-     * Launch the application.
+     * The main method.
+     *
+     * @param args the arguments
      */
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
@@ -59,7 +61,7 @@ public class JFrameSourceSearch extends JFrame {
     }
 
     /**
-     * Create the frame.
+     * Instantiates a new j frame source search.
      */
     public JFrameSourceSearch() {
         setTitle("Search source");
@@ -109,22 +111,47 @@ public class JFrameSourceSearch extends JFrame {
 
     }
 
+    /**
+     * Adds the search action listener.
+     *
+     * @param actionListener the action listener
+     */
     public void addSearchActionListener(ActionListener actionListener) {
         btnInserisci.addActionListener(actionListener);
     }
 
+    /**
+     * Gets the txt band.
+     *
+     * @return the txt band
+     */
     public JTextField getTxt_band() {
         return txt_band;
     }
 
+    /**
+     * Gets the txt clump id.
+     *
+     * @return the txt clump id
+     */
     public JTextField getTxt_clumpId() {
         return txt_clumpId;
     }
 
+    /**
+     * Sets the txt band.
+     *
+     * @param txt_band the new txt band
+     */
     public void setTxt_band(JTextField txt_band) {
         this.txt_band = txt_band;
     }
 
+    /**
+     * Sets the txt clump id.
+     *
+     * @param txt_clumpId the new txt clump id
+     */
     public void setTxt_clumpId(JTextField txt_clumpId) {
         this.txt_clumpId = txt_clumpId;
     }

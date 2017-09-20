@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.model.galaxy
  * Type: Position
- * Last update: 13-set-2017 0.26.51
+ * Last update: 20-set-2017 13.23.24
  * 
  */
 
@@ -37,19 +37,26 @@ public class Position implements Serializable {
     private Source source;
 
     /**
-     * Instantiates a new posizione.
+     * Instantiates a new position.
      */
     public Position() {}
 
+    /**
+     * Instantiates a new position.
+     *
+     * @param latitude the latitude
+     * @param longitude the longitude
+     */
     public Position(double latitude, double longitude) {
         this(latitude, longitude, null);
     }
 
     /**
-     * Instantiates a new posizione.
+     * Instantiates a new position.
      *
      * @param latitude the latitude
      * @param longitude the longitude
+     * @param source the source
      */
     public Position(double latitude, double longitude, Source source) {
         this.latitude = latitude;
@@ -75,6 +82,11 @@ public class Position implements Serializable {
         return this.longitude;
     }
 
+    /**
+     * Gets the source.
+     *
+     * @return the source
+     */
     public Source getSource() {
         return this.source;
     }
@@ -97,6 +109,11 @@ public class Position implements Serializable {
         this.longitude = longitude;
     }
 
+    /**
+     * Sets the source.
+     *
+     * @param source the new source
+     */
     public void setSource(Source source) {
         this.source = source;
     }

@@ -4,7 +4,7 @@
  * Project: BdC - Osservatorio Astronomico Virtuale
  * Package: main.org.bdc.service.parser.monitor.producers
  * Type: Producer
- * Last update: 14-set-2017 11.13.05
+ * Last update: 20-set-2017 13.23.20
  * 
  */
 
@@ -172,7 +172,7 @@ public abstract class Producer<SB extends SimpleBean> implements Runnable {
      * @throws IllegalArgumentException the illegal argument exception
      * @throws InvocationTargetException the invocation target exception
      * @throws ClassNotFoundException the class not found exception
-     * @throws IllegalFileException
+     * @throws IllegalFileException the illegal file exception
      */
     @SuppressWarnings("unchecked")
     private SB createBean(String... values)
