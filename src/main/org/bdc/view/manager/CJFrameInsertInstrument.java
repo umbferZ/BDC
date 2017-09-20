@@ -16,12 +16,21 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JTextField;
 
+import main.org.bdc.controls.C_UC_InsertNewInstrument;
+import main.org.bdc.model.galaxy.Map;
+import main.org.bdc.model.galaxy.Satellite;
+import main.org.bdc.model.instruments.Instrument;
+import main.org.bdc.service.dal.exception.SaveDalException;
 import main.org.bdc.view.JFrameInsertInstrument;
 import main.org.bdc.view.tools.CheckerField;
 
 public class CJFrameInsertInstrument {
 
     private JFrameInsertInstrument view;
+    private String name;
+    private String satName;
+    private String mapName;
+    private Instrument instrument = new Instrument();
 
     public CJFrameInsertInstrument() {
         EventQueue.invokeLater(new Runnable() {
@@ -50,27 +59,44 @@ public class CJFrameInsertInstrument {
             //TODO: show error
             return false;
         }
+        name = jTextField.getText();
+        instrument.setName(name);
         return true;
     }
 
     private boolean validateMap() {
-        // TODO Auto-generated method stub
-        return false;
+        JTextField jTextField = view.getTxt_mapName();
+        if (!CheckerField.checkTextField(jTextField)) {
+            //TODO: show error
+            return false;
+        }
+        mapName = jTextField.getText();
+        instrument.setMap(new Map(mapName));
+        return true;
     }
 
     private boolean validateSatellite() {
-        // TODO Auto-generated method stub
-        return false;
+        JTextField jTextField = view.getTxt_satName();
+        if (!CheckerField.checkTextField(jTextField)) {
+            //TODO: show error
+            return false;
+        }
+        satName = jTextField.getText();
+        instrument.setSatellite(new Satellite(satName));
+        return true;
     }
 
     private class ButtonInsertAL implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            // if (checkFiels())
-            // C_UC_InsertNewInstrument.getInstance().inserisciStrumento(null,
-            // null);
-
+            if (checkFiels()) {
+                try {
+                    C_UC_InsertNewInstrument.getInstance().inserisciStrumento(instrument);
+                } catch (SaveDalException e1) {
+                    e1.printStackTrace();
+                }
+            }
         }
 
     }

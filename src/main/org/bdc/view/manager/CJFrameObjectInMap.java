@@ -1,47 +1,37 @@
-/*
- * 
- * Created by Umberto Ferracci, Francesco Ottaviano and Federica Zelli
- * Project: BdC - Osservatorio Astronomico Virtuale
- * Package: main.org.bdc.view.manager
- * Type: CJFrameClumpSearch
- * Last update: 15-set-2017 15.15.13
- * 
- */
-
 package main.org.bdc.view.manager;
 
-import java.awt.EventQueue;
+import main.org.bdc.controls.C_UC_SearchClumps;
+import main.org.bdc.controls.C_UC_SearchObjectInMap;
+import main.org.bdc.controls.C_UC_SearchYoungStars;
+import main.org.bdc.view.JFrameClumpSearch;
+import main.org.bdc.view.JFrameMain;
+import main.org.bdc.view.JFrameObjectInMap;
+import main.org.bdc.view.tools.CheckerField;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.swing.JTextField;
 
-import main.org.bdc.controls.C_UC_SearchClumps;
-import main.org.bdc.model.galaxy.Clump;
-import main.org.bdc.view.JFrameClumpSearch;
-import main.org.bdc.view.JFrameMain;
-import main.org.bdc.view.tools.CheckerField;
+public class CJFrameObjectInMap {
 
-public class CJFrameClumpSearch {
+    private String map;
 
-    private int               clumpId;
+    private JFrameMain parent;
 
-    private JFrameMain        parent;
+    private JFrameObjectInMap view;
 
-    private JFrameClumpSearch view;
-
-
-    public CJFrameClumpSearch(JFrameMain parent) {
+    public CJFrameObjectInMap(JFrameMain parent) {
         this.parent = parent;
         EventQueue.invokeLater(new Runnable() {
 
             @Override
             public void run() {
                 try {
-                    view = new JFrameClumpSearch();
+                    view = new JFrameObjectInMap();
                     view.setVisible(true);
-                    view.addButtonSearchAL(new BtnListener());
+                    view.addButtonObject(new BtnListener());
 
                 } catch (Exception e) {
 
@@ -51,12 +41,12 @@ public class CJFrameClumpSearch {
     }
 
     private boolean checkField() {
-        JTextField jTextField = view.getClump_id();
+        JTextField jTextField = view.getMap();
         if (!CheckerField.checkTextField(jTextField)) {
-            view.showError("Scrivi l'id clump");
+            view.showError("Insert Map!");
             return false;
         }
-        clumpId = Integer.parseInt(jTextField.getText());
+        map = jTextField.getText();
         return true;
 
     }
@@ -67,7 +57,7 @@ public class CJFrameClumpSearch {
         public void actionPerformed(ActionEvent e) {
             if (checkField())
                 try {
-                    parent.getList().setListData(C_UC_SearchClumps.getInstance().searchClumps(clumpId));
+                    parent.getList().setListData(C_UC_SearchObjectInMap.getInstance().searchForAllBands(map, 1));
                 } catch (Exception e1) {
                     e1.printStackTrace();
                     parent.getList().setListData(new String[] {

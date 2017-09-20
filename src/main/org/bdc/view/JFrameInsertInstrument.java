@@ -27,10 +27,31 @@ public class JFrameInsertInstrument extends JFrame {
     private JPanel panel;
     private JLabel lbl_name;
     private JLabel lbl_satellite;
-    private JComboBox cb_satellite;
+    private JTextField txt_satName;
     private JLabel lbl_map;
-    private JComboBox cb_map;
+    private JTextField txt_mapName;
     private JButton btn_insert;
+
+    public void setTxt_instrumentName(JTextField txt_instrumentName) {
+        this.txt_instrumentName = txt_instrumentName;
+    }
+
+    public JTextField getTxt_satName() {
+        return txt_satName;
+    }
+
+    public void setTxt_satName(JTextField txt_satName) {
+        this.txt_satName = txt_satName;
+    }
+
+    public JTextField getTxt_mapName() {
+        return txt_mapName;
+    }
+
+    public void setTxt_mapName(JTextField txt_mapName) {
+        this.txt_mapName = txt_mapName;
+    }
+
     private JLabel lbl_error;
 
     /**
@@ -64,7 +85,7 @@ public class JFrameInsertInstrument extends JFrame {
 
         JPanel panel = new JPanel();
         panel.setBorder(new TitledBorder(null, "New Instrument", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-        panel.setBounds(52, 37, 332, 177);
+        panel.setBounds(52, 37, 332, 200);
         contentPane.add(panel);
         panel.setLayout(new FormLayout(
                 new ColumnSpec[] { FormSpecs.RELATED_GAP_COLSPEC, FormSpecs.DEFAULT_COLSPEC,
@@ -81,35 +102,19 @@ public class JFrameInsertInstrument extends JFrame {
         panel.add(txt_instrumentName, "4, 2, fill, default");
         txt_instrumentName.setColumns(10);
 
-        lbl_satellite = new JLabel("Satellite");
-        panel.add(lbl_satellite, "2, 4, right, default");
-
-
-        String[] combolistSatellite = new String[]{"auu","ausi","asodiuasoidu","!asioduoas","!kasd"};
-        cb_satellite = new JComboBox(combolistSatellite);
-
-
-
-//  // riempi(combolist);
-//  for (int i = 1; i < 10; i++)
-//   combolistSatellite[i] = "yugg" + i;
-//  JComboBox cb_satellite = new JComboBox(combolistSatellite);
-
-        cb_satellite.setSelectedItem(null);
-        panel.add(cb_satellite, "4, 4, fill, default");
-
         lbl_map = new JLabel("Map");
-        panel.add(lbl_map, "2, 6, right, default");
+        panel.add(lbl_map, "2, 4, right, default");
 
-        String[] combolistMap = new String[]{"12","12387","ahsiuwo"};
-        cb_map = new JComboBox(combolistMap);
+        txt_mapName = new JTextField();
+        panel.add(txt_mapName, "4, 4, fill, default");
+        txt_mapName.setColumns(10);
 
-//  for (int i = 1; i < 10; i++)
-//   combolistSatellite[i] = "yugg" + i;
-//  JComboBox cb_map = new JComboBox(combolistSatellite);
-        cb_map.setSelectedItem(null);
+        lbl_satellite = new JLabel("Satellite");
+        panel.add(lbl_satellite, "2, 6, right, default");
 
-        panel.add(cb_map, "4, 6, fill, default");
+        txt_satName = new JTextField();
+        panel.add(txt_satName, "4, 8, fill, default");
+        txt_satName.setColumns(10);
 
         btn_insert = new JButton("Insert");
         panel.add(btn_insert, "4, 10, default, top");
@@ -153,13 +158,7 @@ public class JFrameInsertInstrument extends JFrame {
         this.lbl_satellite = lbl_satellite;
     }
 
-    public JComboBox getCb_satellite() {
-        return cb_satellite;
-    }
 
-    public void setCb_satellite(JComboBox cb_satellite) {
-        this.cb_satellite = cb_satellite;
-    }
 
     public JLabel getLbl_map() {
         return lbl_map;
@@ -169,13 +168,7 @@ public class JFrameInsertInstrument extends JFrame {
         this.lbl_map = lbl_map;
     }
 
-    public JComboBox getCb_map() {
-        return cb_map;
-    }
 
-    public void setCb_map(JComboBox cb_map) {
-        this.cb_map = cb_map;
-    }
 
     public JButton getBtn_insert() {
         return btn_insert;

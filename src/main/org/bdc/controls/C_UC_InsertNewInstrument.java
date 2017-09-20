@@ -17,9 +17,6 @@ import main.org.bdc.model.instruments.Band;
 import main.org.bdc.model.instruments.Instrument;
 import main.org.bdc.service.dal.exception.SaveDalException;
 
-/**
- * Created by Sasha on 13/09/17.
- */
 public class C_UC_InsertNewInstrument {
 
     private static C_UC_InsertNewInstrument instance = null;

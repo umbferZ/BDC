@@ -51,7 +51,7 @@ public class JFramMainManagerView {
                     view.addImportActionListener(TypeFile.MIPSGAL, new ImportActionListener(TypeFile.MIPSGAL));
                     view.addMenuInsertUserAL(new MenuInsertUser());
                     view.addMenuNewSatellite(new MenuInsertSatellite());
-                    view.addMenuShowAllObjectActionListener(null);
+                    view.addMenuShowAllObjectActionListener(new MenuObjectInMap());
                     view.addMenuInstrumentAL(new MenuInsertStrumento());
                     view.addMenuClumpMassAL(new MenuClumpMass());
                     view.addMenuSearchSourceAL(new MenuShowSources());
@@ -194,6 +194,16 @@ public class JFramMainManagerView {
         @Override
         public void actionPerformed(ActionEvent e) {
             new CJFrameSearchSource(view);
+
+        }
+
+    }
+
+    class MenuObjectInMap implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            new CJFrameObjectInMap(view);
 
         }
 
