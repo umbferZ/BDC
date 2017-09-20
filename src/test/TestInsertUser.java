@@ -23,9 +23,6 @@ import main.org.bdc.model.people.UserRegistered;
 import main.org.bdc.model.people.UserType;
 import main.org.bdc.service.dal.exception.SaveDalException;
 
-/**
- * Created by Sasha on 13/09/17.
- */
 @RunWith(value = Parameterized.class)
 public class TestInsertUser {
 
@@ -108,12 +105,6 @@ public class TestInsertUser {
             Assert.assertTrue(false);
         }
         Assert.assertNotNull(userRegistered);
-
-        /*Assert.assertNotEquals("Missing id field", "", userRegistered.getUserId());
-        Assert.assertNotEquals("Missing name field", "", userRegistered.getFirstName());
-        Assert.assertNotEquals("Missing surname field", "", userRegistered.getLastName());
-        Assert.assertNotEquals("Missing mail field", "", userRegistered.getEmail());
-        Assert.assertNotEquals("Missing password field", "", userRegistered.getPassword());*/
 
     }
 }

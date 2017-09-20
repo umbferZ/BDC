@@ -11,6 +11,7 @@
 package main.org.bdc.controls;
 
 import main.org.bdc.model.DaoFactory;
+import main.org.bdc.model.galaxy.Flow;
 import main.org.bdc.model.galaxy.Source;
 import main.org.bdc.model.galaxy.dao.SourceDao;
 
@@ -52,10 +53,14 @@ public class C_UC_SearchObjectInMap {
         SourceDao sourceDao = DaoFactory.getInstance().getSourceDao();
         List<Source> sources = sourceDao.getByMap(map_name, limit);
         String[] result = new String[sources.size()];
-        for (int i = 0; i < sources.size(); i++)
-            result[i] = String.format("Source ID: %s - Band Resolution: %.2f - Flux Value: %.4f",
-                    sources.get(i).getId(), sources.get(i).getFlows().get(i).getBanda().getResolution(),
-                    sources.get(i).getFlows().get(i).getValue());
+        for (int i = 0; i < sources.size(); i++){
+            Source source = sources.get(i);
+            for (Flow f: source.getFlows()) {
+                result[i] = String.format("Source ID: %s - Band Resolution: %.2f - Flux Value: %.4f",
+                        source.getId(), f.getBanda().getResolution(),
+                        f.getValue());
+            }
+        }
         return result;
     }
 

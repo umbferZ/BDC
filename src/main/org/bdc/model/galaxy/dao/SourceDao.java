@@ -233,9 +233,60 @@ public class SourceDao extends EntityDaoHibernate<Source, Integer> {
 
     /* REQ 11 */
     public List<Source> getYoungStars(int id) throws Exception {
-        String sql = "SELECT * FROM source";
+        String sql = "SELECT *\n" +
+                "FROM source s\n" +
+                "WHERE s.sourcetolowerresolution_id IN\n" +
+                "(\n" +
+                "  SELECT DISTINCT sf_z.source_id\n" +
+                "  FROM source_flow sf_z\n" +
+                "   JOIN(\n" +
+                "    SELECT sf1.source_id, f1.value flux_4d5\n" +
+                "    FROM source_flow sf1\n" +
+                "    JOIN flow f1 ON f1.id = sf1.flows_id \n" +
+                "    JOIN band b1 ON b1.id = f1.band_id AND b1.resolution = 4.5\n" +
+                "  ) AS q1 ON sf_z.source_id = q1.source_id\n" +
+                "  JOIN(\n" +
+                "    SELECT sf1.source_id, f1.value flux_3d6\n" +
+                "    FROM source_flow sf1\n" +
+                "    JOIN flow f1 ON f1.id = sf1.flows_id \n" +
+                "    JOIN band b1 ON b1.id = f1.band_id AND b1.resolution = 3.6\n" +
+                "    WHERE f1.value > 0\n" +
+                "  ) AS q2 ON sf_z.source_id = q2.source_id\n" +
+                "  JOIN(\n" +
+                "    SELECT sf1.source_id, f1.value flux_5d8\n" +
+                "    FROM source_flow sf1\n" +
+                "    JOIN flow f1 ON f1.id = sf1.flows_id \n" +
+                "    JOIN band b1 ON b1.id = f1.band_id AND b1.resolution = 5.8\n" +
+                "  ) AS q3 ON sf_z.source_id = q3.source_id\n" +
+                "  WHERE flux_4d5 - flux_5d8 > 0.7\n" +
+                "  AND flux_3d6 - flux_4d5 > 0.7\n" +
+                "  AND flux_3d6 - flux_4d5 > 1.4*(flux_4d5 - flux_5d8 -0.7) + 0.15\n" +
+                ")\n" +
+                "AND s.id IN\n" +
+                "(\n" +
+                "  SELECT  r.id\n" +
+                "  FROM\n" +
+                "  (\n" +
+                "    SELECT s.id, p.latitude, p.longitude, (p.latitude^2-q.lat^2)+(p.longitude^2-q.lon^2) distance, q.ass\n" +
+                "    FROM source s\n" +
+                "    JOIN position p ON p.source_id = s.id\n" +
+                "    JOIN map m ON m.id = s.map_id\n" +
+                "    CROSS JOIN \n" +
+                "    (\n" +
+                "      SELECT DISTINCT cd.lat lat, cd.lon lon, e.xass ass\n" +
+                "      FROM clump c\n" +
+                "      JOIN clumpdetails cd ON c.id = cd.clump_id\n" +
+                "      JOIN ellipse e ON c.id = e.clump_id\n" +
+                "      JOIN band b ON b.id = e.band_id\n" +
+                "      AND c.id = :c_id\n" +
+                "    ) AS q\n" +
+                "    WHERE m.name like 'MIPSGAL-GAL'\n" +
+                "  )as r\n" +
+                "  WHERE r.distance < r.ass\n" +
+                ")";
         Session s = super.openSession();
         Query query = s.createNativeQuery(sql);
+        query.setParameter("c_id", id);
         List<Object[]> rows = query.getResultList();
         closeSession();
         if (rows.size() < 1)
